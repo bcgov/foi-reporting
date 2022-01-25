@@ -5,6 +5,12 @@ from sqlalchemy import pool
 
 from alembic import context
 
+from dotenv import load_dotenv
+import os
+
+
+load_dotenv()
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
@@ -23,6 +29,10 @@ target_metadata = None
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
+
+
+config.set_main_option('sqlalchemy.url',
+                       os.getenv('FOI_EDW_DATABASE_URL'))
 
 
 def run_migrations_offline():
