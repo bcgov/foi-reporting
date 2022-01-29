@@ -21,6 +21,13 @@ Basic Reference Doc : https://github.com/BCDevOps/platform-services/tree/master/
 
 ###### Make sure builds are succesfull and shows "complete" without any errors or warning
 
+### Second part is to switch to DEV/TEST/PROD OC project
+        oc project c84b95-dev
+        
+##### first step is set up the service account permission on the project
+        #need to make service account refered is not "default". Earlier, we were having an "ImagePullBackup" due to using a wrong service account. *** 
+        oc policy add-role-to-user
+        system:image-puller system:serviceaccount:c84b95-dev:patroni-001
 
 
 
@@ -30,5 +37,4 @@ Basic Reference Doc : https://github.com/BCDevOps/platform-services/tree/master/
 
 
 
-
-https://chat.developer.gov.bc.ca/channel/devops-how-to/thread/Bi8KC4W6LwgmMgkDk
+Rocket chat Reference for the error caused : https://chat.developer.gov.bc.ca/channel/devops-how-to/thread/Bi8KC4W6LwgmMgkDk
