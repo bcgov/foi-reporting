@@ -19,6 +19,7 @@ Basic Reference Doc : https://github.com/BCDevOps/platform-services/tree/master/
    
         oc tag patroni patroni:v11-latest
 
+###### Make sure builds are succesfull and shows "complete" without any errors or warning
 
 
 
