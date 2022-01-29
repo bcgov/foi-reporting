@@ -28,7 +28,8 @@ Basic Reference Doc : https://github.com/BCDevOps/platform-services/tree/master/
         #need to make service account refered is not "default". Earlier, we were having an "ImagePullBackup" due to using a wrong service account. *** 
         oc policy add-role-to-user
         system:image-puller system:serviceaccount:c84b95-dev:patroni-001
-
+###### Error faced on pods was as below. The above command fixed the issue. Also refer below mentioned rocket chat link.
+Failed to pull image "image-registry.openshift-image-registry.svc:5000/c84b95-tools/patroni:v11-latest": rpc error: code = Unknown desc = Error reading manifest v11-latest in image-registry.openshift-image-registry.svc:5000/c84b95-tools/patroni: unauthorized: authentication required
 
 ##### second to this we can  run pre-req & deployment yaml on the oc project
 
