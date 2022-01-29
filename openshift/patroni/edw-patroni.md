@@ -12,18 +12,7 @@ Basic Reference Doc : https://github.com/BCDevOps/platform-services/tree/master/
 
     ```
 
-        Please delay the build cmd till both the imagestream are successfully pulled
 
-        ``` bash
-        # Trigger a build
-        oc start-build patroni-pg11
-        ```
-        Note : Please make sure tagging on the patroni is missing or not, if missing try adding using the below command. As per above commands , expecting a tag "v11-latest"
-
-        ``` bash
-        oc tag patroni patroni:v11-latest
-
-        ```
 
 
 
