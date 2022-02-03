@@ -9,26 +9,43 @@ Basic Reference Doc : https://github.com/BCDevOps/platform-services/tree/master/
             -p OUT_VERSION=v11-latest \
             -p PG_VERSION=11 | oc create -f -
 
-
-    Please delay the build cmd till both the imagestream are successfully pulled
+#### Please delay the build cmd till both the imagestream are successfully pulled
 
         # Trigger a build
         oc start-build patroni-pg11
-  
-        Note : Please make sure tagging on the patroni is missing or not, if missing try adding using the below command. As per above commands , expecting a tag "v11-latest"
+        
+#### Note : Please make sure tagging on the patroni is missing or not, if missing try adding using the below command. As per above commands , expecting a tag "v11-latest"
 
    
         oc tag patroni patroni:v11-latest
 
+###### Make sure builds are succesfull and shows "complete" without any errors or warning
+
+### Second part is to switch to DEV/TEST/PROD OC project
+        oc project c84b95-dev
+        
+##### first step is set up the service account permission on the project
+        #need to make service account refered is not "default". Earlier, we were having an "ImagePullBackup" due to using a wrong service account. *** 
+        oc policy add-role-to-user
+        system:image-puller system:serviceaccount:c84b95-dev:patroni-001
+###### Error faced on pods was as below. The above command fixed the issue. Also refer below mentioned rocket chat link.
+Failed to pull image "image-registry.openshift-image-registry.svc:5000/c84b95-tools/patroni:v11-latest": rpc error: code = Unknown desc = Error reading manifest v11-latest in image-registry.openshift-image-registry.svc:5000/c84b95-tools/patroni: unauthorized: authentication required
+
+##### second to this we can  run pre-req & deployment yaml on the oc project
+
+        oc process -f openshift/deployment-prereq.yaml \
+                -p NAME=patroni \
+                -p SUFFIX=-001 | oc create -f -
+
+        oc process -f openshift/deployment.yaml \
+         -p NAME=patroni \
+         -p "IMAGE_STREAM_NAMESPACE=$(oc project -q)" \
+         -p "IMAGE_STREAM_TAG=patroni:v11-latest" \
+         -p REPLICAS=3 \
+         -p SUFFIX=-001 | oc apply -f -
 
 
 
 
 
-
-
-
-
-
-
-https://chat.developer.gov.bc.ca/channel/devops-how-to/thread/Bi8KC4W6LwgmMgkDk
+Rocket chat Reference for the error caused : https://chat.developer.gov.bc.ca/channel/devops-how-to/thread/Bi8KC4W6LwgmMgkDk
