@@ -5,3 +5,5 @@ datawarehouse/env/*
 */.vs
 .vs
 *.dtproj.user
+bin
+obj
