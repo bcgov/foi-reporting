@@ -7,3 +7,4 @@ datawarehouse/env/*
 *.dtproj.user
 bin
 obj
+.env

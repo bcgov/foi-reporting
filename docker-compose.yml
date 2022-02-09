@@ -1,0 +1,24 @@
+version: '3'
+services: 
+
+  EDWMIGRATION:
+    build:
+      context: ./datawarehouse
+      dockerfile: dockerfile.local
+    image: foiedwbuilderimage
+    container_name: foi_edw_builder
+    networks:
+      services-network:
+        aliases:
+          - foiedwnw
+    ports:
+      - 4500:45000
+    environment:
+      - FOI_EDW_DATABASE_URL=${FOI_EDW_DATABASE_URL}
+
+          
+volumes:
+  dbdata:
+networks:  
+  services-network:    
+    driver: bridge  
