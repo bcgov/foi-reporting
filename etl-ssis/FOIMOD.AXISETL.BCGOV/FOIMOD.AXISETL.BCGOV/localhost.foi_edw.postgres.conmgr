@@ -1,0 +1,20 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="localhost.foi_edw.postgres"
+  DTS:DTSID="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+  DTS:CreationName="ODBC">
+  <DTS:PropertyExpression
+    DTS:Name="Password">@[$Project::DestinationFOIEDWPassword]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="ServerName">@[$Project::DestinationFOIEDWServerName]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="UserName">@[$Project::DestinationFOIEDWUserName]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="server=localhost;uid=postgres;Dsn=PostgreSQLLocalDocker;database=foi_edw;port=15432;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;">
+      <DTS:Password
+        DTS:Name="Pwd"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAl2vE4UCu9kqkVGQBl/mNNwAAAAACAAAAAAAQZgAAAAEAACAAAACcxzqJISEdXvkw7ANj3f5N+5lxhid6PB5LCN0uqRiD2QAAAAAOgAAAAAIAACAAAABVtKCvXKE1SaDVONlpDlD/oBtzMGKwgviRgqWKeJmnhHAAAAB9KfBZdCK5xhcHoV2lm1LKERaGWgMnf+l3iY4eCMQnLjkWYwqnPt+58OLLCv2qLaPZCLvi2fq5ItETd96dt+nEvdf/bxzAYaR6u7KFkp4N/BFQVMWRGzaCynC/2bsEl4SKwKlXEiCc0Cyk9a2F+NEuQAAAAE1I3gjR+SOgTfP7m+Kbrkjr9ufu8BtzPKUmivsZcxhVJTCoAm3qjhZt4Z75Yg6MZyHjjOdjf3+PduuJ8QbQWr0=</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

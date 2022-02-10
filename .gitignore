@@ -1,0 +1,10 @@
+datawarehouse/env/*
+*/.env
+*/__pycache__
+*.pyc
+*/.vs
+.vs
+*.dtproj.user
+bin
+obj
+.env

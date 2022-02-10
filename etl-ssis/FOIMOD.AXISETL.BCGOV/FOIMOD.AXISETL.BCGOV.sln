@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "FOIMOD.AXISETL.BCGOV", "FOIMOD.AXISETL.BCGOV\FOIMOD.AXISETL.BCGOV.dtproj", "{30B1A0FE-A467-47CD-BC2D-6D97A87232E4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{30B1A0FE-A467-47CD-BC2D-6D97A87232E4}.Development|Default.ActiveCfg = Development
+		{30B1A0FE-A467-47CD-BC2D-6D97A87232E4}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F65C235D-86B4-46BC-B7A5-55A1BADA3CDF}
+	EndGlobalSection
+EndGlobal
