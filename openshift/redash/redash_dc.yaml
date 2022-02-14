@@ -1,7 +1,7 @@
 apiVersion: template.openshift.io/v1
 kind: Template
 metadata:
-  name: forms-flow-analytics
+  name: foi-flow-reporting
 objects:
 - kind: Secret
   apiVersion: v1
@@ -54,11 +54,11 @@ objects:
           failurePolicy: ignore
       resources:
         requests:
-          cpu: "${CPU_REQUEST}"
-          memory: "${MEMORY_REQUEST}"
+          cpu: 200m
+          memory: 1Gi
         limits:
-          cpu: "${CPU_LIMIT}"
-          memory: "${MEMORY_LIMIT}"
+          cpu: 400m
+          memory: 1200M
       activeDeadlineSeconds: 21600
     template:
       metadata:
@@ -165,7 +165,13 @@ objects:
     selector:
       app: ${NAME}-adhoc-worker
     strategy:
-      resources: {}
+      resources:            
+        requests:
+          cpu: "${CPU_REQUEST}"
+          memory: "${MEMORY_REQUEST}"
+        limits:
+          cpu: "${CPU_LIMIT}"
+          memory: "${MEMORY_LIMIT}"
     template:
       metadata:
         creationTimestamp: null
@@ -271,7 +277,13 @@ objects:
     selector:
       app: ${NAME}-scheduled-worker
     strategy:
-      resources: {}
+      resources:
+        requests:
+          cpu: "${CPU_REQUEST}"
+          memory: "${MEMORY_REQUEST}"
+        limits:
+          cpu: "${CPU_LIMIT}"
+          memory: "${MEMORY_LIMIT}"
     template:
       metadata:
         creationTimestamp: null
@@ -377,7 +389,13 @@ objects:
     selector:
       app: ${NAME}-scheduler
     strategy:
-      resources: {}
+      resources:
+        requests:
+          cpu: "${CPU_REQUEST}"
+          memory: "${MEMORY_REQUEST}"
+        limits:
+          cpu: "${CPU_LIMIT}"
+          memory: "${MEMORY_LIMIT}"
     template:
       metadata:
         creationTimestamp: null
@@ -479,7 +497,13 @@ objects:
     selector:
       app: ${NAME}-worker
     strategy:
-      resources: {}
+      resources: 
+        requests:
+          cpu: "${CPU_REQUEST}"
+          memory: "${MEMORY_REQUEST}"
+        limits:
+          cpu: "${CPU_LIMIT}"
+          memory: "${MEMORY_LIMIT}"
     template:
       metadata:
         creationTimestamp: null
@@ -616,7 +640,7 @@ parameters:
     description: The name assigned to all of the OpenShift resources associated to the
       server instance.
     required: true
-    value: forms-flow-analytics
+    value: foi-flow-reporting
   - name: IMAGE_NAMESPACE
     displayName: Image Namespace
     required: true
@@ -669,3 +693,23 @@ parameters:
     displayName: REDASH_REDIS_URL
     description: REDASH_REDIS_URL
     required: true
+  - name: REDASH_COOKIE_SECRET
+    displayName: REDASH_COOKIE_SECRET
+    description: REDASH_COOKIE_SECRET
+    required: true  
+  - name: REDASH_CORS_ACCESS_CONTROL_ALLOW_ORIGIN
+    displayName: REDASH_CORS_ACCESS_CONTROL_ALLOW_ORIGIN
+    description: REDASH_CORS_ACCESS_CONTROL_ALLOW_ORIGIN
+    required: true
+  - name: REDASH_SECRET_KEY
+    displayName: REDASH_SECRET_KEY
+    description: REDASH_SECRET_KEY
+    required: true
+  - name: REDASH_REFERRER_POLICY
+    displayName: REDASH_REFERRER_POLICY
+    description: REDASH_REFERRER_POLICY
+    required: true  
+  - name: REDASH_CORS_ACCESS_CONTROL_ALLOW_HEADERS
+    displayName: REDASH_CORS_ACCESS_CONTROL_ALLOW_HEADERS
+    description: REDASH_CORS_ACCESS_CONTROL_ALLOW_HEADERS
+    required: true   
