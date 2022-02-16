@@ -8,3 +8,4 @@ datawarehouse/env/*
 bin
 obj
 .env
+openshift/redash/redash.env
