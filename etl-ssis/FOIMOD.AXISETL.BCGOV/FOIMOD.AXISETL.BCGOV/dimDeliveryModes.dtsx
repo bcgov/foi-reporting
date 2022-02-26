@@ -1,0 +1,1598 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/25/2022 5:15:06 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-U67UC02"
+  DTS:CreatorName="DESKTOP-U67UC02\abina"
+  DTS:DTSID="{0284728E-B5FD-4FFD-904F-B83E936809D9}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{59CF6649-8C1B-4C5E-8173-F7F6F7C53D23}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{12654E6B-A6D3-4F61-824A-62868F7EA596}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{EE3420BE-ABBC-48D7-8B2E-7EAAAAC83D1B}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="edwdeliverymodecount">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{0742434F-CF2B-4541-808B-EC687168E1DB}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="modifieddeliverymodecount">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{8F8853A5-17E2-4548-88A4-560593BBB22F}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="modifieddeliverymoderows">
+          <DTS:VariableValue
+            DTS:DataSubType="ManagedSerializable"
+            DTS:DataType="13">
+            <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+              <SOAP-ENV:Body>
+                <xsd:anyType
+                  id="ref-1"></xsd:anyType>
+              </SOAP-ENV:Body>
+            </SOAP-ENV:Envelope>
+          </DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{B671BDA5-90CA-4DF3-B352-7C85E227FE7E}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="newdeliverymodecount">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{52A2BC60-87B0-46BD-ACFA-D561E5FD2928}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="newdeliverymodes">
+          <DTS:VariableValue
+            DTS:DataSubType="ManagedSerializable"
+            DTS:DataType="13">
+            <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+              <SOAP-ENV:Body>
+                <xsd:anyType
+                  id="ref-1"></xsd:anyType>
+              </SOAP-ENV:Body>
+            </SOAP-ENV:Envelope>
+          </DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{14550DD3-8918-400B-A35E-A93457AF044F}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\Data Flow Task\ODBC Destination"
+                  componentClassID="Microsoft.SSISODBCDst"
+                  contactInfo="ODBC Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="ODBC Destination"
+                  name="ODBC Destination"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="The name of the table to be fetched."
+                      expressionType="Notify"
+                      name="TableName">"public"."dimDeliveryModes"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the number of rows fetched per batch."
+                      expressionType="Notify"
+                      name="BatchSize">1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of rows inserted under the same transaction."
+                      expressionType="Notify"
+                      name="TransactionSize">1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines the chunk size allocation for LOB columns"
+                      expressionType="Notify"
+                      name="LobChunkSize">32768</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                      expressionType="Notify"
+                      name="StatementTimeout">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The code page to use when code page information is unavailable from the data source."
+                      expressionType="Notify"
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                      expressionType="Notify"
+                      name="InsertMethod">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The ODBC C data type for binding numeric data."
+                      expressionType="Notify"
+                      name="BindNumericAs">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                      expressionType="Notify"
+                      name="BindCharColumnsAs">0</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Connections[ODBCConnection]"
+                      connectionManagerID="{F1356C9E-12B8-4059-B557-91D2500C60CE}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[localhost.foi_edw.postgres]"
+                      description="The ODBC runtime connection used to access the database."
+                      name="ODBCConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="ODBC Destination Input"
+                      truncationRowDisposition="FailComponent">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[deliverymodeid]"
+                          cachedDataType="ui1"
+                          cachedName="deliverymodeid"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[deliverymodeid]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[deliverymodeid]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[deliverymodename]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3000"
+                          cachedName="deliverymodename"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[deliverymodename]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[deliverymodename]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[cactive]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="cactive"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cactive]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[cactive]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[createddate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="createddate"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[createddate]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[createddate]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[modifieddate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="modifieddate"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[modifieddate]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[modifieddate]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[cdelete]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="cdelete"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cdelete]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[cdelete]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[cpal]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="cpal"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cpal]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[cpal]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[cdefault]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="cdefault"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cdefault]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[cdefault]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[deliverymodeid]"
+                          dataType="i4"
+                          name="deliverymodeid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[deliverymodename]"
+                          dataType="wstr"
+                          length="3000"
+                          name="deliverymodename" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cactive]"
+                          dataType="wstr"
+                          length="1"
+                          name="cactive" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[createddate]"
+                          dataType="dbTimeStamp2"
+                          name="createddate"
+                          scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[modifieddate]"
+                          dataType="dbTimeStamp2"
+                          name="modifieddate"
+                          scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cdelete]"
+                          dataType="wstr"
+                          length="1"
+                          name="cdelete" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cpal]"
+                          dataType="wstr"
+                          length="1"
+                          name="cpal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cdefault]"
+                          dataType="wstr"
+                          length="1"
+                          name="cdefault" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="ODBC Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Data Flow Task\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select 
+	TDM.tiDeliveryModeID as deliverymodeid,
+	TLL.vcTerminology as deliverymodename,
+	TDM.cActive as cactive,
+	TDM.dtCreatedDate as createddate,
+	TDM.dtModifiedDate as modifieddate,
+	TDM.cDelete as cdelete,
+	TDM.cPAL as cpal,
+	TDM.cDefault as cdefault
+From tblDeliveryModes TDM LEFT OUTER JOIN tblTerminologyLookup TLL ON TDM.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="{4505C521-0836-4CAA-8A51-8DA634D4EA56}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.ATIPD]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[deliverymodeid]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[deliverymodeid]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[deliverymodeid]"
+                          name="deliverymodeid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[deliverymodename]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[deliverymodename]"
+                          length="3000"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[deliverymodename]"
+                          name="deliverymodename"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[cactive]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cactive]"
+                          length="1"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[cactive]"
+                          name="cactive"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[createddate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[createddate]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[createddate]"
+                          name="createddate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[modifieddate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[modifieddate]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[modifieddate]"
+                          name="modifieddate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[cdelete]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cdelete]"
+                          length="1"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[cdelete]"
+                          name="cdelete"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[cpal]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cpal]"
+                          length="1"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[cpal]"
+                          name="cpal"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[cdefault]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cdefault]"
+                          length="1"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[cdefault]"
+                          name="cdefault"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[deliverymodeid]"
+                          dataType="ui1"
+                          name="deliverymodeid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[deliverymodename]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          name="deliverymodename" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cactive]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="cactive" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[createddate]"
+                          dataType="dbTimeStamp"
+                          name="createddate" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[modifieddate]"
+                          dataType="dbTimeStamp"
+                          name="modifieddate" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cdelete]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="cdelete" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cpal]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="cpal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cdefault]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="cdefault" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[deliverymodeid]"
+                          dataType="ui1"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[deliverymodeid]"
+                          name="deliverymodeid" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[deliverymodename]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[deliverymodename]"
+                          name="deliverymodename" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cactive]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cactive]"
+                          name="cactive" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[createddate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[createddate]"
+                          name="createddate" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[modifieddate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[modifieddate]"
+                          name="modifieddate" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cdelete]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cdelete]"
+                          name="cdelete" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cpal]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cpal]"
+                          name="cpal" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cdefault]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cdefault]"
+                          name="cdefault" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\Data Flow Task.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\execSQLTaskdeliverymodeModifiedCOunt"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{CC0EBDDA-A404-4994-B160-35D0160A1A6C}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="execSQLTaskdeliverymodeModifiedCOunt"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="Select &#xA;&#x9;COUNT(TDM.tiDeliveryModeID)&#x9;&#xA;From tblDeliveryModes TDM LEFT OUTER JOIN tblTerminologyLookup TLL ON TDM.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1&#xA;WHERE TDM.dtModifiedDate &gt;=dateadd(day,datediff(day,1,GETDATE()),0)   AND TDM.dtCreatedDate &lt; dateadd(day,datediff(day,1,GETDATE()),0)"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::modifieddeliverymodecount" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\execSQLTaskdeliverymodeModifiedCOunt 1"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8f0e821c-c113-4e9c-9dcd-c80ef736e72d}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="execSQLTaskdeliverymodeModifiedCOunt 1"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="Select &#xA;&#x9;CAST(TDM.tiDeliveryModeID as INT) as deliverymodeid,&#xA;&#x9;TLL.vcTerminology as deliverymodename,&#xA;&#x9;TDM.cActive as cactive,&#xA;&#x9;convert(varchar, TDM.dtCreatedDate, 120) as createddate,&#xA;&#x9;convert(varchar, TDM.dtModifiedDate , 120)as modifieddate,&#x9;&#xA;&#x9;TDM.cDelete as cdelete,&#xA;&#x9;TDM.cPAL as cpal,&#xA;&#x9;TDM.cDefault as cdefault&#xA;From tblDeliveryModes TDM LEFT OUTER JOIN tblTerminologyLookup TLL ON TDM.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1&#xA;WHERE TDM.dtModifiedDate &gt;=dateadd(day,datediff(day,1,GETDATE()),0)   AND TDM.dtCreatedDate &lt; dateadd(day,datediff(day,1,GETDATE()),0)"
+              SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::modifieddeliverymoderows" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\execSQLTaskdeliverymodeNewrecorCount"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{3c99ae1c-a97d-4c49-9237-13e2e8b73e8f}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="execSQLTaskdeliverymodeNewrecorCount"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="Select &#xA; CAST(TDM.tiDeliveryModeID as INT) as deliverymodeid,&#xA; TLL.vcTerminology as deliverymodename,&#xA; TDM.cActive as cactive,&#xA; convert(varchar, TDM.dtCreatedDate, 120) as createddate,&#xA; convert(varchar, TDM.dtModifiedDate , 120)as modifieddate, &#xA; TDM.cDelete as cdelete,&#xA; TDM.cPAL as cpal,&#xA; TDM.cDefault as cdefault&#xA;From tblDeliveryModes TDM LEFT OUTER JOIN tblTerminologyLookup TLL ON TDM.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1&#xA;WHERE  TDM.dtCreatedDate &gt;= dateadd(day,datediff(day,1,GETDATE()),0)"
+              SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::newdeliverymodes" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Execute SQL Task"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{F76EAA52-8964-4F4C-B689-523E5AC21D4E}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute SQL Task"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+              SQLTask:SqlStatementSource="SELECT count(deliverymodeid) as cnt FROM public.&quot;dimDeliveryModes&quot;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="1"
+                SQLTask:DtsVariableName="User::edwdeliverymodecount" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\extNewDeliveryModeCount"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{76DCBD30-8F05-44F0-BF73-A30049773EC0}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="extNewDeliveryModeCount"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
+              SQLTask:SqlStatementSource="Select &#xA;&#x9;COUNT(TDM.tiDeliveryModeID)&#x9;&#xA;From tblDeliveryModes TDM LEFT OUTER JOIN tblTerminologyLookup TLL ON TDM.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1&#xA;WHERE TDM.dtCreatedDate &gt;= dateadd(day,datediff(day,1,GETDATE()),0)"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::newdeliverymodecount" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Foreach Loop Container"
+          DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:Description="Foreach Loop Container"
+          DTS:DTSID="{A0CC1519-0786-499F-BBF0-2C745CA266E5}"
+          DTS:ExecutableType="STOCK:FOREACHLOOP"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Foreach Loop Container">
+          <DTS:ForEachEnumerator
+            DTS:CreationName="Microsoft.ForEachADOEnumerator"
+            DTS:DTSID="{1F1B5E0F-DABC-46E9-8DC6-0034F74F3220}"
+            DTS:ObjectName="{1F1B5E0F-DABC-46E9-8DC6-0034F74F3220}">
+            <DTS:ObjectData>
+              <FEEADO
+                EnumType="EnumerateRowsInFirstTable"
+                VarName="User::modifieddeliverymoderows" />
+            </DTS:ObjectData>
+          </DTS:ForEachEnumerator>
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{CF9A1467-A611-4191-A0A8-8ED527AAD3EF}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cactive">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{C37F66F7-2851-423D-AA08-FA21C1E54F81}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cdefault">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{E3D26D1F-15C6-4B34-B522-26984573A60F}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cdelete">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{8AE2F233-423B-41CA-BD49-AD09B0285C9F}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cpal">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{022B8501-4490-4D3F-B0AD-D2C56AD5E630}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="createddate">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{45AA5F9B-D305-4505-84CB-9C7ABD3F02EA}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="deliverymodeid">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{DF8A71E3-848B-459A-A645-C8F7A2A9F47F}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="deliverymodename">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{4F9BA8A1-A24A-40BF-B1C7-B886F7407228}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="modifieddate">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Sequence Container\Foreach Loop Container\Execute SQL Task"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{69055469-1790-4A3D-825B-612DF9C314D2}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Execute SQL Task"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+                  SQLTask:SqlStatementSource="UPDATE public.&quot;dimDeliveryModes&quot;&#xA;&#x9;SET  deliverymodename=?, cactive=?, createddate=to_timestamp(?,'YYYY-MM-DD hh24:mi:ss'), modifieddate=to_timestamp(?,'YYYY-MM-DD hh24:mi:ss'), cdelete=?, cpal=?, cdefault=?&#xA;&#x9;WHERE deliverymodeid=?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="1"
+                    SQLTask:DtsVariableName="User::deliverymodename"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="2"
+                    SQLTask:DtsVariableName="User::cactive"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="3"
+                    SQLTask:DtsVariableName="User::createddate"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="4"
+                    SQLTask:DtsVariableName="User::modifieddate"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="5"
+                    SQLTask:DtsVariableName="User::cdelete"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="6"
+                    SQLTask:DtsVariableName="User::cpal"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="7"
+                    SQLTask:DtsVariableName="User::cdefault"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="8"
+                    SQLTask:DtsVariableName="User::deliverymodeid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:ForEachVariableMappings>
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{2CA0F749-06CD-404E-B5D8-20421E0E5EFD}"
+              DTS:ObjectName="{2CA0F749-06CD-404E-B5D8-20421E0E5EFD}"
+              DTS:ValueIndex="0"
+              DTS:VariableName="User::deliverymodeid" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{A7B497B2-C841-41B4-B09E-76FA80F87088}"
+              DTS:ObjectName="{A7B497B2-C841-41B4-B09E-76FA80F87088}"
+              DTS:ValueIndex="1"
+              DTS:VariableName="User::deliverymodename" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{4B4F8720-1DE0-4AAC-9DBD-FBF3189736BC}"
+              DTS:ObjectName="{4B4F8720-1DE0-4AAC-9DBD-FBF3189736BC}"
+              DTS:ValueIndex="2"
+              DTS:VariableName="User::cactive" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{B0154ABD-8FF8-4CCA-8533-A67E0A8C506B}"
+              DTS:ObjectName="{B0154ABD-8FF8-4CCA-8533-A67E0A8C506B}"
+              DTS:ValueIndex="3"
+              DTS:VariableName="User::createddate" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{9BAA842C-306C-4413-885B-60816EA19A8D}"
+              DTS:ObjectName="{9BAA842C-306C-4413-885B-60816EA19A8D}"
+              DTS:ValueIndex="4"
+              DTS:VariableName="User::modifieddate" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{54550BA0-B2F3-4FB3-B11D-5002E1755414}"
+              DTS:ObjectName="{54550BA0-B2F3-4FB3-B11D-5002E1755414}"
+              DTS:ValueIndex="5"
+              DTS:VariableName="User::cdelete" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{012E4706-5439-4326-8512-87F07F2BA164}"
+              DTS:ObjectName="{012E4706-5439-4326-8512-87F07F2BA164}"
+              DTS:ValueIndex="6"
+              DTS:VariableName="User::cpal" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{23C1F8DE-88E9-4150-8FF2-50A60C42631E}"
+              DTS:ObjectName="{23C1F8DE-88E9-4150-8FF2-50A60C42631E}"
+              DTS:ValueIndex="7"
+              DTS:VariableName="User::cdefault" />
+          </DTS:ForEachVariableMappings>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Foreach Loop Container 1"
+          DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:Description="Foreach Loop Container"
+          DTS:DTSID="{d2988da3-0a95-4534-a155-4ace3f640c6a}"
+          DTS:ExecutableType="STOCK:FOREACHLOOP"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Foreach Loop Container 1">
+          <DTS:ForEachEnumerator
+            DTS:CreationName="Microsoft.ForEachADOEnumerator"
+            DTS:DTSID="{ea3dd455-223c-4736-a97b-7639dcb073bf}"
+            DTS:ObjectName="{1F1B5E0F-DABC-46E9-8DC6-0034F74F3220}">
+            <DTS:ObjectData>
+              <FEEADO
+                EnumType="EnumerateRowsInFirstTable"
+                VarName="User::newdeliverymodes" />
+            </DTS:ObjectData>
+          </DTS:ForEachEnumerator>
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{700f35f6-6416-4cbf-a3b7-f17f619cf291}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cactive">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{91e0f0e1-d173-48c9-b4f1-11b53ad83f37}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cdefault">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{6f9bab9e-c763-4eaf-8d55-04488a2b0a62}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cdelete">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{8d6d2595-2cf4-40f3-a815-6bbfb706cb47}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cpal">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{cf6a6b70-3beb-4657-89f1-1095753b317b}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="createddate">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{c6f85fb9-1a9d-483b-95a8-f1e5f49b037c}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="deliverymodeid">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{322c6e7f-b09f-4b65-b1e7-e9783c024303}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="deliverymodename">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{4d00cc83-2cfe-4180-8573-4de4854fb584}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="modifieddate">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Sequence Container\Foreach Loop Container 1\Execute SQL Task"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{e81a6aeb-eddb-4634-b9c3-99e9a6e708b6}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Execute SQL Task"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+                  SQLTask:SqlStatementSource="INSERT INTO public.&quot;dimDeliveryModes&quot;(&#xA;&#x9; deliverymodename, cactive, createddate, modifieddate, cdelete, cpal, cdefault,deliverymodeid)&#xA;&#x9;VALUES (?, ?, ?, ?, ?, ?, ?, ?);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="1"
+                    SQLTask:DtsVariableName="User::deliverymodename"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="2"
+                    SQLTask:DtsVariableName="User::cactive"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="3"
+                    SQLTask:DtsVariableName="User::createddate"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="4"
+                    SQLTask:DtsVariableName="User::modifieddate"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="5"
+                    SQLTask:DtsVariableName="User::cdelete"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="6"
+                    SQLTask:DtsVariableName="User::cpal"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="7"
+                    SQLTask:DtsVariableName="User::cdefault"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="8"
+                    SQLTask:DtsVariableName="User::deliverymodeid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:ForEachVariableMappings>
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{54EEF7A8-6D5E-4410-92C5-FA423565662C}"
+              DTS:ObjectName="{54EEF7A8-6D5E-4410-92C5-FA423565662C}"
+              DTS:ValueIndex="0"
+              DTS:VariableName="User::deliverymodeid" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{0B11E2F7-4324-470A-8FB5-2574E73419B7}"
+              DTS:ObjectName="{0B11E2F7-4324-470A-8FB5-2574E73419B7}"
+              DTS:ValueIndex="1"
+              DTS:VariableName="User::deliverymodename" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{0D2EE4EC-985D-4966-9D27-2600AC053793}"
+              DTS:ObjectName="{0D2EE4EC-985D-4966-9D27-2600AC053793}"
+              DTS:ValueIndex="2"
+              DTS:VariableName="User::cactive" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{0D817012-2CFE-4216-A31C-EA338BBD9EA5}"
+              DTS:ObjectName="{0D817012-2CFE-4216-A31C-EA338BBD9EA5}"
+              DTS:ValueIndex="3"
+              DTS:VariableName="User::createddate" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{4C81A545-F566-4CC2-8079-BA0D54F7824A}"
+              DTS:ObjectName="{4C81A545-F566-4CC2-8079-BA0D54F7824A}"
+              DTS:ValueIndex="4"
+              DTS:VariableName="User::modifieddate" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{2572A6F0-41D6-4775-9DAC-453487A9CD8F}"
+              DTS:ObjectName="{2572A6F0-41D6-4775-9DAC-453487A9CD8F}"
+              DTS:ValueIndex="5"
+              DTS:VariableName="User::cdelete" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{60AA2C9D-819A-4E9A-89A7-032CF2E497E4}"
+              DTS:ObjectName="{60AA2C9D-819A-4E9A-89A7-032CF2E497E4}"
+              DTS:ValueIndex="6"
+              DTS:VariableName="User::cpal" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{DA89D3A7-3E75-4340-9846-366C2C098DFE}"
+              DTS:ObjectName="{DA89D3A7-3E75-4340-9846-366C2C098DFE}"
+              DTS:ValueIndex="7"
+              DTS:VariableName="User::cdefault" />
+          </DTS:ForEachVariableMappings>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{34861090-B364-439C-A3F5-AAF0CF7DC12B}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::edwdeliverymodecount] == 0"
+          DTS:From="Package\Sequence Container\Execute SQL Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence Container\Data Flow Task" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{616A1BDB-C5F7-47DA-9E91-318F07EEB392}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::edwdeliverymodecount] &gt; 0"
+          DTS:From="Package\Sequence Container\Execute SQL Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Sequence Container\execSQLTaskdeliverymodeModifiedCOunt" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{4D82F3E2-9F4C-4B95-A90A-E5333AC8A098}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::edwdeliverymodecount]&gt;0"
+          DTS:From="Package\Sequence Container\Execute SQL Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Sequence Container\extNewDeliveryModeCount" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{6A4D385D-68A9-4207-98C0-E80BD1CFE6EF}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::modifieddeliverymodecount] &gt; 0"
+          DTS:From="Package\Sequence Container\execSQLTaskdeliverymodeModifiedCOunt"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Sequence Container\execSQLTaskdeliverymodeModifiedCOunt 1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{3381792A-3FC6-4C00-94F9-FB2393401D43}"
+          DTS:From="Package\Sequence Container\execSQLTaskdeliverymodeModifiedCOunt 1"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Sequence Container\Foreach Loop Container" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{66CE9061-5E45-43E4-BFD1-511AAA628D4B}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::newdeliverymodecount]&gt;0"
+          DTS:From="Package\Sequence Container\extNewDeliveryModeCount"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\Sequence Container\execSQLTaskdeliverymodeNewrecorCount" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 6]"
+          DTS:CreationName=""
+          DTS:DTSID="{CBCFB3C5-698B-4762-BED9-AE897F4A9243}"
+          DTS:From="Package\Sequence Container\execSQLTaskdeliverymodeNewrecorCount"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 6"
+          DTS:To="Package\Sequence Container\Foreach Loop Container 1" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Sequence Container\Data Flow Task"
+          TopLeft="279.433319591152,175.733335454729" />
+        <NodeLayout
+          Size="196,47.2"
+          Id="Package\Sequence Container\Execute SQL Task"
+          TopLeft="539.43330925968,43.1333344009187" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          TopLeft="606.099975926347,90.3333344009187">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-251.466656335195,85.4000010538103"
+              Start="0,0"
+              End="-251.466656335195,77.9000010538103">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5748992120689" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5748992120689"
+                    Point2="0,34.5748992120689"
+                    Point3="-4,34.5748992120689" />
+                  <mssgle:LineSegment
+                    End="-247.466656335195,34.5748992120689" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-247.466656335195,34.5748992120689"
+                    Point2="-251.466656335195,34.5748992120689"
+                    Point3="-251.466656335195,38.5748992120689" />
+                  <mssgle:LineSegment
+                    End="-251.466656335195,77.9000010538103" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-133.733328167597,39.5748992120689,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="268,41.6"
+          Id="Package\Sequence Container\execSQLTaskdeliverymodeModifiedCOunt"
+          TopLeft="580.266640970443,232.066669235759" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="637.43330925968,90.3333344009187">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="76.833331710763,141.733334834841"
+              Start="0,0"
+              End="76.833331710763,134.233334834841">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.8666674174203" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,66.8666674174203"
+                    Point2="0,70.8666674174203"
+                    Point3="4,70.8666674174203" />
+                  <mssgle:LineSegment
+                    End="72.833331710763,70.8666674174203" />
+                  <mssgle:CubicBezierSegment
+                    Point1="72.833331710763,70.8666674174203"
+                    Point2="76.833331710763,70.8666674174203"
+                    Point3="76.833331710763,74.8666674174203" />
+                  <mssgle:LineSegment
+                    End="76.833331710763,134.233334834841" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="30.4166658553815,75.8666674174203,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\Sequence Container\extNewDeliveryModeCount"
+          TopLeft="949.433292967745,235.866668884489" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="684.43330925968,90.3333344009187">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="351.799983708065,145.533334483571"
+              Start="0,0"
+              End="351.799983708065,138.033334483571">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.6800898860516" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,46.6800898860516"
+                    Point2="0,50.6800898860516"
+                    Point3="4,50.6800898860516" />
+                  <mssgle:LineSegment
+                    End="347.799983708065,50.6800898860516" />
+                  <mssgle:CubicBezierSegment
+                    Point1="347.799983708065,50.6800898860516"
+                    Point2="351.799983708065,50.6800898860516"
+                    Point3="351.799983708065,54.6800898860516" />
+                  <mssgle:LineSegment
+                    End="351.799983708065,138.033334483571" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="167.899991854032,55.6800898860516,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="268,41.6"
+          Id="Package\Sequence Container\execSQLTaskdeliverymodeModifiedCOunt 1"
+          TopLeft="568.599974767368,384.933336735831" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 3]"
+          TopLeft="714.266640970443,273.666669235759">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-11.6666662030754,111.266667500072"
+              Start="0,0"
+              End="-11.6666662030754,103.766667500072">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.6333337500361" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,51.6333337500361"
+                    Point2="0,55.6333337500361"
+                    Point3="-4,55.6333337500361" />
+                  <mssgle:LineSegment
+                    End="-7.66666620307535,55.6333337500361" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-7.66666620307535,55.6333337500361"
+                    Point2="-11.6666662030754,55.6333337500361"
+                    Point3="-11.6666662030754,59.6333337500361" />
+                  <mssgle:LineSegment
+                    End="-11.6666662030754,103.766667500072" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-13.8333331015377,60.6333337500361,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container\Execute SQL Task"
+          TopLeft="192.433305882084,55.5333384095298" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="564.8,201.6"
+          Size="564.8,244.8"
+          Id="Package\Sequence Container\Foreach Loop Container"
+          TopLeft="431.933313531347,512.333337748316" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 4]"
+          TopLeft="702.599974767368,426.533336735831">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.7333387639786,85.8000010124841"
+              Start="0,0"
+              End="11.7333387639786,78.3000010124841">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.900000506242" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.900000506242"
+                    Point2="0,42.900000506242"
+                    Point3="4,42.900000506242" />
+                  <mssgle:LineSegment
+                    End="7.73333876397862,42.900000506242" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.73333876397862,42.900000506242"
+                    Point2="11.7333387639786,42.900000506242"
+                    Point3="11.7333387639786,46.900000506242" />
+                  <mssgle:LineSegment
+                    End="11.7333387639786,78.3000010124841" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="268,41.6"
+          Id="Package\Sequence Container\execSQLTaskdeliverymodeNewrecorCount"
+          TopLeft="962.766625771259,383.200003388723" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 5]"
+          TopLeft="1036.23329296775,277.466668884489">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="60.5333328035138,105.733334504234"
+              Start="0,0"
+              End="60.5333328035138,98.2333345042336">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.733333925671" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,49.733333925671"
+                    Point2="0,53.733333925671"
+                    Point3="4,53.733333925671" />
+                  <mssgle:LineSegment
+                    End="56.5333328035138,53.733333925671" />
+                  <mssgle:CubicBezierSegment
+                    Point1="56.5333328035138,53.733333925671"
+                    Point2="60.5333328035138,53.733333925671"
+                    Point3="60.5333328035138,57.733333925671" />
+                  <mssgle:LineSegment
+                    End="60.5333328035138,98.2333345042336" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="22.2666664017569,58.733333925671,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container 1\Execute SQL Task"
+          TopLeft="192.433305882084,55.5333384095298" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="564.8,201.6"
+          Size="564.8,244.8"
+          Id="Package\Sequence Container\Foreach Loop Container 1"
+          TopLeft="1095.26662050618,515.666670847469" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 6]"
+          TopLeft="1096.76662577126,424.800003388723">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="280.899994734923,90.8666674587462"
+              Start="0,0"
+              End="280.899994734923,83.3666674587462">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.4333337293731" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.4333337293731"
+                    Point2="0,45.4333337293731"
+                    Point3="4,45.4333337293731" />
+                  <mssgle:LineSegment
+                    End="276.899994734923,45.4333337293731" />
+                  <mssgle:CubicBezierSegment
+                    Point1="276.899994734923,45.4333337293731"
+                    Point2="280.899994734923,45.4333337293731"
+                    Point3="280.899994734923,49.4333337293731" />
+                  <mssgle:LineSegment
+                    End="280.899994734923,83.3666674587462" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="1958.4,812"
+          Size="1958.4,855.2"
+          Id="Package\Sequence Container"
+          TopLeft="66.6666640175715,47.6666670454872" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Sequence Container\Data Flow Task\OLE DB Source"
+          TopLeft="537.49997864167,151.666667872005" />
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Sequence Container\Data Flow Task\ODBC Destination"
+          TopLeft="540.833311842548,385.66666973167" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="613.49997864167,193.266667872005">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.93333320087868,192.400001859665"
+              Start="0,0"
+              End="8.93333320087868,184.900001859665">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,92.2000009298325" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,92.2000009298325"
+                    Point2="0,96.2000009298325"
+                    Point3="4,96.2000009298325" />
+                  <mssgle:LineSegment
+                    End="4.93333320087868,96.2000009298325" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.93333320087868,96.2000009298325"
+                    Point2="8.93333320087868,96.2000009298325"
+                    Point3="8.93333320087868,100.200000929832" />
+                  <mssgle:LineSegment
+                    End="8.93333320087868,184.900001859665" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Data Flow Task\ODBC Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
