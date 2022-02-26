@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-U67UC02</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwV1mGXPkX06vvPyjSk5JQgAAAAACAAAAAAAQZgAAAAEAACAAAAAPtmb0jCdo1WGifOD3DYC9WO+YTaaMvDWsC+QVc5OELwAAAAAOgAAAAAIAACAAAABEWjPgsTPK87zrsTq94nmJ1fO+x9Q9P+5fnPFDNkMVvZAAAACCWBlSLvUtult1zOSj2ipyysAQtHWF8YuMv3Ket745F+G8VQq4NqzRT6XTwEgRfC8BJQaUpS+6Wdwr2wf3CEmI9JQdwzqoRf/RfXLo7e2L++yJT9n+cfzrqcuhmAQoK94DUCx/TpKIbh5u1nsCu+huz3WhIhOcjwuwiIpDgSNC+Br0FDizQ5Gkhyh7je5un0VAAAAAnpthSWqsWeOD9hSrTyQOfPrzi2LVgGYXnDw33ES6DFDtjOwTxngAp0k/2ABOIhTUJff50gNSC/2MrowZsgrx+Q==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwV1mGXPkX06vvPyjSk5JQgAAAAACAAAAAAAQZgAAAAEAACAAAACLu/LQ0OiGrg8ZaC/VKmfiMUHvjgVuYv4XuBv/g/8tAAAAAAAOgAAAAAIAACAAAAAsfS1rOjl0e9CdCPJ+E2K4kexcgTiId7RDe14MmWaDlJAAAADstdOY4zf0GjeuVaIZdORZ+iRmpdrVORslgKFgkPZ0tMpouLdPq+IuITykMSKGOhL3JGLNrRGz3U12bNZt8gzfN92Y/TmV+Dv1AQrLONNzEo+uuVf6FiCThZYsIgaf2qAE4Q7mc6AQr55h4belI8+krT9egKG+Gg4+nWNtjVtv8P6xGi+UQiwu4fheIofeu0NAAAAAR6fK/6OEmz7U09B9xp9Hw5WevoFdPRP/P1cgYmkvSZBR4KcN4r9IvnkNtFmDCWZ9amgGcuVXbDeRS/1KeAbacw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -36,6 +36,7 @@
           <SSIS:Package SSIS:Name="dimRequestStatusETL.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="dimDeliveryModes.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="dimReceivedModes.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="dimProgramOfficeETL.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="localhost.foi_edw.postgres.conmgr" />
@@ -432,10 +433,27 @@
                 <SSIS:Property SSIS:Name="Name">dimReceivedModes</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">33</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">43</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{1D9A24C4-4C00-4AED-92C6-D1A847A5307D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{6169FBAD-4A62-4F8F-A743-84CBCDB963AC}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="dimProgramOfficeETL.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{869A9CA9-61A3-4B73-9EC6-A2DF0D527C88}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{460BD462-99A2-4587-B13D-671DED9191FD}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
