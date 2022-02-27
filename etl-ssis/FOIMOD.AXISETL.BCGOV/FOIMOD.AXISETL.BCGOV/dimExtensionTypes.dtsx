@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="25"
-  DTS:VersionGUID="{222E9E7E-6431-4E02-AF2D-A16049D10831}">
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{F786BAF3-4228-43AA-ABC0-C478BEA365CF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -864,7 +864,8 @@ LEFT OUTER JOIN tblTerminology Loc2 ON Loc2.iLabelID = Main.iActDescriptionID AN
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
-          SQLTask:SqlStatementSource="Select &#xA;Main.tiExtension as extensiontypeid,&#xA;&#x9;Loc.vcTerminology as extensiontypename,&#xA;&#x9;Main.iCreatedBy as createdby,&#xA;&#x9;Main.dtCreatedDate as createddate,&#xA;&#x9;Main.iModifiedBy as modifiedby,&#xA;&#x9;Main.dtModifiedDate as modifieddate,&#xA;&#x9;Main.cActive as cactive,&#xA;&#x9;Main.cDelete as cdelete,&#xA;&#x9;Main.cActType as cacttype,&#xA;&#x9;Loc1.vcTerminology as extensionreason,&#xA;&#x9;Loc2.vcTerminology as extensionactdesc,&#xA;&#x9;Main.vcShowInSR as vcshowninsr,&#xA;&#x9;Main.cIsThirdParty as clsthirdparty,&#xA;&#x9;Main.vcDaysAllowed as vcdaysallowed,&#xA;&#x9;Main.iExtensionDays as iextensiondays&#xA; &#xA;From tblExtensions Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID = Main.iLabelID and Loc.tiLocaleID = 1&#xA;LEFT OUTER JOIN tblTerminology Loc1 ON Loc1.iLabelID = Main.iReasonID AND Loc1.tiLocaleID = Loc.tiLocaleID and Loc1.tiLocaleID = 1&#xA;LEFT OUTER JOIN tblTerminology Loc2 ON Loc2.iLabelID = Main.iActDescriptionID AND Loc2.tiLocaleID = Loc.tiLocaleID and Loc1.tiLocaleID = 1&#xA;WHERE   Main.dtModifiedDate &gt;=dateadd(day,datediff(day,1,GETDATE()),0)   AND Main.dtCreatedDate &lt; dateadd(day,datediff(day,1,GETDATE()),0) "
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="Select &#xA;&#x9;Main.tiExtension as extensiontypeid,&#xA;&#x9;Loc.vcTerminology as extensiontypename,&#xA;&#x9;Main.iCreatedBy as createdby,&#xA;&#x9;CONVERT(varchar,Main.dtCreatedDate,120) as createddate,&#xA;&#x9;Main.iModifiedBy as modifiedby,&#xA;&#x9;CONVERT(varchar, Main.dtModifiedDate,120) as modifieddate,&#xA;&#x9;Main.cActive as cactive,&#xA;&#x9;Main.cDelete as cdelete,&#xA;&#x9;Main.cActType as cacttype,&#xA;&#x9;Loc1.vcTerminology as extensionreason,&#xA;&#x9;Loc2.vcTerminology as extensionactdesc,&#xA;&#x9;Main.vcShowInSR as vcshowninsr,&#xA;&#x9;Main.cIsThirdParty as clsthirdparty,&#xA;&#x9;Main.vcDaysAllowed as vcdaysallowed,&#xA;&#x9;Main.iExtensionDays as iextensiondays&#xA; &#xA;From tblExtensions Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID = Main.iLabelID and Loc.tiLocaleID = 1&#xA;LEFT OUTER JOIN tblTerminology Loc1 ON Loc1.iLabelID = Main.iReasonID AND Loc1.tiLocaleID = Loc.tiLocaleID and Loc1.tiLocaleID = 1&#xA;LEFT OUTER JOIN tblTerminology Loc2 ON Loc2.iLabelID = Main.iActDescriptionID AND Loc2.tiLocaleID = Loc.tiLocaleID and Loc1.tiLocaleID = 1&#xA;WHERE   Main.dtModifiedDate &gt;=dateadd(day,datediff(day,1,GETDATE()),0)   AND Main.dtCreatedDate &lt; dateadd(day,datediff(day,1,GETDATE()),0) "
           SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="0"
@@ -897,7 +898,7 @@ LEFT OUTER JOIN tblTerminology Loc2 ON Loc2.iLabelID = Main.iActDescriptionID AN
         <SQLTask:SqlTaskData
           SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
           SQLTask:BypassPrepare="False"
-          SQLTask:SqlStatementSource="Select &#xA;Main.tiExtension as extensiontypeid,&#xA; Loc.vcTerminology as extensiontypename,&#xA; Main.iCreatedBy as createdby,&#xA; Main.dtCreatedDate as createddate,&#xA; Main.iModifiedBy as modifiedby,&#xA; Main.dtModifiedDate as modifieddate,&#xA; Main.cActive as cactive,&#xA; Main.cDelete as cdelete,&#xA; Main.cActType as cacttype,&#xA; Loc1.vcTerminology as extensionreason,&#xA; Loc2.vcTerminology as extensionactdesc,&#xA; Main.vcShowInSR as vcshowninsr,&#xA; Main.cIsThirdParty as clsthirdparty,&#xA; Main.vcDaysAllowed as vcdaysallowed,&#xA; Main.iExtensionDays as iextensiondays&#xA; &#xA;From tblExtensions Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID = Main.iLabelID and Loc.tiLocaleID = 1&#xA;LEFT OUTER JOIN tblTerminology Loc1 ON Loc1.iLabelID = Main.iReasonID AND Loc1.tiLocaleID = Loc.tiLocaleID and Loc1.tiLocaleID = 1&#xA;LEFT OUTER JOIN tblTerminology Loc2 ON Loc2.iLabelID = Main.iActDescriptionID AND Loc2.tiLocaleID = Loc.tiLocaleID and Loc1.tiLocaleID = 1&#xA;WHERE  Main.dtCreatedDate &gt; dateadd(day,datediff(day,1,GETDATE()),0) "
+          SQLTask:SqlStatementSource="Select &#xA;&#xA;&#x9;Main.tiExtension as extensiontypeid,&#xA;&#x9;Loc.vcTerminology as extensiontypename,&#xA;&#x9;Main.iCreatedBy as createdby,&#xA;&#x9;CONVERT(varchar,Main.dtCreatedDate,120) as createddate,&#xA;&#x9;Main.iModifiedBy as modifiedby,&#xA;&#x9;CONVERT(varchar, Main.dtModifiedDate,120) as modifieddate,&#xA;&#x9;Main.cActive as cactive,&#xA;&#x9;Main.cDelete as cdelete,&#xA;&#x9;Main.cActType as cacttype,&#xA;&#x9;Loc1.vcTerminology as extensionreason,&#xA;&#x9;Loc2.vcTerminology as extensionactdesc,&#xA;&#x9;Main.vcShowInSR as vcshowninsr,&#xA;&#x9;Main.cIsThirdParty as clsthirdparty,&#xA;&#x9;Main.vcDaysAllowed as vcdaysallowed,&#xA;&#x9;Main.iExtensionDays as iextensiondays&#xA;&#xA;&#xA;&#xA;From tblExtensions Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID = Main.iLabelID and Loc.tiLocaleID = 1&#xA;LEFT OUTER JOIN tblTerminology Loc1 ON Loc1.iLabelID = Main.iReasonID AND Loc1.tiLocaleID = Loc.tiLocaleID and Loc1.tiLocaleID = 1&#xA;LEFT OUTER JOIN tblTerminology Loc2 ON Loc2.iLabelID = Main.iActDescriptionID AND Loc2.tiLocaleID = Loc.tiLocaleID and Loc1.tiLocaleID = 1&#xA;WHERE  Main.dtCreatedDate &gt; dateadd(day,datediff(day,1,GETDATE()),0) "
           SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="0"
@@ -1131,7 +1132,7 @@ LEFT OUTER JOIN tblTerminology Loc2 ON Loc2.iLabelID = Main.iActDescriptionID AN
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
-              SQLTask:SqlStatementSource="UPDATE public.&quot;dimExtensionTypes&quot;&#xA;&#x9;SET , &#xA;&#x9;extensiontypename=?, &#xA;&#x9;createdby=?, &#xA;&#x9;createddate=?, &#xA;&#x9;modifiedby=?, &#xA;&#x9;modifieddate=?, &#xA;&#x9;cactive=?, &#xA;&#x9;cdelete=?, &#xA;&#x9;cacttype=?, &#xA;&#x9;extensionreason=?, &#xA;&#x9;extensionactdesc=?, &#xA;&#x9;vcshowninsr=?, &#xA;&#x9;clsthirdparty=?, &#xA;&#x9;vcdaysallowed=?, &#xA;&#x9;iextensiondays=?&#xA;&#x9;WHERE extensiontypeid=?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="UPDATE public.&quot;dimExtensionTypes&quot;&#xA;&#x9;SET , &#xA;&#x9;extensiontypename=?, &#xA;&#x9;createdby=?, &#xA;&#x9;createddate=to_timestamp(?,'YYYY-MM-DD hh24:mi:ss'), &#xA;&#x9;modifiedby=?, &#xA;&#x9;modifieddate=to_timestamp(?,'YYYY-MM-DD hh24:mi:ss'), &#xA;&#x9;cactive=?, &#xA;&#x9;cdelete=?, &#xA;&#x9;cacttype=?, &#xA;&#x9;extensionreason=?, &#xA;&#x9;extensionactdesc=?, &#xA;&#x9;vcshowninsr=?, &#xA;&#x9;clsthirdparty=?, &#xA;&#x9;vcdaysallowed=?, &#xA;&#x9;iextensiondays=?&#xA;&#x9;WHERE extensiontypeid=?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="1"
                 SQLTask:DtsVariableName="User::extensiontypename"
@@ -1500,7 +1501,7 @@ LEFT OUTER JOIN tblTerminology Loc2 ON Loc2.iLabelID = Main.iActDescriptionID AN
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
-              SQLTask:SqlStatementSource="INSERT INTO public.&quot;dimExtensionTypes&quot;(&#xA;&#x9; extensiontypename, createdby, createddate, modifiedby, modifieddate, cactive, cdelete, cacttype, extensionreason, extensionactdesc, vcshowninsr, clsthirdparty, vcdaysallowed, iextensiondays,extensiontypeid)&#xA;&#x9;VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="INSERT INTO public.&quot;dimExtensionTypes&quot;(&#xA;&#x9; extensiontypename, createdby, createddate, modifiedby, modifieddate, cactive, cdelete, cacttype, extensionreason, extensionactdesc, vcshowninsr, clsthirdparty, vcdaysallowed, iextensiondays,extensiontypeid)&#xA;&#x9;VALUES (?, ?, to_timestamp(?,'YYYY-MM-DD hh24:mi:ss'), ?, to_timestamp(?,'YYYY-MM-DD hh24:mi:ss'), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="1"
                 SQLTask:DtsVariableName="User::extensiontypename"
@@ -1768,13 +1769,51 @@ LEFT OUTER JOIN tblTerminology Loc2 ON Loc2.iLabelID = Main.iActDescriptionID AN
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="374.16665179862,184.600001467069" />
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\EST_ModifiedCount"
+          TopLeft="684.999972780547,209.733335000144" />
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\EST_ModifiedRows"
+          TopLeft="691.666639182304,305.933335764673" />
+        <NodeLayout
+          Size="178.4,41.6"
+          Id="Package\EST_NewExtension"
+          TopLeft="1191.66661931409,315.46666917377" />
+        <NodeLayout
+          Size="198.4,41.6"
+          Id="Package\EST_NewExtensionCount"
+          TopLeft="1167.49995360772,218.799998966853" />
+        <NodeLayout
           Size="164.8,41.6"
           Id="Package\Execute SQL Task"
           TopLeft="560.83331104782,72.8000005785625" />
         <NodeLayout
-          Size="150.4,41.6"
-          Id="Package\Data Flow Task"
-          TopLeft="374.16665179862,184.600001467069" />
+          Size="164.8,41.6"
+          Id="Package\Foreach Loop Container\EST_UPDATEEXTENSION"
+          TopLeft="98.499974469345,51.3333374796977" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="477.6,256"
+          Size="477.6,299.2"
+          Id="Package\Foreach Loop Container"
+          TopLeft="544.166645043427,427.266670062277" />
+        <NodeLayout
+          Size="236.8,42.4"
+          Id="Package\Foreach Loop Container 1\EST_INSERTEXTENSION"
+          TopLeft="98.499974469345,51.3333374796977" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="477.6,256"
+          Size="477.6,299.2"
+          Id="Package\Foreach Loop Container 1"
+          TopLeft="1106.66662269169,433.333336777157" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="617.099977714487,114.400000578562">
@@ -1811,10 +1850,6 @@ LEFT OUTER JOIN tblTerminology Loc2 ON Loc2.iLabelID = Main.iActDescriptionID AN
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="173.6,41.6"
-          Id="Package\EST_ModifiedCount"
-          TopLeft="684.999972780547,209.733335000144" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="669.366644381153,114.400000578562">
@@ -1851,10 +1886,6 @@ LEFT OUTER JOIN tblTerminology Loc2 ON Loc2.iLabelID = Main.iActDescriptionID AN
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="173.6,41.6"
-          Id="Package\EST_ModifiedRows"
-          TopLeft="691.666639182304,305.933335764673" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="775.966639281645,251.333335000144">
@@ -1879,17 +1910,6 @@ LEFT OUTER JOIN tblTerminology Loc2 ON Loc2.iLabelID = Main.iActDescriptionID AN
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Foreach Loop Container\EST_UPDATEEXTENSION"
-          TopLeft="98.499974469345,51.3333374796977" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="477.6,256"
-          Size="477.6,299.2"
-          Id="Package\Foreach Loop Container"
-          TopLeft="544.166645043427,427.266670062277" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="780.716642112865,347.533335764673">
@@ -1912,10 +1932,6 @@ LEFT OUTER JOIN tblTerminology Loc2 ON Loc2.iLabelID = Main.iActDescriptionID AN
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="198.4,41.6"
-          Id="Package\EST_NewExtensionCount"
-          TopLeft="1167.49995360772,218.799998966853" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
           TopLeft="682.43331104782,114.400000578562">
@@ -1950,10 +1966,6 @@ LEFT OUTER JOIN tblTerminology Loc2 ON Loc2.iLabelID = Main.iActDescriptionID AN
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="178.4,41.6"
-          Id="Package\EST_NewExtension"
-          TopLeft="1191.66661931409,315.46666917377" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
           TopLeft="1266.69995360772,260.399998966853">
@@ -1990,17 +2002,6 @@ LEFT OUTER JOIN tblTerminology Loc2 ON Loc2.iLabelID = Main.iActDescriptionID AN
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="236.8,42.4"
-          Id="Package\Foreach Loop Container 1\EST_INSERTEXTENSION"
-          TopLeft="98.499974469345,51.3333374796977" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="477.6,256"
-          Size="477.6,299.2"
-          Id="Package\Foreach Loop Container 1"
-          TopLeft="1106.66662269169,433.333336777157" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
           TopLeft="1280.86661931409,357.06666917377">
@@ -2077,14 +2078,6 @@ LEFT OUTER JOIN tblTerminology Loc2 ON Loc2.iLabelID = Main.iActDescriptionID AN
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\ODBC Destination">
     <Properties>
       <Property>
@@ -2094,6 +2087,14 @@ LEFT OUTER JOIN tblTerminology Loc2 ON Loc2.iLabelID = Main.iActDescriptionID AN
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
