@@ -1,0 +1,3149 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/25/2022 1:17:19 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-U67UC02"
+  DTS:CreatorName="DESKTOP-U67UC02\abina"
+  DTS:DTSID="{C0588A64-C2E7-4AD6-9290-D3B992DE448D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="50"
+  DTS:VersionGUID="{4AA681DE-BCFD-4EC2-975A-D7DFDF43B5AD}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{C9B25F4A-AA0D-4A49-BA0A-5AA5E24BF816}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{A41F7DB3-1216-418F-86CA-E97769D63C42}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="modifiedrecordscount">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{E776F421-0BC2-46C7-B46D-F9F712726AFC}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="modifiedrows">
+          <DTS:VariableValue
+            DTS:DataSubType="ManagedSerializable"
+            DTS:DataType="13">
+            <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+              <SOAP-ENV:Body>
+                <xsd:anyType
+                  id="ref-1"></xsd:anyType>
+              </SOAP-ENV:Body>
+            </SOAP-ENV:Envelope>
+          </DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{771B1987-E446-4107-8499-C82D57738109}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="newrecordscount"
+          DTS:ReadOnly="True">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{1CFC97BC-E89D-49B4-8CB6-887D980CDA93}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="newrequestrecords">
+          <DTS:VariableValue
+            DTS:DataSubType="ManagedSerializable"
+            DTS:DataType="13">
+            <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+              <SOAP-ENV:Body>
+                <xsd:anyType
+                  id="ref-1"></xsd:anyType>
+              </SOAP-ENV:Body>
+            </SOAP-ENV:Envelope>
+          </DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{F40A3F6E-7E9C-457C-B876-4F56B0D0F6B0}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="newrequestrecordscount">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{01DBCC63-C9CB-4C3C-B714-E218A48CB754}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="requesttypecountinedw">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\dft_InitialLoadRequestTypes"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{555da575-d9b5-4d6e-b3fa-1a34a22d0d8d}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="dft_InitialLoadRequestTypes"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination"
+                  componentClassID="Microsoft.SSISODBCDst"
+                  contactInfo="ODBC Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="ODBC Destination"
+                  name="ODBC Destination"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="The name of the table to be fetched."
+                      expressionType="Notify"
+                      name="TableName">"public"."dimRequestTypes"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the number of rows fetched per batch."
+                      expressionType="Notify"
+                      name="BatchSize">1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of rows inserted under the same transaction."
+                      expressionType="Notify"
+                      name="TransactionSize">1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines the chunk size allocation for LOB columns"
+                      expressionType="Notify"
+                      name="LobChunkSize">32768</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                      expressionType="Notify"
+                      name="StatementTimeout">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The code page to use when code page information is unavailable from the data source."
+                      expressionType="Notify"
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                      expressionType="Notify"
+                      name="InsertMethod">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The ODBC C data type for binding numeric data."
+                      expressionType="Notify"
+                      name="BindNumericAs">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                      expressionType="Notify"
+                      name="BindCharColumnsAs">0</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Connections[ODBCConnection]"
+                      connectionManagerID="{F1356C9E-12B8-4059-B557-91D2500C60CE}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[localhost.foi_edw.postgres]"
+                      description="The ODBC runtime connection used to access the database."
+                      name="ODBCConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="ODBC Destination Input"
+                      truncationRowDisposition="FailComponent">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[requesttypeid]"
+                          cachedDataType="ui1"
+                          cachedName="requesttypeid"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requesttypeid]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesttypeid]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[requesttypename]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3000"
+                          cachedName="requesttypename"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requesttypename]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesttypename]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[requesttypecode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="4"
+                          cachedName="requesttypecode"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requesttypecode]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesttypecode]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[createddate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="createddate"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[createddate]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[createddate]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[modifieddate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="modifieddate"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[modifieddate]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[modifieddate]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[priority]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3000"
+                          cachedName="priority"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[priority]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[priority]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[casetype]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="casetype"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[casetype]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[casetype]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[acttype]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="acttype"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[acttype]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[acttype]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[acttypename]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="acttypename"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[acttypename]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[acttypename]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[cdelete]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="cdelete"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cdelete]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cdelete]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[siretentionpolicyid]"
+                          cachedDataType="i2"
+                          cachedName="siretentionpolicyid"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[siretentionpolicyid]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[siretentionpolicyid]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[cIsconsultation]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="cIsconsultation"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cIsconsultation]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cIsconsultation]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[cIslitigation]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="cIslitigation"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cIslitigation]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cIslitigation]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[timultitracktype]"
+                          cachedDataType="ui1"
+                          cachedName="timultitracktype"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[timultitracktype]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[timultitracktype]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[tiprocessingdays]"
+                          cachedDataType="i2"
+                          cachedName="tiprocessingdays"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[tiprocessingdays]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[tiprocessingdays]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[tisimpleprocessingdays]"
+                          cachedDataType="i4"
+                          cachedName="tisimpleprocessingdays"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[tisimpleprocessingdays]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[tisimpleprocessingdays]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[ticomplexprocessingdays]"
+                          cachedDataType="i4"
+                          cachedName="ticomplexprocessingdays"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[ticomplexprocessingdays]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[ticomplexprocessingdays]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[tiexpediteprocessingdays]"
+                          cachedDataType="i4"
+                          cachedName="tiexpediteprocessingdays"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[tiexpediteprocessingdays]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[tiexpediteprocessingdays]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[csimpleprocessingdays]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="csimpleprocessingdays"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[csimpleprocessingdays]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[csimpleprocessingdays]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[ccomplexprocessingdays]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="ccomplexprocessingdays"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[ccomplexprocessingdays]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[ccomplexprocessingdays]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[cexpediteprocessingdays]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="cexpediteprocessingdays"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cexpediteprocessingdays]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cexpediteprocessingdays]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[cshowinhomepage]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="cshowinhomepage"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cshowinhomepage]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cshowinhomepage]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[cactsubtype]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="cactsubtype"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cactsubtype]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cactsubtype]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[tiapplicablesection]"
+                          cachedDataType="ui1"
+                          cachedName="tiapplicablesection"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[tiapplicablesection]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[tiapplicablesection]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[cactive]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="cactive"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cactive]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cactive]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[cconsultationtype]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="cconsultationtype"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cconsultationtype]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cconsultationtype]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[cenableapprovalpackage]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="cenableapprovalpackage"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cenableapprovalpackage]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cenableapprovalpackage]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].Columns[iduplicatesearchoptions]"
+                          cachedDataType="i4"
+                          cachedName="iduplicatesearchoptions"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[iduplicatesearchoptions]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[iduplicatesearchoptions]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requesttypeid]"
+                          dataType="i4"
+                          name="requesttypeid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requesttypename]"
+                          dataType="wstr"
+                          length="3000"
+                          name="requesttypename" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requesttypecode]"
+                          dataType="wstr"
+                          length="4"
+                          name="requesttypecode" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[createddate]"
+                          dataType="dbTimeStamp2"
+                          name="createddate"
+                          scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[modifieddate]"
+                          dataType="dbTimeStamp2"
+                          name="modifieddate"
+                          scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[priority]"
+                          dataType="wstr"
+                          length="3000"
+                          name="priority" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[casetype]"
+                          dataType="wstr"
+                          length="1"
+                          name="casetype" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[acttype]"
+                          dataType="wstr"
+                          length="1"
+                          name="acttype" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[acttypename]"
+                          dataType="wstr"
+                          length="50"
+                          name="acttypename" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cdelete]"
+                          dataType="wstr"
+                          length="1"
+                          name="cdelete" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[siretentionpolicyid]"
+                          dataType="i4"
+                          name="siretentionpolicyid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cIsconsultation]"
+                          dataType="wstr"
+                          length="1"
+                          name="cIsconsultation" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cIslitigation]"
+                          dataType="wstr"
+                          length="1"
+                          name="cIslitigation" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[timultitracktype]"
+                          dataType="i4"
+                          name="timultitracktype" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[tiprocessingdays]"
+                          dataType="i4"
+                          name="tiprocessingdays" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[tisimpleprocessingdays]"
+                          dataType="i4"
+                          name="tisimpleprocessingdays" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[ticomplexprocessingdays]"
+                          dataType="i4"
+                          name="ticomplexprocessingdays" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[tiexpediteprocessingdays]"
+                          dataType="i4"
+                          name="tiexpediteprocessingdays" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[csimpleprocessingdays]"
+                          dataType="wstr"
+                          length="1"
+                          name="csimpleprocessingdays" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[ccomplexprocessingdays]"
+                          dataType="wstr"
+                          length="1"
+                          name="ccomplexprocessingdays" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cexpediteprocessingdays]"
+                          dataType="wstr"
+                          length="1"
+                          name="cexpediteprocessingdays" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cshowinhomepage]"
+                          dataType="wstr"
+                          length="1"
+                          name="cshowinhomepage" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cactsubtype]"
+                          dataType="wstr"
+                          length="1"
+                          name="cactsubtype" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[tiapplicablesection]"
+                          dataType="i4"
+                          name="tiapplicablesection" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cactive]"
+                          dataType="wstr"
+                          length="1"
+                          name="cactive" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cconsultationtype]"
+                          dataType="wstr"
+                          length="1"
+                          name="cconsultationtype" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cenableapprovalpackage]"
+                          dataType="wstr"
+                          length="1"
+                          name="cenableapprovalpackage" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[iduplicatesearchoptions]"
+                          dataType="i4"
+                          name="iduplicatesearchoptions" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Outputs[ODBC Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="ODBC Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select 
+	RT.tiRequestTypeID as requesttypeid,
+	TLL.vcTerminology as requesttypename,
+	RT.vcTypeCode as requesttypecode,
+	RT.sdtCreatedDate as createddate,
+	RT.sdtModifiedDate as modifieddate,
+	P.vcName as priority,
+	RT.cCaseType as casetype,
+	RT.cActType as acttype,
+	AT.vcActName as acttypename,
+	RT.cDelete as cdelete,
+	RT.siRetentionPolicyID as siretentionpolicyid,
+	RT.cIsConsultation as cIsconsultation,
+	RT.cIsLitigation as cIslitigation,
+	RT.tiMultiTrackType as timultitracktype,
+	RT.tiProcessingDays as tiprocessingdays,
+	RT.tiSimpleProcessingDays as tisimpleprocessingdays,
+	RT.tiComplexProcessingDays as ticomplexprocessingdays,
+	RT.tiExpediteProcessingDays as tiexpediteprocessingdays,
+	RT.cSimpleProcessingDays as csimpleprocessingdays,
+	RT.cComplexProcessingDays as ccomplexprocessingdays,
+	RT.cExpediteProcessingDays as cexpediteprocessingdays,
+	RT.cShowinHomePage as cshowinhomepage,
+	RT.cActSubType as cactsubtype,
+	RT.tiApplicableSection as tiapplicablesection,
+	RT.cActive as cactive,
+	RT.cConsultationType as cconsultationtype,
+	RT.cEnableApprovalPackage as cenableapprovalpackage,
+	RT.iDuplicateSearchOptions as iduplicatesearchoptions
+From tblRequestTypes RT LEFT OUTER JOIN tblTerminologyLookup TLL ON RT.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 
+left outer join [dbo].[viwPriorities] P on RT.tiPriority = P.tiPriority and P.tiLocaleID = 1 
+left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault = 'Y'</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="{4505C521-0836-4CAA-8A51-8DA634D4EA56}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.ATIPD]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesttypeid]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requesttypeid]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesttypeid]"
+                          name="requesttypeid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesttypename]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requesttypename]"
+                          length="3000"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesttypename]"
+                          name="requesttypename"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesttypecode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requesttypecode]"
+                          length="4"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesttypecode]"
+                          name="requesttypecode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[createddate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[createddate]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[createddate]"
+                          name="createddate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[modifieddate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[modifieddate]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[modifieddate]"
+                          name="modifieddate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[priority]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[priority]"
+                          length="3000"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[priority]"
+                          name="priority"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[casetype]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[casetype]"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[casetype]"
+                          name="casetype"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[acttype]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[acttype]"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[acttype]"
+                          name="acttype"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[acttypename]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[acttypename]"
+                          length="50"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[acttypename]"
+                          name="acttypename"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cdelete]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cdelete]"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cdelete]"
+                          name="cdelete"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[siretentionpolicyid]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[siretentionpolicyid]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[siretentionpolicyid]"
+                          name="siretentionpolicyid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cIsconsultation]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cIsconsultation]"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cIsconsultation]"
+                          name="cIsconsultation"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cIslitigation]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cIslitigation]"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cIslitigation]"
+                          name="cIslitigation"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[timultitracktype]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[timultitracktype]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[timultitracktype]"
+                          name="timultitracktype"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[tiprocessingdays]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tiprocessingdays]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[tiprocessingdays]"
+                          name="tiprocessingdays"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[tisimpleprocessingdays]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tisimpleprocessingdays]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[tisimpleprocessingdays]"
+                          name="tisimpleprocessingdays"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[ticomplexprocessingdays]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ticomplexprocessingdays]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[ticomplexprocessingdays]"
+                          name="ticomplexprocessingdays"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[tiexpediteprocessingdays]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tiexpediteprocessingdays]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[tiexpediteprocessingdays]"
+                          name="tiexpediteprocessingdays"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[csimpleprocessingdays]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[csimpleprocessingdays]"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[csimpleprocessingdays]"
+                          name="csimpleprocessingdays"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[ccomplexprocessingdays]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ccomplexprocessingdays]"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[ccomplexprocessingdays]"
+                          name="ccomplexprocessingdays"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cexpediteprocessingdays]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cexpediteprocessingdays]"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cexpediteprocessingdays]"
+                          name="cexpediteprocessingdays"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cshowinhomepage]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cshowinhomepage]"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cshowinhomepage]"
+                          name="cshowinhomepage"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cactsubtype]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cactsubtype]"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cactsubtype]"
+                          name="cactsubtype"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[tiapplicablesection]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tiapplicablesection]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[tiapplicablesection]"
+                          name="tiapplicablesection"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cactive]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cactive]"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cactive]"
+                          name="cactive"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cconsultationtype]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cconsultationtype]"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cconsultationtype]"
+                          name="cconsultationtype"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cenableapprovalpackage]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cenableapprovalpackage]"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[cenableapprovalpackage]"
+                          name="cenableapprovalpackage"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[iduplicatesearchoptions]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[iduplicatesearchoptions]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].Columns[iduplicatesearchoptions]"
+                          name="iduplicatesearchoptions"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requesttypeid]"
+                          dataType="ui1"
+                          name="requesttypeid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requesttypename]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          name="requesttypename" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requesttypecode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          name="requesttypecode" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[createddate]"
+                          dataType="dbTimeStamp"
+                          name="createddate" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[modifieddate]"
+                          dataType="dbTimeStamp"
+                          name="modifieddate" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[priority]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          name="priority" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[casetype]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="casetype" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[acttype]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="acttype" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[acttypename]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="acttypename" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cdelete]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="cdelete" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[siretentionpolicyid]"
+                          dataType="i2"
+                          name="siretentionpolicyid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cIsconsultation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="cIsconsultation" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cIslitigation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="cIslitigation" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[timultitracktype]"
+                          dataType="ui1"
+                          name="timultitracktype" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tiprocessingdays]"
+                          dataType="i2"
+                          name="tiprocessingdays" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tisimpleprocessingdays]"
+                          dataType="i4"
+                          name="tisimpleprocessingdays" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ticomplexprocessingdays]"
+                          dataType="i4"
+                          name="ticomplexprocessingdays" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tiexpediteprocessingdays]"
+                          dataType="i4"
+                          name="tiexpediteprocessingdays" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[csimpleprocessingdays]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="csimpleprocessingdays" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ccomplexprocessingdays]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="ccomplexprocessingdays" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cexpediteprocessingdays]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="cexpediteprocessingdays" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cshowinhomepage]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="cshowinhomepage" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cactsubtype]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="cactsubtype" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tiapplicablesection]"
+                          dataType="ui1"
+                          name="tiapplicablesection" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cactive]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="cactive" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cconsultationtype]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="cconsultationtype" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cenableapprovalpackage]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="cenableapprovalpackage" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[iduplicatesearchoptions]"
+                          dataType="i4"
+                          name="iduplicatesearchoptions" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requesttypeid]"
+                          dataType="ui1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requesttypeid]"
+                          name="requesttypeid" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requesttypename]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requesttypename]"
+                          name="requesttypename" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requesttypecode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requesttypecode]"
+                          name="requesttypecode" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[createddate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[createddate]"
+                          name="createddate" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[modifieddate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[modifieddate]"
+                          name="modifieddate" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[priority]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[priority]"
+                          name="priority" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[casetype]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[casetype]"
+                          name="casetype" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[acttype]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[acttype]"
+                          name="acttype" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[acttypename]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[acttypename]"
+                          name="acttypename" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cdelete]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cdelete]"
+                          name="cdelete" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[siretentionpolicyid]"
+                          dataType="i2"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[siretentionpolicyid]"
+                          name="siretentionpolicyid" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cIsconsultation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cIsconsultation]"
+                          name="cIsconsultation" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cIslitigation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cIslitigation]"
+                          name="cIslitigation" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[timultitracktype]"
+                          dataType="ui1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[timultitracktype]"
+                          name="timultitracktype" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tiprocessingdays]"
+                          dataType="i2"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tiprocessingdays]"
+                          name="tiprocessingdays" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tisimpleprocessingdays]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tisimpleprocessingdays]"
+                          name="tisimpleprocessingdays" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ticomplexprocessingdays]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ticomplexprocessingdays]"
+                          name="ticomplexprocessingdays" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tiexpediteprocessingdays]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tiexpediteprocessingdays]"
+                          name="tiexpediteprocessingdays" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[csimpleprocessingdays]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[csimpleprocessingdays]"
+                          name="csimpleprocessingdays" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ccomplexprocessingdays]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ccomplexprocessingdays]"
+                          name="ccomplexprocessingdays" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cexpediteprocessingdays]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cexpediteprocessingdays]"
+                          name="cexpediteprocessingdays" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cshowinhomepage]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cshowinhomepage]"
+                          name="cshowinhomepage" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cactsubtype]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cactsubtype]"
+                          name="cactsubtype" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tiapplicablesection]"
+                          dataType="ui1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tiapplicablesection]"
+                          name="tiapplicablesection" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cactive]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cactive]"
+                          name="cactive" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cconsultationtype]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cconsultationtype]"
+                          name="cconsultationtype" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cenableapprovalpackage]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cenableapprovalpackage]"
+                          name="cenableapprovalpackage" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[iduplicatesearchoptions]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[iduplicatesearchoptions]"
+                          name="iduplicatesearchoptions" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\dft_InitialLoadRequestTypes.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination.Inputs[ODBC Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Execute SQL Task - Modified Offices exists"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{b8ce6fa7-4f11-4bea-b4d2-39b38807060c}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute SQL Task - Modified Offices exists"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="Select &#xA;&#x9;count(RT.tiRequestTypeID)&#xA;From tblRequestTypes RT LEFT OUTER JOIN tblTerminologyLookup TLL ON RT.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 &#xA;left outer join [dbo].[viwPriorities] P on RT.tiPriority = P.tiPriority and P.tiLocaleID = 1 &#xA;left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault = 'Y' WHERE   RT.sdtModifiedDate &gt;=dateadd(day,datediff(day,1,GETDATE()),0)   AND RT.sdtCreatedDate &lt; dateadd(day,datediff(day,1,GETDATE()),0) "
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::modifiedrecordscount" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Execute SQL Task - Modified Requesttypes"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{96d98d80-094d-4e29-ae1d-dad4d8da3b54}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute SQL Task - Modified Requesttypes"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="Select &#xA;&#x9;cast(RT.tiRequestTypeID as INT) as requesttypeid,&#xA;&#x9;TLL.vcTerminology as requesttypename,&#xA;&#x9;RT.vcTypeCode as requesttypecode,&#xA;&#x9;convert(varchar, RT.sdtCreatedDate, 120)&#x9; as createddate,&#x9;&#xA;&#x9;convert(varchar, RT.sdtModifiedDate, 120)&#x9; as modifieddate,&#xA;&#x9;P.vcName as priority,&#xA;&#x9;RT.cCaseType as casetype,&#xA;&#x9;RT.cActType as acttype,&#xA;&#x9;AT.vcActName as acttypename,&#xA;&#x9;RT.cDelete as cdelete,&#xA;&#x9;ISNULL(RT.siRetentionPolicyID,0) as siretentionpolicyid,&#xA;&#x9;RT.cIsConsultation as cIsconsultation,&#xA;&#x9;RT.cIsLitigation as cIslitigation,&#xA;&#x9;CAST(ISNULL(RT.tiMultiTrackType,0) as INT) as timultitracktype,&#xA;&#x9;CAST(ISNULL(RT.tiProcessingDays,0) as INT) as tiprocessingdays,&#xA;&#x9;CAST(RT.tiSimpleProcessingDays as INT) as tisimpleprocessingdays,&#xA;&#x9;CAST(RT.tiComplexProcessingDays as INT) as ticomplexprocessingdays,&#xA;&#x9;CAST(RT.tiExpediteProcessingDays as INT) as tiexpediteprocessingdays,&#xA;&#x9;RT.cSimpleProcessingDays as csimpleprocessingdays,&#xA;&#x9;RT.cComplexProcessingDays as  ccomplexprocessingdays,&#xA;&#x9;RT.cExpediteProcessingDays as  cexpediteprocessingdays,&#xA;&#x9;RT.cShowinHomePage as cshowinhomepage,&#xA;&#x9;ISNULL(RT.cActSubType,'') as cactsubtype,&#xA;&#x9;CAST(ISNULL(RT.tiApplicableSection,0) as INT) as timultitracktype,&#xA;&#x9;RT.cActive as cactive,&#xA;&#x9;RT.cConsultationType as cconsultationtype,&#xA;&#x9;RT.cEnableApprovalPackage as cenableapprovalpackage,&#xA;&#x9;RT.iDuplicateSearchOptions as iduplicatesearchoptions&#xA;From tblRequestTypes RT LEFT OUTER JOIN tblTerminologyLookup TLL ON RT.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 &#xA;left outer join [dbo].[viwPriorities] P on RT.tiPriority = P.tiPriority and P.tiLocaleID = 1 &#xA;left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault = 'Y' WHERE   RT.sdtModifiedDate &gt;=dateadd(day,datediff(day,1,GETDATE()),0)   AND RT.sdtCreatedDate &lt; dateadd(day,datediff(day,1,GETDATE()),0) "
+              SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::modifiedrows" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Execute SQL Task - Modified Requesttypes 1"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{341dc222-ab33-4ad0-940c-aac2fd538ef4}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute SQL Task - Modified Requesttypes 1"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="Select &#xA; cast(RT.tiRequestTypeID as INT) as requesttypeid,&#xA; TLL.vcTerminology as requesttypename,&#xA; RT.vcTypeCode as requesttypecode,&#xA; convert(varchar, RT.sdtCreatedDate, 120)  as createddate, &#xA; convert(varchar, RT.sdtModifiedDate, 120)  as modifieddate,&#xA; P.vcName as priority,&#xA; RT.cCaseType as casetype,&#xA; RT.cActType as acttype,&#xA; AT.vcActName as acttypename,&#xA; RT.cDelete as cdelete,&#xA; ISNULL(RT.siRetentionPolicyID,0) as siretentionpolicyid,&#xA; RT.cIsConsultation as cIsconsultation,&#xA; RT.cIsLitigation as cIslitigation,&#xA; CAST(ISNULL(RT.tiMultiTrackType,0) as INT) as timultitracktype,&#xA; CAST(ISNULL(RT.tiProcessingDays,0) as INT) as tiprocessingdays,&#xA; CAST(RT.tiSimpleProcessingDays as INT) as tisimpleprocessingdays,&#xA; CAST(RT.tiComplexProcessingDays as INT) as ticomplexprocessingdays,&#xA; CAST(RT.tiExpediteProcessingDays as INT) as tiexpediteprocessingdays,&#xA; RT.cSimpleProcessingDays as csimpleprocessingdays,&#xA; RT.cComplexProcessingDays as  ccomplexprocessingdays,&#xA; RT.cExpediteProcessingDays as  cexpediteprocessingdays,&#xA; RT.cShowinHomePage as cshowinhomepage,&#xA; ISNULL(RT.cActSubType,'') as cactsubtype,&#xA; CAST(ISNULL(RT.tiApplicableSection,0) as INT) as timultitracktype,&#xA; RT.cActive as cactive,&#xA; RT.cConsultationType as cconsultationtype,&#xA; RT.cEnableApprovalPackage as cenableapprovalpackage,&#xA; RT.iDuplicateSearchOptions as iduplicatesearchoptions&#xA;From tblRequestTypes RT LEFT OUTER JOIN tblTerminologyLookup TLL ON RT.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 &#xA;left outer join [dbo].[viwPriorities] P on RT.tiPriority = P.tiPriority and P.tiLocaleID = 1 &#xA;left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault = 'Y' WHERE    RT.sdtCreatedDate &gt;= dateadd(day,datediff(day,1,GETDATE()),0) "
+              SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::newrequestrecords" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\executetask New request types"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{F205A607-AE31-4ABB-AC1C-E56C8F4BEC5F}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="executetask New request types"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="Select &#xA;&#x9;count(RT.tiRequestTypeID)&#xA;From tblRequestTypes RT LEFT OUTER JOIN tblTerminologyLookup TLL ON RT.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 &#xA;left outer join [dbo].[viwPriorities] P on RT.tiPriority = P.tiPriority and P.tiLocaleID = 1 &#xA;left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault = 'Y' &#xA;WHERE   RT.sdtCreatedDate &gt; dateadd(day,datediff(day,1,GETDATE()),0) "
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::newrequestrecordscount" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\exeSQL_HasRequestTypeinEDW"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="exeSQL_HasRequestTypeinEDW"
+          DTS:DTSID="{e76004e6-edc2-4ea8-b32d-59e6bf8be289}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="exeSQL_HasRequestTypeinEDW"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+              SQLTask:SqlStatementSource="SELECT count(requesttypeid) as cnt FROM public.&quot;dimRequestTypes&quot;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="1"
+                SQLTask:DtsVariableName="User::requesttypecountinedw" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Foreach Loop ContainerModifiedrequesttypes"
+          DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:Description="Foreach Loop ContainerModifiedrequesttypes"
+          DTS:DTSID="{dfd75381-1def-4026-ad7f-c10c92bea8a7}"
+          DTS:ExecutableType="STOCK:FOREACHLOOP"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Foreach Loop ContainerModifiedrequesttypes">
+          <DTS:ForEachEnumerator
+            DTS:CreationName="Microsoft.ForEachADOEnumerator"
+            DTS:DTSID="{0ef71c16-1919-478c-9033-3205e3cc8114}"
+            DTS:ObjectName="{3FEB147C-A26A-4B0F-9811-C6B5CBB4FF18}">
+            <DTS:ObjectData>
+              <FEEADO
+                EnumType="EnumerateRowsInFirstTable"
+                VarName="User::modifiedrows" />
+            </DTS:ObjectData>
+          </DTS:ForEachEnumerator>
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{D8F85FA8-9288-49D8-9B23-AD7DB0D22EC8}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="acttype">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{DBE6A651-C108-414C-AF8F-9C3344197996}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="acttypename">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{333AB669-D59B-4B56-A452-4197C9E689D2}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cactive">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{04108150-21F6-4A71-A4A7-5017ED5D9102}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cactsubtype">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{81D20FF7-FC94-4E49-9011-8D63C772242A}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="casetype">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{1EDB0E44-C810-4D0B-A950-88915C276783}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="ccomplexprocessingdays">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{3D051D5F-0040-4FB6-AFBF-4CE658D332F0}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cconsultationtype">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{0D5BCE46-85C9-455A-9F86-80F26CD3F204}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cdelete">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{92F9ABB4-2407-47E2-9F9E-A54A7D25503A}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cenableapprovalpackage">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{4DF6E89A-858E-46A1-A943-6C314F315343}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cexpediteprocessingdays">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{77863252-D1F3-4B94-A229-11EC6AC0E599}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cIsconsultation">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{F71157DA-C8FF-4379-B890-C39145D5017D}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cIslitigation">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{18444B44-A8B4-4667-8881-472661D72F17}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="createddate">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{702633D3-70DC-4782-95D6-868A9CA2D566}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cshowinhomepage">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{B88E0227-C2BF-4796-B8B0-EB236F7B1D29}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="csimpleprocessingdays">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{9E012E47-3779-454E-A2CB-052BC4731E98}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="iduplicatesearchoptions">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{73EB2B47-3186-4DC0-A3F7-242D70062E3D}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="modifieddate">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{27E98868-C56D-4FC8-8757-5962B3F25BAA}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="priority">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{FCBF1D28-9E76-45B8-B7D0-DA68496EB094}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="requesttypecode">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{06E53072-612A-4AB1-AE67-47B6D8405C85}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="requesttypeid">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{338DC0C7-9977-48C7-ADC2-18B85930C31A}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="requesttypename">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{DF48AB51-71A1-4E7A-8F57-E78B92DC0BD8}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="siretentionpolicyid">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{37F39750-F241-4398-8123-63F64645360C}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="tiapplicablesection">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{E02C55F3-F16A-4752-A21D-88A86DA0668C}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="ticomplexprocessingdays">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{CD888B24-BA30-419E-ADA3-6FB1A194C1D0}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="tiexpediteprocessingdays">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{FE28272B-0EC4-471A-A5F5-1BBC2B882FDD}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="timultitracktype">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{0FF59C31-B0DE-4B43-826E-2197FEE51622}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="tiprocessingdays">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{DA12A9A7-1DC5-4C56-8450-E2958BDC6AAC}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="tisimpleprocessingdays">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Sequence Container\Foreach Loop ContainerModifiedrequesttypes\Execute SQL Task"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{e5d68cb4-4f57-4700-96e2-251c6a3f7f36}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Execute SQL Task"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+                  SQLTask:BypassPrepare="False"
+                  SQLTask:SqlStatementSource="UPDATE public.&quot;dimRequestTypes&quot;&#xA;&#x9;SET requesttypename=?, requesttypecode=?, createddate=to_timestamp(?,'YYYY-MM-DD hh24:mi:ss'), modifieddate=to_timestamp(?,'YYYY-MM-DD hh24:mi:ss'), priority=?, casetype=?, acttype=?, acttypename=?, cdelete=?, siretentionpolicyid=?, &quot;cIsconsultation&quot;=?, &quot;cIslitigation&quot;=?, timultitracktype=?, tiprocessingdays=?, tisimpleprocessingdays=?, ticomplexprocessingdays=?, tiexpediteprocessingdays=?, csimpleprocessingdays=?, ccomplexprocessingdays=?, cexpediteprocessingdays=?, cshowinhomepage=?, cactsubtype=?, tiapplicablesection=?, cactive=?, cconsultationtype=?, cenableapprovalpackage=?, iduplicatesearchoptions=?&#xA;&#x9;WHERE requesttypeid=?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="1"
+                    SQLTask:DtsVariableName="User::requesttypename"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="2"
+                    SQLTask:DtsVariableName="User::requesttypecode"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="3"
+                    SQLTask:DtsVariableName="User::createddate"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="4"
+                    SQLTask:DtsVariableName="User::modifieddate"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="5"
+                    SQLTask:DtsVariableName="User::priority"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="6"
+                    SQLTask:DtsVariableName="User::casetype"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="7"
+                    SQLTask:DtsVariableName="User::acttype"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="8"
+                    SQLTask:DtsVariableName="User::acttypename"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="9"
+                    SQLTask:DtsVariableName="User::cdelete"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="10"
+                    SQLTask:DtsVariableName="User::siretentionpolicyid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="11"
+                    SQLTask:DtsVariableName="User::cIsconsultation"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="12"
+                    SQLTask:DtsVariableName="User::cIslitigation"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="13"
+                    SQLTask:DtsVariableName="User::timultitracktype"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="14"
+                    SQLTask:DtsVariableName="User::tiprocessingdays"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="15"
+                    SQLTask:DtsVariableName="User::tisimpleprocessingdays"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="16"
+                    SQLTask:DtsVariableName="User::ticomplexprocessingdays"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="17"
+                    SQLTask:DtsVariableName="User::tiexpediteprocessingdays"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="18"
+                    SQLTask:DtsVariableName="User::csimpleprocessingdays"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="19"
+                    SQLTask:DtsVariableName="User::ccomplexprocessingdays"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="20"
+                    SQLTask:DtsVariableName="User::cexpediteprocessingdays"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="21"
+                    SQLTask:DtsVariableName="User::cshowinhomepage"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="22"
+                    SQLTask:DtsVariableName="User::cactsubtype"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="23"
+                    SQLTask:DtsVariableName="User::tiapplicablesection"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="24"
+                    SQLTask:DtsVariableName="User::cactive"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="25"
+                    SQLTask:DtsVariableName="User::cconsultationtype"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="26"
+                    SQLTask:DtsVariableName="User::cenableapprovalpackage"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="27"
+                    SQLTask:DtsVariableName="User::iduplicatesearchoptions"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="28"
+                    SQLTask:DtsVariableName="User::requesttypeid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:ForEachVariableMappings>
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{42F68A21-19AC-4692-BEBF-B424690B2B5A}"
+              DTS:ObjectName="{42F68A21-19AC-4692-BEBF-B424690B2B5A}"
+              DTS:ValueIndex="0"
+              DTS:VariableName="User::requesttypeid" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{05B9B4CF-8538-4842-B0FB-C4DCE0E98080}"
+              DTS:ObjectName="{05B9B4CF-8538-4842-B0FB-C4DCE0E98080}"
+              DTS:ValueIndex="1"
+              DTS:VariableName="User::requesttypename" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{C0912A32-E4A3-4341-9465-2758576DE262}"
+              DTS:ObjectName="{C0912A32-E4A3-4341-9465-2758576DE262}"
+              DTS:ValueIndex="2"
+              DTS:VariableName="User::requesttypecode" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{BF33228F-7DB8-48E2-B613-6E76D97F4996}"
+              DTS:ObjectName="{BF33228F-7DB8-48E2-B613-6E76D97F4996}"
+              DTS:ValueIndex="3"
+              DTS:VariableName="User::createddate" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{DBF4817F-1465-44E2-92FE-E4AD095F05F3}"
+              DTS:ObjectName="{DBF4817F-1465-44E2-92FE-E4AD095F05F3}"
+              DTS:ValueIndex="4"
+              DTS:VariableName="User::modifieddate" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{9CE29828-F83C-4E4C-9703-8A2E6FF51DAC}"
+              DTS:ObjectName="{9CE29828-F83C-4E4C-9703-8A2E6FF51DAC}"
+              DTS:ValueIndex="5"
+              DTS:VariableName="User::priority" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{EBACFC07-9990-4A5F-A2A9-7A187E157F97}"
+              DTS:ObjectName="{EBACFC07-9990-4A5F-A2A9-7A187E157F97}"
+              DTS:ValueIndex="6"
+              DTS:VariableName="User::casetype" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{E8CDA037-9ABC-435C-9791-EF8425455CB9}"
+              DTS:ObjectName="{E8CDA037-9ABC-435C-9791-EF8425455CB9}"
+              DTS:ValueIndex="7"
+              DTS:VariableName="User::acttype" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{410E438C-984C-476C-9CA4-E22963F62E55}"
+              DTS:ObjectName="{410E438C-984C-476C-9CA4-E22963F62E55}"
+              DTS:ValueIndex="8"
+              DTS:VariableName="User::acttypename" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{456A1A6F-B777-4DD3-AED9-FD69FBAC557F}"
+              DTS:ObjectName="{456A1A6F-B777-4DD3-AED9-FD69FBAC557F}"
+              DTS:ValueIndex="9"
+              DTS:VariableName="User::cdelete" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{A693928C-D71C-4647-9CFE-1F22DEBBABF3}"
+              DTS:ObjectName="{A693928C-D71C-4647-9CFE-1F22DEBBABF3}"
+              DTS:ValueIndex="10"
+              DTS:VariableName="User::siretentionpolicyid" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{A911F59B-9D05-4DD1-AA34-20CFFB14E389}"
+              DTS:ObjectName="{A911F59B-9D05-4DD1-AA34-20CFFB14E389}"
+              DTS:ValueIndex="11"
+              DTS:VariableName="User::cIsconsultation" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{2A870839-3EA0-4023-8333-5BDAAA6D357E}"
+              DTS:ObjectName="{2A870839-3EA0-4023-8333-5BDAAA6D357E}"
+              DTS:ValueIndex="12"
+              DTS:VariableName="User::cIslitigation" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{270C1CB5-C72D-4BDE-973D-7B62E62A4FC8}"
+              DTS:ObjectName="{270C1CB5-C72D-4BDE-973D-7B62E62A4FC8}"
+              DTS:ValueIndex="13"
+              DTS:VariableName="User::timultitracktype" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{85A0DB49-A000-4BED-8EBE-6A63F5DA413F}"
+              DTS:ObjectName="{85A0DB49-A000-4BED-8EBE-6A63F5DA413F}"
+              DTS:ValueIndex="14"
+              DTS:VariableName="User::tiprocessingdays" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{6694E96F-41FA-4022-82B9-E3C5D2CC163C}"
+              DTS:ObjectName="{6694E96F-41FA-4022-82B9-E3C5D2CC163C}"
+              DTS:ValueIndex="15"
+              DTS:VariableName="User::tisimpleprocessingdays" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{9467D608-3946-427B-BE35-FDB8053AF007}"
+              DTS:ObjectName="{9467D608-3946-427B-BE35-FDB8053AF007}"
+              DTS:ValueIndex="16"
+              DTS:VariableName="User::ticomplexprocessingdays" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{100258CF-A7FF-4B72-AAE0-DA5127B14F80}"
+              DTS:ObjectName="{100258CF-A7FF-4B72-AAE0-DA5127B14F80}"
+              DTS:ValueIndex="17"
+              DTS:VariableName="User::tiexpediteprocessingdays" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{3B1AA5ED-F086-40FF-B3F8-4B71762775F2}"
+              DTS:ObjectName="{3B1AA5ED-F086-40FF-B3F8-4B71762775F2}"
+              DTS:ValueIndex="18"
+              DTS:VariableName="User::csimpleprocessingdays" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{E1F2D617-43E8-4A4B-95AC-129C5BC5450F}"
+              DTS:ObjectName="{E1F2D617-43E8-4A4B-95AC-129C5BC5450F}"
+              DTS:ValueIndex="19"
+              DTS:VariableName="User::ccomplexprocessingdays" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{57502950-ED3F-490A-B261-F54331545F23}"
+              DTS:ObjectName="{57502950-ED3F-490A-B261-F54331545F23}"
+              DTS:ValueIndex="20"
+              DTS:VariableName="User::cexpediteprocessingdays" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{60462232-0BB6-4025-86D6-60F7455FF160}"
+              DTS:ObjectName="{60462232-0BB6-4025-86D6-60F7455FF160}"
+              DTS:ValueIndex="21"
+              DTS:VariableName="User::cshowinhomepage" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{D7335C5C-9035-474A-AA06-6D99D2220682}"
+              DTS:ObjectName="{D7335C5C-9035-474A-AA06-6D99D2220682}"
+              DTS:ValueIndex="22"
+              DTS:VariableName="User::cactsubtype" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{4BAE8E4D-2A29-40FC-B77E-1F248AF30438}"
+              DTS:ObjectName="{4BAE8E4D-2A29-40FC-B77E-1F248AF30438}"
+              DTS:ValueIndex="23"
+              DTS:VariableName="User::tiapplicablesection" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{B26967A6-010C-48D3-9BE6-FEABDF015052}"
+              DTS:ObjectName="{B26967A6-010C-48D3-9BE6-FEABDF015052}"
+              DTS:ValueIndex="24"
+              DTS:VariableName="User::cactive" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{9B3DCA53-3D10-4E19-A02F-03620C4276B7}"
+              DTS:ObjectName="{9B3DCA53-3D10-4E19-A02F-03620C4276B7}"
+              DTS:ValueIndex="25"
+              DTS:VariableName="User::cconsultationtype" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{01687810-058A-4687-9511-7150522AC890}"
+              DTS:ObjectName="{01687810-058A-4687-9511-7150522AC890}"
+              DTS:ValueIndex="26"
+              DTS:VariableName="User::cenableapprovalpackage" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{C42F0A8A-0366-4AF1-AC44-8E90DCF3E790}"
+              DTS:ObjectName="{C42F0A8A-0366-4AF1-AC44-8E90DCF3E790}"
+              DTS:ValueIndex="27"
+              DTS:VariableName="User::iduplicatesearchoptions" />
+          </DTS:ForEachVariableMappings>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Foreach Loop ContainerNewrequesttypes 1"
+          DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:Description="Foreach Loop ContainerNewrequesttypes"
+          DTS:DTSID="{8eb4035c-aa6b-4f46-9385-40119441621e}"
+          DTS:ExecutableType="STOCK:FOREACHLOOP"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Foreach Loop ContainerNewrequesttypes 1">
+          <DTS:ForEachEnumerator
+            DTS:CreationName="Microsoft.ForEachADOEnumerator"
+            DTS:DTSID="{67b7e39f-58ae-4b26-ba68-6937cf6e040e}"
+            DTS:ObjectName="{3FEB147C-A26A-4B0F-9811-C6B5CBB4FF18}">
+            <DTS:ObjectData>
+              <FEEADO
+                EnumType="EnumerateRowsInFirstTable"
+                VarName="User::newrequestrecords" />
+            </DTS:ObjectData>
+          </DTS:ForEachEnumerator>
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{9bd1d66d-3a08-419d-abd9-483594af632a}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="acttype">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{dd7f6858-cc20-4e4c-a64c-93b2edeccbec}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="acttypename">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{1366ece3-8ec8-45be-ad4b-400f051cc39e}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cactive">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{3790d5f6-4d73-4dd6-b5c6-adca3488dcff}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cactsubtype">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{f623137d-3159-4467-8bc5-76ad665cb6b5}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="casetype">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{73964c2f-0982-47b3-a93a-e0b7cf6f01bb}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="ccomplexprocessingdays">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{8d1c3d54-f190-4119-8a68-e41dc3f9db82}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cconsultationtype">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{554aad5f-8f2a-4d75-8da0-2b523c1d08a4}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cdelete">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{5439a1ff-dc78-4246-a791-1e4b76a72f9a}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cenableapprovalpackage">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{12e7c01a-9055-49fb-b3fd-3ee0dfce5633}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cexpediteprocessingdays">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{5a51f078-dbef-479d-9796-370ff108b8b0}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cIsconsultation">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{8848ba81-b9d6-4f7d-8d18-a057c8e9016e}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cIslitigation">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{40b9630d-a523-496b-8407-362f8ff5e0c9}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="createddate">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{cea3b380-53f5-45f1-8e4c-34315852c7ff}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cshowinhomepage">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{6f659713-9f32-45b8-a95a-2b7a91d58180}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="csimpleprocessingdays">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{ea4ef0aa-367f-417b-928c-1ee51a3dec90}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="iduplicatesearchoptions">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{940502d9-5ce0-4459-aad9-ebcb43e4bed2}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="modifieddate">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{e372c9f4-6299-47e6-af6d-b7d00fffa0be}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="priority">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{8a487a7b-fc3c-46a9-bfc2-494ea08a6cca}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="requesttypecode">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{9b0e5f41-e9fe-43df-92b3-b1b077b317c0}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="requesttypeid">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{9d3be41d-39b8-454c-8aa9-2d23a9efa65f}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="requesttypename">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{0fa72ac2-8f99-4111-9614-f95ec2d161f6}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="siretentionpolicyid">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{57c403a4-9afa-435a-b2c2-be7c522aa7f1}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="tiapplicablesection">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{8fde5ceb-d043-4179-94ea-a592d0ef12e3}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="ticomplexprocessingdays">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{68718702-efa0-4694-a21d-460b14e6ca01}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="tiexpediteprocessingdays">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{c55451d8-bb7f-41b8-b965-2f1f89bacaa1}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="timultitracktype">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{c5003256-c587-4c56-b48c-a27a166f94c1}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="tiprocessingdays">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{27beba11-34ee-4cd8-a39a-66ee7e196a94}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="tisimpleprocessingdays">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Sequence Container\Foreach Loop ContainerNewrequesttypes 1\Execute SQL Task"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{188f5fcd-09f8-44ce-85d9-38490e2b1c56}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Execute SQL Task"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+                  SQLTask:BypassPrepare="False"
+                  SQLTask:SqlStatementSource="INSERT INTO public.&quot;dimRequestTypes&quot;(&#xA;&#x9; requesttypename, requesttypecode, createddate, modifieddate, priority, casetype, acttype, acttypename, cdelete, siretentionpolicyid, &quot;cIsconsultation&quot;, &quot;cIslitigation&quot;, timultitracktype, tiprocessingdays, tisimpleprocessingdays, ticomplexprocessingdays, tiexpediteprocessingdays, csimpleprocessingdays, ccomplexprocessingdays, cexpediteprocessingdays, cshowinhomepage, cactsubtype, tiapplicablesection, cactive, cconsultationtype, cenableapprovalpackage, iduplicatesearchoptions,requesttypeid)&#xA;&#x9;VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="1"
+                    SQLTask:DtsVariableName="User::requesttypename"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="2"
+                    SQLTask:DtsVariableName="User::requesttypecode"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="3"
+                    SQLTask:DtsVariableName="User::createddate"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="4"
+                    SQLTask:DtsVariableName="User::modifieddate"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="5"
+                    SQLTask:DtsVariableName="User::priority"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="6"
+                    SQLTask:DtsVariableName="User::casetype"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="7"
+                    SQLTask:DtsVariableName="User::acttype"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="8"
+                    SQLTask:DtsVariableName="User::acttypename"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="9"
+                    SQLTask:DtsVariableName="User::cdelete"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="10"
+                    SQLTask:DtsVariableName="User::siretentionpolicyid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="11"
+                    SQLTask:DtsVariableName="User::cIsconsultation"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="12"
+                    SQLTask:DtsVariableName="User::cIslitigation"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="13"
+                    SQLTask:DtsVariableName="User::timultitracktype"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="14"
+                    SQLTask:DtsVariableName="User::tiprocessingdays"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="15"
+                    SQLTask:DtsVariableName="User::tisimpleprocessingdays"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="16"
+                    SQLTask:DtsVariableName="User::ticomplexprocessingdays"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="17"
+                    SQLTask:DtsVariableName="User::tiexpediteprocessingdays"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="18"
+                    SQLTask:DtsVariableName="User::csimpleprocessingdays"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="19"
+                    SQLTask:DtsVariableName="User::ccomplexprocessingdays"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="20"
+                    SQLTask:DtsVariableName="User::cexpediteprocessingdays"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="21"
+                    SQLTask:DtsVariableName="User::cshowinhomepage"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="22"
+                    SQLTask:DtsVariableName="User::cactsubtype"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="23"
+                    SQLTask:DtsVariableName="User::tiapplicablesection"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="24"
+                    SQLTask:DtsVariableName="User::cactive"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="25"
+                    SQLTask:DtsVariableName="User::cconsultationtype"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="26"
+                    SQLTask:DtsVariableName="User::cenableapprovalpackage"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="27"
+                    SQLTask:DtsVariableName="User::iduplicatesearchoptions"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="28"
+                    SQLTask:DtsVariableName="User::requesttypeid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:ForEachVariableMappings>
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{A1A0233D-E36B-403D-8B92-F99EB6AD728C}"
+              DTS:ObjectName="{A1A0233D-E36B-403D-8B92-F99EB6AD728C}"
+              DTS:ValueIndex="0"
+              DTS:VariableName="User::requesttypeid" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{956DE0A8-AE68-40D8-9AAA-C4C2C3E45B2E}"
+              DTS:ObjectName="{956DE0A8-AE68-40D8-9AAA-C4C2C3E45B2E}"
+              DTS:ValueIndex="1"
+              DTS:VariableName="User::requesttypename" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{99633E8A-2A50-4FF5-8C40-6A82D198C264}"
+              DTS:ObjectName="{99633E8A-2A50-4FF5-8C40-6A82D198C264}"
+              DTS:ValueIndex="2"
+              DTS:VariableName="User::requesttypecode" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{F6F256D0-91FA-450F-B927-339CB1B180EE}"
+              DTS:ObjectName="{F6F256D0-91FA-450F-B927-339CB1B180EE}"
+              DTS:ValueIndex="3"
+              DTS:VariableName="User::createddate" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{44E5B2E8-B9DD-4A61-8DBA-FB25FC0F39F1}"
+              DTS:ObjectName="{44E5B2E8-B9DD-4A61-8DBA-FB25FC0F39F1}"
+              DTS:ValueIndex="4"
+              DTS:VariableName="User::modifieddate" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{000717E0-E7E4-4BB0-9FB8-8C7F04EA372B}"
+              DTS:ObjectName="{000717E0-E7E4-4BB0-9FB8-8C7F04EA372B}"
+              DTS:ValueIndex="5"
+              DTS:VariableName="User::priority" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{784F426B-76BA-4CF8-8C38-74B7C9B29BD6}"
+              DTS:ObjectName="{784F426B-76BA-4CF8-8C38-74B7C9B29BD6}"
+              DTS:ValueIndex="6"
+              DTS:VariableName="User::casetype" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{AC220FEB-7345-4778-B751-E51274E9D2E7}"
+              DTS:ObjectName="{AC220FEB-7345-4778-B751-E51274E9D2E7}"
+              DTS:ValueIndex="7"
+              DTS:VariableName="User::acttype" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{3AE96AF5-0320-4971-A05A-66455F011531}"
+              DTS:ObjectName="{3AE96AF5-0320-4971-A05A-66455F011531}"
+              DTS:ValueIndex="8"
+              DTS:VariableName="User::acttypename" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{FC3136DD-03BA-4500-B8CF-B08D717D46F9}"
+              DTS:ObjectName="{FC3136DD-03BA-4500-B8CF-B08D717D46F9}"
+              DTS:ValueIndex="9"
+              DTS:VariableName="User::cdelete" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{687F1982-1D17-4075-8882-642F7D534D16}"
+              DTS:ObjectName="{687F1982-1D17-4075-8882-642F7D534D16}"
+              DTS:ValueIndex="10"
+              DTS:VariableName="User::siretentionpolicyid" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{EC140060-F095-4738-99B5-1DD078C8274D}"
+              DTS:ObjectName="{EC140060-F095-4738-99B5-1DD078C8274D}"
+              DTS:ValueIndex="11"
+              DTS:VariableName="User::cIsconsultation" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{4D527679-7540-4A28-8C8C-51D45F4D9F91}"
+              DTS:ObjectName="{4D527679-7540-4A28-8C8C-51D45F4D9F91}"
+              DTS:ValueIndex="12"
+              DTS:VariableName="User::cIslitigation" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{8EDB0C38-ED33-4930-A584-CB3C36442255}"
+              DTS:ObjectName="{8EDB0C38-ED33-4930-A584-CB3C36442255}"
+              DTS:ValueIndex="13"
+              DTS:VariableName="User::timultitracktype" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{D954D7FD-C40D-4ABF-843F-1CB679736F8F}"
+              DTS:ObjectName="{D954D7FD-C40D-4ABF-843F-1CB679736F8F}"
+              DTS:ValueIndex="14"
+              DTS:VariableName="User::tiprocessingdays" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{FB6D7094-EEC8-4309-B792-74D9BFCDADB0}"
+              DTS:ObjectName="{FB6D7094-EEC8-4309-B792-74D9BFCDADB0}"
+              DTS:ValueIndex="15"
+              DTS:VariableName="User::tisimpleprocessingdays" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{1876BB4C-8691-4CE2-B415-13E1B2E90564}"
+              DTS:ObjectName="{1876BB4C-8691-4CE2-B415-13E1B2E90564}"
+              DTS:ValueIndex="16"
+              DTS:VariableName="User::ticomplexprocessingdays" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{151A3842-7D05-4CA9-B607-8DB4A0EAFF9F}"
+              DTS:ObjectName="{151A3842-7D05-4CA9-B607-8DB4A0EAFF9F}"
+              DTS:ValueIndex="17"
+              DTS:VariableName="User::tiexpediteprocessingdays" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{F4F4C578-6998-4F80-B4BD-6A17D2EDA466}"
+              DTS:ObjectName="{F4F4C578-6998-4F80-B4BD-6A17D2EDA466}"
+              DTS:ValueIndex="18"
+              DTS:VariableName="User::csimpleprocessingdays" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{67C64EDE-C9E2-48FC-8634-061BFA92185E}"
+              DTS:ObjectName="{67C64EDE-C9E2-48FC-8634-061BFA92185E}"
+              DTS:ValueIndex="19"
+              DTS:VariableName="User::ccomplexprocessingdays" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{62337094-B940-4614-8362-930C0A8DF38E}"
+              DTS:ObjectName="{62337094-B940-4614-8362-930C0A8DF38E}"
+              DTS:ValueIndex="20"
+              DTS:VariableName="User::cexpediteprocessingdays" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{D0A613D7-36C8-408A-8576-00FF80A9F972}"
+              DTS:ObjectName="{D0A613D7-36C8-408A-8576-00FF80A9F972}"
+              DTS:ValueIndex="21"
+              DTS:VariableName="User::cshowinhomepage" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{CDA5FA0D-7665-41B7-BDDC-E42FA4DD4EFB}"
+              DTS:ObjectName="{CDA5FA0D-7665-41B7-BDDC-E42FA4DD4EFB}"
+              DTS:ValueIndex="22"
+              DTS:VariableName="User::cactsubtype" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{A80613E5-35F4-45AE-B4CB-87B3292FB3A5}"
+              DTS:ObjectName="{A80613E5-35F4-45AE-B4CB-87B3292FB3A5}"
+              DTS:ValueIndex="23"
+              DTS:VariableName="User::tiapplicablesection" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{B36E359D-9C0C-4456-BF13-5076FB192611}"
+              DTS:ObjectName="{B36E359D-9C0C-4456-BF13-5076FB192611}"
+              DTS:ValueIndex="24"
+              DTS:VariableName="User::cactive" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{948C0FD0-6113-4FD1-9893-28BDB28B23D4}"
+              DTS:ObjectName="{948C0FD0-6113-4FD1-9893-28BDB28B23D4}"
+              DTS:ValueIndex="25"
+              DTS:VariableName="User::cconsultationtype" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{3199B0B4-D88A-4FA8-A738-56EA7630979E}"
+              DTS:ObjectName="{3199B0B4-D88A-4FA8-A738-56EA7630979E}"
+              DTS:ValueIndex="26"
+              DTS:VariableName="User::cenableapprovalpackage" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{806C305B-A70F-4B22-97C4-7B0D77A6DF10}"
+              DTS:ObjectName="{806C305B-A70F-4B22-97C4-7B0D77A6DF10}"
+              DTS:ValueIndex="27"
+              DTS:VariableName="User::iduplicatesearchoptions" />
+          </DTS:ForEachVariableMappings>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{E10AB617-2B4D-4653-B004-06AF776CCD4F}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::requesttypecountinedw] == 0"
+          DTS:From="Package\Sequence Container\exeSQL_HasRequestTypeinEDW"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence Container\dft_InitialLoadRequestTypes" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{71D35584-C7B8-49B1-8D2C-F995ECE23377}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::requesttypecountinedw] &gt; 0"
+          DTS:From="Package\Sequence Container\exeSQL_HasRequestTypeinEDW"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Sequence Container\Execute SQL Task - Modified Offices exists" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{239B10BD-860E-4EE9-9E9D-9782F7BCFBCA}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::modifiedrecordscount] &gt; 0"
+          DTS:From="Package\Sequence Container\Execute SQL Task - Modified Offices exists"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Sequence Container\Execute SQL Task - Modified Requesttypes" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{71CC525B-6B19-4209-B165-73477893E279}"
+          DTS:From="Package\Sequence Container\Execute SQL Task - Modified Requesttypes"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Sequence Container\Foreach Loop ContainerModifiedrequesttypes" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{B8E9E19B-B0A9-4112-91CC-63198AB7B0CE}"
+          DTS:From="Package\Sequence Container\exeSQL_HasRequestTypeinEDW"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Sequence Container\executetask New request types" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{9F2E4FF6-54F5-421D-811F-875D76A32C51}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::newrequestrecordscount]&gt;0"
+          DTS:From="Package\Sequence Container\executetask New request types"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\Sequence Container\Execute SQL Task - Modified Requesttypes 1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 6]"
+          DTS:CreationName=""
+          DTS:DTSID="{20DDB257-26A5-490A-87D0-A66D41A79F32}"
+          DTS:From="Package\Sequence Container\Execute SQL Task - Modified Requesttypes 1"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 6"
+          DTS:To="Package\Sequence Container\Foreach Loop ContainerNewrequesttypes 1" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="228,41.6"
+          Id="Package\Sequence Container\exeSQL_HasRequestTypeinEDW"
+          TopLeft="401.766645838155,51.4666680992975" />
+        <NodeLayout
+          Size="190.4,41.6"
+          Id="Package\Sequence Container\dft_InitialLoadRequestTypes"
+          TopLeft="114.266657262378,202.266669297748" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          TopLeft="515.766645838155,93.0666680992975">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-306.299988575777,109.200001198451"
+              Start="0,0"
+              End="-306.299988575777,101.700001198451">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.6000005992253" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,50.6000005992253"
+                    Point2="0,54.6000005992253"
+                    Point3="-4,54.6000005992253" />
+                  <mssgle:LineSegment
+                    End="-302.299988575777,54.6000005992253" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-302.299988575777,54.6000005992253"
+                    Point2="-306.299988575777,54.6000005992253"
+                    Point3="-306.299988575777,58.6000005992253" />
+                  <mssgle:LineSegment
+                    End="-306.299988575777,101.700001198451" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-161.149994287889,59.6000005992253,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="277.6,41.6"
+          Id="Package\Sequence Container\Execute SQL Task - Modified Offices exists"
+          TopLeft="476.933304590651,249.66666973167" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="552.433312504822,93.0666680992975">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="63.2999920858286,156.600001632373"
+              Start="0,0"
+              End="63.2999920858286,149.100001632373">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.0281075260466" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,61.0281075260466"
+                    Point2="0,65.0281075260466"
+                    Point3="4,65.0281075260466" />
+                  <mssgle:LineSegment
+                    End="59.2999920858286,65.0281075260466" />
+                  <mssgle:CubicBezierSegment
+                    Point1="59.2999920858286,65.0281075260466"
+                    Point2="63.2999920858286,65.0281075260466"
+                    Point3="63.2999920858286,69.0281075260466" />
+                  <mssgle:LineSegment
+                    End="63.2999920858286,149.100001632373" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="23.6499960429143,70.0281075260466,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="248.8,41.6"
+          Id="Package\Sequence Container\Execute SQL Task - Modified Requesttypes"
+          TopLeft="454.43330548472,345.000003822645" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="615.733304590651,291.26666973167">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-36.8999991059309,53.7333340909746"
+              Start="0,0"
+              End="-36.8999991059309,46.2333340909746">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.8666670454873" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.8666670454873"
+                    Point2="0,26.8666670454873"
+                    Point3="-4,26.8666670454873" />
+                  <mssgle:LineSegment
+                    End="-32.8999991059309,26.8666670454873" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-32.8999991059309,26.8666670454873"
+                    Point2="-36.8999991059309,26.8666670454873"
+                    Point3="-36.8999991059309,30.8666670454873" />
+                  <mssgle:LineSegment
+                    End="-36.8999991059309,46.2333340909746" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-26.4499995529654,31.8666670454873,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Foreach Loop ContainerModifiedrequesttypes\Execute SQL Task"
+          TopLeft="119.833309657045,47.8666716946495" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="396,140.8"
+          Size="396,184"
+          Id="Package\Sequence Container\Foreach Loop ContainerModifiedrequesttypes"
+          TopLeft="131.099984999499,448.133337975608" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 3]"
+          TopLeft="578.83330548472,386.600003822645">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-249.733320485221,61.5333341529634"
+              Start="0,0"
+              End="-249.733320485221,54.0333341529634">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.7666670764817" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.7666670764817"
+                    Point2="0,30.7666670764817"
+                    Point3="-4,30.7666670764817" />
+                  <mssgle:LineSegment
+                    End="-245.733320485221,30.7666670764817" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-245.733320485221,30.7666670764817"
+                    Point2="-249.733320485221,30.7666670764817"
+                    Point3="-249.733320485221,34.7666670764817" />
+                  <mssgle:LineSegment
+                    End="-249.733320485221,54.0333341529634" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="222.4,41.6"
+          Id="Package\Sequence Container\executetask New request types"
+          TopLeft="811.099957978728,243.800002624194" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 4]"
+          TopLeft="570.766645838155,93.0666680992975">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="351.533312140573,150.733334524896"
+              Start="0,0"
+              End="351.533312140573,143.233334524896">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.4061661096468" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,47.4061661096468"
+                    Point2="0,51.4061661096468"
+                    Point3="4,51.4061661096468" />
+                  <mssgle:LineSegment
+                    End="347.533312140573,51.4061661096468" />
+                  <mssgle:CubicBezierSegment
+                    Point1="347.533312140573,51.4061661096468"
+                    Point2="351.533312140573,51.4061661096468"
+                    Point3="351.533312140573,55.4061661096468" />
+                  <mssgle:LineSegment
+                    End="351.533312140573,143.233334524896" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="248.8,41.6"
+          Id="Package\Sequence Container\Execute SQL Task - Modified Requesttypes 1"
+          TopLeft="802.766624976531,350.600003574689" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 5]"
+          TopLeft="924.73329147763,285.400002624194">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65.2000009504953"
+              Start="0,0"
+              End="0,57.7000009504953">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.7000009504953" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,20.8500004752476,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Foreach Loop ContainerNewrequesttypes 1\Execute SQL Task"
+          TopLeft="119.833309657045,47.8666716946495" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="396,140.8"
+          Size="396,184"
+          Id="Package\Sequence Container\Foreach Loop ContainerNewrequesttypes 1"
+          TopLeft="691.933296047318,463.26667113675" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 6]"
+          TopLeft="927.166624976531,392.200003574689">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-37.2333289292127,71.0666675620611"
+              Start="0,0"
+              End="-37.2333289292127,63.5666675620611">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5333337810306" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5333337810306"
+                    Point2="0,35.5333337810306"
+                    Point3="-4,35.5333337810306" />
+                  <mssgle:LineSegment
+                    End="-33.2333289292127,35.5333337810306" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-33.2333289292127,35.5333337810306"
+                    Point2="-37.2333289292127,35.5333337810306"
+                    Point3="-37.2333289292127,39.5333337810306" />
+                  <mssgle:LineSegment
+                    End="-37.2333289292127,63.5666675620611" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="1107.2,787.2"
+          Size="1107.2,830.4"
+          Id="Package\Sequence Container"
+          TopLeft="246.666656865014,92.7333340703118" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence Container\dft_InitialLoadRequestTypes">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source"
+          TopLeft="290.166655176216,101.400000805855" />
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination"
+          TopLeft="263.333322869407,316.333335847325" />
+        <EdgeLayout
+          Id="Package\Sequence Container\dft_InitialLoadRequestTypes.Paths[OLE DB Source Output]"
+          TopLeft="366.166655176216,143.000000805855">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-21.2333323068091,173.33333504147"
+              Start="0,0"
+              End="-21.2333323068091,165.83333504147">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,82.666667520735" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,82.666667520735"
+                    Point2="0,86.666667520735"
+                    Point3="-4,86.666667520735" />
+                  <mssgle:LineSegment
+                    End="-17.2333323068091,86.666667520735" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-17.2333323068091,86.666667520735"
+                    Point2="-21.2333323068091,86.666667520735"
+                    Point3="-21.2333323068091,90.666667520735" />
+                  <mssgle:LineSegment
+                    End="-21.2333323068091,165.83333504147" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
