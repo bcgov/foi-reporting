@@ -1,0 +1,144 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/25/2022 12:42:23 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-1OFQE5A2"
+  DTS:CreatorName="LAPTOP-1OFQE5A2\qi__h"
+  DTS:DTSID="{A40F012D-7354-4F0F-B456-7B7DC647A208}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="4105"
+  DTS:ObjectName="_StopRunCycle"
+  DTS:PackageType="5"
+  DTS:VersionBuild="55"
+  DTS:VersionGUID="{59A43B2D-7E7E-4C03-AB64-99E812DAA9FF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.foi_edw.postgres]"
+      DTS:CreationName="ODBC"
+      DTS:DTSID="{831116C4-6F82-46CA-823A-AA5C4F6CA380}"
+      DTS:ObjectName="localhost.foi_edw.postgres">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="server=localhost;uid=postgres;Dsn=PostgreSQL35W;database=foi_edw;port=5432;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;">
+          <DTS:Password
+            DTS:Name="pwd"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMU8U65KVnkGIvNXZaIvdZwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAADYXeEHpzm7LdBOYUU6+2QpZ99S6MvdSkSzT9Q0D9i9wAAAAAOgAAAAAIAACAAAABbsmm8W+GWk+AXB81qKS2TSzFpINqS0EJCj85njawacyAAAACDXhzOdXXJEXIUEHM8/JXzJvBE6Jk8gKgwtBS4PY7T7kAAAADwinXgmLphSDmYzxoJa2Ga0BcnZhsjkn/hUoSPQsUXkkUqKBeImWkYgThxz4x2BcA+0/W7Lx3KbT9HcSYuYIa+</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="11"
+      DTS:DTSID="{4583CC0A-07E0-40C7-89C4-71990F7D470E}"
+      DTS:ObjectName="isComplete">
+      <DTS:Property
+        DTS:DataType="11"
+        DTS:Name="ParameterValue">-1</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{2BE10A05-16D3-408B-A0D3-BEAFE7F906DD}"
+      DTS:ObjectName="packageName">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">DefaultPackage</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{7784072A-BD4E-4B24-88E8-BB0E47AC61C5}"
+      DTS:ObjectName="runCycleID">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">15</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3EB00AA5-4772-43D3-97C1-AF543DDE051B}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="(DT_WSTR, 50) (DT_DBTIMESTAMP) GETDATE()"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="completeDateTime">
+      <DTS:VariableValue
+        DTS:DataType="8">2022-03-03 15:40:49.750000000</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4B500DA0-66EA-4533-B373-354CDFCC30CD}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::isComplete]?&quot;True&quot;:&quot;False&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="isComplete">
+      <DTS:VariableValue
+        DTS:DataType="8">True</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AC03C9EB-7063-4626-B044-A3BE200CFA7D}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;update public.\&quot;dimRunCycle\&quot; &#xA;set &#xA;runcycleendat = '&quot;+ @[User::completeDateTime] +&quot;', &#xA;description = 'package: &quot;+@[$Package::packageName]+&quot; complete', &#xA;success = &quot;+ @[User::isComplete] +&quot; &#xA;where runcycleid = &quot;+(DT_WSTR, 4) @[$Package::runCycleID]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="updateRunCycle">
+      <DTS:VariableValue
+        DTS:DataType="8">update public."dimRunCycle" 
+set 
+runcycleendat = '2022-03-03 15:40:49.750000000', 
+description = 'package: DefaultPackage complete', 
+success = True 
+where runcycleid = 15</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Stop Run Cycle"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Stop run cycle"
+      DTS:DTSID="{37440CFC-9D2F-473D-A681-3944096CEBF3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Stop Run Cycle"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{831116C4-6F82-46CA-823A-AA5C4F6CA380}"
+          SQLTask:SqlStmtSourceType="Variable"
+          SQLTask:SqlStatementSource="User::updateRunCycle" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Stop Run Cycle"
+          TopLeft="393.333317703672,164.66666797532" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

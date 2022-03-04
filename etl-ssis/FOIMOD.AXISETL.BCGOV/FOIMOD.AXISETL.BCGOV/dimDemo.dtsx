@@ -11,8 +11,8 @@
   DTS:LocaleID="4105"
   DTS:ObjectName="dimDemo"
   DTS:PackageType="5"
-  DTS:VersionBuild="40"
-  DTS:VersionGUID="{C4F2097F-C6E4-4633-914F-7001685D94DD}">
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{6ECECC26-6266-4C06-9FB0-6FAEECB215BD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -30,7 +30,7 @@
       DTS:DTSID="{A571B95D-0B36-44CE-AC9F-D8407C682A3F}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
-      DTS:ObjectName="lastRunCycleDatetime">
+      DTS:ObjectName="lastRunCycleTime">
       <DTS:VariableValue
         DTS:DataType="7">3/3/2022 11:57:12 AM</DTS:VariableValue>
     </DTS:Variable>
@@ -50,7 +50,7 @@
       DTS:Expression="&quot;select '1970-01-01' as runcyclestartat &#xA;where not exists (&#xA;&#x9;select runcycleid from public.\&quot;dimRunCycle\&quot; &#xA;&#x9;where packageid = '&quot;+@[System::PackageID]+&quot;' and success = 'true')&#xA;union&#xA;(select runcyclestartat from public.\&quot;dimRunCycle\&quot; &#xA;where packageid = '&quot;+@[System::PackageID]+&quot;' and success = 'true' &#xA;order by runcycleid desc &#xA;limit 1)&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="SQL_getLastRunDatetime">
+      DTS:ObjectName="SQL_getLastRunCycleTime">
       <DTS:VariableValue
         DTS:DataType="8">select '1970-01-01' as runcyclestartat 
 where not exists (
@@ -74,7 +74,7 @@ limit 1)</DTS:VariableValue>
         DTS:DataType="8">insert into public."dimRunCycle" 
 (runcyclestartat, packageid, packagename, description) 
 values 
-('2022-03-03 23:56:25.871000000', '{B7FB8C6D-F59D-4B11-8DB5-E2EA294150DD}', 'dimDemo', 'execute package: dimDemo') 
+('2022-03-04 00:16:58.269000000', '{B7FB8C6D-F59D-4B11-8DB5-E2EA294150DD}', 'dimDemo', 'execute package: dimDemo') 
 RETURNING runcycleid</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
@@ -88,7 +88,7 @@ RETURNING runcycleid</DTS:VariableValue>
       <DTS:VariableValue
         DTS:DataType="8">update public."dimRunCycle" 
 set 
-runcycleendat = '2022-03-03 23:56:25.871000000', 
+runcycleendat = '2022-03-04 00:16:58.269000000', 
 description = 'package: dimDemo complete', 
 success = True 
 where runcycleid = 0</DTS:VariableValue>
@@ -106,6 +106,21 @@ where runcycleid = 0</DTS:VariableValue>
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
+          DTS:refId="Package\Sequence Container\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{982043C5-C6DE-4D0B-B82D-D20E0D426806}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Sequence Container\Get Last Run Time"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -120,11 +135,11 @@ where runcycleid = 0</DTS:VariableValue>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{FADDF2F6-F35E-47CE-8CA5-95DBCB04A172}"
               SQLTask:SqlStmtSourceType="Variable"
-              SQLTask:SqlStatementSource="User::SQL_getLastRunDatetime"
+              SQLTask:SqlStatementSource="User::SQL_getLastRunCycleTime"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="1"
-                SQLTask:DtsVariableName="User::lastRunCycleDatetime" />
+                SQLTask:DtsVariableName="User::lastRunCycleTime" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -174,10 +189,18 @@ where runcycleid = 0</DTS:VariableValue>
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{ACB4932E-DB04-4DAE-A93A-E3F156A790A1}"
+          DTS:DTSID="{D10F0C19-25EA-4FB4-9168-28B21034F8AE}"
           DTS:From="Package\Sequence Container\Get Last Run Time"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence Container\Data Flow Task" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{BE07408C-648C-4D3E-8D31-91666A2A0111}"
+          DTS:From="Package\Sequence Container\Data Flow Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
           DTS:To="Package\Sequence Container\Stop Run Cycle" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
@@ -201,7 +224,7 @@ where runcycleid = 0</DTS:VariableValue>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="164.8,41.6"
           Id="Package\Sequence Container\Start Run Cycle"
@@ -235,21 +258,47 @@ where runcycleid = 0</DTS:VariableValue>
         <NodeLayout
           Size="164.8,41.6"
           Id="Package\Sequence Container\Stop Run Cycle"
-          TopLeft="96.699980231127,342.333337128427" />
+          TopLeft="95.0333136306877,458.466671384706" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Sequence Container\Data Flow Task"
+          TopLeft="102.533313332664,319.066669876311" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
-          TopLeft="180.599979933104,233.400002128283">
+          TopLeft="179.916646483872,233.400002128283">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,108.933335000144"
+              EndConnector="0,85.6666677480276"
               Start="0,0"
-              End="0,101.433335000144">
+              End="0,78.1666677480276">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,101.433335000144" />
+                    End="0,78.1666677480276" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="177.583313481676,360.666669876311">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,97.8000015083948"
+              Start="0,0"
+              End="0,90.3000015083948">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,90.3000015083948" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
