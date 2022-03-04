@@ -7,15 +7,93 @@
   DTS:CreatorName="DESKTOP-U67UC02\abina"
   DTS:DTSID="{C0588A64-C2E7-4AD6-9290-D3B992DE448D}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="50"
-  DTS:VersionGUID="{4AA681DE-BCFD-4EC2-975A-D7DFDF43B5AD}">
+  DTS:VersionBuild="52"
+  DTS:VersionGUID="{6A3CDA21-C61A-48A0-AD3C-EB5420E546F6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{65357C07-7A0A-4978-97EA-7DC4E7200496}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="isComplete">
+      <DTS:VariableValue
+        DTS:DataType="8">True</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6F9F9A9E-54B8-493F-BCFA-6817449BEB6E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="lastRunCycleTime">
+      <DTS:VariableValue
+        DTS:DataType="7">3/4/2022 12:20:25 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F3221253-0DA6-4BED-8AF7-D49194199950}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="runCycleID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{529DC93A-3549-44D5-A99A-8C245B5D73EC}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;select '1970-01-01' as runcyclestartat &#xA;where not exists (&#xA;&#x9;select runcycleid from public.\&quot;dimRunCycle\&quot; &#xA;&#x9;where packageid = '&quot;+@[System::PackageID]+&quot;' and success = 'true')&#xA;union&#xA;(select runcyclestartat from public.\&quot;dimRunCycle\&quot; &#xA;where packageid = '&quot;+@[System::PackageID]+&quot;' and success = 'true' &#xA;order by runcycleid desc &#xA;limit 1)&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sql_getLastRunCycleTime">
+      <DTS:VariableValue
+        DTS:DataType="8">select '1970-01-01' as runcyclestartat 
+where not exists (
+	select runcycleid from public."dimRunCycle" 
+	where packageid = '{C0588A64-C2E7-4AD6-9290-D3B992DE448D}' and success = 'true')
+union
+(select runcyclestartat from public."dimRunCycle" 
+where packageid = '{C0588A64-C2E7-4AD6-9290-D3B992DE448D}' and success = 'true' 
+order by runcycleid desc 
+limit 1)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CAE02213-DC91-4454-8EB4-D25FACE5D063}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;insert into public.\&quot;dimRunCycle\&quot; &#xA;(runcyclestartat, packageid, packagename, description) &#xA;values &#xA;('&quot;+(DT_WSTR, 50) (DT_DBTIMESTAMP) GETDATE()+&quot;', '&quot;+ @[System::PackageID]+&quot;', '&quot;+@[System::PackageName]+&quot;', 'execute package: &quot;+@[System::PackageName]+&quot;') &#xA;RETURNING runcycleid&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sql_startRunCycle">
+      <DTS:VariableValue
+        DTS:DataType="8">insert into public."dimRunCycle" 
+(runcyclestartat, packageid, packagename, description) 
+values 
+('2022-03-04 00:28:49.054000000', '{C0588A64-C2E7-4AD6-9290-D3B992DE448D}', 'Package1', 'execute package: Package1') 
+RETURNING runcycleid</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2FC4E586-E2FA-4CA3-A7CD-F418673CA779}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;update public.\&quot;dimRunCycle\&quot; &#xA;set &#xA;runcycleendat = '&quot;+(DT_WSTR, 50) (DT_DBTIMESTAMP) GETDATE()+&quot;', &#xA;description = 'package: &quot;+@[System::PackageName]+&quot; complete', &#xA;success = &quot;+ @[User::isComplete] +&quot; &#xA;where runcycleid = &quot;+(DT_WSTR, 4) @[User::runCycleID]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sql_stopRunCycle">
+      <DTS:VariableValue
+        DTS:DataType="8">update public."dimRunCycle" 
+set 
+runcycleendat = '2022-03-04 00:28:49.054000000', 
+description = 'package: Package1 complete', 
+success = True 
+where runcycleid = 0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Sequence Container"
@@ -2703,6 +2781,70 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
               DTS:VariableName="User::iduplicatesearchoptions" />
           </DTS:ForEachVariableMappings>
         </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Get Last Run Cycle Time"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{CE97AB2F-73EE-49C8-B1ED-64D5B51E92CD}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get Last Run Cycle Time"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::sql_getLastRunCycleTime"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="1"
+                SQLTask:DtsVariableName="User::lastRunCycleTime" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Start Run Cycle"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{7201DD85-AA10-4297-9C09-129059E25CB3}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Start Run Cycle"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::sql_startRunCycle"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="1"
+                SQLTask:DtsVariableName="User::runCycleID" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Stop Run Cycle"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{46853A81-06C3-4553-B6E0-7347F59D9E48}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Stop Run Cycle"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::sql_stopRunCycle" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
@@ -2725,6 +2867,22 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
           DTS:To="Package\Sequence Container\Execute SQL Task - Modified Offices exists" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 10]"
+          DTS:CreationName=""
+          DTS:DTSID="{4B78DCC1-B442-4693-8C97-525A987526FD}"
+          DTS:From="Package\Sequence Container\Foreach Loop ContainerModifiedrequesttypes"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 10"
+          DTS:To="Package\Sequence Container\Stop Run Cycle" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 11]"
+          DTS:CreationName=""
+          DTS:DTSID="{0A5B116F-FD0C-4CA5-A10A-F54E3ACBEFEC}"
+          DTS:From="Package\Sequence Container\Foreach Loop ContainerNewrequesttypes 1"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 11"
+          DTS:To="Package\Sequence Container\Stop Run Cycle" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
           DTS:CreationName=""
@@ -2769,6 +2927,30 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 6"
           DTS:To="Package\Sequence Container\Foreach Loop ContainerNewrequesttypes 1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 7]"
+          DTS:CreationName=""
+          DTS:DTSID="{D9F3193F-2D94-45DF-BAF1-05F14BDA2FBD}"
+          DTS:From="Package\Sequence Container\Start Run Cycle"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 7"
+          DTS:To="Package\Sequence Container\Get Last Run Cycle Time" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 8]"
+          DTS:CreationName=""
+          DTS:DTSID="{641B17F8-E1DB-4848-98E3-41D76F1E1A20}"
+          DTS:From="Package\Sequence Container\Get Last Run Cycle Time"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 8"
+          DTS:To="Package\Sequence Container\exeSQL_HasRequestTypeinEDW" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 9]"
+          DTS:CreationName=""
+          DTS:DTSID="{F949D3C3-0AAE-42DF-BCE3-8F7C9B90814F}"
+          DTS:From="Package\Sequence Container\dft_InitialLoadRequestTypes"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 9"
+          DTS:To="Package\Sequence Container\Stop Run Cycle" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -2785,16 +2967,54 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="228,41.6"
-          Id="Package\Sequence Container\exeSQL_HasRequestTypeinEDW"
-          TopLeft="401.766645838155,51.4666680992975" />
-        <NodeLayout
           Size="190.4,41.6"
           Id="Package\Sequence Container\dft_InitialLoadRequestTypes"
-          TopLeft="114.266657262378,202.266669297748" />
+          TopLeft="97.5999912579851,370.400003967285" />
+        <NodeLayout
+          Size="277.6,41.6"
+          Id="Package\Sequence Container\Execute SQL Task - Modified Offices exists"
+          TopLeft="460.266638586258,417.800004401207" />
+        <NodeLayout
+          Size="248.8,41.6"
+          Id="Package\Sequence Container\Execute SQL Task - Modified Requesttypes"
+          TopLeft="437.766639480327,513.133338492182" />
+        <NodeLayout
+          Size="248.8,41.6"
+          Id="Package\Sequence Container\Execute SQL Task - Modified Requesttypes 1"
+          TopLeft="786.099958972139,518.733338244226" />
+        <NodeLayout
+          Size="222.4,41.6"
+          Id="Package\Sequence Container\executetask New request types"
+          TopLeft="794.433291974336,411.933337293731" />
+        <NodeLayout
+          Size="228,41.6"
+          Id="Package\Sequence Container\exeSQL_HasRequestTypeinEDW"
+          TopLeft="385.099979833762,219.600002768835" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Foreach Loop ContainerModifiedrequesttypes\Execute SQL Task"
+          TopLeft="119.833309657045,47.8666716946495" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="396,140.8"
+          Size="396,184"
+          Id="Package\Sequence Container\Foreach Loop ContainerModifiedrequesttypes"
+          TopLeft="243.599980529151,628.400006074905" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Foreach Loop ContainerNewrequesttypes 1\Execute SQL Task"
+          TopLeft="119.833309657045,47.8666716946495" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="396,140.8"
+          Size="396,184"
+          Id="Package\Sequence Container\Foreach Loop ContainerNewrequesttypes 1"
+          TopLeft="675.266630042925,631.400005806287" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
-          TopLeft="515.766645838155,93.0666680992975">
+          TopLeft="499.099979833762,261.200002768835">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2824,17 +3044,13 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-161.149994287889,59.6000005992253,16,16"
+              BoundingBox="-161.149994287888,59.6000005992253,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="277.6,41.6"
-          Id="Package\Sequence Container\Execute SQL Task - Modified Offices exists"
-          TopLeft="476.933304590651,249.66666973167" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
-          TopLeft="552.433312504822,93.0666680992975">
+          TopLeft="535.766646500429,261.200002768835">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2868,13 +3084,9 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="248.8,41.6"
-          Id="Package\Sequence Container\Execute SQL Task - Modified Requesttypes"
-          TopLeft="454.43330548472,345.000003822645" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
-          TopLeft="615.733304590651,291.26666973167">
+          TopLeft="599.066638586258,459.400004401207">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2885,17 +3097,17 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.8666670454873" />
+                    End="0,22.8666670454872" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,22.8666670454873"
-                    Point2="0,26.8666670454873"
-                    Point3="-4,26.8666670454873" />
+                    Point1="0,22.8666670454872"
+                    Point2="0,26.8666670454872"
+                    Point3="-4,26.8666670454872" />
                   <mssgle:LineSegment
-                    End="-32.8999991059309,26.8666670454873" />
+                    End="-32.8999991059309,26.8666670454872" />
                   <mssgle:CubicBezierSegment
-                    Point1="-32.8999991059309,26.8666670454873"
-                    Point2="-36.8999991059309,26.8666670454873"
-                    Point3="-36.8999991059309,30.8666670454873" />
+                    Point1="-32.8999991059309,26.8666670454872"
+                    Point2="-36.8999991059309,26.8666670454872"
+                    Point3="-36.8999991059309,30.8666670454872" />
                   <mssgle:LineSegment
                     End="-36.8999991059309,46.2333340909746" />
                 </mssgle:SegmentCollection>
@@ -2904,47 +3116,36 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-26.4499995529654,31.8666670454873,16,16"
+              BoundingBox="-26.4499995529654,31.8666670454872,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\Foreach Loop ContainerModifiedrequesttypes\Execute SQL Task"
-          TopLeft="119.833309657045,47.8666716946495" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="396,140.8"
-          Size="396,184"
-          Id="Package\Sequence Container\Foreach Loop ContainerModifiedrequesttypes"
-          TopLeft="131.099984999499,448.133337975608" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 3]"
-          TopLeft="578.83330548472,386.600003822645">
+          TopLeft="562.166639480327,554.733338492182">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-249.733320485221,61.5333341529634"
+              EndConnector="-120.566658951176,73.6666675827233"
               Start="0,0"
-              End="-249.733320485221,54.0333341529634">
+              End="-120.566658951176,66.1666675827233">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.7666670764817" />
+                    End="0,32.8333337913617" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26.7666670764817"
-                    Point2="0,30.7666670764817"
-                    Point3="-4,30.7666670764817" />
+                    Point1="0,32.8333337913617"
+                    Point2="0,36.8333337913617"
+                    Point3="-4,36.8333337913617" />
                   <mssgle:LineSegment
-                    End="-245.733320485221,30.7666670764817" />
+                    End="-116.566658951176,36.8333337913617" />
                   <mssgle:CubicBezierSegment
-                    Point1="-245.733320485221,30.7666670764817"
-                    Point2="-249.733320485221,30.7666670764817"
-                    Point3="-249.733320485221,34.7666670764817" />
+                    Point1="-116.566658951176,36.8333337913617"
+                    Point2="-120.566658951176,36.8333337913617"
+                    Point3="-120.566658951176,40.8333337913617" />
                   <mssgle:LineSegment
-                    End="-249.733320485221,54.0333341529634" />
+                    End="-120.566658951176,66.1666675827233" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2953,13 +3154,9 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="222.4,41.6"
-          Id="Package\Sequence Container\executetask New request types"
-          TopLeft="811.099957978728,243.800002624194" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 4]"
-          TopLeft="570.766645838155,93.0666680992975">
+          TopLeft="554.099979833762,261.200002768835">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2970,17 +3167,17 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.4061661096468" />
+                    End="0,47.4061661096467" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,47.4061661096468"
-                    Point2="0,51.4061661096468"
-                    Point3="4,51.4061661096468" />
+                    Point1="0,47.4061661096467"
+                    Point2="0,51.4061661096467"
+                    Point3="4,51.4061661096467" />
                   <mssgle:LineSegment
-                    End="347.533312140573,51.4061661096468" />
+                    End="347.533312140573,51.4061661096467" />
                   <mssgle:CubicBezierSegment
-                    Point1="347.533312140573,51.4061661096468"
-                    Point2="351.533312140573,51.4061661096468"
-                    Point3="351.533312140573,55.4061661096468" />
+                    Point1="347.533312140573,51.4061661096467"
+                    Point2="351.533312140573,51.4061661096467"
+                    Point3="351.533312140573,55.4061661096467" />
                   <mssgle:LineSegment
                     End="351.533312140573,143.233334524896" />
                 </mssgle:SegmentCollection>
@@ -2991,24 +3188,20 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="248.8,41.6"
-          Id="Package\Sequence Container\Execute SQL Task - Modified Requesttypes 1"
-          TopLeft="802.766624976531,350.600003574689" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 5]"
-          TopLeft="924.73329147763,285.400002624194">
+          TopLeft="908.066625473238,453.533337293731">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,65.2000009504953"
+              EndConnector="0,65.2000009504952"
               Start="0,0"
-              End="0,57.7000009504953">
+              End="0,57.7000009504952">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,57.7000009504953" />
+                    End="0,57.7000009504952" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3019,26 +3212,15 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\Foreach Loop ContainerNewrequesttypes 1\Execute SQL Task"
-          TopLeft="119.833309657045,47.8666716946495" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="396,140.8"
-          Size="396,184"
-          Id="Package\Sequence Container\Foreach Loop ContainerNewrequesttypes 1"
-          TopLeft="691.933296047318,463.26667113675" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 6]"
-          TopLeft="927.166624976531,392.200003574689">
+          TopLeft="910.499958972139,560.333338244226">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-37.2333289292127,71.0666675620611"
+              EndConnector="-37.2333289292128,71.0666675620611"
               Start="0,0"
-              End="-37.2333289292127,63.5666675620611">
+              End="-37.2333289292128,63.5666675620611">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -3049,13 +3231,159 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
                     Point2="0,35.5333337810306"
                     Point3="-4,35.5333337810306" />
                   <mssgle:LineSegment
-                    End="-33.2333289292127,35.5333337810306" />
+                    End="-33.2333289292128,35.5333337810306" />
                   <mssgle:CubicBezierSegment
-                    Point1="-33.2333289292127,35.5333337810306"
-                    Point2="-37.2333289292127,35.5333337810306"
-                    Point3="-37.2333289292127,39.5333337810306" />
+                    Point1="-33.2333289292128,35.5333337810306"
+                    Point2="-37.2333289292128,35.5333337810306"
+                    Point3="-37.2333289292128,39.5333337810306" />
                   <mssgle:LineSegment
-                    End="-37.2333289292127,63.5666675620611" />
+                    End="-37.2333289292128,63.5666675620611" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\Sequence Container\Start Run Cycle"
+          TopLeft="422.766640076374,33.0666672727797" />
+        <NodeLayout
+          Size="194.4,41.6"
+          Id="Package\Sequence Container\Get Last Run Cycle Time"
+          TopLeft="403.599974171322,125.800001343091" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 7]"
+          TopLeft="499.583307123848,74.6666672727797">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.1333340703117"
+              Start="0,0"
+              End="0,43.6333340703117">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.6333340703117" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 8]"
+          TopLeft="499.949977002542,167.400001343091">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.2000014257431"
+              Start="0,0"
+              End="0,44.7000014257431">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.7000014257431" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Sequence Container\Stop Run Cycle"
+          TopLeft="146.066651103232,915.133339277374" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 9]"
+          TopLeft="189.233321180609,412.000003967285">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,503.133335310088"
+              Start="0,0"
+              End="0,495.633335310088">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,495.633335310088" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 10]"
+          TopLeft="441.599980529151,812.400006074905">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-220.333329425918,102.733333202469"
+              Start="0,0"
+              End="-220.333329425918,95.2333332024685">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.3666666012343" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,47.3666666012343"
+                    Point2="0,51.3666666012343"
+                    Point3="-4,51.3666666012343" />
+                  <mssgle:LineSegment
+                    End="-216.333329425918,51.3666666012343" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-216.333329425918,51.3666666012343"
+                    Point2="-220.333329425918,51.3666666012343"
+                    Point3="-220.333329425918,55.3666666012343" />
+                  <mssgle:LineSegment
+                    End="-220.333329425918,95.2333332024685" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 11]"
+          TopLeft="873.266630042925,815.400005806287">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-616.399978939693,99.7333334710869"
+              Start="0,0"
+              End="-616.399978939693,92.2333334710869">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.3305459671231" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,61.3305459671231"
+                    Point2="0,65.3305459671231"
+                    Point3="-4,65.3305459671231" />
+                  <mssgle:LineSegment
+                    End="-612.399978939693,65.3305459671231" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-612.399978939693,65.3305459671231"
+                    Point2="-616.399978939693,65.3305459671231"
+                    Point3="-616.399978939693,69.3305459671231" />
+                  <mssgle:LineSegment
+                    End="-616.399978939693,92.2333334710869" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3067,10 +3395,10 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1107.2,787.2"
-          Size="1107.2,830.4"
+          PanelSize="1114.4,1016"
+          Size="1114.4,1059.2"
           Id="Package\Sequence Container"
-          TopLeft="246.666656865014,92.7333340703118" />
+          TopLeft="245.833323564795,22.5333335124124" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -3125,14 +3453,6 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\dft_InitialLoadRequestTypes\ODBC Destination">
     <Properties>
       <Property>
@@ -3142,6 +3462,14 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\dft_InitialLoadRequestTypes\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
