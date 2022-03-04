@@ -1,0 +1,279 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/1/2022 8:53:09 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-1OFQE5A2"
+  DTS:CreatorName="LAPTOP-1OFQE5A2\qi__h"
+  DTS:DTSID="{B7FB8C6D-F59D-4B11-8DB5-E2EA294150DD}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="4105"
+  DTS:ObjectName="dimDemo"
+  DTS:PackageType="5"
+  DTS:VersionBuild="40"
+  DTS:VersionGUID="{C4F2097F-C6E4-4633-914F-7001685D94DD}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{235EAF9F-0E02-42AD-A8F1-455B8AC258BE}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="isComplete">
+      <DTS:VariableValue
+        DTS:DataType="8">True</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A571B95D-0B36-44CE-AC9F-D8407C682A3F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="lastRunCycleDatetime">
+      <DTS:VariableValue
+        DTS:DataType="7">3/3/2022 11:57:12 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{34E9333C-5950-44A5-8E7B-1976CFB80897}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="runCycleID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6B56C072-126C-4A76-9CE6-D9E64BA00240}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;select '1970-01-01' as runcyclestartat &#xA;where not exists (&#xA;&#x9;select runcycleid from public.\&quot;dimRunCycle\&quot; &#xA;&#x9;where packageid = '&quot;+@[System::PackageID]+&quot;' and success = 'true')&#xA;union&#xA;(select runcyclestartat from public.\&quot;dimRunCycle\&quot; &#xA;where packageid = '&quot;+@[System::PackageID]+&quot;' and success = 'true' &#xA;order by runcycleid desc &#xA;limit 1)&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SQL_getLastRunDatetime">
+      <DTS:VariableValue
+        DTS:DataType="8">select '1970-01-01' as runcyclestartat 
+where not exists (
+	select runcycleid from public."dimRunCycle" 
+	where packageid = '{B7FB8C6D-F59D-4B11-8DB5-E2EA294150DD}' and success = 'true')
+union
+(select runcyclestartat from public."dimRunCycle" 
+where packageid = '{B7FB8C6D-F59D-4B11-8DB5-E2EA294150DD}' and success = 'true' 
+order by runcycleid desc 
+limit 1)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{11E5E452-0633-4B58-B6AD-1778864DA8FA}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;insert into public.\&quot;dimRunCycle\&quot; &#xA;(runcyclestartat, packageid, packagename, description) &#xA;values &#xA;('&quot;+(DT_WSTR, 50) (DT_DBTIMESTAMP) GETDATE()+&quot;', '&quot;+ @[System::PackageID]+&quot;', '&quot;+@[System::PackageName]+&quot;', 'execute package: &quot;+@[System::PackageName]+&quot;') &#xA;RETURNING runcycleid&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SQL_startRunCycle">
+      <DTS:VariableValue
+        DTS:DataType="8">insert into public."dimRunCycle" 
+(runcyclestartat, packageid, packagename, description) 
+values 
+('2022-03-03 23:56:25.871000000', '{B7FB8C6D-F59D-4B11-8DB5-E2EA294150DD}', 'dimDemo', 'execute package: dimDemo') 
+RETURNING runcycleid</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5E9097AC-13A5-4CC9-AE64-29F87C71C7BB}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;update public.\&quot;dimRunCycle\&quot; &#xA;set &#xA;runcycleendat = '&quot;+(DT_WSTR, 50) (DT_DBTIMESTAMP) GETDATE()+&quot;', &#xA;description = 'package: &quot;+@[System::PackageName]+&quot; complete', &#xA;success = &quot;+ @[User::isComplete] +&quot; &#xA;where runcycleid = &quot;+(DT_WSTR, 4) @[User::runCycleID]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SQL_stopRunCycle">
+      <DTS:VariableValue
+        DTS:DataType="8">update public."dimRunCycle" 
+set 
+runcycleendat = '2022-03-03 23:56:25.871000000', 
+description = 'package: dimDemo complete', 
+success = True 
+where runcycleid = 0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{7BE11409-D63E-4F60-8267-CFFD042D8EC5}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Get Last Run Time"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{6011402B-9407-477F-AC98-E23CCC418C12}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get Last Run Time"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{FADDF2F6-F35E-47CE-8CA5-95DBCB04A172}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::SQL_getLastRunDatetime"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="1"
+                SQLTask:DtsVariableName="User::lastRunCycleDatetime" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Start Run Cycle"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{094A5091-6A1F-4114-B03C-4328DDA9B95E}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Start Run Cycle"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{FADDF2F6-F35E-47CE-8CA5-95DBCB04A172}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::SQL_startRunCycle"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="1"
+                SQLTask:DtsVariableName="User::runCycleID" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Stop Run Cycle"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{4AEAEB8B-5A87-4387-A39E-186615098F05}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Stop Run Cycle"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{FADDF2F6-F35E-47CE-8CA5-95DBCB04A172}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::SQL_stopRunCycle" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{ACB4932E-DB04-4DAE-A93A-E3F156A790A1}"
+          DTS:From="Package\Sequence Container\Get Last Run Time"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence Container\Stop Run Cycle" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{4EF67F90-79C0-4BE7-911E-4A500A2F0A32}"
+          DTS:From="Package\Sequence Container\Start Run Cycle"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Sequence Container\Get Last Run Time" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Start Run Cycle"
+          TopLeft="100.5333129353,47.933334318267" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Get Last Run Time"
+          TopLeft="99.6999796350805,191.800002128283" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="182.51664628519,89.533334318267">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,102.266667810016"
+              Start="0,0"
+              End="0,94.7666678100161">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,94.7666678100161" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Stop Run Cycle"
+          TopLeft="96.699980231127,342.333337128427" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          TopLeft="180.599979933104,233.400002128283">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,108.933335000144"
+              Start="0,0"
+              End="0,101.433335000144">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,101.433335000144" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="394.4,563.2"
+          Size="394.4,606.4"
+          Id="Package\Sequence Container"
+          TopLeft="400.833317405649,91.8666673967574" />
+        <AnnotationLayout
+          Text="8"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="35.2,40"
+          Id="8ced79cd-42a6-4f69-928c-413fcd277063"
+          TopLeft="121.33332873053,989.166674484147" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
