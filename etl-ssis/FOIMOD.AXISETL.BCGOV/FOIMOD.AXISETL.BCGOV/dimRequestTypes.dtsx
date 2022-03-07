@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="dimRequestTypes"
   DTS:PackageType="5"
-  DTS:VersionBuild="67"
-  DTS:VersionGUID="{78F67C9C-5216-46D1-B508-03A95F3DD1B0}">
+  DTS:VersionBuild="69"
+  DTS:VersionGUID="{54527275-2A7A-4D9A-908F-18361910A94D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -28,11 +28,12 @@
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{6F9F9A9E-54B8-493F-BCFA-6817449BEB6E}"
-      DTS:IncludeInDebugDump="6789"
+      DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="lastRunCycleTime">
       <DTS:VariableValue
-        DTS:DataType="7">3/4/2022 12:20:00 AM</DTS:VariableValue>
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -1335,6 +1336,12 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::modifiedrecordscount" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="NewParameterName"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
