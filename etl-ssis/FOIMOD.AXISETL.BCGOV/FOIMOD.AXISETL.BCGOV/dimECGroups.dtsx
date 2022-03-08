@@ -7,15 +7,44 @@
   DTS:CreatorName="DESKTOP-U67UC02\abina"
   DTS:DTSID="{483B5FFD-F553-4C4A-A298-BEA3E7854EE9}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="52"
-  DTS:VersionGUID="{7AB4707B-3C2D-4EC5-BDCA-9E15A8FB2781}">
+  DTS:VersionBuild="54"
+  DTS:VersionGUID="{4782B437-B090-4E1F-86C6-D0D5F17D3ED6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5C870839-A08B-46E0-A4BC-F3890FCECC74}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="isComplete">
+      <DTS:VariableValue
+        DTS:DataType="11">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B6F85FE1-1AD0-41E5-BD89-1A3FC1782878}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="lastRunCycleTime">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{96ADB5C2-F2DA-473E-A236-FDDAB85C3255}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="runCycleID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\seqc_ECGroups"
@@ -1447,7 +1476,79 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
           DTS:To="Package\seqc_ECGroups\Execute SQL Task  - New EC Groups" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{796B0F48-54E2-4E6F-964F-BCBC804F53E6}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StartRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>packageID</ParameterName>
+            <BindedVariableOrParameterName>System::PackageID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Stop Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{69549CED-C8C7-48BF-8197-51C4EBEF4E7C}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Stop Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StopRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>isComplete</ParameterName>
+            <BindedVariableOrParameterName>User::isComplete</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>runCycleID</ParameterName>
+            <BindedVariableOrParameterName>User::runCycleID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{D4E33D64-2435-468B-B962-8D7BDC8A1E8C}"
+      DTS:From="Package\Start Run Cycle"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\seqc_ECGroups" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{BD71D573-AD6A-476F-8E2C-E8F0CDE81429}"
+      DTS:From="Package\seqc_ECGroups"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Stop Run Cycle" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -1465,25 +1566,25 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
           Id="Package\seqc_ECGroups\dft_InitialLoadECGroups"
           TopLeft="89.9666599445881,174.400002562205" />
         <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\seqc_ECGroups\exeSQLtask_newGroupsCount"
-          TopLeft="785.833298928209,229.866669008467" />
-        <NodeLayout
           Size="249.6,41.6"
           Id="Package\seqc_ECGroups\Execute SQL Task  - New EC Groups"
           TopLeft="854.16662954622,322.466670392885" />
-        <NodeLayout
-          Size="248.8,41.6"
-          Id="Package\seqc_ECGroups\Execute SQL Task - Modified Offices"
-          TopLeft="503.333310153751,408.400003760656" />
         <NodeLayout
           Size="277.6,41.6"
           Id="Package\seqc_ECGroups\Execute SQL Task - Modified Groups exists"
           TopLeft="413.333313730028,293.266670186255" />
         <NodeLayout
+          Size="248.8,41.6"
+          Id="Package\seqc_ECGroups\Execute SQL Task - Modified Offices"
+          TopLeft="503.333310153751,408.400003760656" />
+        <NodeLayout
           Size="228,41.6"
           Id="Package\seqc_ECGroups\exeSQL_HasEGroupsEDW"
           TopLeft="319.09998420477,48.666668223275" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\seqc_ECGroups\exeSQLtask_newGroupsCount"
+          TopLeft="785.833298928209,229.866669008467" />
         <NodeLayout
           Size="164.8,41.6"
           Id="Package\seqc_ECGroups\Foreach Loop ContainerModifiedGroups\Execute SQL Task"
@@ -1495,6 +1596,17 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
           Size="396,184"
           Id="Package\seqc_ECGroups\Foreach Loop ContainerModifiedGroups"
           TopLeft="233.333320882585,507.333338554171" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\seqc_ECGroups\Foreach Loop ContainernewGroups\Execute SQL Task"
+          TopLeft="118.166643056606,47.0000050210953" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="396,140.8"
+          Size="396,184"
+          Id="Package\seqc_ECGroups\Foreach Loop ContainernewGroups"
+          TopLeft="792.499966124695,476.133337727653" />
         <EdgeLayout
           Id="Package\seqc_ECGroups.PrecedenceConstraints[Constraint]"
           TopLeft="378.09998420477,90.266668223275">
@@ -1640,6 +1752,40 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\seqc_ECGroups.PrecedenceConstraints[Constraint 4]"
+          TopLeft="978.96662954622,364.066670392885">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.5333365784749,112.066667334768"
+              Start="0,0"
+              End="11.5333365784749,104.566667334768">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.033333667384" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,52.033333667384"
+                    Point2="0,56.033333667384"
+                    Point3="4,56.033333667384" />
+                  <mssgle:LineSegment
+                    End="7.53333657847486,56.033333667384" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.53333657847486,56.033333667384"
+                    Point2="11.5333365784749,56.033333667384"
+                    Point3="11.5333365784749,60.033333667384" />
+                  <mssgle:LineSegment
+                    End="11.5333365784749,104.566667334768" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\seqc_ECGroups.PrecedenceConstraints[Constraint 5]"
           TopLeft="627.73331015375,450.000003760656">
           <EdgeLayout.Curve>
@@ -1711,43 +1857,35 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\seqc_ECGroups\Foreach Loop ContainernewGroups\Execute SQL Task"
-          TopLeft="118.166643056606,47.0000050210953" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="396,140.8"
-          Size="396,184"
-          Id="Package\seqc_ECGroups\Foreach Loop ContainernewGroups"
-          TopLeft="792.499966124695,476.133337727653" />
+          PanelSize="1305.6,751.2"
+          Size="1305.6,794.4"
+          Id="Package\seqc_ECGroups"
+          TopLeft="60,157.809524586844" />
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\Start Run Cycle"
+          TopLeft="640.476165025954,50.7619051653241" />
+        <NodeLayout
+          Size="192.8,41.6"
+          Id="Package\Stop Run Cycle"
+          TopLeft="622.619022878391,1030.0952462817" />
         <EdgeLayout
-          Id="Package\seqc_ECGroups.PrecedenceConstraints[Constraint 4]"
-          TopLeft="978.96662954622,364.066670392885">
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="714.438082512977,92.3619051653241">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="11.5333365784749,112.066667334768"
+              EndConnector="0,65.44761942152"
               Start="0,0"
-              End="11.5333365784749,104.566667334768">
+              End="0,57.94761942152">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.033333667384" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,52.033333667384"
-                    Point2="0,56.033333667384"
-                    Point3="4,56.033333667384" />
-                  <mssgle:LineSegment
-                    End="7.53333657847486,56.033333667384" />
-                  <mssgle:CubicBezierSegment
-                    Point1="7.53333657847486,56.033333667384"
-                    Point2="11.5333365784749,56.033333667384"
-                    Point3="11.5333365784749,60.033333667384" />
-                  <mssgle:LineSegment
-                    End="11.5333365784749,104.566667334768" />
+                    End="0,57.94761942152" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1756,13 +1894,28 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="1305.6,751.2"
-          Size="1305.6,794.4"
-          Id="Package\seqc_ECGroups"
-          TopLeft="60,60" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="715.909511439195,952.209524586844">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,77.8857216948556"
+              Start="0,0"
+              End="0,70.3857216948556">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.3857216948556" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -1817,14 +1970,6 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination">
     <Properties>
       <Property>
@@ -1834,6 +1979,14 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
