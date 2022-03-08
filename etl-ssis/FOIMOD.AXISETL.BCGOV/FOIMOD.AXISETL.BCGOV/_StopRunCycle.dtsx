@@ -59,7 +59,7 @@
       DTS:ObjectName="runCycleID">
       <DTS:Property
         DTS:DataType="3"
-        DTS:Name="ParameterValue">15</DTS:Property>
+        DTS:Name="ParameterValue">1</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
@@ -88,7 +88,7 @@ set
 runcycleendat = '2022-03-07 15:38:25.413000000', 
 description = 'package:  complete', 
 success = False 
-where runcycleid = 15</DTS:VariableValue>
+where runcycleid = 1</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>

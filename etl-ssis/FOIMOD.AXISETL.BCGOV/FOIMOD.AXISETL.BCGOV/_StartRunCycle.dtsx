@@ -59,12 +59,12 @@
       DTS:CreationName=""
       DTS:DTSID="{B624A80C-08FE-4393-9413-445432E03A64}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;select '1970-01-01' as runcyclestartat &#xA;where not exists (&#xA;&#x9;select runcycleid from public.\&quot;dimRunCycle\&quot; &#xA;&#x9;where packageid = '&quot;+@[$Package::packageID]+&quot;' and success = 'true')&#xA;union&#xA;(select runcyclestartat from public.\&quot;dimRunCycle\&quot; &#xA;where packageid = '&quot;+@[$Package::packageID]+&quot;' and success = 'true' &#xA;order by runcycleid desc &#xA;limit 1)&quot;"
+      DTS:Expression="&quot;select '&quot;+(DT_WSTR, 50) (DT_DBTIMESTAMP) GETDATE()+&quot;' as runcyclestartat &#xA;where not exists (&#xA;&#x9;select runcycleid from public.\&quot;dimRunCycle\&quot; &#xA;&#x9;where packageid = '&quot;+@[$Package::packageID]+&quot;' and success = 'true')&#xA;union&#xA;(select runcyclestartat from public.\&quot;dimRunCycle\&quot; &#xA;where packageid = '&quot;+@[$Package::packageID]+&quot;' and success = 'true' &#xA;order by runcycleid desc &#xA;limit 1)&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="getRunCycleInfo">
       <DTS:VariableValue
-        DTS:DataType="8">select '1970-01-01' as runcyclestartat 
+        DTS:DataType="8">select '2022-03-08 12:12:39.708000000' as runcyclestartat 
 where not exists (
 	select runcycleid from public."dimRunCycle" 
 	where packageid = '' and success = 'true')
@@ -78,7 +78,7 @@ limit 1)</DTS:VariableValue>
       DTS:CreationName=""
       DTS:DTSID="{19566F35-11EF-4D51-A99F-04C05C535744}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;insert into public.\&quot;dimRunCycle\&quot; &#xA;(runcyclestartat, packageid, packagename, description) &#xA;values &#xA;('&quot;+(DT_WSTR, 50) (DT_DBTIMESTAMP) GETDATE()+&quot;', '&quot;+@[$Package::packageID]+&quot;', '&quot;+@[$Package::packageName]+&quot;', 'execute package: &quot;+@[$Package::packageName]+&quot;') &#xA;RETURNING runcycleid&quot;"
+      DTS:Expression="&quot;insert into public.\&quot;dimRunCycle\&quot; &#xA;(runcyclestartat, packageid, packagename, description) &#xA;values &#xA;('&quot;+(DT_WSTR, 50) (DT_DBTIMESTAMP) GETDATE()+&quot;', '&quot;+@[$Package::packageID]+&quot;', '&quot;+@[$Package::packageName]+&quot;', 'package: &quot;+@[$Package::packageName]+&quot; starts') &#xA;RETURNING runcycleid&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="injectRunCycle">
