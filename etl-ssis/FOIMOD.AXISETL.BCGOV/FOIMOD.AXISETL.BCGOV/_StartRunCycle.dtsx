@@ -12,8 +12,8 @@
   DTS:LocaleID="4105"
   DTS:ObjectName="_StartRunCycle"
   DTS:PackageType="5"
-  DTS:VersionBuild="91"
-  DTS:VersionGUID="{363E9FE1-71EF-40EF-9CB2-B7330890FFEB}">
+  DTS:VersionBuild="93"
+  DTS:VersionGUID="{D93AB9AF-21DF-4A31-A63F-41F56BE8F600}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -28,7 +28,7 @@
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMU8U65KVnkGIvNXZaIvdZwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADyAzFllBBXunyOtri08fBeiYRD/hvie1zDaEkDtjpVwwAAAAAOgAAAAAIAACAAAAD02uMEN/sspWi4I5CEGzFVTHWch2DXz/Ch3bi4M1f4PSAAAAAA6aZUe9Uxg9NiMTggDqKHWxwhx+tC5wYMuGYugqfcoUAAAABfSVaKxUhAmq7qDh1l9TgcxZltBan5BvmcMj224aYQEtc7DQpheVoWjcqsss6mxjp3WmZJotEabtCz+5bynSod</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMU8U65KVnkGIvNXZaIvdZwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACf6I74tE0UgT7t/FDkODhyLNyReD8OsUQBCFvLv4X4twAAAAAOgAAAAAIAACAAAAAJE+D3GGTRDdDS0bVB+3w47L084bDcFYb/3OpKIlk1ByAAAAAZ/73rijM//pjlCHyNlDGM4hKHXp9LiK2c5DLcl5+kBEAAAABpdQMl2tLo9HJwJJ+pGqPhrshHv+mg3VipVyEszj3GnGp8128TYgqNjpAnaOfk5FU7lKDaZi6QUFOn1tA4rNb8</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -59,12 +59,12 @@
       DTS:CreationName=""
       DTS:DTSID="{B624A80C-08FE-4393-9413-445432E03A64}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;select '1970-01-01' as runcyclestartat &#xA;where not exists (&#xA;&#x9;select runcycleid from public.\&quot;dimRunCycle\&quot; &#xA;&#x9;where packageid = '&quot;+@[$Package::packageID]+&quot;' and success = 'true')&#xA;union&#xA;(select runcyclestartat from public.\&quot;dimRunCycle\&quot; &#xA;where packageid = '&quot;+@[$Package::packageID]+&quot;' and success = 'true' &#xA;order by runcycleid desc &#xA;limit 1)&quot;"
+      DTS:Expression="&quot;select '&quot;+(DT_WSTR, 50) (DT_DBTIMESTAMP) GETDATE()+&quot;' as runcyclestartat &#xA;where not exists (&#xA;&#x9;select runcycleid from public.\&quot;dimRunCycle\&quot; &#xA;&#x9;where packageid = '&quot;+@[$Package::packageID]+&quot;' and success = 'true')&#xA;union&#xA;(select runcyclestartat from public.\&quot;dimRunCycle\&quot; &#xA;where packageid = '&quot;+@[$Package::packageID]+&quot;' and success = 'true' &#xA;order by runcycleid desc &#xA;limit 1)&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="getRunCycleInfo">
       <DTS:VariableValue
-        DTS:DataType="8">select '1970-01-01' as runcyclestartat 
+        DTS:DataType="8">select '2022-03-08 12:12:39.708000000' as runcyclestartat 
 where not exists (
 	select runcycleid from public."dimRunCycle" 
 	where packageid = '' and success = 'true')
@@ -78,7 +78,7 @@ limit 1)</DTS:VariableValue>
       DTS:CreationName=""
       DTS:DTSID="{19566F35-11EF-4D51-A99F-04C05C535744}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;insert into public.\&quot;dimRunCycle\&quot; &#xA;(runcyclestartat, packageid, packagename, description) &#xA;values &#xA;('&quot;+(DT_WSTR, 50) (DT_DBTIMESTAMP) GETDATE()+&quot;', '&quot;+@[$Package::packageID]+&quot;', '&quot;+@[$Package::packageName]+&quot;', 'execute package: &quot;+@[$Package::packageName]+&quot;') &#xA;RETURNING runcycleid&quot;"
+      DTS:Expression="&quot;insert into public.\&quot;dimRunCycle\&quot; &#xA;(runcyclestartat, packageid, packagename, description) &#xA;values &#xA;('&quot;+(DT_WSTR, 50) (DT_DBTIMESTAMP) GETDATE()+&quot;', '&quot;+@[$Package::packageID]+&quot;', '&quot;+@[$Package::packageName]+&quot;', 'package: &quot;+@[$Package::packageName]+&quot; starts') &#xA;RETURNING runcycleid&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="injectRunCycle">
@@ -86,7 +86,7 @@ limit 1)</DTS:VariableValue>
         DTS:DataType="8">insert into public."dimRunCycle" 
 (runcyclestartat, packageid, packagename, description) 
 values 
-('2022-03-07 14:33:27.292000000', '', 'DefaultPackage', 'execute package: DefaultPackage') 
+('2022-03-08 12:12:39.708000000', '', 'DefaultPackage', 'package: DefaultPackage starts') 
 RETURNING runcycleid</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
