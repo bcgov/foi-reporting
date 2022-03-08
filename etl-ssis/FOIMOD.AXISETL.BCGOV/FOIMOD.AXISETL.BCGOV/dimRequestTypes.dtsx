@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="dimRequestTypes"
   DTS:PackageType="5"
-  DTS:VersionBuild="69"
-  DTS:VersionGUID="{54527275-2A7A-4D9A-908F-18361910A94D}">
+  DTS:VersionBuild="74"
+  DTS:VersionGUID="{30F6BB2C-9FD2-45D1-BE34-A881AFA89BBE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -1331,16 +1331,16 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="Select &#xA;&#x9;count(RT.tiRequestTypeID)&#xA;From tblRequestTypes RT LEFT OUTER JOIN tblTerminologyLookup TLL ON RT.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 &#xA;left outer join [dbo].[viwPriorities] P on RT.tiPriority = P.tiPriority and P.tiLocaleID = 1 &#xA;left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault = 'Y' WHERE   RT.sdtModifiedDate &gt;=dateadd(day,datediff(day,1,GETDATE()),0)   AND RT.sdtCreatedDate &lt; dateadd(day,datediff(day,1,GETDATE()),0) "
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;count(RT.tiRequestTypeID)&#xA;From tblRequestTypes RT LEFT OUTER JOIN tblTerminologyLookup TLL ON RT.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 &#xA;left outer join [dbo].[viwPriorities] P on RT.tiPriority = P.tiPriority and P.tiLocaleID = 1 &#xA;left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault = 'Y' WHERE   RT.sdtModifiedDate &gt;=@lastruntime   AND RT.sdtCreatedDate &lt; @lastruntime"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::modifiedrecordscount" />
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="NewParameterName"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::lastRunCycleTime"
                 SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="7"
+                SQLTask:DataType="129"
                 SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
@@ -1360,11 +1360,17 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="Select &#xA;&#x9;cast(RT.tiRequestTypeID as INT) as requesttypeid,&#xA;&#x9;TLL.vcTerminology as requesttypename,&#xA;&#x9;RT.vcTypeCode as requesttypecode,&#xA;&#x9;convert(varchar, RT.sdtCreatedDate, 120)&#x9; as createddate,&#x9;&#xA;&#x9;convert(varchar, RT.sdtModifiedDate, 120)&#x9; as modifieddate,&#xA;&#x9;P.vcName as priority,&#xA;&#x9;RT.cCaseType as casetype,&#xA;&#x9;RT.cActType as acttype,&#xA;&#x9;AT.vcActName as acttypename,&#xA;&#x9;RT.cDelete as cdelete,&#xA;&#x9;ISNULL(RT.siRetentionPolicyID,0) as siretentionpolicyid,&#xA;&#x9;RT.cIsConsultation as cIsconsultation,&#xA;&#x9;RT.cIsLitigation as cIslitigation,&#xA;&#x9;CAST(ISNULL(RT.tiMultiTrackType,0) as INT) as timultitracktype,&#xA;&#x9;CAST(ISNULL(RT.tiProcessingDays,0) as INT) as tiprocessingdays,&#xA;&#x9;CAST(RT.tiSimpleProcessingDays as INT) as tisimpleprocessingdays,&#xA;&#x9;CAST(RT.tiComplexProcessingDays as INT) as ticomplexprocessingdays,&#xA;&#x9;CAST(RT.tiExpediteProcessingDays as INT) as tiexpediteprocessingdays,&#xA;&#x9;RT.cSimpleProcessingDays as csimpleprocessingdays,&#xA;&#x9;RT.cComplexProcessingDays as  ccomplexprocessingdays,&#xA;&#x9;RT.cExpediteProcessingDays as  cexpediteprocessingdays,&#xA;&#x9;RT.cShowinHomePage as cshowinhomepage,&#xA;&#x9;ISNULL(RT.cActSubType,'') as cactsubtype,&#xA;&#x9;CAST(ISNULL(RT.tiApplicableSection,0) as INT) as timultitracktype,&#xA;&#x9;RT.cActive as cactive,&#xA;&#x9;RT.cConsultationType as cconsultationtype,&#xA;&#x9;RT.cEnableApprovalPackage as cenableapprovalpackage,&#xA;&#x9;RT.iDuplicateSearchOptions as iduplicatesearchoptions&#xA;From tblRequestTypes RT LEFT OUTER JOIN tblTerminologyLookup TLL ON RT.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 &#xA;left outer join [dbo].[viwPriorities] P on RT.tiPriority = P.tiPriority and P.tiLocaleID = 1 &#xA;left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault = 'Y' WHERE   RT.sdtModifiedDate &gt;=dateadd(day,datediff(day,1,GETDATE()),0)   AND RT.sdtCreatedDate &lt; dateadd(day,datediff(day,1,GETDATE()),0) "
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;cast(RT.tiRequestTypeID as INT) as requesttypeid,&#xA;&#x9;TLL.vcTerminology as requesttypename,&#xA;&#x9;RT.vcTypeCode as requesttypecode,&#xA;&#x9;convert(varchar, RT.sdtCreatedDate, 120)&#x9; as createddate,&#x9;&#xA;&#x9;convert(varchar, RT.sdtModifiedDate, 120)&#x9; as modifieddate,&#xA;&#x9;P.vcName as priority,&#xA;&#x9;RT.cCaseType as casetype,&#xA;&#x9;RT.cActType as acttype,&#xA;&#x9;AT.vcActName as acttypename,&#xA;&#x9;RT.cDelete as cdelete,&#xA;&#x9;ISNULL(RT.siRetentionPolicyID,0) as siretentionpolicyid,&#xA;&#x9;RT.cIsConsultation as cIsconsultation,&#xA;&#x9;RT.cIsLitigation as cIslitigation,&#xA;&#x9;CAST(ISNULL(RT.tiMultiTrackType,0) as INT) as timultitracktype,&#xA;&#x9;CAST(ISNULL(RT.tiProcessingDays,0) as INT) as tiprocessingdays,&#xA;&#x9;CAST(RT.tiSimpleProcessingDays as INT) as tisimpleprocessingdays,&#xA;&#x9;CAST(RT.tiComplexProcessingDays as INT) as ticomplexprocessingdays,&#xA;&#x9;CAST(RT.tiExpediteProcessingDays as INT) as tiexpediteprocessingdays,&#xA;&#x9;RT.cSimpleProcessingDays as csimpleprocessingdays,&#xA;&#x9;RT.cComplexProcessingDays as  ccomplexprocessingdays,&#xA;&#x9;RT.cExpediteProcessingDays as  cexpediteprocessingdays,&#xA;&#x9;RT.cShowinHomePage as cshowinhomepage,&#xA;&#x9;ISNULL(RT.cActSubType,'') as cactsubtype,&#xA;&#x9;CAST(ISNULL(RT.tiApplicableSection,0) as INT) as timultitracktype,&#xA;&#x9;RT.cActive as cactive,&#xA;&#x9;RT.cConsultationType as cconsultationtype,&#xA;&#x9;RT.cEnableApprovalPackage as cenableapprovalpackage,&#xA;&#x9;RT.iDuplicateSearchOptions as iduplicatesearchoptions&#xA;From tblRequestTypes RT LEFT OUTER JOIN tblTerminologyLookup TLL ON RT.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 &#xA;left outer join [dbo].[viwPriorities] P on RT.tiPriority = P.tiPriority and P.tiLocaleID = 1 &#xA;left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault = 'Y' WHERE   RT.sdtModifiedDate &gt;= @lastruntime  AND RT.sdtCreatedDate &lt; @lastruntime"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::modifiedrows" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -1383,11 +1389,17 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="Select &#xA; cast(RT.tiRequestTypeID as INT) as requesttypeid,&#xA; TLL.vcTerminology as requesttypename,&#xA; RT.vcTypeCode as requesttypecode,&#xA; convert(varchar, RT.sdtCreatedDate, 120)  as createddate, &#xA; convert(varchar, RT.sdtModifiedDate, 120)  as modifieddate,&#xA; P.vcName as priority,&#xA; RT.cCaseType as casetype,&#xA; RT.cActType as acttype,&#xA; AT.vcActName as acttypename,&#xA; RT.cDelete as cdelete,&#xA; ISNULL(RT.siRetentionPolicyID,0) as siretentionpolicyid,&#xA; RT.cIsConsultation as cIsconsultation,&#xA; RT.cIsLitigation as cIslitigation,&#xA; CAST(ISNULL(RT.tiMultiTrackType,0) as INT) as timultitracktype,&#xA; CAST(ISNULL(RT.tiProcessingDays,0) as INT) as tiprocessingdays,&#xA; CAST(RT.tiSimpleProcessingDays as INT) as tisimpleprocessingdays,&#xA; CAST(RT.tiComplexProcessingDays as INT) as ticomplexprocessingdays,&#xA; CAST(RT.tiExpediteProcessingDays as INT) as tiexpediteprocessingdays,&#xA; RT.cSimpleProcessingDays as csimpleprocessingdays,&#xA; RT.cComplexProcessingDays as  ccomplexprocessingdays,&#xA; RT.cExpediteProcessingDays as  cexpediteprocessingdays,&#xA; RT.cShowinHomePage as cshowinhomepage,&#xA; ISNULL(RT.cActSubType,'') as cactsubtype,&#xA; CAST(ISNULL(RT.tiApplicableSection,0) as INT) as timultitracktype,&#xA; RT.cActive as cactive,&#xA; RT.cConsultationType as cconsultationtype,&#xA; RT.cEnableApprovalPackage as cenableapprovalpackage,&#xA; RT.iDuplicateSearchOptions as iduplicatesearchoptions&#xA;From tblRequestTypes RT LEFT OUTER JOIN tblTerminologyLookup TLL ON RT.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 &#xA;left outer join [dbo].[viwPriorities] P on RT.tiPriority = P.tiPriority and P.tiLocaleID = 1 &#xA;left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault = 'Y' WHERE    RT.sdtCreatedDate &gt;= dateadd(day,datediff(day,1,GETDATE()),0) "
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA; cast(RT.tiRequestTypeID as INT) as requesttypeid,&#xA; TLL.vcTerminology as requesttypename,&#xA; RT.vcTypeCode as requesttypecode,&#xA; convert(varchar, RT.sdtCreatedDate, 120)  as createddate, &#xA; convert(varchar, RT.sdtModifiedDate, 120)  as modifieddate,&#xA; P.vcName as priority,&#xA; RT.cCaseType as casetype,&#xA; RT.cActType as acttype,&#xA; AT.vcActName as acttypename,&#xA; RT.cDelete as cdelete,&#xA; ISNULL(RT.siRetentionPolicyID,0) as siretentionpolicyid,&#xA; RT.cIsConsultation as cIsconsultation,&#xA; RT.cIsLitigation as cIslitigation,&#xA; CAST(ISNULL(RT.tiMultiTrackType,0) as INT) as timultitracktype,&#xA; CAST(ISNULL(RT.tiProcessingDays,0) as INT) as tiprocessingdays,&#xA; CAST(RT.tiSimpleProcessingDays as INT) as tisimpleprocessingdays,&#xA; CAST(RT.tiComplexProcessingDays as INT) as ticomplexprocessingdays,&#xA; CAST(RT.tiExpediteProcessingDays as INT) as tiexpediteprocessingdays,&#xA; RT.cSimpleProcessingDays as csimpleprocessingdays,&#xA; RT.cComplexProcessingDays as  ccomplexprocessingdays,&#xA; RT.cExpediteProcessingDays as  cexpediteprocessingdays,&#xA; RT.cShowinHomePage as cshowinhomepage,&#xA; ISNULL(RT.cActSubType,'') as cactsubtype,&#xA; CAST(ISNULL(RT.tiApplicableSection,0) as INT) as timultitracktype,&#xA; RT.cActive as cactive,&#xA; RT.cConsultationType as cconsultationtype,&#xA; RT.cEnableApprovalPackage as cenableapprovalpackage,&#xA; RT.iDuplicateSearchOptions as iduplicatesearchoptions&#xA;From tblRequestTypes RT LEFT OUTER JOIN tblTerminologyLookup TLL ON RT.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 &#xA;left outer join [dbo].[viwPriorities] P on RT.tiPriority = P.tiPriority and P.tiLocaleID = 1 &#xA;left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault = 'Y' WHERE    RT.sdtCreatedDate &gt;= @lastruntime"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::newrequestrecords" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -1406,11 +1418,17 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="Select &#xA;&#x9;count(RT.tiRequestTypeID)&#xA;From tblRequestTypes RT LEFT OUTER JOIN tblTerminologyLookup TLL ON RT.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 &#xA;left outer join [dbo].[viwPriorities] P on RT.tiPriority = P.tiPriority and P.tiLocaleID = 1 &#xA;left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault = 'Y' &#xA;WHERE   RT.sdtCreatedDate &gt; dateadd(day,datediff(day,1,GETDATE()),0) "
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;count(RT.tiRequestTypeID)&#xA;From tblRequestTypes RT LEFT OUTER JOIN tblTerminologyLookup TLL ON RT.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 &#xA;left outer join [dbo].[viwPriorities] P on RT.tiPriority = P.tiPriority and P.tiLocaleID = 1 &#xA;left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault = 'Y' &#xA;WHERE   RT.sdtCreatedDate &gt; @lastruntime"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::newrequestrecordscount" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -3174,8 +3192,8 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1089.6,690.4"
-          Size="1089.6,733.6"
+          PanelSize="1089.6,702.4"
+          Size="1089.6,745.6"
           Id="Package\Sequence Container"
           TopLeft="243.333323664136,194.333322974312" />
         <NodeLayout
@@ -3210,18 +3228,18 @@ left outer join [dbo].[tblActTypes] AT on RT.cActType = AT.cActType and cDefault
           TopLeft="693.333305782743,1005.00000663281" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="786.93331472344,927.933322974312">
+          TopLeft="786.93331472344,939.933322974312">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,77.0666836584933"
+              EndConnector="0,65.0666836584933"
               Start="0,0"
-              End="0,69.5666836584933">
+              End="0,57.5666836584933">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,69.5666836584933" />
+                    End="0,57.5666836584933" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
