@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="2/25/2022 12:42:23 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="4105"
   DTS:ObjectName="_StopRunCycle"
   DTS:PackageType="5"
-  DTS:VersionBuild="62"
-  DTS:VersionGUID="{926E329A-0F81-472C-88E3-4351CAA2C6B8}">
+  DTS:VersionBuild="63"
+  DTS:VersionGUID="{56FF67A2-E7ED-41D2-82E1-F98E1895BEF8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,11 +23,11 @@
       DTS:ObjectName="localhost.foi_edw.postgres">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="server=localhost;uid=postgres;Dsn=PostgreSQL35W;database=foi_edw;port=5432;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;">
+          DTS:ConnectionString="server=localhost;uid=postgres;Dsn=localhost.foi_edw.postgres;database=foi_edw;port=25432;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;">
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMU8U65KVnkGIvNXZaIvdZwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAzQ4F/G9tULbmvZK4CAD2PJZjjo/dS53rOCp3hlAEu7wAAAAAOgAAAAAIAACAAAABVJ2NAx6adIODtERN/ds01V+dFvqaJMxNoqwqQMPLjQSAAAAB8Bd1llFfNhx4cs9nta/ow6PceGtlrRv/PrnAtVL/sekAAAACrbQejIb8Q0CHAmAcTw3duBGYe+do8T3B77emjbGhb0vNY/yAIKKegL4LrLqWqDMZX1NXBqLKVI/GI2EKzqgLw</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAANGxHiwy/GUGnzQ44yXJjswAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAC8mU2VDjFwEz+9bghJAO8xPTOVhWBuIjcmOUHggHMfSAAAAAAOgAAAAAIAACAAAACYQF3noIlcFTuyXTrbUweLhV0iozWsioobsp/2M0dSeDAAAAD/XpkpcTi66p70DJceXBrSMb3FP2gRFLaQLZmHkzDHKD4F2tyqUvwzrITd1ZDa4Y9AAAAAQZCLqpvlShCU4oEl7h1duG00EzZ4pmBbrdJmmAVGP809M0UJzCt6Ad/JR8KMjfCvS+kczIbnTw5k48vHo3laBg</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -85,7 +85,7 @@
       <DTS:VariableValue
         DTS:DataType="8">update public."dimRunCycle" 
 set 
-runcycleendat = '2022-03-07 11:57:00.248000000', 
+runcycleendat = '2022-03-07 15:38:25.413000000', 
 description = 'package:  complete', 
 success = False 
 where runcycleid = 15</DTS:VariableValue>
