@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="2/25/2022 12:42:23 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="4105"
   DTS:ObjectName="_StopRunCycle"
   DTS:PackageType="5"
-  DTS:VersionBuild="62"
-  DTS:VersionGUID="{926E329A-0F81-472C-88E3-4351CAA2C6B8}">
+  DTS:VersionBuild="63"
+  DTS:VersionGUID="{64AA9ACA-0346-448F-8431-C87ABA954DD4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMU8U65KVnkGIvNXZaIvdZwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAzQ4F/G9tULbmvZK4CAD2PJZjjo/dS53rOCp3hlAEu7wAAAAAOgAAAAAIAACAAAABVJ2NAx6adIODtERN/ds01V+dFvqaJMxNoqwqQMPLjQSAAAAB8Bd1llFfNhx4cs9nta/ow6PceGtlrRv/PrnAtVL/sekAAAACrbQejIb8Q0CHAmAcTw3duBGYe+do8T3B77emjbGhb0vNY/yAIKKegL4LrLqWqDMZX1NXBqLKVI/GI2EKzqgLw</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMU8U65KVnkGIvNXZaIvdZwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABPOd9hO7BWpk9MoYzPeOOdDx6ZYrPLsRok9QmqjsyQfAAAAAAOgAAAAAIAACAAAADestAgcpj66fGsrcZn+iNQ7KgCZ0e34UGrAVoJTfOR5CAAAAAPNRitAFmr4F8UGDmoXPtmV08H9IUnd/KpiUpW+MPDWkAAAAB/9w7b/tlH0ozDZXqFcihB43Eh/zhli1vuo1jOz4OH7UNZ1CnnOIef57rXfbhs/AUypUcmWBGcSyZuO9eG3r9l</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -59,7 +59,7 @@
       DTS:ObjectName="runCycleID">
       <DTS:Property
         DTS:DataType="3"
-        DTS:Name="ParameterValue">15</DTS:Property>
+        DTS:Name="ParameterValue">1</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
@@ -85,10 +85,10 @@
       <DTS:VariableValue
         DTS:DataType="8">update public."dimRunCycle" 
 set 
-runcycleendat = '2022-03-07 11:57:00.248000000', 
+runcycleendat = '2022-03-08 12:35:12.310000000', 
 description = 'package:  complete', 
 success = False 
-where runcycleid = 15</DTS:VariableValue>
+where runcycleid = 1</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
