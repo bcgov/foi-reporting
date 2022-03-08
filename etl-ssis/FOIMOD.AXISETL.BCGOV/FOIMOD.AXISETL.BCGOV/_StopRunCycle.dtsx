@@ -11,8 +11,8 @@
   DTS:LocaleID="4105"
   DTS:ObjectName="_StopRunCycle"
   DTS:PackageType="5"
-  DTS:VersionBuild="55"
-  DTS:VersionGUID="{59A43B2D-7E7E-4C03-AB64-99E812DAA9FF}">
+  DTS:VersionBuild="62"
+  DTS:VersionGUID="{E9820DDD-E1C1-4640-A961-625841A7B65A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMU8U65KVnkGIvNXZaIvdZwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAADYXeEHpzm7LdBOYUU6+2QpZ99S6MvdSkSzT9Q0D9i9wAAAAAOgAAAAAIAACAAAABbsmm8W+GWk+AXB81qKS2TSzFpINqS0EJCj85njawacyAAAACDXhzOdXXJEXIUEHM8/JXzJvBE6Jk8gKgwtBS4PY7T7kAAAADwinXgmLphSDmYzxoJa2Ga0BcnZhsjkn/hUoSPQsUXkkUqKBeImWkYgThxz4x2BcA+0/W7Lx3KbT9HcSYuYIa+</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMU8U65KVnkGIvNXZaIvdZwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACsc3bVEo/qC1f7BCxl9pCNl1+hQlhsZ1Ka5gMMaZ9eIAAAAAAOgAAAAAIAACAAAADkyiUEwZ1xFgsaBqHRcu3XTFlDqhG6MdT7l9w3VJvZvCAAAADWSuyG/ow9RxYTOwamL9kWaOWf1e5fu3cUV79+5z+kckAAAABsbtCsYu0yEO4V/7dMZs/zaceBHMMkBVP574P/qqrDuMt8N2RNVvoySLc/IzBjHhoMUMMyzwxxufXn/XfAmJEu</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -40,16 +40,17 @@
       DTS:ObjectName="isComplete">
       <DTS:Property
         DTS:DataType="11"
-        DTS:Name="ParameterValue">-1</DTS:Property>
+        DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{2BE10A05-16D3-408B-A0D3-BEAFE7F906DD}"
+      DTS:DTSID="{C6CDCA70-97D1-4089-A56E-2C671A8F134D}"
       DTS:ObjectName="packageName">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">DefaultPackage</DTS:Property>
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -64,17 +65,6 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{3EB00AA5-4772-43D3-97C1-AF543DDE051B}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="(DT_WSTR, 50) (DT_DBTIMESTAMP) GETDATE()"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="completeDateTime">
-      <DTS:VariableValue
-        DTS:DataType="8">2022-03-03 15:40:49.750000000</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
       DTS:DTSID="{4B500DA0-66EA-4533-B373-354CDFCC30CD}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[$Package::isComplete]?&quot;True&quot;:&quot;False&quot;"
@@ -82,22 +72,22 @@
       DTS:Namespace="User"
       DTS:ObjectName="isComplete">
       <DTS:VariableValue
-        DTS:DataType="8">True</DTS:VariableValue>
+        DTS:DataType="8">False</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{AC03C9EB-7063-4626-B044-A3BE200CFA7D}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;update public.\&quot;dimRunCycle\&quot; &#xA;set &#xA;runcycleendat = '&quot;+ @[User::completeDateTime] +&quot;', &#xA;description = 'package: &quot;+@[$Package::packageName]+&quot; complete', &#xA;success = &quot;+ @[User::isComplete] +&quot; &#xA;where runcycleid = &quot;+(DT_WSTR, 4) @[$Package::runCycleID]"
+      DTS:Expression="&quot;update public.\&quot;dimRunCycle\&quot; &#xA;set &#xA;runcycleendat = '&quot;+(DT_WSTR, 50) (DT_DBTIMESTAMP) GETDATE()+&quot;', &#xA;description = 'package: &quot;+@[$Package::packageName]+&quot; complete', &#xA;success = &quot;+@[User::isComplete]+&quot; &#xA;where runcycleid = &quot;+(DT_WSTR, 4) @[$Package::runCycleID]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="updateRunCycle">
       <DTS:VariableValue
         DTS:DataType="8">update public."dimRunCycle" 
 set 
-runcycleendat = '2022-03-03 15:40:49.750000000', 
-description = 'package: DefaultPackage complete', 
-success = True 
+runcycleendat = '2022-03-07 11:40:32.061000000', 
+description = 'package:  complete', 
+success = False 
 where runcycleid = 15</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
