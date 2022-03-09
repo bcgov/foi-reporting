@@ -7,15 +7,44 @@
   DTS:CreatorName="DESKTOP-U67UC02\abina"
   DTS:DTSID="{614379BB-0C0E-4584-9CAE-ACE422F193F0}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="dimRequestDocumentStatus"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{2C5D307D-FC87-4E9C-912C-C8C7E97CC357}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{009BF031-35C4-4194-A0CB-3C3B8591359A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DA1EA952-E565-4372-AFCF-CF1E18C49FD4}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="isComplete">
+      <DTS:VariableValue
+        DTS:DataType="11">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2D761F34-514B-4D1E-A70A-268E3B32F9B6}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="lastRunCycleTime">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7084608E-CC73-458F-8B29-114715E480B6}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="runCycleID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Sequence Container"
@@ -698,11 +727,17 @@ From tblReqForDocStatuses RFDS left outer join tblTerminologyLookup TLL on RFDS.
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="Select &#xA;&#x9;COUNT(RFDS.tiReqForDocStatus)&#xA;&#x9;&#xA;From tblReqForDocStatuses RFDS left outer join tblTerminologyLookup TLL on RFDS.iLabelID =  TLL.iLabelID and TLL.tiLocaleID = 1&#xA;WHERE   RFDS.sdtModifiedDate &gt;=dateadd(day,datediff(day,1,GETDATE()),0)   AND RFDS.sdtCreatedDate &lt; dateadd(day,datediff(day,1,GETDATE()),0) "
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;COUNT(RFDS.tiReqForDocStatus)&#xA;&#x9;&#xA;From tblReqForDocStatuses RFDS left outer join tblTerminologyLookup TLL on RFDS.iLabelID =  TLL.iLabelID and TLL.tiLocaleID = 1&#xA;WHERE   RFDS.sdtModifiedDate &gt;= @lastruntime AND RFDS.sdtCreatedDate &lt; @lastruntime"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::modifiedreqDocCount" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -721,11 +756,17 @@ From tblReqForDocStatuses RFDS left outer join tblTerminologyLookup TLL on RFDS.
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="Select &#xA; &#x9;CAST(RFDS.tiReqForDocStatus as INT) as reqfordocstatusid,&#xA;&#x9;TLL.vcTerminology as reqfordocstatus,&#xA;&#x9;RFDS.vcDescription as description,&#xA;&#x9;RFDS.cActive as cactive,&#xA;&#x9;RFDS.cImport as cimport,&#xA;&#x9;RFDS.iCreatedBy as createdby,&#xA;&#x9;CONVERT(varchar,RFDS.sdtCreatedDate,120) as createddate,&#xA;&#x9;RFDS.iModifiedBy as modifiedby,&#xA;&#x9;CONVERT(varchar,RFDS.sdtModifiedDate,120) as modifieddate,&#xA;&#x9;RFDS.cType as ctype,&#xA;&#x9;RFDS.cMarkCompleted as cmarkcompleted&#xA; &#xA;From tblReqForDocStatuses RFDS left outer join tblTerminologyLookup TLL on RFDS.iLabelID =  TLL.iLabelID and TLL.tiLocaleID = 1&#xA;WHERE   RFDS.sdtModifiedDate &gt;=dateadd(day,datediff(day,1,GETDATE()),0)   AND RFDS.sdtCreatedDate &lt; dateadd(day,datediff(day,1,GETDATE()),0) "
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA; &#x9;CAST(RFDS.tiReqForDocStatus as INT) as reqfordocstatusid,&#xA;&#x9;TLL.vcTerminology as reqfordocstatus,&#xA;&#x9;RFDS.vcDescription as description,&#xA;&#x9;RFDS.cActive as cactive,&#xA;&#x9;RFDS.cImport as cimport,&#xA;&#x9;RFDS.iCreatedBy as createdby,&#xA;&#x9;CONVERT(varchar,RFDS.sdtCreatedDate,120) as createddate,&#xA;&#x9;RFDS.iModifiedBy as modifiedby,&#xA;&#x9;CONVERT(varchar,RFDS.sdtModifiedDate,120) as modifieddate,&#xA;&#x9;RFDS.cType as ctype,&#xA;&#x9;RFDS.cMarkCompleted as cmarkcompleted&#xA; &#xA;From tblReqForDocStatuses RFDS left outer join tblTerminologyLookup TLL on RFDS.iLabelID =  TLL.iLabelID and TLL.tiLocaleID = 1&#xA;WHERE   RFDS.sdtModifiedDate &gt;= @lastruntime AND RFDS.sdtCreatedDate &lt; @lastruntime"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::modfiedReqStatusrows" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -744,11 +785,17 @@ From tblReqForDocStatuses RFDS left outer join tblTerminologyLookup TLL on RFDS.
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="Select &#xA; COUNT(RFDS.tiReqForDocStatus)&#xA; &#xA;From tblReqForDocStatuses RFDS left outer join tblTerminologyLookup TLL on RFDS.iLabelID =  TLL.iLabelID and TLL.tiLocaleID = 1&#xA;WHERE   RFDS.sdtCreatedDate &gt; dateadd(day,datediff(day,1,GETDATE()),0) "
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA; COUNT(RFDS.tiReqForDocStatus)&#xA; &#xA;From tblReqForDocStatuses RFDS left outer join tblTerminologyLookup TLL on RFDS.iLabelID =  TLL.iLabelID and TLL.tiLocaleID = 1&#xA;WHERE   RFDS.sdtCreatedDate &gt; @lastruntime"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::newreqdoccount" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -767,11 +814,17 @@ From tblReqForDocStatuses RFDS left outer join tblTerminologyLookup TLL on RFDS.
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="Select &#xA;  CAST(RFDS.tiReqForDocStatus as INT) as reqfordocstatusid,&#xA; TLL.vcTerminology as reqfordocstatus,&#xA; RFDS.vcDescription as description,&#xA; RFDS.cActive as cactive,&#xA; RFDS.cImport as cimport,&#xA; RFDS.iCreatedBy as createdby,&#xA; CONVERT(varchar,RFDS.sdtCreatedDate,120) as createddate,&#xA; RFDS.iModifiedBy as modifiedby,&#xA; CONVERT(varchar,RFDS.sdtModifiedDate,120) as modifieddate,&#xA; RFDS.cType as ctype,&#xA; RFDS.cMarkCompleted as cmarkcompleted&#xA; &#xA;From tblReqForDocStatuses RFDS left outer join tblTerminologyLookup TLL on RFDS.iLabelID =  TLL.iLabelID and TLL.tiLocaleID = 1&#xA;WHERE   RFDS.sdtCreatedDate  &gt; dateadd(day,datediff(day,1,GETDATE()),0) "
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;  CAST(RFDS.tiReqForDocStatus as INT) as reqfordocstatusid,&#xA; TLL.vcTerminology as reqfordocstatus,&#xA; RFDS.vcDescription as description,&#xA; RFDS.cActive as cactive,&#xA; RFDS.cImport as cimport,&#xA; RFDS.iCreatedBy as createdby,&#xA; CONVERT(varchar,RFDS.sdtCreatedDate,120) as createddate,&#xA; RFDS.iModifiedBy as modifiedby,&#xA; CONVERT(varchar,RFDS.sdtModifiedDate,120) as modifieddate,&#xA; RFDS.cType as ctype,&#xA; RFDS.cMarkCompleted as cmarkcompleted&#xA; &#xA;From tblReqForDocStatuses RFDS left outer join tblTerminologyLookup TLL on RFDS.iLabelID =  TLL.iLabelID and TLL.tiLocaleID = 1&#xA;WHERE   RFDS.sdtCreatedDate &gt; @lastruntime"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::newrequestdocRows" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -1431,7 +1484,79 @@ From tblReqForDocStatuses RFDS left outer join tblTerminologyLookup TLL on RFDS.
           DTS:To="Package\Sequence Container\Foreach Loop Container 1" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{4874DAAB-7E81-4B15-A2AD-D8CD89CEDCA4}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StartRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>packageID</ParameterName>
+            <BindedVariableOrParameterName>System::PackageID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Stop Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{51A5921C-CE17-41C9-A74F-1E3F8BD3EB27}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Stop Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StopRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>isComplete</ParameterName>
+            <BindedVariableOrParameterName>User::isComplete</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>runCycleID</ParameterName>
+            <BindedVariableOrParameterName>User::runCycleID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{92AB64BC-3D39-4C7B-A639-8D594C82440E}"
+      DTS:From="Package\Start Run Cycle"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sequence Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{693427AC-F4BA-4413-82B9-33FC3C56618D}"
+      DTS:From="Package\Sequence Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Stop Run Cycle" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -1445,13 +1570,51 @@ From tblReqForDocStatuses RFDS left outer join tblTerminologyLookup TLL on RFDS.
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Sequence Container\Data Flow Task"
+          TopLeft="272.066642758582,161.4666693804" />
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\Sequence Container\EST_ModifiedReqDocCount"
+          TopLeft="547.899965131284,203.066669711007" />
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\Sequence Container\EST_ModifiedReqDocCount 1"
+          TopLeft="542.066632029747,289.733337066439" />
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\Sequence Container\EST_NewReqDocCount"
+          TopLeft="1104.56660967801,204.800003058116" />
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\Sequence Container\EST_NewRequestDocs"
+          TopLeft="1098.73327657647,291.466670413547" />
+        <NodeLayout
           Size="164.8,41.6"
           Id="Package\Sequence Container\Execute SQL Task"
           TopLeft="500.399967018765,65.266668615871" />
         <NodeLayout
-          Size="150.4,41.6"
-          Id="Package\Sequence Container\Data Flow Task"
-          TopLeft="272.066642758582,161.4666693804" />
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container\Execute SQL Task"
+          TopLeft="113.833297338752,47.8666716119977" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="448,156.8"
+          Size="448,200"
+          Id="Package\Sequence Container\Foreach Loop Container"
+          TopLeft="422.899970098338,386.800004504522" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container 1\Execute SQL Task"
+          TopLeft="113.833297338752,47.8666716119977" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="448,156.8"
+          Size="448,200"
+          Id="Package\Sequence Container\Foreach Loop Container 1"
+          TopLeft="979.566614645059,388.533337851631" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
           TopLeft="582.799967018765,106.866668615871">
@@ -1488,10 +1651,6 @@ From tblReqForDocStatuses RFDS left outer join tblTerminologyLookup TLL on RFDS.
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="173.6,41.6"
-          Id="Package\Sequence Container\EST_ModifiedReqDocCount"
-          TopLeft="547.899965131284,203.066669711007" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
           TopLeft="608.933300352098,106.866668615871">
@@ -1528,10 +1687,6 @@ From tblReqForDocStatuses RFDS left outer join tblTerminologyLookup TLL on RFDS.
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="173.6,41.6"
-          Id="Package\Sequence Container\EST_ModifiedReqDocCount 1"
-          TopLeft="542.066632029747,289.733337066439" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
           TopLeft="631.783298580516,244.666669711007">
@@ -1556,17 +1711,6 @@ From tblReqForDocStatuses RFDS left outer join tblTerminologyLookup TLL on RFDS.
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container\Execute SQL Task"
-          TopLeft="113.833297338752,47.8666716119977" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="448,156.8"
-          Size="448,200"
-          Id="Package\Sequence Container\Foreach Loop Container"
-          TopLeft="422.899970098338,386.800004504522" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 3]"
           TopLeft="628.866632029746,331.333337066439">
@@ -1601,25 +1745,6 @@ From tblReqForDocStatuses RFDS left outer join tblTerminologyLookup TLL on RFDS.
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="173.6,41.6"
-          Id="Package\Sequence Container\EST_NewReqDocCount"
-          TopLeft="1104.56660967801,204.800003058116" />
-        <NodeLayout
-          Size="173.6,41.6"
-          Id="Package\Sequence Container\EST_NewRequestDocs"
-          TopLeft="1098.73327657647,291.466670413547" />
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container 1\Execute SQL Task"
-          TopLeft="113.833297338752,47.8666716119977" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="448,156.8"
-          Size="448,200"
-          Id="Package\Sequence Container\Foreach Loop Container 1"
-          TopLeft="979.566614645059,388.533337851631" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 4]"
           TopLeft="621.999967018765,106.866668615871">
@@ -1721,6 +1846,58 @@ From tblReqForDocStatuses RFDS left outer join tblTerminologyLookup TLL on RFDS.
           Size="1530.4,980.8"
           Id="Package\Sequence Container"
           TopLeft="329.999986886979,136.933334421582" />
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Start Run Cycle"
+          TopLeft="1005.95234097943,32.1904764463031" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="1096.7761639332,73.7904764463031">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63.1428579752789"
+              Start="0,0"
+              End="0,55.6428579752789">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.6428579752789" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Stop Run Cycle"
+          TopLeft="1005.55551559837,1190.22223168126" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="1096.57775124267,1117.73333442158">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,72.4888972596771"
+              Start="0,0"
+              End="0,64.9888972596771">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.9888972596771" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -1775,14 +1952,6 @@ From tblReqForDocStatuses RFDS left outer join tblTerminologyLookup TLL on RFDS.
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Data Flow Task\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\Data Flow Task\ODBC Destination">
     <Properties>
       <Property>
@@ -1792,6 +1961,14 @@ From tblReqForDocStatuses RFDS left outer join tblTerminologyLookup TLL on RFDS.
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

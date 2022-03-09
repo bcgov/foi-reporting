@@ -7,15 +7,44 @@
   DTS:CreatorName="DESKTOP-U67UC02\abina"
   DTS:DTSID="{869A9CA9-61A3-4B73-9EC6-A2DF0D527C88}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="dimProgramOfficeETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="25"
-  DTS:VersionGUID="{6568B27A-F3AC-4056-8960-A4511B60D4DE}">
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{FA99970E-6000-42A2-9AA2-65269643D2B5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{14B431D5-96B1-48F4-A682-4507511082EC}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="isComplete">
+      <DTS:VariableValue
+        DTS:DataType="11">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AF533198-6DF4-42D8-8AD3-3E8EB4F88C9E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="lastRunCycleTime">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{508C2964-ECC5-4A51-A580-DA219CF36F7C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="runCycleID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Sequence Container"
@@ -2582,7 +2611,79 @@ left outer join tblTerminologyLookup TCRL ON TCRL.iLabelID = TCR.iLabelID AND Lo
           DTS:To="Package\Sequence Container\Foreach Loop Container" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{1B7A0C93-D462-458A-97A3-89DD55269DF1}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StartRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>packageID</ParameterName>
+            <BindedVariableOrParameterName>System::PackageID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Stop Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{79603027-B66B-4DDA-86F2-FCBCD7B066BF}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Stop Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StopRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>isComplete</ParameterName>
+            <BindedVariableOrParameterName>User::isComplete</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>runCycleID</ParameterName>
+            <BindedVariableOrParameterName>User::runCycleID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{9971281A-58BE-4482-8CDA-9FA50A9E2760}"
+      DTS:From="Package\Start Run Cycle"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sequence Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{C9B766E3-4DF8-4E1F-BEDA-C556F2F6FFF2}"
+      DTS:From="Package\Sequence Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Stop Run Cycle" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -2594,95 +2695,27 @@ left outer join tblTerminologyLookup TCRL ON TCRL.iLabelID = TCR.iLabelID AND Lo
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="218.4,41.6"
+          Id="Package\Sequence Container\dft_InitialLoadProgramOffices"
+          TopLeft="42.4333261476628,161.400002293587" />
         <NodeLayout
           Size="298.4,41.6"
           Id="Package\Sequence Container\execSQLTaskProgramOfficesCount"
           TopLeft="457.433309657045,60.8666681612863" />
         <NodeLayout
-          Size="218.4,41.6"
-          Id="Package\Sequence Container\dft_InitialLoadProgramOffices"
-          TopLeft="42.4333261476628,161.400002293587" />
-        <EdgeLayout
-          Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
-          TopLeft="606.633309657045,102.466668161286">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-454.999983509382,58.9333341323006"
-              Start="0,0"
-              End="-454.999983509382,51.4333341323006">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.4666670661503" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.4666670661503"
-                    Point2="0,29.4666670661503"
-                    Point3="-4,29.4666670661503" />
-                  <mssgle:LineSegment
-                    End="-450.999983509382,29.4666670661503" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-450.999983509382,29.4666670661503"
-                    Point2="-454.999983509382,29.4666670661503"
-                    Point3="-454.999983509382,33.4666670661503" />
-                  <mssgle:LineSegment
-                    End="-454.999983509382,51.4333341323006" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-235.499991754691,34.4666670661503,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
           Size="196.8,47.2"
           Id="Package\Sequence Container\Execute SQL Task"
           TopLeft="570.766638486916,189.133335847325" />
-        <EdgeLayout
-          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
-          TopLeft="655.033309657045,102.466668161286">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="14.1333288298715,86.6666676860386"
-              Start="0,0"
-              End="14.1333288298715,79.1666676860386">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.9440004110108" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,30.9440004110108"
-                    Point2="0,34.9440004110108"
-                    Point3="4,34.9440004110108" />
-                  <mssgle:LineSegment
-                    End="10.1333288298715,34.9440004110108" />
-                  <mssgle:CubicBezierSegment
-                    Point1="10.1333288298715,34.9440004110108"
-                    Point2="14.1333288298715,34.9440004110108"
-                    Point3="14.1333288298715,38.9440004110108" />
-                  <mssgle:LineSegment
-                    End="14.1333288298715,79.1666676860386" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-0.933335585064242,39.9440004110108,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="256,41.6"
           Id="Package\Sequence Container\Foreach Loop Container\est_hasProgramOfficeinEDW"
           TopLeft="206.699964733921,34.9333373557195" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container\EST_InsertOffices"
+          TopLeft="340.866626069283,131.133338120248" />
         <NodeLayout
           Size="173.6,41.6"
           Id="Package\Sequence Container\Foreach Loop Container\EST_UpdateOffices"
@@ -2723,10 +2756,6 @@ left outer join tblTerminologyLookup TCRL ON TCRL.iLabelID = TCR.iLabelID AND Lo
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="162.4,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container\EST_InsertOffices"
-          TopLeft="340.866626069283,131.133338120248" />
         <EdgeLayout
           Id="Package\Sequence Container\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
           TopLeft="376.033298067254,76.5333373557195">
@@ -2771,6 +2800,78 @@ left outer join tblTerminologyLookup TCRL ON TCRL.iLabelID = TCR.iLabelID AND Lo
           Id="Package\Sequence Container\Foreach Loop Container"
           TopLeft="541.599972979229,300.066670062277" />
         <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          TopLeft="606.633309657045,102.466668161286">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-454.999983509382,58.9333341323006"
+              Start="0,0"
+              End="-454.999983509382,51.4333341323006">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.4666670661503" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.4666670661503"
+                    Point2="0,29.4666670661503"
+                    Point3="-4,29.4666670661503" />
+                  <mssgle:LineSegment
+                    End="-450.999983509382,29.4666670661503" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-450.999983509382,29.4666670661503"
+                    Point2="-454.999983509382,29.4666670661503"
+                    Point3="-454.999983509382,33.4666670661503" />
+                  <mssgle:LineSegment
+                    End="-454.999983509382,51.4333341323006" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-235.499991754691,34.4666670661503,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="655.033309657045,102.466668161286">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.1333288298715,86.6666676860386"
+              Start="0,0"
+              End="14.1333288298715,79.1666676860386">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.9440004110108" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.9440004110108"
+                    Point2="0,34.9440004110108"
+                    Point3="4,34.9440004110108" />
+                  <mssgle:LineSegment
+                    End="10.1333288298715,34.9440004110108" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.1333288298715,34.9440004110108"
+                    Point2="14.1333288298715,34.9440004110108"
+                    Point3="14.1333288298715,38.9440004110108" />
+                  <mssgle:LineSegment
+                    End="14.1333288298715,79.1666676860386" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-0.933335585064242,39.9440004110108,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
           TopLeft="669.166638486916,236.333335847325">
           <EdgeLayout.Curve>
@@ -2811,6 +2912,58 @@ left outer join tblTerminologyLookup TCRL ON TCRL.iLabelID = TCR.iLabelID AND Lo
           Size="1272,701.6"
           Id="Package\Sequence Container"
           TopLeft="139.16666113668,84.9333340083229" />
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Start Run Cycle"
+          TopLeft="675.833306478131,6.0666667148802" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="771.699983807405,47.6666667148802">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.2666672934427"
+              Start="0,0"
+              End="0,29.7666672934427">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.7666672934427" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Stop Run Cycle"
+          TopLeft="681.666639579668,836.533339752621" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="774.616650358174,786.533334008323">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.0000057442982"
+              Start="0,0"
+              End="0,42.5000057442982">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5000057442982" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -2865,14 +3018,6 @@ left outer join tblTerminologyLookup TCRL ON TCRL.iLabelID = TCR.iLabelID AND Lo
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination">
     <Properties>
       <Property>
@@ -2882,6 +3027,14 @@ left outer join tblTerminologyLookup TCRL ON TCRL.iLabelID = TCR.iLabelID AND Lo
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
