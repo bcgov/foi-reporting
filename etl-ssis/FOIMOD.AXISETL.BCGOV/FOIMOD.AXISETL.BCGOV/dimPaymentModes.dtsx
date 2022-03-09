@@ -7,15 +7,44 @@
   DTS:CreatorName="DESKTOP-U67UC02\abina"
   DTS:DTSID="{BAA3508E-CFC3-47A6-8300-0FF4830234BE}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="dimPaymentModes"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{B9540CCC-A415-482A-9446-7DF180794C0B}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{89552768-1458-469F-98F9-C9A427B832EC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D4DD3878-F20F-4793-90AA-CBCA86B65C91}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="isComplete">
+      <DTS:VariableValue
+        DTS:DataType="11">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F33B0BF7-F84F-4CEC-8949-AB86618B3776}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="lastRunCycleTime">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{24A828CD-BFA6-4667-AFF7-76B96768FC71}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="runCycleID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Sequence Container"
@@ -563,11 +592,17 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
-              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;COUNT(PM.tiCodeID)&#xA;&#x9;&#xA;&#x9;FROM tblPaymentModes PM LEFT OUTER JOIN tblTerminologyLookup TLL ON PM.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 0&#xA;&#x9;WHERE   PM.dtModifiedDate &gt;=dateadd(day,datediff(day,1,GETDATE()),0)   AND PM.dtCreatedDate &lt; dateadd(day,datediff(day,1,GETDATE()),0)"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;SELECT&#xA;&#x9;COUNT(PM.tiCodeID)&#xA;&#x9;&#xA;&#x9;FROM tblPaymentModes PM LEFT OUTER JOIN tblTerminologyLookup TLL ON PM.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 0&#xA;&#x9;WHERE   PM.dtModifiedDate &gt;= @lastruntime AND PM.dtCreatedDate &lt; @lastruntime"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::modifiedpaymentmodecount" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -585,11 +620,17 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
-              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;CAST(PM.tiCodeID as INT) as paymentmodeid,&#xA;&#x9;TLL.vcTerminology as paymentmodename,&#xA;&#x9;PM.cActive as cactive,&#xA;&#x9;CONVERT(varchar,PM.dtCreatedDate,120) as createddate,&#xA;&#x9;CONVERT(varchar,PM.dtModifiedDate,120) as modifieddate,&#xA;&#x9;PM.cDelete as cdelete,&#xA;&#x9;PM.cPAL as cpal &#xA;&#x9;FROM tblPaymentModes PM LEFT OUTER JOIN tblTerminologyLookup TLL ON PM.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 0&#xA;&#x9;WHERE   PM.dtModifiedDate &gt;=dateadd(day,datediff(day,1,GETDATE()),0)   AND PM.dtCreatedDate &lt; dateadd(day,datediff(day,1,GETDATE()),0)&#xA; &#xA;"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;SELECT&#xA;&#x9;CAST(PM.tiCodeID as INT) as paymentmodeid,&#xA;&#x9;TLL.vcTerminology as paymentmodename,&#xA;&#x9;PM.cActive as cactive,&#xA;&#x9;CONVERT(varchar,PM.dtCreatedDate,120) as createddate,&#xA;&#x9;CONVERT(varchar,PM.dtModifiedDate,120) as modifieddate,&#xA;&#x9;PM.cDelete as cdelete,&#xA;&#x9;PM.cPAL as cpal &#xA;&#x9;FROM tblPaymentModes PM LEFT OUTER JOIN tblTerminologyLookup TLL ON PM.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 0&#xA;&#x9;WHERE   PM.dtModifiedDate &gt;= @lastruntime AND PM.dtCreatedDate &lt; @lastruntime&#xA; &#xA;"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::modifiedpaymentmodes" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -607,11 +648,17 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
-              SQLTask:SqlStatementSource="SELECT&#xA; CAST(PM.tiCodeID as INT) as paymentmodeid,&#xA; TLL.vcTerminology as paymentmodename,&#xA; PM.cActive as cactive,&#xA; CONVERT(varchar,PM.dtCreatedDate,120) as createddate,&#xA; CONVERT(varchar,PM.dtModifiedDate,120) as modifieddate,&#xA; PM.cDelete as cdelete,&#xA; PM.cPAL as cpal &#xA; FROM tblPaymentModes PM LEFT OUTER JOIN tblTerminologyLookup TLL ON PM.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 0&#xA; WHERE    PM.dtCreatedDate &gt; dateadd(day,datediff(day,1,GETDATE()),0)&#xA; &#xA;"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;SELECT&#xA; CAST(PM.tiCodeID as INT) as paymentmodeid,&#xA; TLL.vcTerminology as paymentmodename,&#xA; PM.cActive as cactive,&#xA; CONVERT(varchar,PM.dtCreatedDate,120) as createddate,&#xA; CONVERT(varchar,PM.dtModifiedDate,120) as modifieddate,&#xA; PM.cDelete as cdelete,&#xA; PM.cPAL as cpal &#xA; FROM tblPaymentModes PM LEFT OUTER JOIN tblTerminologyLookup TLL ON PM.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 0&#xA; WHERE    PM.dtCreatedDate &gt; @lastruntime&#xA; &#xA;"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::newpaymentmodes" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -629,11 +676,17 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
-              SQLTask:SqlStatementSource="SELECT&#xA; COUNT(PM.tiCodeID)&#xA; &#xA; FROM tblPaymentModes PM LEFT OUTER JOIN tblTerminologyLookup TLL ON PM.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 0&#xA; WHERE    PM.dtCreatedDate &gt; dateadd(day,datediff(day,1,GETDATE()),0)"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;SELECT&#xA; COUNT(PM.tiCodeID)&#xA; &#xA; FROM tblPaymentModes PM LEFT OUTER JOIN tblTerminologyLookup TLL ON PM.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 0&#xA; WHERE    PM.dtCreatedDate &gt; @lastruntime"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::newpaymentmodeCount" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -1067,6 +1120,8 @@
           DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
           DTS:DTSID="{7E61C379-0A36-49AD-9A9A-6ED8B5DD83D5}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::edwpaymentmodecount] &gt; 0"
           DTS:From="Package\Sequence Container\Execute SQL Task"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
@@ -1117,7 +1172,79 @@
           DTS:To="Package\Sequence Container\Foreach Loop Container 1" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{B8356816-25BF-4D5D-BB1B-2820543F32E8}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StartRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>packageID</ParameterName>
+            <BindedVariableOrParameterName>System::PackageID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Stop Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{FBAB70A8-E1B5-40AB-84D7-90F7A835AAF0}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Stop Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StopRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>isComplete</ParameterName>
+            <BindedVariableOrParameterName>User::isComplete</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>runCycleID</ParameterName>
+            <BindedVariableOrParameterName>User::runCycleID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{472B2828-8315-4447-915E-D691E30A4674}"
+      DTS:From="Package\Start Run Cycle"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sequence Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{5EA7CD8C-6B31-42FC-AA80-E91CDA0EE2EB}"
+      DTS:From="Package\Sequence Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Stop Run Cycle" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -1131,13 +1258,51 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Sequence Container\Data Flow Task"
+          TopLeft="267.366647427613,168.333335847325" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Sequence Container\EST_ModifiedCount"
+          TopLeft="676.533297835457,175.266669235759" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Sequence Container\EST_ModifiedPaymentModes"
+          TopLeft="667.366631533041,278.400003388723" />
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\Sequence Container\EST_NewPaymentModes"
+          TopLeft="1118.19994695187,294.266669876311" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Sequence Container\EST_NewrecordsCount 1"
+          TopLeft="1064.86661573781,171.200002231598" />
+        <NodeLayout
           Size="164.8,41.6"
           Id="Package\Sequence Container\Execute SQL Task"
           TopLeft="584.866634811296,34.0000014464061" />
         <NodeLayout
-          Size="150.4,41.6"
-          Id="Package\Sequence Container\Data Flow Task"
-          TopLeft="267.366647427613,168.333335847325" />
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container\Execute SQL Task"
+          TopLeft="148.033297537434,53.2666714260315" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="498.4,208.8"
+          Size="498.4,252"
+          Id="Package\Sequence Container\Foreach Loop Container"
+          TopLeft="535.699970098338,406.066670847469" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container 1\Execute SQL Task"
+          TopLeft="148.033297537434,53.2666714260315" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="498.4,208.8"
+          Size="498.4,252"
+          Id="Package\Sequence Container\Foreach Loop Container 1"
+          TopLeft="1155.69994546175,412.133337479698" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
           TopLeft="667.266634811296,75.6000014464061">
@@ -1174,10 +1339,6 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="171.2,41.6"
-          Id="Package\Sequence Container\EST_ModifiedCount"
-          TopLeft="676.533297835457,175.266669235759" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
           TopLeft="693.39996814463,75.6000014464061">
@@ -1209,13 +1370,11 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="26.366664845414,45.4416671222184,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="171.2,41.6"
-          Id="Package\Sequence Container\EST_ModifiedPaymentModes"
-          TopLeft="667.366631533041,278.400003388723" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
           TopLeft="762.133297835457,216.866669235759">
@@ -1252,17 +1411,6 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container\Execute SQL Task"
-          TopLeft="148.033297537434,53.2666714260315" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="498.4,208.8"
-          Size="498.4,252"
-          Id="Package\Sequence Container\Foreach Loop Container"
-          TopLeft="535.699970098338,406.066670847469" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 3]"
           TopLeft="752.966631533041,320.000003388723">
@@ -1297,10 +1445,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="171.2,41.6"
-          Id="Package\Sequence Container\EST_NewrecordsCount 1"
-          TopLeft="1064.86661573781,171.200002231598" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 4]"
           TopLeft="706.466634811296,75.6000014464061">
@@ -1335,10 +1479,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="197.6,41.6"
-          Id="Package\Sequence Container\EST_NewPaymentModes"
-          TopLeft="1118.19994695187,294.266669876311" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 5]"
           TopLeft="1150.46661573781,212.800002231598">
@@ -1375,17 +1515,6 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container 1\Execute SQL Task"
-          TopLeft="148.033297537434,53.2666714260315" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="498.4,208.8"
-          Size="498.4,252"
-          Id="Package\Sequence Container\Foreach Loop Container 1"
-          TopLeft="1155.69994546175,412.133337479698" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 6]"
           TopLeft="1216.99994695187,335.866669876311">
@@ -1426,7 +1555,59 @@
           PanelSize="1664.8,752.8"
           Size="1664.8,796"
           Id="Package\Sequence Container"
-          TopLeft="216.666658057107,104.866667500072" />
+          TopLeft="215.833324756888,104.000000826518" />
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Start Run Cycle"
+          TopLeft="949.933299623597,17.3333334710863" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="1045.28331219024,58.9333334710863">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.0666673554314"
+              Start="0,0"
+              End="0,37.5666673554314">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5666673554314" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Stop Run Cycle"
+          TopLeft="951.499966323378,953.000006302198" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="1046.06664554013,900.000000826518">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53.0000054756802"
+              Start="0,0"
+              End="0,45.5000054756802">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5000054756802" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -1434,7 +1615,7 @@
     design-time-name="Package\Sequence Container\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="152,41.6"
           Id="Package\Sequence Container\Data Flow Task\OLE DB Source"
@@ -1474,20 +1655,14 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Data Flow Task\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\Data Flow Task\ODBC Destination">
     <Properties>
@@ -1498,6 +1673,14 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

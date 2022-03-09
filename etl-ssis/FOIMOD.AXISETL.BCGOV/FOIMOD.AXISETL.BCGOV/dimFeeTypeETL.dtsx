@@ -7,15 +7,44 @@
   DTS:CreatorName="DESKTOP-U67UC02\abina"
   DTS:DTSID="{AE19148A-903D-4A21-B6DB-2E0AC8C973E6}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="dimFeeTypeETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{AA7143E1-17F1-400A-A2DF-2B02880CB312}">
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{76B24C05-B055-4307-8D77-85191195400E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BBBDB8C4-B460-4958-8459-2C5347EEB23B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="isComplete">
+      <DTS:VariableValue
+        DTS:DataType="11">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{58A66D09-34E1-47BE-8773-285B901C0380}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="lastRunCycleTime">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7C723776-403F-4225-80DA-134F5927050B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="runCycleID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Sequence Container"
@@ -884,16 +913,22 @@ From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID =
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_ModifiedFeetypeCount"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
-              SQLTask:SqlStatementSource="Select &#xA;&#x9;COUNT(Main.siFeeID)&#xA;&#x9;&#xA;From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID = Main.iLabelID and Loc.tiLocaleID = 1&#x9;&#x9;&#xA;WHERE   Main.sdtModifiedDate &gt;=dateadd(day,datediff(day,1,GETDATE()),0)   AND Main.sdtCreatedDate &lt; dateadd(day,datediff(day,1,GETDATE()),0) &#x9;&#x9;"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;COUNT(Main.siFeeID)&#xA;&#x9;&#xA;From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID = Main.iLabelID and Loc.tiLocaleID = 1&#x9;&#x9;&#xA;WHERE Main.sdtModifiedDate &gt;= @lastruntime AND Main.sdtCreatedDate &lt; @lastruntime"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::modfiedfeetypecount" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -906,17 +941,23 @@ From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID =
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_ModifiedFeetypes"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="Select &#xA;&#xA;CAST(Main.siFeeID as INT) as feetypeid,&#xA;&#x9;Loc.vcTerminology as feetypename,&#xA;&#x9;Main.vcFeeDesc as feetypedescription,&#xA;&#x9;CAST(Main.siOrder as INT) as sortorder,&#xA;&#x9;Main.cActive as cactive,&#xA;&#x9;CONVERT(varchar,Main.sdtCreatedDate,120) as createddate,&#xA;&#x9;CONVERT(varchar,Main.sdtModifiedDate,120) as modifieddate,&#xA;&#x9;Main.cIsChangeable as clschangeable,&#xA;&#x9;Main.cIsIndependent as clsindependent,&#xA;&#x9;CAST(Main.nRate as DECIMAL(18,2)) as nrate,&#xA;&#x9;&#xA;&#x9;ISNULL(Main.vcFeeCode,'') as vcfeecode,&#xA;&#x9;Main.cReport as creport,&#xA;&#x9;CAST(Main.nFeeWaived as DECIMAL(18,2)) as nfeewaived,&#xA;&#x9;ISNULL(CAST(Main.siRefFeeID as INT),0) as sireffeeid,&#xA;&#x9;Main.cAdministrativeCost as cadministrativecost,&#xA;&#x9;Main.cEnable as cenable&#xA; &#xA;From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID = Main.iLabelID and Loc.tiLocaleID = 1  &#xA;WHERE   Main.sdtModifiedDate &gt;=dateadd(day,datediff(day,1,GETDATE()),0)   AND Main.sdtCreatedDate &lt; dateadd(day,datediff(day,1,GETDATE()),0)   "
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#xA;CAST(Main.siFeeID as INT) as feetypeid,&#xA;&#x9;Loc.vcTerminology as feetypename,&#xA;&#x9;Main.vcFeeDesc as feetypedescription,&#xA;&#x9;CAST(Main.siOrder as INT) as sortorder,&#xA;&#x9;Main.cActive as cactive,&#xA;&#x9;CONVERT(varchar,Main.sdtCreatedDate,120) as createddate,&#xA;&#x9;CONVERT(varchar,Main.sdtModifiedDate,120) as modifieddate,&#xA;&#x9;Main.cIsChangeable as clschangeable,&#xA;&#x9;Main.cIsIndependent as clsindependent,&#xA;&#x9;CAST(Main.nRate as DECIMAL(18,2)) as nrate,&#xA;&#x9;&#xA;&#x9;ISNULL(Main.vcFeeCode,'') as vcfeecode,&#xA;&#x9;Main.cReport as creport,&#xA;&#x9;CAST(Main.nFeeWaived as DECIMAL(18,2)) as nfeewaived,&#xA;&#x9;ISNULL(CAST(Main.siRefFeeID as INT),0) as sireffeeid,&#xA;&#x9;Main.cAdministrativeCost as cadministrativecost,&#xA;&#x9;Main.cEnable as cenable&#xA; &#xA;From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID = Main.iLabelID and Loc.tiLocaleID = 1  &#xA;WHERE Main.sdtModifiedDate &gt;= @lastruntime AND Main.sdtCreatedDate &lt; @lastruntime"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::modifiedfeetypes" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -929,16 +970,22 @@ From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID =
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_NewFeetypeCount"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
-              SQLTask:SqlStatementSource="Select &#xA; COUNT(Main.siFeeID)&#xA; &#xA;From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID = Main.iLabelID and Loc.tiLocaleID = 1  &#xA;WHERE   Main.sdtCreatedDate &gt; dateadd(day,datediff(day,1,GETDATE()),0)   "
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA; COUNT(Main.siFeeID)&#xA; &#xA;From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID = Main.iLabelID and Loc.tiLocaleID = 1  &#xA;WHERE   Main.sdtCreatedDate &gt; @lastruntime"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::newfeetypecount" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -951,17 +998,23 @@ From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID =
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_NewFeetypes"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="Select &#xA;&#xA;CAST(Main.siFeeID as INT) as feetypeid,&#xA; Loc.vcTerminology as feetypename,&#xA; Main.vcFeeDesc as feetypedescription,&#xA; CAST(Main.siOrder as INT) as sortorder,&#xA; Main.cActive as cactive,&#xA; CONVERT(varchar,Main.sdtCreatedDate,120) as createddate,&#xA; CONVERT(varchar,Main.sdtModifiedDate,120) as modifieddate,&#xA; Main.cIsChangeable as clschangeable,&#xA; Main.cIsIndependent as clsindependent,&#xA; CAST(Main.nRate as DECIMAL(18,2)) as nrate,&#xA; &#xA; ISNULL(Main.vcFeeCode,'') as vcfeecode,&#xA; Main.cReport as creport,&#xA; CAST(Main.nFeeWaived as DECIMAL(18,2)) as nfeewaived,&#xA; ISNULL(CAST(Main.siRefFeeID as INT),0) as sireffeeid,&#xA; Main.cAdministrativeCost as cadministrativecost,&#xA; Main.cEnable as cenable&#xA; &#xA;From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID = Main.iLabelID and Loc.tiLocaleID = 1  &#xA;WHERE    Main.sdtCreatedDate &gt; dateadd(day,datediff(day,1,GETDATE()),0)   "
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#xA;CAST(Main.siFeeID as INT) as feetypeid,&#xA; Loc.vcTerminology as feetypename,&#xA; Main.vcFeeDesc as feetypedescription,&#xA; CAST(Main.siOrder as INT) as sortorder,&#xA; Main.cActive as cactive,&#xA; CONVERT(varchar,Main.sdtCreatedDate,120) as createddate,&#xA; CONVERT(varchar,Main.sdtModifiedDate,120) as modifieddate,&#xA; Main.cIsChangeable as clschangeable,&#xA; Main.cIsIndependent as clsindependent,&#xA; CAST(Main.nRate as DECIMAL(18,2)) as nrate,&#xA; &#xA; ISNULL(Main.vcFeeCode,'') as vcfeecode,&#xA; Main.cReport as creport,&#xA; CAST(Main.nFeeWaived as DECIMAL(18,2)) as nfeewaived,&#xA; ISNULL(CAST(Main.siRefFeeID as INT),0) as sireffeeid,&#xA; Main.cAdministrativeCost as cadministrativecost,&#xA; Main.cEnable as cenable&#xA; &#xA;From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID = Main.iLabelID and Loc.tiLocaleID = 1  &#xA;WHERE    Main.sdtCreatedDate &gt; @lastruntime"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::newfeetypes" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -1172,7 +1225,7 @@ From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID =
               DTS:LocaleID="-1"
               DTS:ObjectName="Execute SQL Task"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -1562,7 +1615,7 @@ From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID =
               DTS:LocaleID="-1"
               DTS:ObjectName="Execute SQL Task"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -1837,7 +1890,79 @@ From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID =
           DTS:To="Package\Sequence Container\Foreach Loop Container 1" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{2BC4768D-9489-45C9-B2BD-1378F6D61699}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StartRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>packageID</ParameterName>
+            <BindedVariableOrParameterName>System::PackageID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Stop Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{CDC0E181-586B-4686-BD65-3C01AB1361C2}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Stop Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StopRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>isComplete</ParameterName>
+            <BindedVariableOrParameterName>User::isComplete</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>runCycleID</ParameterName>
+            <BindedVariableOrParameterName>User::runCycleID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{CE35CB9A-F084-4B07-B661-E7563AFA46DB}"
+      DTS:From="Package\Start Run Cycle"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sequence Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{ECAA93F4-5085-4239-AB3A-71E0FCDAD686}"
+      DTS:From="Package\Sequence Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Stop Run Cycle" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -1851,13 +1976,51 @@ From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID =
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Sequence Container\Data Flow Task"
+          TopLeft="371.066649315093,216.133335826662" />
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\Sequence Container\EST_ModifiedFeetypeCount"
+          TopLeft="646.066638387575,231.133336136606" />
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\Sequence Container\EST_ModifiedFeetypes"
+          TopLeft="636.899972085159,339.095241756515" />
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\Sequence Container\EST_NewFeetypeCount"
+          TopLeft="1029.39995648861,210.666669256422" />
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\Sequence Container\EST_NewFeetypes"
+          TopLeft="1020.2332901862,323.33333665318" />
+        <NodeLayout
           Size="164.8,41.6"
           Id="Package\Sequence Container\Execute SQL Task"
           TopLeft="580.233307670223,114.733335020807" />
         <NodeLayout
-          Size="150.4,41.6"
-          Id="Package\Sequence Container\Data Flow Task"
-          TopLeft="371.066649315093,216.133335826662" />
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container\Execute SQL Task"
+          TopLeft="168.399971787136,58.4666717979645" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="457.6,160.8"
+          Size="457.6,204"
+          Id="Package\Sequence Container\Foreach Loop Container"
+          TopLeft="476.066645142768,422.400004132588" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container 1\Execute SQL Task"
+          TopLeft="168.399971787136,58.4666717979645" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="457.6,160.8"
+          Size="457.6,204"
+          Id="Package\Sequence Container\Foreach Loop Container 1"
+          TopLeft="1023.56662338707,432.533337686327" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
           TopLeft="662.633307670223,156.333335020807">
@@ -1894,10 +2057,6 @@ From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID =
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="173.6,41.6"
-          Id="Package\Sequence Container\EST_ModifiedFeetypeCount"
-          TopLeft="646.066638387575,231.133336136606" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
           TopLeft="688.766641003557,156.333335020807">
@@ -1934,83 +2093,68 @@ From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID =
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="173.6,41.6"
-          Id="Package\Sequence Container\EST_ModifiedFeetypes"
-          TopLeft="636.899972085159,340.33333700445" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
           TopLeft="732.866638387575,272.733336136606">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-9.16666630241662,67.6000008678437"
+              EndConnector="-9.16666630241605,66.3619056199093"
               Start="0,0"
-              End="-9.16666630241662,60.1000008678437">
+              End="-9.16666630241605,58.8619056199093">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.8000004339218" />
+                    End="0,29.1809528099546" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,29.8000004339218"
-                    Point2="0,33.8000004339218"
-                    Point3="-4,33.8000004339218" />
+                    Point1="0,29.1809528099546"
+                    Point2="0,33.1809528099546"
+                    Point3="-4,33.1809528099546" />
                   <mssgle:LineSegment
-                    End="-5.16666630241662,33.8000004339218" />
+                    End="-5.16666630241605,33.1809528099546" />
                   <mssgle:CubicBezierSegment
-                    Point1="-5.16666630241662,33.8000004339218"
-                    Point2="-9.16666630241662,33.8000004339218"
-                    Point3="-9.16666630241662,37.8000004339218" />
+                    Point1="-5.16666630241605,33.1809528099546"
+                    Point2="-9.16666630241605,33.1809528099546"
+                    Point3="-9.16666630241605,37.1809528099546" />
                   <mssgle:LineSegment
-                    End="-9.16666630241662,60.1000008678437" />
+                    End="-9.16666630241605,58.8619056199093" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-12.5833331512083,38.8000004339218,16,16"
+              BoundingBox="-12.583333151208,38.1809528099546,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container\Execute SQL Task"
-          TopLeft="168.399971787136,58.4666717979645" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="457.6,160.8"
-          Size="457.6,204"
-          Id="Package\Sequence Container\Foreach Loop Container"
-          TopLeft="476.066645142768,422.400004132588" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 3]"
-          TopLeft="723.699972085159,381.93333700445">
+          TopLeft="723.699972085159,380.695241756515">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-18.8333269423908,40.4666671281387"
+              EndConnector="-18.833326942391,41.7047623760727"
               Start="0,0"
-              End="-18.8333269423908,32.9666671281387">
+              End="-18.833326942391,34.2047623760727">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.2333335640693" />
+                    End="0,16.8523811880364" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.2333335640693"
-                    Point2="0,20.2333335640693"
-                    Point3="-4,20.2333335640693" />
+                    Point1="0,16.8523811880364"
+                    Point2="0,20.8523811880364"
+                    Point3="-4,20.8523811880364" />
                   <mssgle:LineSegment
-                    End="-14.8333269423908,20.2333335640693" />
+                    End="-14.833326942391,20.8523811880364" />
                   <mssgle:CubicBezierSegment
-                    Point1="-14.8333269423908,20.2333335640693"
-                    Point2="-18.8333269423908,20.2333335640693"
-                    Point3="-18.8333269423908,24.2333335640693" />
+                    Point1="-14.833326942391,20.8523811880364"
+                    Point2="-18.833326942391,20.8523811880364"
+                    Point3="-18.833326942391,24.8523811880364" />
                   <mssgle:LineSegment
-                    End="-18.8333269423908,32.9666671281387" />
+                    End="-18.833326942391,34.2047623760727" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2019,10 +2163,6 @@ From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID =
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="173.6,41.6"
-          Id="Package\Sequence Container\EST_NewFeetypeCount"
-          TopLeft="1029.39995648861,210.666669256422" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 4]"
           TopLeft="701.833307670223,156.333335020807">
@@ -2059,10 +2199,6 @@ From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID =
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="173.6,41.6"
-          Id="Package\Sequence Container\EST_NewFeetypes"
-          TopLeft="1020.2332901862,323.33333665318" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 5]"
           TopLeft="1116.19995648861,252.266669256422">
@@ -2099,17 +2235,6 @@ From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID =
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container 1\Execute SQL Task"
-          TopLeft="168.399971787136,58.4666717979645" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="457.6,160.8"
-          Size="457.6,204"
-          Id="Package\Sequence Container\Foreach Loop Container 1"
-          TopLeft="1023.56662338707,432.533337686327" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 6]"
           TopLeft="1107.0332901862,364.93333665318">
@@ -2150,7 +2275,59 @@ From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID =
           PanelSize="1584,728"
           Size="1584,771.2"
           Id="Package\Sequence Container"
-          TopLeft="65.8333307173518,78.0000006198883" />
+          TopLeft="107.499995728334,186.952382438145" />
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Start Run Cycle"
+          TopLeft="799.999968210858,78.0000006198884" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="895.949981969596,119.600000619888">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67.3523818182567"
+              Start="0,0"
+              End="0,59.8523818182567">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.8523818182567" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Stop Run Cycle"
+          TopLeft="803.57139664037,1032.57143677757" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="897.735696184352,958.152382438145">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74.4190543394242"
+              Start="0,0"
+              End="0,66.9190543394242">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.9190543394242" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -2193,14 +2370,6 @@ From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID =
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Data Flow Task\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\Data Flow Task\ODBC Destination">
     <Properties>
       <Property>
@@ -2210,6 +2379,14 @@ From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID =
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

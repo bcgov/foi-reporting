@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="dimDIMECOffice_ETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="203"
-  DTS:VersionGUID="{53670E2B-0454-4030-B897-28B115CB8E76}">
+  DTS:VersionBuild="204"
+  DTS:VersionGUID="{869BB13C-FCAE-428E-9745-DAD83E31FA08}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1909,7 +1909,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1938,7 +1938,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task  - New EC Offices"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1967,7 +1967,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task - Modified Offices"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1996,7 +1996,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task - Modified Offices exists"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2473,7 +2473,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="Execute SQL Task"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -3378,7 +3378,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="Execute SQL Task"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -4304,6 +4304,10 @@
           Size="151.2,41.6"
           Id="Package\Start Run Cycle"
           TopLeft="631.481456388663,28.8888891184771" />
+        <NodeLayout
+          Size="192.8,41.6"
+          Id="Package\Stop Run Cycle"
+          TopLeft="624.999975164732,947.407414555255" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="725.140726604874,70.4888891184771">
@@ -4326,10 +4330,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="192.8,41.6"
-          Id="Package\Stop Run Cycle"
-          TopLeft="624.999975164732,947.407414555255" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="723.899985992909,896.266667520735">

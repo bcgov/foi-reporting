@@ -7,15 +7,44 @@
   DTS:CreatorName="DESKTOP-U67UC02\abina"
   DTS:DTSID="{B8955C9B-AE63-4089-90A9-FBF3E46A1E4E}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
   DTS:LocaleID="1033"
   DTS:ObjectName="dimReceivedModes"
   DTS:PackageType="5"
-  DTS:VersionBuild="43"
-  DTS:VersionGUID="{6169FBAD-4A62-4F8F-A743-84CBCDB963AC}">
+  DTS:VersionBuild="45"
+  DTS:VersionGUID="{BCFDDA9B-88C8-4E02-85AB-449961054A2B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BF9B33CD-C141-4BF9-82E0-71DC059BBE6E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="isComplete">
+      <DTS:VariableValue
+        DTS:DataType="11">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7D06C475-8093-4007-BF54-7A4B2324F399}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="lastRunCycleTime">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AEAE7987-CA02-4023-BFE3-B73569FA9769}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="runCycleID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Sequence Container"
@@ -526,11 +555,17 @@ From tblReceivedModes TRM LEFT OUTER JOIN tblTerminologyLookup TLL ON TRM.iLabel
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="Select &#xA;&#x9;count(TRM.tiReceivedModeID)&#xA;&#x9;&#xA;From tblReceivedModes TRM LEFT OUTER JOIN tblTerminologyLookup TLL ON TRM.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1&#xA;WHERE TRM.dtModifiedDate &gt;=dateadd(day,datediff(day,1,GETDATE()),0)   AND TRM.dtCreatedDate &lt; dateadd(day,datediff(day,1,GETDATE()),0)"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;count(TRM.tiReceivedModeID)&#xA;&#x9;&#xA;From tblReceivedModes TRM LEFT OUTER JOIN tblTerminologyLookup TLL ON TRM.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1&#xA;WHERE TRM.dtModifiedDate &gt;= @lastruntime AND TRM.dtCreatedDate &lt; @lastruntime"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::modifiedreceivedmodecount" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -549,11 +584,17 @@ From tblReceivedModes TRM LEFT OUTER JOIN tblTerminologyLookup TLL ON TRM.iLabel
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="Select &#xA;&#x9;CAST(TRM.tiReceivedModeID as INT) as receivedmodeid,&#xA;&#x9;TLL.vcTerminology as receivedmodename,&#xA;&#x9;TRM.cActive as cactive,&#xA;&#x9;convert(varchar, TRM.dtCreatedDate, 120) as createddate,&#xA;&#x9;convert(varchar, TRM.dtModifiedDate , 120)as modifieddate,&#xA;&#x9;TRM.cDelete as cdelete&#xA;From tblReceivedModes TRM LEFT OUTER JOIN tblTerminologyLookup TLL ON TRM.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1&#xA;WHERE TRM.dtModifiedDate &gt;=dateadd(day,datediff(day,1,GETDATE()),0)   AND TRM.dtCreatedDate &lt; dateadd(day,datediff(day,1,GETDATE()),0)"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;CAST(TRM.tiReceivedModeID as INT) as receivedmodeid,&#xA;&#x9;TLL.vcTerminology as receivedmodename,&#xA;&#x9;TRM.cActive as cactive,&#xA;&#x9;convert(varchar, TRM.dtCreatedDate, 120) as createddate,&#xA;&#x9;convert(varchar, TRM.dtModifiedDate , 120)as modifieddate,&#xA;&#x9;TRM.cDelete as cdelete&#xA;From tblReceivedModes TRM LEFT OUTER JOIN tblTerminologyLookup TLL ON TRM.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1&#xA;WHERE TRM.dtModifiedDate &gt;= @lastruntime AND TRM.dtCreatedDate &lt; @lastruntime"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::modifiedreceivedmoderows" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -572,11 +613,17 @@ From tblReceivedModes TRM LEFT OUTER JOIN tblTerminologyLookup TLL ON TRM.iLabel
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="Select &#xA;&#x9;CAST(TRM.tiReceivedModeID as INT) as receivedmodeid,&#xA;&#x9;TLL.vcTerminology as receivedmodename,&#xA;&#x9;TRM.cActive as cactive,&#xA;&#x9;convert(varchar, TRM.dtCreatedDate, 120) as createddate,&#xA;&#x9;convert(varchar, TRM.dtModifiedDate , 120)as modifieddate,&#xA;&#x9;TRM.cDelete as cdelete&#xA;From tblReceivedModes TRM LEFT OUTER JOIN tblTerminologyLookup TLL ON TRM.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1&#xA;WHERE TRM.dtCreatedDate &gt;= dateadd(day,datediff(day,1,GETDATE()),0)"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;CAST(TRM.tiReceivedModeID as INT) as receivedmodeid,&#xA;&#x9;TLL.vcTerminology as receivedmodename,&#xA;&#x9;TRM.cActive as cactive,&#xA;&#x9;convert(varchar, TRM.dtCreatedDate, 120) as createddate,&#xA;&#x9;convert(varchar, TRM.dtModifiedDate , 120)as modifieddate,&#xA;&#x9;TRM.cDelete as cdelete&#xA;From tblReceivedModes TRM LEFT OUTER JOIN tblTerminologyLookup TLL ON TRM.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1&#xA;WHERE TRM.dtCreatedDate &gt;= @lastruntime"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::newreceivedmodes" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -616,11 +663,17 @@ From tblReceivedModes TRM LEFT OUTER JOIN tblTerminologyLookup TLL ON TRM.iLabel
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
-              SQLTask:SqlStatementSource="Select &#xA;&#x9;count(TRM.tiReceivedModeID)&#xA;&#x9;&#xA;From tblReceivedModes TRM LEFT OUTER JOIN tblTerminologyLookup TLL ON TRM.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1&#xA;WHERE  TRM.dtCreatedDate &gt;= dateadd(day,datediff(day,1,GETDATE()),0)"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;count(TRM.tiReceivedModeID)&#xA;&#x9;&#xA;From tblReceivedModes TRM LEFT OUTER JOIN tblTerminologyLookup TLL ON TRM.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1&#xA;WHERE  TRM.dtCreatedDate &gt;= @lastruntime"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::newreceivedmodecount" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -1042,7 +1095,79 @@ From tblReceivedModes TRM LEFT OUTER JOIN tblTerminologyLookup TLL ON TRM.iLabel
           DTS:To="Package\Sequence Container\Foreach Loop Container 1" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{0A56DE97-04DC-4437-9C23-2D6B42A3C232}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StartRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>packageID</ParameterName>
+            <BindedVariableOrParameterName>System::PackageID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Stop Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{BAFCBA2A-B2D8-4862-8A0A-3FC3D0131E5D}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Stop Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StopRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>isComplete</ParameterName>
+            <BindedVariableOrParameterName>User::isComplete</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>runCycleID</ParameterName>
+            <BindedVariableOrParameterName>User::runCycleID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{5DD02FB5-4F06-4B76-A00D-07BD5A067D39}"
+      DTS:From="Package\Start Run Cycle"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sequence Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{175958D5-1E37-4398-9BAE-146B33B81AFC}"
+      DTS:From="Package\Sequence Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Stop Run Cycle" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -1090,6 +1215,17 @@ From tblReceivedModes TRM LEFT OUTER JOIN tblTerminologyLookup TLL ON TRM.iLabel
           Size="564.8,244.8"
           Id="Package\Sequence Container\Foreach Loop Container"
           TopLeft="431.933313531347,512.333337748316" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container 1\Execute SQL Task"
+          TopLeft="192.433305882084,55.5333384095298" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="564.8,201.6"
+          Size="564.8,244.8"
+          Id="Package\Sequence Container\Foreach Loop Container 1"
+          TopLeft="1144.86663004292,528.933337479697" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
           TopLeft="606.099975926347,90.3333344009187">
@@ -1304,17 +1440,6 @@ From tblReceivedModes TRM LEFT OUTER JOIN tblTerminologyLookup TLL ON TRM.iLabel
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container 1\Execute SQL Task"
-          TopLeft="192.433305882084,55.5333384095298" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="564.8,201.6"
-          Size="564.8,244.8"
-          Id="Package\Sequence Container\Foreach Loop Container 1"
-          TopLeft="1144.86663004292,528.933337479697" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 6]"
           TopLeft="1101.56662577126,424.800003388723">
@@ -1355,7 +1480,59 @@ From tblReceivedModes TRM LEFT OUTER JOIN tblTerminologyLookup TLL ON TRM.iLabel
           PanelSize="1958.4,826.4"
           Size="1958.4,869.6"
           Id="Package\Sequence Container"
-          TopLeft="66.6666640175715,47.6666670454872" />
+          TopLeft="61.904759444888,117.000000929832" />
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\Start Run Cycle"
+          TopLeft="963.095199825273,30.9523811983684" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="1039.89997963508,72.5523811983684">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.4476197314639"
+              Start="0,0"
+              End="0,36.9476197314639">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.9476197314639" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Stop Run Cycle"
+          TopLeft="951.190438393564,1063.52381797594" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="1042.34759891923,986.600000929832">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76.9238170461053"
+              Start="0,0"
+              End="0,69.4238170461053">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.4238170461053" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>

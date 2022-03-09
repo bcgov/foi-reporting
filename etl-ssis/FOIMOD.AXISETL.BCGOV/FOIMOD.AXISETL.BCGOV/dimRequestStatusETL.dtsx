@@ -7,15 +7,44 @@
   DTS:CreatorName="DESKTOP-U67UC02\abina"
   DTS:DTSID="{A2B7309C-AD32-40D5-B1BC-0A6C748F923F}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="dimRequestStatusETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{ABA5C88D-83F8-469D-934A-8FB3498D890A}">
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{3E0527B9-95A5-403E-AE7B-971B10E2FFDA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A367B8F4-F105-42E1-A85B-06EF953DA859}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="isComplete">
+      <DTS:VariableValue
+        DTS:DataType="11">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CD074618-2EC8-41FE-814D-44E915CA589D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="lastRunCycleTime">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2D8C921D-1330-4C19-A24B-3446B8CD810C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="runCycleID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Sequence Container"
@@ -493,11 +522,17 @@ From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLab
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="Select &#xA;&#x9;TRS.iRequestStatusID as requeststatusid,&#xA;&#x9;TLL.vcTerminology as requeststatusname,&#xA;&#x9;TRS.vcRequestStatus as requeststatus,&#xA;&#x9;&#x9;convert(varchar, trs.dtCreatedDate, 120) as createddate,&#xA;&#x9;convert(varchar, TRS.dtModifiedDate , 120)as modifieddate&#xA;From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1&#x9;&#xA;WHERE (  TRS.dtModifiedDate &gt;=dateadd(day,datediff(day,1,GETDATE()),0)   AND TRS.dtCreatedDate &lt; dateadd(day,datediff(day,1,GETDATE()),0) )"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;TRS.iRequestStatusID as requeststatusid,&#xA;&#x9;TLL.vcTerminology as requeststatusname,&#xA;&#x9;TRS.vcRequestStatus as requeststatus,&#xA;&#x9;&#x9;convert(varchar, trs.dtCreatedDate, 120) as createddate,&#xA;&#x9;convert(varchar, TRS.dtModifiedDate , 120)as modifieddate&#xA;From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1&#x9;&#xA;WHERE (  TRS.dtModifiedDate &gt;= @lastruntime AND TRS.dtCreatedDate &lt; @lastruntime )"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::modifiedrequeststatuses" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -516,11 +551,17 @@ From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLab
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="Select &#xA; TRS.iRequestStatusID as requeststatusid,&#xA; TLL.vcTerminology as requeststatusname,&#xA; TRS.vcRequestStatus as requeststatus,&#xA;  convert(varchar, trs.dtCreatedDate, 120) as createddate,&#xA; convert(varchar, TRS.dtModifiedDate , 120)as modifieddate&#xA;From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 &#xA;WHERE ( TRS.dtCreatedDate &gt;= dateadd(day,datediff(day,1,GETDATE()),0) )"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA; TRS.iRequestStatusID as requeststatusid,&#xA; TLL.vcTerminology as requeststatusname,&#xA; TRS.vcRequestStatus as requeststatus,&#xA;  convert(varchar, trs.dtCreatedDate, 120) as createddate,&#xA; convert(varchar, TRS.dtModifiedDate , 120)as modifieddate&#xA;From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 &#xA;WHERE ( TRS.dtCreatedDate &gt;= @lastruntime )"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::newrequeststatuses" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -539,11 +580,17 @@ From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLab
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="Select &#xA;&#x9;count(TRS.iRequestStatusID)&#xA; From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1&#x9;&#xA;WHERE (  TRS.dtModifiedDate &gt;=dateadd(day,datediff(day,1,GETDATE()),0)   AND TRS.dtCreatedDate &lt; dateadd(day,datediff(day,1,GETDATE()),0) )"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;count(TRS.iRequestStatusID)&#xA; From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1&#x9;&#xA;WHERE (  TRS.dtModifiedDate &gt;= @lastruntime AND TRS.dtCreatedDate &lt; @lastruntime )"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::modifiedreqstatuscount" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -562,11 +609,17 @@ From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLab
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="Select &#xA; count(TRS.iRequestStatusID)&#xA; From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 &#xA;WHERE (   TRS.dtCreatedDate &gt;= dateadd(day,datediff(day,1,GETDATE()),0) )"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA; count(TRS.iRequestStatusID)&#xA; From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 &#xA;WHERE (   TRS.dtCreatedDate &gt;= @lastruntime )"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::newstatusrowcount" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -964,7 +1017,79 @@ From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLab
           DTS:To="Package\Sequence Container\Foreach Loop Container 1" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{BEFEE193-906A-49CC-9770-B9ACA6D605B2}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StartRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>packageID</ParameterName>
+            <BindedVariableOrParameterName>System::PackageID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Stop Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{6EEC1E37-F83B-455C-90FD-B1973973ED2E}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Stop Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StopRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>isComplete</ParameterName>
+            <BindedVariableOrParameterName>User::isComplete</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>runCycleID</ParameterName>
+            <BindedVariableOrParameterName>User::runCycleID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{AE38F226-A264-44CF-81C3-2B8A97B975B4}"
+      DTS:From="Package\Start Run Cycle"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sequence Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{9B63FCB5-D997-4558-B778-7A4C1C56F5D9}"
+      DTS:From="Package\Sequence Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Stop Run Cycle" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -978,13 +1103,51 @@ From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLab
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="224,41.6"
+          Id="Package\Sequence Container\dft_initialLoadRequestStatuses"
+          TopLeft="233.566652394666,166.800002190272" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\execSQLGetModifiedStatuses"
+          TopLeft="570.233305683402,307.200003306071" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\execSQLNewReqStatuses"
+          TopLeft="941.066624281144,319.266669979625" />
+        <NodeLayout
+          Size="207.2,41.6"
+          Id="Package\Sequence Container\execSQLtaskModifiedCount"
+          TopLeft="585.233305087355,204.066669153108" />
+        <NodeLayout
+          Size="220.8,41.6"
+          Id="Package\Sequence Container\execSQLtaskNewReqStatuses"
+          TopLeft="876.066626864011,208.400002520879" />
+        <NodeLayout
           Size="228,41.6"
           Id="Package\Sequence Container\exeSQL_HasRequestStatusEDW"
           TopLeft="428.566644646063,38.2666616937847" />
         <NodeLayout
-          Size="224,41.6"
-          Id="Package\Sequence Container\dft_initialLoadRequestStatuses"
-          TopLeft="233.566652394666,166.800002190272" />
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container\Execute SQL Task"
+          TopLeft="94.1333081669287,40.5333382648893" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="366.4,136.8"
+          Size="366.4,180"
+          Id="Package\Sequence Container\Foreach Loop Container"
+          TopLeft="151.899988973141,390.400003967285" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container 1\Execute SQL Task"
+          TopLeft="94.1333081669287,40.5333382648893" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="366.4,136.8"
+          Size="366.4,180"
+          Id="Package\Sequence Container\Foreach Loop Container 1"
+          TopLeft="824.399962250393,411.533337252405" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
           TopLeft="542.566644646063,79.8666616937847">
@@ -1021,10 +1184,6 @@ From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLab
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="207.2,41.6"
-          Id="Package\Sequence Container\execSQLtaskModifiedCount"
-          TopLeft="585.233305087355,204.066669153108" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
           TopLeft="579.233311312729,79.8666616937847">
@@ -1061,10 +1220,6 @@ From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLab
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\execSQLGetModifiedStatuses"
-          TopLeft="570.233305683402,307.200003306071" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
           TopLeft="688.833305087355,245.666669153108">
@@ -1101,17 +1256,6 @@ From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLab
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container\Execute SQL Task"
-          TopLeft="94.1333081669287,40.5333382648893" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="366.4,136.8"
-          Size="366.4,180"
-          Id="Package\Sequence Container\Foreach Loop Container"
-          TopLeft="151.899988973141,390.400003967285" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 3]"
           TopLeft="652.633305683402,348.800003306071">
@@ -1146,10 +1290,6 @@ From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLab
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="220.8,41.6"
-          Id="Package\Sequence Container\execSQLtaskNewReqStatuses"
-          TopLeft="876.066626864011,208.400002520879" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 4]"
           TopLeft="597.566644646063,79.8666616937847">
@@ -1184,10 +1324,6 @@ From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLab
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\execSQLNewReqStatuses"
-          TopLeft="941.066624281144,319.266669979625" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 5]"
           TopLeft="986.466626864011,250.000002520879">
@@ -1224,17 +1360,6 @@ From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLab
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container 1\Execute SQL Task"
-          TopLeft="94.1333081669287,40.5333382648893" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="366.4,136.8"
-          Size="366.4,180"
-          Id="Package\Sequence Container\Foreach Loop Container 1"
-          TopLeft="824.399962250393,411.533337252405" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 6]"
           TopLeft="1023.46662428114,360.866669979625">
@@ -1275,7 +1400,59 @@ From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLab
           PanelSize="1380.8,699.2"
           Size="1380.8,742.4"
           Id="Package\Sequence Container"
-          TopLeft="125.833328333166,66.7333338636823" />
+          TopLeft="125.833328333166,76.3629635698414" />
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Start Run Cycle"
+          TopLeft="718.518489967159,0.685185146920471" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="813.575909150163,42.2851851469205">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.0777784229209"
+              Start="0,0"
+              End="0,26.5777784229209">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5777784229209" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Stop Run Cycle"
+          TopLeft="723.148119412823,878.222229201705" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="815.890723872995,818.762963569841">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.459265631864"
+              Start="0,0"
+              End="0,51.959265631864">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.959265631864" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -1330,14 +1507,6 @@ From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLab
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\dft_initialLoadRequestStatuses\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\dft_initialLoadRequestStatuses\ODBC Destination">
     <Properties>
       <Property>
@@ -1347,6 +1516,14 @@ From tblRequestStatuses TRS LEFT OUTER JOIN tblTerminologyLookup TLL ON TRS.iLab
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\dft_initialLoadRequestStatuses\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

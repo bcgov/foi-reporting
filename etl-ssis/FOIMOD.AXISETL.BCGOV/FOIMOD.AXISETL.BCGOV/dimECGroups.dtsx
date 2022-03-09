@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="54"
-  DTS:VersionGUID="{4782B437-B090-4E1F-86C6-D0D5F17D3ED6}">
+  DTS:VersionBuild="55"
+  DTS:VersionGUID="{5A9CC15E-6AA9-4A25-B141-8933119206B4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -731,17 +731,23 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task  - New EC Groups"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="SELECT ECG.GROUP_ID as groupid,&#xA;&#x9;ECG.GROUP_NAME as groupname,&#xA;&#x9;TLL.vcTerminology as tllgroupname,&#xA;&#x9;ECG.DESCRIPTION as groupdescription,&#xA;&#x9;ECG.IS_ACTIVE as isactive,&#xA;&#x9;convert(varchar, ECG.CREATED_DATE, 120) as createddate,&#xA;&#x9;convert(varchar, ECG.MODIFIED_DATE , 120)as modifieddate,&#x9;&#xA;&#x9;ECG.GROUP_CODE as groupcode,&#xA;&#x9;ECG.DELETE_FLAG as deleteflag,&#xA;&#x9;ECG.OFFICE_ID as officeid,&#xA;&#x9;ECG.EMAIL_ID as emailid FROM EC_GROUPS ECG &#xA;LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID WHERE TLL.tiLocaleID = 1 AND (ECG.CREATED_DATE &gt;=dateadd(day,datediff(day,1,GETDATE()),0));"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;SELECT ECG.GROUP_ID as groupid,&#xA;&#x9;ECG.GROUP_NAME as groupname,&#xA;&#x9;TLL.vcTerminology as tllgroupname,&#xA;&#x9;ECG.DESCRIPTION as groupdescription,&#xA;&#x9;ECG.IS_ACTIVE as isactive,&#xA;&#x9;convert(varchar, ECG.CREATED_DATE, 120) as createddate,&#xA;&#x9;convert(varchar, ECG.MODIFIED_DATE , 120)as modifieddate,&#x9;&#xA;&#x9;ECG.GROUP_CODE as groupcode,&#xA;&#x9;ECG.DELETE_FLAG as deleteflag,&#xA;&#x9;ECG.OFFICE_ID as officeid,&#xA;&#x9;ECG.EMAIL_ID as emailid FROM EC_GROUPS ECG &#xA;LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID WHERE TLL.tiLocaleID = 1 AND (ECG.CREATED_DATE &gt;= @lastruntime);"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::newecgroups" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -754,17 +760,23 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task - Modified Groups exists"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="Select &#xA;&#x9;count(ECG.GROUP_ID) &#xA;From EC_GROUPS ECG &#xA;LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.tiLocaleID = 1&#x9; &#xA;WHERE (  ECG.MODIFIED_DATE &gt;=dateadd(day,datediff(day,1,GETDATE()),0)   AND ECG.CREATED_DATE &lt; dateadd(day,datediff(day,1,GETDATE()),0) )&#xA;&#xA;"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;count(ECG.GROUP_ID) &#xA;From EC_GROUPS ECG &#xA;LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.tiLocaleID = 1&#x9; &#xA;WHERE (  ECG.MODIFIED_DATE &gt;= @lastruntime AND ECG.CREATED_DATE &lt; @lastruntime )&#xA;&#xA;"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::modifiedgroupcount" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -777,17 +789,23 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task - Modified Offices"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="Select &#xA;&#x9;ECG.GROUP_ID as groupid,&#xA;&#x9;ECG.GROUP_NAME as groupname,&#xA;&#x9;TLL.vcTerminology as tllgroupname,&#xA;&#x9;ECG.DESCRIPTION as groupdescription,&#xA;&#x9;ECG.IS_ACTIVE as isactive,&#xA;&#x9;convert(varchar, ECG.CREATED_DATE, 120) as createddate,&#xA;&#x9;convert(varchar, ECG.MODIFIED_DATE , 120)as modifieddate,&#x9;&#xA;&#x9;ECG.GROUP_CODE as groupcode,&#xA;&#x9;ECG.DELETE_FLAG as deleteflag,&#xA;&#x9;ECG.OFFICE_ID as officeid,&#xA;&#x9;ISNULL(ECG.EMAIL_ID,'') as emailid&#xA;&#xA;From EC_GROUPS ECG &#xA;LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.tiLocaleID = 1&#x9; &#xA;WHERE ECG.MODIFIED_DATE &gt;=dateadd(day,datediff(day,1,GETDATE()),0)   AND ECG.CREATED_DATE &lt; dateadd(day,datediff(day,1,GETDATE()),0)"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;ECG.GROUP_ID as groupid,&#xA;&#x9;ECG.GROUP_NAME as groupname,&#xA;&#x9;TLL.vcTerminology as tllgroupname,&#xA;&#x9;ECG.DESCRIPTION as groupdescription,&#xA;&#x9;ECG.IS_ACTIVE as isactive,&#xA;&#x9;convert(varchar, ECG.CREATED_DATE, 120) as createddate,&#xA;&#x9;convert(varchar, ECG.MODIFIED_DATE , 120)as modifieddate,&#x9;&#xA;&#x9;ECG.GROUP_CODE as groupcode,&#xA;&#x9;ECG.DELETE_FLAG as deleteflag,&#xA;&#x9;ECG.OFFICE_ID as officeid,&#xA;&#x9;ISNULL(ECG.EMAIL_ID,'') as emailid&#xA;&#xA;From EC_GROUPS ECG &#xA;LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.tiLocaleID = 1&#x9; &#xA;WHERE ECG.MODIFIED_DATE &gt;= @lastruntime AND ECG.CREATED_DATE &lt; @lastruntime"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::updatedecgroups" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -800,17 +818,23 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
           DTS:LocaleID="-1"
           DTS:ObjectName="exeSQLtask_newGroupsCount"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="SELECT COUNT(ECG.GROUP_ID) FROM EC_GROUPS ECG &#xA;LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID WHERE TLL.tiLocaleID = 1 AND (ECG.CREATED_DATE &gt;=dateadd(day,datediff(day,1,GETDATE()),0));"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;SELECT COUNT(ECG.GROUP_ID) FROM EC_GROUPS ECG &#xA;LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID WHERE TLL.tiLocaleID = 1 AND (ECG.CREATED_DATE &gt;= @lastruntime);"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
                 SQLTask:DtsVariableName="User::newgroupcount" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -974,7 +998,7 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
               DTS:LocaleID="-1"
               DTS:ObjectName="Execute SQL Task"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -1258,7 +1282,7 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
               DTS:LocaleID="-1"
               DTS:ObjectName="Execute SQL Task"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -1878,14 +1902,14 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,65.44761942152"
+              EndConnector="0,65.4476194215199"
               Start="0,0"
-              End="0,57.94761942152">
+              End="0,57.9476194215199">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,57.94761942152" />
+                    End="0,57.9476194215199" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1896,18 +1920,18 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="715.909511439195,952.209524586844">
+          TopLeft="715.909511439196,952.209524586844">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,77.8857216948556"
+              EndConnector="0,77.8857216948559"
               Start="0,0"
-              End="0,70.3857216948556">
+              End="0,70.3857216948559">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,70.3857216948556" />
+                    End="0,70.3857216948559" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
