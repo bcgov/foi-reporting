@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-U67UC02</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAANGxHiwy/GUGnzQ44yXJjswAAAAACAAAAAAAQZgAAAAEAACAAAACJAS8iML9Sqw3vrT4jbu1r1yIfarEMnmY9Tjch+S3t8wAAAAAOgAAAAAIAACAAAADXCbVzs/d/NPzruDlvWG4A9k4zBdSbRwviqZW0YznHEpAAAAC3RAbniXVt2WAtGDMDw5b7zjdJ+T1/EyFi9OC1sb3TZV9948AHYzK5CIXvna3axKTg48m1mZXxmT5O7lcSX2NwmRnP0d+9XEoWHgmmxThzKGNaTl0SH8CUtJ08FGET7o8AvPnRHHcyNovsxaefhhWcPswW46CZcffqjXSj+HGt9HVgvGhDFR4VFcVKkNINsulAAAAAcVJWr4hK1pLMGQlRQNpriXBKHYEWptAyMaYryj95QGI0QI7fBmrA9BM0xB9KaZkemMeZ0s9piqwJgithrozmFw==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAANGxHiwy/GUGnzQ44yXJjswAAAAACAAAAAAAQZgAAAAEAACAAAADkmiMiPId+6g71CD+O+c73s8g/MZ2myTMLrTWbVdKjDAAAAAAOgAAAAAIAACAAAACU8mK6SAQ/aw3eHLIFnzGdMpBT8MPJAVoDY4c/zd9muZAAAAAi+HV6B0YLz09OYk+3S5iG3KnoivIUG0T2jbJsi9pQ7SUyDi/NIxNRMG8pqUq1D5Cs+Tw2TUv62ook4K2+ZJGJRE8BJZYU3P/aJ6Vj583XKkWVshD5Pf41rGehl1rZfcIUUoXMRK3wZ5Ag+gbjDMY34kPxPz+RnSa2QgqFiqnUEgvpI+Q4YB0AEbOtn2zpz4ZAAAAACEYUf2LVX7kSOz/U2wgqx1GDpCBaT+UM9eK962PLA4qFj9yOsShsFgpB/41jtbViAoLTO63azLJgxpxCEhnlJw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -51,6 +51,7 @@
           <SSIS:Package SSIS:Name="factRequestExtensions.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="factRequestPaymentTransaction.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="factRequestForDocuments.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="factRequestRequesters.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="localhost.foi_edw.postgres.conmgr" />
@@ -980,10 +981,27 @@
                 <SSIS:Property SSIS:Name="Name">factRequestForDocuments</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">7</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{B470597D-B597-4AD3-BC31-6F1A39E3983C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{29C17D2F-7E0C-455F-9431-DD1F9B9E32D1}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="factRequestRequesters.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{D764F64A-D7C0-4856-B955-5997DD1659DD}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">factRequestRequesters</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">14</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{CAC5BA02-FE57-41C8-97D1-541FA1875F6A}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
