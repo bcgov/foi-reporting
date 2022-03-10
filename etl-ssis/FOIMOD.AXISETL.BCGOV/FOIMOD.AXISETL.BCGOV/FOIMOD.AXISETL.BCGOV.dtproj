@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-U67UC02</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMU8U65KVnkGIvNXZaIvdZwAAAAACAAAAAAAQZgAAAAEAACAAAADZn5dzVqUimPcbh1Y9tmJY5gsxnXt4zhb4gkW8iUGWBQAAAAAOgAAAAAIAACAAAACDotmT58VzH3rWplrq2wIWJQ5Qk0KkrfODXO+P5mQqipAAAAAveCz+mOAvaBKWT6GVED+JqfLpvduJan5HUK8/mRtipZavm73eVh8EgFdnNtphmupF9/b/ZryaJgeaTLeEZaFbHuqATq1l/4g+uWh+D7Jasi9HvnfEF1LdrcuhaT6oS9TdB3nUKVph1hc8XypVH5rgboUK6S8MisI66tOPymgJnACueNGTDHqBqy/6RRxv8dNAAAAAfelf/p2E5DTo1QiF1dHVbSr9H/lpa9IFZFK5C8UjFJQADF6WBH+RafHAaT5WF9qKGMJb/modhzYp8udukzJ/IA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMU8U65KVnkGIvNXZaIvdZwAAAAACAAAAAAAQZgAAAAEAACAAAABafF341LWvvAit0hSIpr8Z2XYzW6/PuHtbIFeX1m6FTAAAAAAOgAAAAAIAACAAAACmNPc2+zG7qyUuUJRO6y4n5D45F87j/k2TjAntn0+KbpAAAABh98VQ3vezirvWg6nWZiGY1ql7INNf1wG08zbDDM1uBxc9HJHaxkVvV416Nw9nFbr2FrObwbh/T111EQ5UYy6d7gsoIL4dp23IDSV+2Ras2gl7C78LyC9n7TiF2hf7Yb5OdC2sFjRENZj92QWFBCSd8RxXm2/SBpf08eh+xVqntWCFVcYEt7pDkcFq8LrqZzJAAAAAUKEi5nEpH488WGf7hQZioLxD/ItfS0f4TzO35eRHhSFL1DU/DW/81cmekYBHw2xqzALF3ZsiTHOTHgN2McQlNA==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -51,6 +51,9 @@
           <SSIS:Package SSIS:Name="factRequestExtensions.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="factRequestPaymentTransaction.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="factRequestForDocuments.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="dimRequests.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="factRequestInvoices.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="dimInvoiceDetails.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="localhost.foi_edw.postgres.conmgr" />
@@ -84,7 +87,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">server=localhost;uid=postgres;Dsn=PostgreSQL35W;database=foi_edw;port=5432;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">data source=localhost;uid=postgres;Dsn=PostgreSQL35W;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -654,8 +657,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
-                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -818,8 +819,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
-                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -985,6 +984,57 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{B470597D-B597-4AD3-BC31-6F1A39E3983C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="dimRequests.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{77765830-96E3-4FA4-B4AE-597183DD9B3C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">dimRequests</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">84</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{73A02FEB-2B29-413F-8E29-C0D851207C1B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="factRequestInvoices.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{CA592AC6-C1FD-477C-A8CA-79066A092B71}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">factRequestInvoices</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">31</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{91C9365B-8F0F-4BD6-8AE4-8393F6389227}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="dimInvoiceDetails.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{7F992856-0854-4CA5-91EC-4B3CB8D7D42E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">dimInvoiceDetails</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">29</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{73EBE368-5948-4E1C-9405-C4A28D0FCD29}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
