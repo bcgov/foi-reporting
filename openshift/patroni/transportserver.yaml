@@ -1,0 +1,12 @@
+apiVersion: porter.devops.gov.bc.ca/v1alpha1
+kind: TransportServerClaim
+metadata:
+  name: patroniservice-transport-server
+  namespace: c84b95-dev
+spec:
+  monitor:
+    interval: 10
+    timeout: 10
+    type: tcp
+  service: patroni-master-001
+  servicePort: 5432
