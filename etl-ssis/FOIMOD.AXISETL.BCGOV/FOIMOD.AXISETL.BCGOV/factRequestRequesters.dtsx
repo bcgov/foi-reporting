@@ -1,0 +1,2518 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/8/2022 6:07:25 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-MIA6OO6"
+  DTS:CreatorName="DESKTOP-MIA6OO6\AOT"
+  DTS:DTSID="{D764F64A-D7C0-4856-B955-5997DD1659DD}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="16393"
+  DTS:ObjectName="factRequestRequesters"
+  DTS:PackageType="5"
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{AC1CE0B5-0167-44AE-A0BF-0B2B460542B7}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{009C1176-AF40-494C-B09A-CEFD18D320CE}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="isComplete">
+      <DTS:VariableValue
+        DTS:DataType="11">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FE7EC6B9-6D88-45CE-904D-98F82CE89093}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="lastRunCycleTime">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3274268C-CA26-4D19-99F1-B67D8F1A3220}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="runCycleID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\End Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{b833b735-901f-4dd6-9ea3-3c1c5be501ce}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="End Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StopRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>isComplete</ParameterName>
+            <BindedVariableOrParameterName>User::isComplete</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>runCycleID</ParameterName>
+            <BindedVariableOrParameterName>User::runCycleID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{C841124C-AD0E-43F4-B00B-4B7D2A7EB909}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{016C3807-0E39-4D52-B7BF-756F2DE391F4}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="edwfactRequestRequesterscount">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{2977B59E-2B3C-4170-993C-9A10865ABE75}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="modifiedfoirequestid">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{605DBB36-A90A-445C-B92D-2FBB8FECE48A}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="modifiedfoirequestidcount">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{E716A818-84FB-4375-B4D0-433C1AE2C127}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="modifiedfoirequestids">
+          <DTS:VariableValue
+            DTS:DataSubType="ManagedSerializable"
+            DTS:DataType="13">
+            <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+              <SOAP-ENV:Body>
+                <xsd:anyType
+                  id="ref-1"></xsd:anyType>
+              </SOAP-ENV:Body>
+            </SOAP-ENV:Envelope>
+          </DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{E3121600-28D7-480B-8FB5-30C5123CC4C1}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="newfoirequestid">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{FF0470E8-63FC-470B-995E-D7AA1CEE5D75}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="newfoirequestidcount">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{7DE93C4A-9746-4D03-BADE-A4CC57602156}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="newfoirequestids">
+          <DTS:VariableValue
+            DTS:DataSubType="ManagedSerializable"
+            DTS:DataType="13">
+            <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+              <SOAP-ENV:Body>
+                <xsd:anyType
+                  id="ref-1"></xsd:anyType>
+              </SOAP-ENV:Body>
+            </SOAP-ENV:Envelope>
+          </DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{508B9188-5866-43B4-8F55-A881D66A4DB5}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\Data Flow Task\ODBC Destination"
+                  componentClassID="Microsoft.SSISODBCDst"
+                  contactInfo="ODBC Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="ODBC Destination"
+                  name="ODBC Destination"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="The name of the table to be fetched."
+                      expressionType="Notify"
+                      name="TableName">"public"."factRequestRequesters"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the number of rows fetched per batch."
+                      expressionType="Notify"
+                      name="BatchSize">1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of rows inserted under the same transaction."
+                      expressionType="Notify"
+                      name="TransactionSize">1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines the chunk size allocation for LOB columns"
+                      expressionType="Notify"
+                      name="LobChunkSize">32768</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                      expressionType="Notify"
+                      name="StatementTimeout">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The code page to use when code page information is unavailable from the data source."
+                      expressionType="Notify"
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                      expressionType="Notify"
+                      name="InsertMethod">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The ODBC C data type for binding numeric data."
+                      expressionType="Notify"
+                      name="BindNumericAs">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                      expressionType="Notify"
+                      name="BindCharColumnsAs">0</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Connections[ODBCConnection]"
+                      connectionManagerID="{F1356C9E-12B8-4059-B557-91D2500C60CE}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[localhost.foi_edw.postgres]"
+                      description="The ODBC runtime connection used to access the database."
+                      name="ODBCConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="ODBC Destination Input"
+                      truncationRowDisposition="FailComponent">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[foirequestid]"
+                          cachedDataType="i4"
+                          cachedName="foirequestid"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[foirequestid]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[foirequestid]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[runcycleid]"
+                          cachedDataType="i4"
+                          cachedName="runcycleid"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[runcycleid]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[runcycleid]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[requesttypeid]"
+                          cachedDataType="ui1"
+                          cachedName="requesttypeid"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requesttypeid]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesttypeid]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[applicantcategoryid]"
+                          cachedDataType="ui1"
+                          cachedName="applicantcategoryid"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[applicantcategoryid]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicantcategoryid]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[requestertypeid]"
+                          cachedDataType="ui1"
+                          cachedName="requestertypeid"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requestertypeid]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[requestertypeid]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[requesterid]"
+                          cachedDataType="i4"
+                          cachedName="requesterid"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requesterid]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesterid]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[createddate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="createddate"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[createddate]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[createddate]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[modifieddate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="modifieddate"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[modifieddate]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[modifieddate]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[activeflag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="activeflag"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[activeflag]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[activeflag]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[foirequestid]"
+                          dataType="i4"
+                          name="foirequestid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[runcycleid]"
+                          dataType="i4"
+                          name="runcycleid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requesttypeid]"
+                          dataType="i4"
+                          name="requesttypeid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[applicantcategoryid]"
+                          dataType="i4"
+                          name="applicantcategoryid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requestertypeid]"
+                          dataType="i4"
+                          name="requestertypeid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requesterid]"
+                          dataType="i4"
+                          name="requesterid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[createddate]"
+                          dataType="dbTimeStamp2"
+                          name="createddate"
+                          scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[modifieddate]"
+                          dataType="dbTimeStamp2"
+                          name="modifieddate"
+                          scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[activeflag]"
+                          dataType="wstr"
+                          length="1"
+                          name="activeflag" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="ODBC Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Data Flow Task\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DECLARE @runcycleid integer 
+SET @runcycleid = ?
+
+Select 
+TR.iRequestID as foirequestid, 
+@runcycleid as runcycleid,
+TR.tiRequestTypeID as requesttypeid,
+TR.tiRequesterCategoryID as applicantcategoryid,
+TRS.tiRequesterTypeID as requestertypeid,
+TR.iRequesterID as requesterid,
+TR.sdtCreatedDate as createddate,
+TR.sdtModifiedDate as modifieddate,
+'Y' as activeflag 
+From [dbo].tblRequests AS TR LEFT OUTER JOIN [dbo].tblRequesters AS TRS ON TR.iRequesterID = TRS.iRequesterID</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping">"0:Input",{3274268C-CA26-4D19-99F1-B67D8F1A3220};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="{4505C521-0836-4CAA-8A51-8DA634D4EA56}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.ATIPD]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[foirequestid]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[foirequestid]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[foirequestid]"
+                          name="foirequestid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[runcycleid]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[runcycleid]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[runcycleid]"
+                          name="runcycleid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesttypeid]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requesttypeid]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesttypeid]"
+                          name="requesttypeid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicantcategoryid]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[applicantcategoryid]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicantcategoryid]"
+                          name="applicantcategoryid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[requestertypeid]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requestertypeid]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[requestertypeid]"
+                          name="requestertypeid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesterid]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requesterid]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesterid]"
+                          name="requesterid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[createddate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[createddate]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[createddate]"
+                          name="createddate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[modifieddate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[modifieddate]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[modifieddate]"
+                          name="modifieddate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[activeflag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[activeflag]"
+                          length="1"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[activeflag]"
+                          name="activeflag"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[foirequestid]"
+                          dataType="i4"
+                          name="foirequestid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[runcycleid]"
+                          dataType="i4"
+                          name="runcycleid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requesttypeid]"
+                          dataType="ui1"
+                          name="requesttypeid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[applicantcategoryid]"
+                          dataType="ui1"
+                          name="applicantcategoryid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requestertypeid]"
+                          dataType="ui1"
+                          name="requestertypeid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requesterid]"
+                          dataType="i4"
+                          name="requesterid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[createddate]"
+                          dataType="dbTimeStamp"
+                          name="createddate" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[modifieddate]"
+                          dataType="dbTimeStamp"
+                          name="modifieddate" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[activeflag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="activeflag" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[foirequestid]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[foirequestid]"
+                          name="foirequestid" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[runcycleid]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[runcycleid]"
+                          name="runcycleid" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requesttypeid]"
+                          dataType="ui1"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requesttypeid]"
+                          name="requesttypeid" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[applicantcategoryid]"
+                          dataType="ui1"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[applicantcategoryid]"
+                          name="applicantcategoryid" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requestertypeid]"
+                          dataType="ui1"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requestertypeid]"
+                          name="requestertypeid" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requesterid]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requesterid]"
+                          name="requesterid" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[createddate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[createddate]"
+                          name="createddate" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[modifieddate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[modifieddate]"
+                          name="modifieddate" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[activeflag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[activeflag]"
+                          name="activeflag" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\Data Flow Task.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Foreach Loop Container for modified requests"
+          DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:Description="Foreach Loop Container"
+          DTS:DTSID="{9F1014D6-E579-4CF4-B84A-B0AB22012FCA}"
+          DTS:ExecutableType="STOCK:FOREACHLOOP"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Foreach Loop Container for modified requests">
+          <DTS:ForEachEnumerator
+            DTS:CreationName="Microsoft.ForEachADOEnumerator"
+            DTS:DTSID="{611652A9-54BF-4BCA-BB72-B44C6BCAFA21}"
+            DTS:ObjectName="{611652A9-54BF-4BCA-BB72-B44C6BCAFA21}">
+            <DTS:ObjectData>
+              <FEEADO
+                EnumType="EnumerateRowsInFirstTable"
+                VarName="User::modifiedfoirequestids" />
+            </DTS:ObjectData>
+          </DTS:ForEachEnumerator>
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:Description="Data Flow Task"
+              DTS:DTSID="{bbf4197e-f121-47a4-b2e4-1effd9ed94c4}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Load modified requests"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <pipeline
+                  version="1">
+                  <components>
+                    <component
+                      refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination"
+                      componentClassID="Microsoft.SSISODBCDst"
+                      contactInfo="ODBC Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                      description="ODBC Destination"
+                      name="ODBC Destination"
+                      usesDispositions="true"
+                      version="1">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The name of the table to be fetched."
+                          expressionType="Notify"
+                          name="TableName">"public"."factRequestRequesters"</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specify the number of rows fetched per batch."
+                          expressionType="Notify"
+                          name="BatchSize">1000</property>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of rows inserted under the same transaction."
+                          expressionType="Notify"
+                          name="TransactionSize">1000</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Determines the chunk size allocation for LOB columns"
+                          expressionType="Notify"
+                          name="LobChunkSize">32768</property>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                          expressionType="Notify"
+                          name="StatementTimeout">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="The code page to use when code page information is unavailable from the data source."
+                          expressionType="Notify"
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Int32"
+                          description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                          expressionType="Notify"
+                          name="InsertMethod">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="The ODBC C data type for binding numeric data."
+                          expressionType="Notify"
+                          name="BindNumericAs">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                          expressionType="Notify"
+                          name="BindCharColumnsAs">0</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Connections[ODBCConnection]"
+                          connectionManagerID="{F1356C9E-12B8-4059-B557-91D2500C60CE}:external"
+                          connectionManagerRefId="Project.ConnectionManagers[localhost.foi_edw.postgres]"
+                          description="The ODBC runtime connection used to access the database."
+                          name="ODBCConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input]"
+                          errorOrTruncationOperation="Insert"
+                          errorRowDisposition="FailComponent"
+                          hasSideEffects="true"
+                          name="ODBC Destination Input"
+                          truncationRowDisposition="FailComponent">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].Columns[foirequestid]"
+                              cachedDataType="i4"
+                              cachedName="foirequestid"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[foirequestid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[foirequestid]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].Columns[runcycleid]"
+                              cachedDataType="i4"
+                              cachedName="runcycleid"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[runcycleid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[runcycleid]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].Columns[requesttypeid]"
+                              cachedDataType="ui1"
+                              cachedName="requesttypeid"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requesttypeid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesttypeid]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].Columns[applicantcategoryid]"
+                              cachedDataType="ui1"
+                              cachedName="applicantcategoryid"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[applicantcategoryid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicantcategoryid]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].Columns[requestertypeid]"
+                              cachedDataType="ui1"
+                              cachedName="requestertypeid"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requestertypeid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[requestertypeid]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].Columns[requesterid]"
+                              cachedDataType="i4"
+                              cachedName="requesterid"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requesterid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesterid]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].Columns[createddate]"
+                              cachedDataType="dbTimeStamp"
+                              cachedName="createddate"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[createddate]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[createddate]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].Columns[modifieddate]"
+                              cachedDataType="dbTimeStamp"
+                              cachedName="modifieddate"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[modifieddate]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[modifieddate]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].Columns[activeflag]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="1"
+                              cachedName="activeflag"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[activeflag]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[activeflag]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[foirequestid]"
+                              dataType="i4"
+                              name="foirequestid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[runcycleid]"
+                              dataType="i4"
+                              name="runcycleid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requesttypeid]"
+                              dataType="i4"
+                              name="requesttypeid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[applicantcategoryid]"
+                              dataType="i4"
+                              name="applicantcategoryid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requestertypeid]"
+                              dataType="i4"
+                              name="requestertypeid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requesterid]"
+                              dataType="i4"
+                              name="requesterid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[createddate]"
+                              dataType="dbTimeStamp2"
+                              name="createddate"
+                              scale="6" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[modifieddate]"
+                              dataType="dbTimeStamp2"
+                              name="modifieddate"
+                              scale="6" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[activeflag]"
+                              dataType="wstr"
+                              length="1"
+                              name="activeflag" />
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Outputs[ODBC Destination Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="ODBC Destination Error Output"
+                          synchronousInputId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source"
+                      componentClassID="Microsoft.OLEDBSource"
+                      contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                      description="OLE DB Source"
+                      name="OLE DB Source"
+                      usesDispositions="true"
+                      version="7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset"></property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DECLARE @runcycleid integer 
+SET @runcycleid = ?
+
+Select 
+TR.iRequestID as foirequestid, 
+@runcycleid as runcycleid,
+TR.tiRequestTypeID as requesttypeid,
+TR.tiRequesterCategoryID as applicantcategoryid,
+TRS.tiRequesterTypeID as requestertypeid,
+TR.iRequesterID as requesterid,
+TR.sdtCreatedDate as createddate,
+TR.sdtModifiedDate as modifieddate,
+'Y' as activeflag 
+From [dbo].tblRequests AS TR LEFT OUTER JOIN [dbo].tblRequesters AS TRS ON TR.iRequesterID = TRS.iRequesterID 
+where TR.iRequestID = ?</property>
+                        <property
+                          dataType="System.String"
+                          description="The variable that contains the SQL command to be executed."
+                          name="SqlCommandVariable"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">2</property>
+                        <property
+                          dataType="System.String"
+                          description="The mappings between the parameters in the SQL command and variables."
+                          name="ParameterMapping">"0:Input",{3274268C-CA26-4D19-99F1-B67D8F1A3220};"1:Input",{2977B59E-2B3C-4170-993C-9A10865ABE75};</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Connections[OleDbConnection]"
+                          connectionManagerID="{4505C521-0836-4CAA-8A51-8DA634D4EA56}:external"
+                          connectionManagerRefId="Project.ConnectionManagers[LocalHost.ATIPD]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <outputs>
+                        <output
+                          refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output]"
+                          name="OLE DB Source Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[foirequestid]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[foirequestid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[foirequestid]"
+                              name="foirequestid"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[runcycleid]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[runcycleid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[runcycleid]"
+                              name="runcycleid"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesttypeid]"
+                              dataType="ui1"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requesttypeid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesttypeid]"
+                              name="requesttypeid"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicantcategoryid]"
+                              dataType="ui1"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[applicantcategoryid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicantcategoryid]"
+                              name="applicantcategoryid"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[requestertypeid]"
+                              dataType="ui1"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requestertypeid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[requestertypeid]"
+                              name="requestertypeid"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesterid]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requesterid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesterid]"
+                              name="requesterid"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[createddate]"
+                              dataType="dbTimeStamp"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[createddate]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[createddate]"
+                              name="createddate"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[modifieddate]"
+                              dataType="dbTimeStamp"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[modifieddate]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[modifieddate]"
+                              name="modifieddate"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[activeflag]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[activeflag]"
+                              length="1"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[activeflag]"
+                              name="activeflag"
+                              truncationRowDisposition="FailComponent" />
+                          </outputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[foirequestid]"
+                              dataType="i4"
+                              name="foirequestid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[runcycleid]"
+                              dataType="i4"
+                              name="runcycleid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requesttypeid]"
+                              dataType="ui1"
+                              name="requesttypeid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[applicantcategoryid]"
+                              dataType="ui1"
+                              name="applicantcategoryid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requestertypeid]"
+                              dataType="ui1"
+                              name="requestertypeid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requesterid]"
+                              dataType="i4"
+                              name="requesterid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[createddate]"
+                              dataType="dbTimeStamp"
+                              name="createddate" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[modifieddate]"
+                              dataType="dbTimeStamp"
+                              name="modifieddate" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[activeflag]"
+                              codePage="1252"
+                              dataType="str"
+                              length="1"
+                              name="activeflag" />
+                          </externalMetadataColumns>
+                        </output>
+                        <output
+                          refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                          isErrorOut="true"
+                          name="OLE DB Source Error Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[foirequestid]"
+                              dataType="i4"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[foirequestid]"
+                              name="foirequestid" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[runcycleid]"
+                              dataType="i4"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[runcycleid]"
+                              name="runcycleid" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requesttypeid]"
+                              dataType="ui1"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requesttypeid]"
+                              name="requesttypeid" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[applicantcategoryid]"
+                              dataType="ui1"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[applicantcategoryid]"
+                              name="applicantcategoryid" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requestertypeid]"
+                              dataType="ui1"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requestertypeid]"
+                              name="requestertypeid" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requesterid]"
+                              dataType="i4"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requesterid]"
+                              name="requesterid" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[createddate]"
+                              dataType="dbTimeStamp"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[createddate]"
+                              name="createddate" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[modifieddate]"
+                              dataType="dbTimeStamp"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[modifieddate]"
+                              name="modifieddate" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[activeflag]"
+                              codePage="1252"
+                              dataType="str"
+                              length="1"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[activeflag]"
+                              name="activeflag" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                  </components>
+                  <paths>
+                    <path
+                      refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests.Paths[OLE DB Source Output]"
+                      endId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination.Inputs[ODBC Destination Input]"
+                      name="OLE DB Source Output"
+                      startId="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source.Outputs[OLE DB Source Output]" />
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Sequence Container\Foreach Loop Container for modified requests\Update active flag to N for existing record"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{ca6e87d6-99dc-466d-97b9-4e761c02db8c}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Update active flag to N for existing record"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+                  SQLTask:SqlStatementSource="UPDATE public.&quot;factRequestRequesters&quot;&#xA; SET activeflag='N'&#xA; WHERE foirequestid = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="1"
+                    SQLTask:DtsVariableName="User::modifiedfoirequestid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Sequence Container\Foreach Loop Container for modified requests.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{C03A34D0-2264-4C6A-8EF3-CF3EFBA6EE70}"
+              DTS:From="Package\Sequence Container\Foreach Loop Container for modified requests\Update active flag to N for existing record"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests" />
+          </DTS:PrecedenceConstraints>
+          <DTS:ForEachVariableMappings>
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{E147A201-7FBE-4405-AD26-C24A26736166}"
+              DTS:ObjectName="{E147A201-7FBE-4405-AD26-C24A26736166}"
+              DTS:ValueIndex="0"
+              DTS:VariableName="User::modifiedfoirequestid" />
+          </DTS:ForEachVariableMappings>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Foreach Loop Container for new record"
+          DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:Description="Foreach Loop Container"
+          DTS:DTSID="{3CB14F92-98A5-4B99-9B91-A17843B4EA68}"
+          DTS:ExecutableType="STOCK:FOREACHLOOP"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Foreach Loop Container for new record">
+          <DTS:ForEachEnumerator
+            DTS:CreationName="Microsoft.ForEachADOEnumerator"
+            DTS:DTSID="{B58BDD72-F63A-4CA1-81B7-78129BE6855F}"
+            DTS:ObjectName="{B58BDD72-F63A-4CA1-81B7-78129BE6855F}">
+            <DTS:ObjectData>
+              <FEEADO
+                EnumType="EnumerateRowsInFirstTable"
+                VarName="User::newfoirequestids" />
+            </DTS:ObjectData>
+          </DTS:ForEachEnumerator>
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:Description="Data Flow Task"
+              DTS:DTSID="{98af5359-5117-41a7-85b4-7dd657638647}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Load new requests"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <pipeline
+                  version="1">
+                  <components>
+                    <component
+                      refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination"
+                      componentClassID="Microsoft.SSISODBCDst"
+                      contactInfo="ODBC Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                      description="ODBC Destination"
+                      name="ODBC Destination"
+                      usesDispositions="true"
+                      version="1">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The name of the table to be fetched."
+                          expressionType="Notify"
+                          name="TableName">"public"."factRequestRequesters"</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specify the number of rows fetched per batch."
+                          expressionType="Notify"
+                          name="BatchSize">1000</property>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of rows inserted under the same transaction."
+                          expressionType="Notify"
+                          name="TransactionSize">1000</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Determines the chunk size allocation for LOB columns"
+                          expressionType="Notify"
+                          name="LobChunkSize">32768</property>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                          expressionType="Notify"
+                          name="StatementTimeout">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="The code page to use when code page information is unavailable from the data source."
+                          expressionType="Notify"
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Int32"
+                          description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                          expressionType="Notify"
+                          name="InsertMethod">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="The ODBC C data type for binding numeric data."
+                          expressionType="Notify"
+                          name="BindNumericAs">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                          expressionType="Notify"
+                          name="BindCharColumnsAs">0</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Connections[ODBCConnection]"
+                          connectionManagerID="{F1356C9E-12B8-4059-B557-91D2500C60CE}:external"
+                          connectionManagerRefId="Project.ConnectionManagers[localhost.foi_edw.postgres]"
+                          description="The ODBC runtime connection used to access the database."
+                          name="ODBCConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input]"
+                          errorOrTruncationOperation="Insert"
+                          errorRowDisposition="FailComponent"
+                          hasSideEffects="true"
+                          name="ODBC Destination Input"
+                          truncationRowDisposition="FailComponent">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].Columns[foirequestid]"
+                              cachedDataType="i4"
+                              cachedName="foirequestid"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[foirequestid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[foirequestid]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].Columns[runcycleid]"
+                              cachedDataType="i4"
+                              cachedName="runcycleid"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[runcycleid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[runcycleid]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].Columns[requesttypeid]"
+                              cachedDataType="ui1"
+                              cachedName="requesttypeid"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requesttypeid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesttypeid]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].Columns[applicantcategoryid]"
+                              cachedDataType="ui1"
+                              cachedName="applicantcategoryid"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[applicantcategoryid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicantcategoryid]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].Columns[requestertypeid]"
+                              cachedDataType="ui1"
+                              cachedName="requestertypeid"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requestertypeid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[requestertypeid]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].Columns[requesterid]"
+                              cachedDataType="i4"
+                              cachedName="requesterid"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requesterid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesterid]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].Columns[createddate]"
+                              cachedDataType="dbTimeStamp"
+                              cachedName="createddate"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[createddate]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[createddate]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].Columns[modifieddate]"
+                              cachedDataType="dbTimeStamp"
+                              cachedName="modifieddate"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[modifieddate]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[modifieddate]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].Columns[activeflag]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="1"
+                              cachedName="activeflag"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[activeflag]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[activeflag]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[foirequestid]"
+                              dataType="i4"
+                              name="foirequestid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[runcycleid]"
+                              dataType="i4"
+                              name="runcycleid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requesttypeid]"
+                              dataType="i4"
+                              name="requesttypeid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[applicantcategoryid]"
+                              dataType="i4"
+                              name="applicantcategoryid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requestertypeid]"
+                              dataType="i4"
+                              name="requestertypeid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requesterid]"
+                              dataType="i4"
+                              name="requesterid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[createddate]"
+                              dataType="dbTimeStamp2"
+                              name="createddate"
+                              scale="6" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[modifieddate]"
+                              dataType="dbTimeStamp2"
+                              name="modifieddate"
+                              scale="6" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[activeflag]"
+                              dataType="wstr"
+                              length="1"
+                              name="activeflag" />
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Outputs[ODBC Destination Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="ODBC Destination Error Output"
+                          synchronousInputId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source"
+                      componentClassID="Microsoft.OLEDBSource"
+                      contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                      description="OLE DB Source"
+                      name="OLE DB Source"
+                      usesDispositions="true"
+                      version="7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset"></property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DECLARE @runcycleid integer 
+SET @runcycleid = ?
+
+Select 
+TR.iRequestID as foirequestid, 
+@runcycleid as runcycleid,
+TR.tiRequestTypeID as requesttypeid,
+TR.tiRequesterCategoryID as applicantcategoryid,
+TRS.tiRequesterTypeID as requestertypeid,
+TR.iRequesterID as requesterid,
+TR.sdtCreatedDate as createddate,
+TR.sdtModifiedDate as modifieddate,
+'Y' as activeflag 
+From [dbo].tblRequests AS TR LEFT OUTER JOIN [dbo].tblRequesters AS TRS ON TR.iRequesterID = TRS.iRequesterID 
+where TR.iRequestID = ?</property>
+                        <property
+                          dataType="System.String"
+                          description="The variable that contains the SQL command to be executed."
+                          name="SqlCommandVariable"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">2</property>
+                        <property
+                          dataType="System.String"
+                          description="The mappings between the parameters in the SQL command and variables."
+                          name="ParameterMapping">"0:Input",{3274268C-CA26-4D19-99F1-B67D8F1A3220};"1:Input",{E3121600-28D7-480B-8FB5-30C5123CC4C1};</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Connections[OleDbConnection]"
+                          connectionManagerID="{4505C521-0836-4CAA-8A51-8DA634D4EA56}:external"
+                          connectionManagerRefId="Project.ConnectionManagers[LocalHost.ATIPD]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <outputs>
+                        <output
+                          refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output]"
+                          name="OLE DB Source Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[foirequestid]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[foirequestid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[foirequestid]"
+                              name="foirequestid"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[runcycleid]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[runcycleid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[runcycleid]"
+                              name="runcycleid"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesttypeid]"
+                              dataType="ui1"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requesttypeid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesttypeid]"
+                              name="requesttypeid"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicantcategoryid]"
+                              dataType="ui1"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[applicantcategoryid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicantcategoryid]"
+                              name="applicantcategoryid"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[requestertypeid]"
+                              dataType="ui1"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requestertypeid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[requestertypeid]"
+                              name="requestertypeid"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesterid]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requesterid]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[requesterid]"
+                              name="requesterid"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[createddate]"
+                              dataType="dbTimeStamp"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[createddate]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[createddate]"
+                              name="createddate"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[modifieddate]"
+                              dataType="dbTimeStamp"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[modifieddate]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[modifieddate]"
+                              name="modifieddate"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[activeflag]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[activeflag]"
+                              length="1"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].Columns[activeflag]"
+                              name="activeflag"
+                              truncationRowDisposition="FailComponent" />
+                          </outputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[foirequestid]"
+                              dataType="i4"
+                              name="foirequestid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[runcycleid]"
+                              dataType="i4"
+                              name="runcycleid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requesttypeid]"
+                              dataType="ui1"
+                              name="requesttypeid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[applicantcategoryid]"
+                              dataType="ui1"
+                              name="applicantcategoryid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requestertypeid]"
+                              dataType="ui1"
+                              name="requestertypeid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[requesterid]"
+                              dataType="i4"
+                              name="requesterid" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[createddate]"
+                              dataType="dbTimeStamp"
+                              name="createddate" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[modifieddate]"
+                              dataType="dbTimeStamp"
+                              name="modifieddate" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[activeflag]"
+                              codePage="1252"
+                              dataType="str"
+                              length="1"
+                              name="activeflag" />
+                          </externalMetadataColumns>
+                        </output>
+                        <output
+                          refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                          isErrorOut="true"
+                          name="OLE DB Source Error Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[foirequestid]"
+                              dataType="i4"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[foirequestid]"
+                              name="foirequestid" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[runcycleid]"
+                              dataType="i4"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[runcycleid]"
+                              name="runcycleid" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requesttypeid]"
+                              dataType="ui1"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requesttypeid]"
+                              name="requesttypeid" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[applicantcategoryid]"
+                              dataType="ui1"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[applicantcategoryid]"
+                              name="applicantcategoryid" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requestertypeid]"
+                              dataType="ui1"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requestertypeid]"
+                              name="requestertypeid" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requesterid]"
+                              dataType="i4"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[requesterid]"
+                              name="requesterid" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[createddate]"
+                              dataType="dbTimeStamp"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[createddate]"
+                              name="createddate" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[modifieddate]"
+                              dataType="dbTimeStamp"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[modifieddate]"
+                              name="modifieddate" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[activeflag]"
+                              codePage="1252"
+                              dataType="str"
+                              length="1"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[activeflag]"
+                              name="activeflag" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                  </components>
+                  <paths>
+                    <path
+                      refId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests.Paths[OLE DB Source Output]"
+                      endId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination.Inputs[ODBC Destination Input]"
+                      name="OLE DB Source Output"
+                      startId="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source.Outputs[OLE DB Source Output]" />
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:ForEachVariableMappings>
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{C1D1598A-BB68-4DEA-8C6D-029BD75A2BB2}"
+              DTS:ObjectName="{C1D1598A-BB68-4DEA-8C6D-029BD75A2BB2}"
+              DTS:ValueIndex="0"
+              DTS:VariableName="User::newfoirequestid" />
+          </DTS:ForEachVariableMappings>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Get modified request count"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{110c7c43-912d-4485-a83e-e039a11b6261}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get modified request count"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA; COUNT(iRequestID)&#xA;From tblRequests   &#xA;WHERE sdtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121) AND sdtCreatedDate &lt; CONVERT(VARCHAR(19),@lastruntime , 121) "
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::modifiedfoirequestidcount" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Get modified requests"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{60f4c6b8-a4ba-4ac3-983d-c85f2f9e9112}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get modified requests"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA; iRequestID&#xA;From tblRequests   &#xA;WHERE sdtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121) AND sdtCreatedDate &lt; CONVERT(VARCHAR(19),@lastruntime , 121) "
+              SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::modifiedfoirequestids" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Get new request count"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{001fd8ab-2f87-4446-b934-09b642875c4f}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get new request count"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA; COUNT(iRequestID)&#xA;From tblRequests   &#xA;WHERE sdtCreatedDate &gt;= CONVERT(VARCHAR(19),@lastruntime , 121) "
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::newfoirequestidcount" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Get new requests"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{3b6ead27-c717-456d-b54d-7ca201e375de}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get new requests"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;R.iRequestID as foirequestid&#xA;From [dbo].tblRequests R  &#xA;WHERE R.sdtCreatedDate &gt;= CONVERT(VARCHAR(19),@lastruntime , 121) "
+              SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::newfoirequestids" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Get record count from factRequestDetails"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{dacab58f-ac64-4805-be71-262697ef80ce}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get record count from factRequestDetails"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+              SQLTask:SqlStatementSource="SELECT COUNT(foirequestid) FROM public.&quot;factRequestRequesters&quot;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="1"
+                SQLTask:DtsVariableName="User::edwfactRequestRequesterscount" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{C83FFBBC-F01B-4AEB-8FE3-96BC43EC96B6}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::edwfactRequestRequesterscount] == 0"
+          DTS:From="Package\Sequence Container\Get record count from factRequestDetails"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence Container\Data Flow Task" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{5E16A718-D314-47CD-889F-22FC20E1066A}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::edwfactRequestRequesterscount] &gt; 0"
+          DTS:From="Package\Sequence Container\Get record count from factRequestDetails"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Sequence Container\Get modified request count" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{8888E651-74CF-4C8F-8310-39E4BF7739D7}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::modifiedfoirequestidcount] &gt; 0"
+          DTS:From="Package\Sequence Container\Get modified request count"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Sequence Container\Get modified requests" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{5F970D4A-7612-493A-9B74-96771B0BF5C0}"
+          DTS:From="Package\Sequence Container\Get modified requests"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Sequence Container\Foreach Loop Container for modified requests" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{EEDCDAAC-095C-428C-A1C5-5B959FD85BF8}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::edwfactRequestRequesterscount] &gt; 0"
+          DTS:From="Package\Sequence Container\Get record count from factRequestDetails"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Sequence Container\Get new request count" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{7213AACB-CA71-4EB7-9F75-58B29A5D30D8}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::newfoirequestidcount] &gt; 0"
+          DTS:From="Package\Sequence Container\Get new request count"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\Sequence Container\Get new requests" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 6]"
+          DTS:CreationName=""
+          DTS:DTSID="{5D78F8EF-EB86-4D7B-A11C-54466755D9C1}"
+          DTS:From="Package\Sequence Container\Get new requests"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 6"
+          DTS:To="Package\Sequence Container\Foreach Loop Container for new record" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{27f7ac34-a3c4-4bac-97d9-30e8441470d1}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StartRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>packageID</ParameterName>
+            <BindedVariableOrParameterName>System::PackageID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{B77A6221-E430-4AA0-AA84-682BD1DBFD81}"
+      DTS:From="Package\Start Run Cycle"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sequence Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{EACED776-318A-483B-A6F4-2C705560965F}"
+      DTS:From="Package\Sequence Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\End Run Cycle" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="147.2,41.6"
+          Id="Package\End Run Cycle"
+          TopLeft="436.666649315093,852.533336529202" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Sequence Container\Data Flow Task"
+          TopLeft="117.666660242611,117.933335434066" />
+        <NodeLayout
+          Size="186.4,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests"
+          TopLeft="29.2333170082842,103.533332706557" />
+        <NodeLayout
+          Size="189.6,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Update active flag to N for existing record"
+          TopLeft="30.7999829133358,22.5999988635381" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests.PrecedenceConstraints[Constraint]"
+          TopLeft="124.01664996081,64.1999988635381">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.3333338430193"
+              Start="0,0"
+              End="0,31.8333338430193">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.8333338430193" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="247.2,197.6"
+          Size="247.2,240.8"
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests"
+          TopLeft="337.666651500597,301.600002066294" />
+        <NodeLayout
+          Size="166.4,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container for new record\Load new requests"
+          TopLeft="44.2999718864772,31.0666646692488" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="249.6,167.2"
+          Size="249.6,210.4"
+          Id="Package\Sequence Container\Foreach Loop Container for new record"
+          TopLeft="619.333306974836,303.066667727365" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Get modified request count"
+          TopLeft="370.166650209163,124.733333243794" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Get modified requests"
+          TopLeft="372.666650109822,208.200000516574" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Get new request count"
+          TopLeft="648.499972482524,120.999998367628" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Get new requests"
+          TopLeft="649.333305782744,207.399997458458" />
+        <NodeLayout
+          Size="228.8,41.6"
+          Id="Package\Sequence Container\Get record count from factRequestDetails"
+          TopLeft="311.833319193788,26.99999964873" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          TopLeft="426.233319193788,68.5999996487299">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-233.366658951177,49.333335785336"
+              Start="0,0"
+              End="-233.366658951177,41.833335785336">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.666667892668" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.666667892668"
+                    Point2="0,24.666667892668"
+                    Point3="-4,24.666667892668" />
+                  <mssgle:LineSegment
+                    End="-229.366658951177,24.666667892668" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-229.366658951177,24.666667892668"
+                    Point2="-233.366658951177,24.666667892668"
+                    Point3="-233.366658951177,28.666667892668" />
+                  <mssgle:LineSegment
+                    End="-233.366658951177,41.833335785336" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-124.683329475588,29.666667892668,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="463.033319193788,68.5999996487299">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10.4666689846251,56.1333335950641"
+              Start="0,0"
+              End="-10.4666689846251,48.6333335950641">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.6872223280051" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.6872223280051"
+                    Point2="0,22.6872223280051"
+                    Point3="-4,22.6872223280051" />
+                  <mssgle:LineSegment
+                    End="-6.46666898462507,22.6872223280051" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6.46666898462507,22.6872223280051"
+                    Point2="-10.4666689846251,22.6872223280051"
+                    Point3="-10.4666689846251,26.6872223280051" />
+                  <mssgle:LineSegment
+                    End="-10.4666689846251,48.6333335950641" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-13.2333344923125,27.6872223280051,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="453.816650159492,166.333333243794">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.8666672727798"
+              Start="0,0"
+              End="0,34.3666672727798">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.3666672727798" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,9.18333363638988,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 3]"
+          TopLeft="458.166650805209,249.800000516574">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.8000015497207"
+              Start="0,0"
+              End="0,44.3000015497207">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.3000015497207" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 4]"
+          TopLeft="481.433319193788,68.5999996487299">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="249.466653288736,52.3999987188976"
+              Start="0,0"
+              End="249.466653288736,44.8999987188976">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.8691239870895" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.8691239870895"
+                    Point2="0,17.8691239870895"
+                    Point3="4,17.8691239870895" />
+                  <mssgle:LineSegment
+                    End="245.466653288736,17.8691239870895" />
+                  <mssgle:CubicBezierSegment
+                    Point1="245.466653288736,17.8691239870895"
+                    Point2="249.466653288736,17.8691239870895"
+                    Point3="249.466653288736,21.8691239870895" />
+                  <mssgle:LineSegment
+                    End="249.466653288736,44.8999987188976" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="116.733326644368,22.8691239870895,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 5]"
+          TopLeft="731.316639132634,162.599998367628">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.7999990908304"
+              Start="0,0"
+              End="0,37.2999990908304">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.2999990908304" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,10.6499995454152,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 6]"
+          TopLeft="731.733305782744,248.999997458458">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.400001192092,54.0666702689071"
+              Start="0,0"
+              End="12.400001192092,46.5666702689071">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.0333351344536" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.0333351344536"
+                    Point2="0,27.0333351344536"
+                    Point3="4,27.0333351344536" />
+                  <mssgle:LineSegment
+                    End="8.40000119209196,27.0333351344536" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.40000119209196,27.0333351344536"
+                    Point2="12.400001192092,27.0333351344536"
+                    Point3="12.400001192092,31.0333351344536" />
+                  <mssgle:LineSegment
+                    End="12.400001192092,46.5666702689071" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="932,601.6"
+          Size="932,644.8"
+          Id="Package\Sequence Container"
+          TopLeft="44.1666649116411,138.66666776869" />
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Start Run Cycle"
+          TopLeft="383.333318101036,36.4000002892813" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="475.733318101036,78.0000002892813">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="34.433346810605,60.6666674794087"
+              Start="0,0"
+              End="34.433346810605,53.1666674794087">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.3333337397043" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.3333337397043"
+                    Point2="0,30.3333337397043"
+                    Point3="4,30.3333337397043" />
+                  <mssgle:LineSegment
+                    End="30.433346810605,30.3333337397043" />
+                  <mssgle:CubicBezierSegment
+                    Point1="30.433346810605,30.3333337397043"
+                    Point2="34.433346810605,30.3333337397043"
+                    Point3="34.433346810605,34.3333337397043" />
+                  <mssgle:LineSegment
+                    End="34.433346810605,53.1666674794087" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="510.216657113367,783.46666776869">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69.066668760512"
+              Start="0,0"
+              End="0,61.566668760512">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.566668760512" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Sequence Container\Data Flow Task\ODBC Destination"
+          TopLeft="414.166650209163,140.400001115799" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Sequence Container\Data Flow Task\OLE DB Source"
+          TopLeft="412.499983608723,40.7333336570528" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="492.133316908943,82.3333336570528">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58.0666674587462"
+              Start="0,0"
+              End="0,50.5666674587462">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5666674587462" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Data Flow Task\ODBC Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\ODBC Destination"
+          TopLeft="414.166650209163,140.400001115799" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source"
+          TopLeft="412.499983608723,40.7333336570528" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests.Paths[OLE DB Source Output]"
+          TopLeft="492.133316908943,82.3333336570528">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58.0666674587462"
+              Start="0,0"
+              End="0,50.5666674587462">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5666674587462" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Load modified requests\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Foreach Loop Container for new record\Load new requests">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\ODBC Destination"
+          TopLeft="414.166650209163,140.400001115799" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source"
+          TopLeft="412.499983608723,40.7333336570528" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container for new record\Load new requests.Paths[OLE DB Source Output]"
+          TopLeft="492.133316908943,82.3333336570528">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58.0666674587462"
+              Start="0,0"
+              End="0,50.5666674587462">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5666674587462" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Foreach Loop Container for new record\Load new requests\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
