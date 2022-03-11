@@ -2,7 +2,7 @@ apiVersion: porter.devops.gov.bc.ca/v1alpha1
 kind: TransportServerClaim
 metadata:
   name: patroniservice-transport-server
-  namespace: c84b95-dev
+  namespace: c84b95-test
 spec:
   monitor:
     interval: 10
