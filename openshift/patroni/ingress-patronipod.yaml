@@ -1,0 +1,17 @@
+# mycoolapp-knp.yaml
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-from-f5-ingress
+  namespace: c84b95-test
+spec:
+  podSelector:
+    matchLabels:
+      name: patroni-001-0 
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              network.openshift.io/policy-group: ingress
+  policyTypes:
+    - Ingress
