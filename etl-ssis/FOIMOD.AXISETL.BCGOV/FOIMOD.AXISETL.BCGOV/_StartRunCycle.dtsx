@@ -12,8 +12,8 @@
   DTS:LocaleID="4105"
   DTS:ObjectName="_StartRunCycle"
   DTS:PackageType="5"
-  DTS:VersionBuild="93"
-  DTS:VersionGUID="{D758F7E7-A689-4DBB-9687-5CAE800E713E}">
+  DTS:VersionBuild="95"
+  DTS:VersionGUID="{A06E8C08-E2D2-41DC-AD4E-653A33B64B3D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -24,11 +24,11 @@
       DTS:ObjectName="localhost.foi_edw.postgres">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="server=localhost;uid=postgres;Dsn=PostgreSQL35W;database=foi_edw;port=25432;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;">
+          DTS:ConnectionString="server=localhost;uid=postgres;Dsn=localhost.foi_edw.postgres;database=foi_edw;port=25432;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;">
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAANGxHiwy/GUGnzQ44yXJjswAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABgOeDKEDvyKZm1NyWgnDiObPPgdZyyVPLRuQN4Vp6rbwAAAAAOgAAAAAIAACAAAADrO4BiDy/w1y4rTvMDuAr9+65bGaJRBsRXlLM+G9FPKjAAAAC9S2FAfH7e2DF1Obz0X/oOpzPjBXhscrmUwCPiY3tg09fogEyLbat99b8u+HQHBu5AAAAAaTHGXdM8ZCsuRhkwFU6vZadlIY5bTSEXWYOP+rdBdwg+f5qqXgCxPgow9eIiC7L9ZQ2n1TkMtNYT10lm5L2MnA</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAANGxHiwy/GUGnzQ44yXJjswAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA0Lz7w6v8ezhBIFPRVL6IM25Hr1zsW1u+X161SMu1ccgAAAAAOgAAAAAIAACAAAACMZ4NRHtQ+7lz9+nyEN1Ao4d4O3ixjpWNHa/D4CpADfDAAAABI36Wga9ds/GVzx1XKMaiYJohxq5OkB3mcSrNbn+fnujM/RzU+G9wsfY4THBPtLodAAAAAsizNnvRPBoL2isXTq22DKBHEzmt0ILnqHp5K2sZnmM0n9kEfK7WXIeMvITcro/Hnivciw+e1/Vu+1kQAtRpgww</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -64,7 +64,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="getRunCycleInfo">
       <DTS:VariableValue
-        DTS:DataType="8">select '2022-03-09 12:42:38.161000000' as runcyclestartat 
+        DTS:DataType="8">select '2022-03-15 20:48:19.948000000' as runcyclestartat 
 where not exists (
 	select runcycleid from public."dimRunCycle" 
 	where packageid = '' and success = 'true')
@@ -86,7 +86,7 @@ limit 1)</DTS:VariableValue>
         DTS:DataType="8">insert into public."dimRunCycle" 
 (runcyclestartat, packageid, packagename, description) 
 values 
-('2022-03-09 12:42:38.161000000', '', 'DefaultPackage', 'package: DefaultPackage starts') 
+('2022-03-15 20:48:19.949000000', '', 'DefaultPackage', 'package: DefaultPackage starts') 
 RETURNING runcycleid</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
