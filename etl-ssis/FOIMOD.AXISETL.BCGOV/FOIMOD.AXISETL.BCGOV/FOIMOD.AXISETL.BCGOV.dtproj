@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-U67UC02</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAANGxHiwy/GUGnzQ44yXJjswAAAAACAAAAAAAQZgAAAAEAACAAAACBOAWEf+FtsZrsUZcs/3LBvvKs2GDN3OkkMLarS1Q8tQAAAAAOgAAAAAIAACAAAAAvYbf9PSjyHTKUVV3LcdHAnn/9pyEUicDYvSjgLts/SpAAAABohlKtZaGgbBeOz2ruQQJAkHQ5Ijwn3cd7NltF5OSjkNjaSebsMOy80MVCuSlfmmyTvadi0u7Yw63oyafMHSApYgHdchvVR2yQyAxkW1LD5QndtAFETSXUnWgF5yY5vs6lN3FsB+jYzs3Eg4vavusryG1KoQxdK+ej4VcIcEirmi1I/BcOW9FXq42nrg5cM0lAAAAA+r99SV/K1sHg9R5/qZ3PYUbTCBK6tNWtkcj0KexukkixFFDQlJrwqHv++Wqqx/H+JtZdkAzhz2g0DwycHnA9dQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAANGxHiwy/GUGnzQ44yXJjswAAAAACAAAAAAAQZgAAAAEAACAAAABurOG0Y5Utau5qsqQslkrizeyIJ4aj4D5oTN/B6fpi/gAAAAAOgAAAAAIAACAAAABGuA7MV1yS/DCYciZ2yZyrX1Scc5B3T5cRqLwPb8Ozh5AAAAAeo/smkJNwRsJ18EGERddxi0DE0EEfesZWwQfBJetGwdlx2ZtnGETmDsjOTGsCHDsG2zGBTm3tnYwk/T0XGskoI4S5rIJu5mkeFXD36V6B+AuEJ0MeJ490+8RDAsiaU4R+nEcGe3vphNKKp9Iw5daFPgTlexyS9wmFnPXdR0hChGOzkAOkmBN8s3I7aF23RGFAAAAAKW8TUDfutVB34fM7RUcB1lHcykMSL9hmFCOBI0WbQt5IRYn/OtuVnaf6x0tXTQ/ci2Hslep1nfXnLalM/mdVzw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -55,7 +55,8 @@
           <SSIS:Package SSIS:Name="factRequestInvoices.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="dimInvoiceDetails.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="factRequestRequesters.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="factRequestSnapshot.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="factRequestCustomCalcFieldsETL.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="factRequestsRFSCalcFields.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="localhost.foi_edw.postgres.conmgr" />
@@ -639,10 +640,10 @@
                 <SSIS:Property SSIS:Name="Name">_StartRunCycle</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">94</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">97</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{888D3BA8-1ED8-4258-A46F-D43C42406D59}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{44353666-AF80-403D-9360-F52C32B04BF0}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -704,7 +705,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">server=localhost;uid=postgres;Dsn=localhost.foi_edw.postgres;database=foi_edw;port=25432;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">uid=postgres;Dsn=localhost.foi_edw.postgres;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -762,7 +763,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">localhost</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -789,10 +789,10 @@
                 <SSIS:Property SSIS:Name="Name">_StopRunCycle</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">64</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">66</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{0350DC3B-1E44-462C-9D0D-20C5BC8564B9}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{9C25096C-3780-4FA2-9B64-CC0B3B3D756A}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -823,6 +823,8 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">
+                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -866,7 +868,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">uid=postgres;Dsn=PostgreSQL35W;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">uid=postgres;Dsn=localhost.foi_edw.postgres;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -1063,16 +1065,33 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="factRequestSnapshot.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="factRequestCustomCalcFieldsETL.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{314B76AE-0B39-4992-9FF5-9FA8A6DBE81A}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">factRequestSnapshot</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{0995F69E-A3D9-4C6D-B900-B113C87D7F23}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">factRequestCustomCalcFieldsETL</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">20</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{87844C9B-6797-48FB-B89A-CB3D05760CB9}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{A1CF66D0-78AF-43FF-B5D0-B47335F3345F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="factRequestsRFSCalcFields.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{AAC1CF21-CD2F-4278-9837-AB93B55130B5}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">factRequestsRFSCalcFields</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">14</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{6393728E-92FB-4049-BD25-42560AEE35A4}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
