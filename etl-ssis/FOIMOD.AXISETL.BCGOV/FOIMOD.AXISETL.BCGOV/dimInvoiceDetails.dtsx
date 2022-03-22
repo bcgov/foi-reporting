@@ -7,12 +7,12 @@
   DTS:CreatorName="DESKTOP-U67UC02\abina"
   DTS:DTSID="{7F992856-0854-4CA5-91EC-4B3CB8D7D42E}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
   DTS:LocaleID="1033"
   DTS:ObjectName="dimInvoiceDetails"
   DTS:PackageType="5"
-  DTS:VersionBuild="29"
-  DTS:VersionGUID="{73EBE368-5948-4E1C-9405-C4A28D0FCD29}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{6C1839B3-9DD8-4AFA-844C-96456A5BE382}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -594,28 +594,6 @@ From tblInvoiceDetails</property>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Sequence Container\EST_GETInvoiceDetailsRows"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:DTSID="{90FA5360-4FC9-4411-A2E0-694B3E8053B8}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="EST_GETInvoiceDetailsRows"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
-              SQLTask:SqlStatementSource="Select &#xA;&#x9;iInvoiceID as invoiceid,&#xA;&#x9;siFeeID as feetypeid,&#xA;&#x9;nInvoiceAmount as invoiceamount,&#xA;&#x9;nUnitValue as unitvalue,&#xA;&#x9;nUnits as units,&#xA;&#x9;nChargedAmount as chargedamount,&#xA;&#x9;nIncurredAmount as incurredamount,&#xA;&#x9;nFeeWaived as feewaived&#xA;From tblInvoiceDetails"
-              SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-              <SQLTask:ResultBinding
-                SQLTask:ResultName="0"
-                SQLTask:DtsVariableName="User::sourcedetailrows" />
-            </SQLTask:SqlTaskData>
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
           DTS:refId="Package\Sequence Container\Execute SQL Task"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -629,355 +607,8 @@ From tblInvoiceDetails</property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
-              SQLTask:SqlStatementSource="SELECT COUNT(invoiceid) as cnt FROM public.&quot;dimInvoiceDetails&quot;"
-              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-              <SQLTask:ResultBinding
-                SQLTask:ResultName="1"
-                SQLTask:DtsVariableName="User::edwInvoiceDetailsCount" />
-            </SQLTask:SqlTaskData>
+              SQLTask:SqlStatementSource="truncate public.&quot;dimInvoiceDetails&quot; restart identity;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\Sequence Container\Foreach Loop Container - invoice details"
-          DTS:CreationName="STOCK:FOREACHLOOP"
-          DTS:Description="Foreach Loop Container"
-          DTS:DTSID="{A899059F-0D34-4A6C-97F2-4B0F3E42D404}"
-          DTS:ExecutableType="STOCK:FOREACHLOOP"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Foreach Loop Container - invoice details">
-          <DTS:ForEachEnumerator
-            DTS:CreationName="Microsoft.ForEachADOEnumerator"
-            DTS:DTSID="{6695246D-98AC-4876-86F3-22588E8159C5}"
-            DTS:ObjectName="{6695246D-98AC-4876-86F3-22588E8159C5}">
-            <DTS:ObjectData>
-              <FEEADO
-                EnumType="EnumerateRowsInFirstTable"
-                VarName="User::sourcedetailrows" />
-            </DTS:ObjectData>
-          </DTS:ForEachEnumerator>
-          <DTS:Variables>
-            <DTS:Variable
-              DTS:CreationName=""
-              DTS:DTSID="{BA3CABA9-C854-465F-BBE8-2C1D11D30193}"
-              DTS:IncludeInDebugDump="2345"
-              DTS:Namespace="User"
-              DTS:ObjectName="chargedamount">
-              <DTS:VariableValue
-                DTS:DataType="14">0</DTS:VariableValue>
-            </DTS:Variable>
-            <DTS:Variable
-              DTS:CreationName=""
-              DTS:DTSID="{F526C1B2-0F4D-47F0-A52A-4A5753831ABD}"
-              DTS:IncludeInDebugDump="6789"
-              DTS:Namespace="User"
-              DTS:ObjectName="countbyinvoiceid">
-              <DTS:VariableValue
-                DTS:DataType="3">0</DTS:VariableValue>
-            </DTS:Variable>
-            <DTS:Variable
-              DTS:CreationName=""
-              DTS:DTSID="{5CAA3FE4-93F8-43C5-9DF7-2160C56EC478}"
-              DTS:IncludeInDebugDump="6789"
-              DTS:Namespace="User"
-              DTS:ObjectName="feetypeid">
-              <DTS:VariableValue
-                DTS:DataType="3">0</DTS:VariableValue>
-            </DTS:Variable>
-            <DTS:Variable
-              DTS:CreationName=""
-              DTS:DTSID="{BB2BAF87-FAFD-439D-A0C6-84C0730FB415}"
-              DTS:IncludeInDebugDump="6789"
-              DTS:Namespace="User"
-              DTS:ObjectName="feewaived">
-              <DTS:VariableValue
-                DTS:DataType="14">0</DTS:VariableValue>
-            </DTS:Variable>
-            <DTS:Variable
-              DTS:CreationName=""
-              DTS:DTSID="{3F184105-49FD-44C3-90D4-1DCB4BE5B3D3}"
-              DTS:IncludeInDebugDump="2345"
-              DTS:Namespace="User"
-              DTS:ObjectName="incurredamount">
-              <DTS:VariableValue
-                DTS:DataType="14">0</DTS:VariableValue>
-            </DTS:Variable>
-            <DTS:Variable
-              DTS:CreationName=""
-              DTS:DTSID="{D1CD7127-3469-42A0-A7C5-B5E410C552D0}"
-              DTS:IncludeInDebugDump="2345"
-              DTS:Namespace="User"
-              DTS:ObjectName="invoiceamount">
-              <DTS:VariableValue
-                DTS:DataType="14">0</DTS:VariableValue>
-            </DTS:Variable>
-            <DTS:Variable
-              DTS:CreationName=""
-              DTS:DTSID="{1A1AD155-6E82-47A7-89BA-21228DD73A19}"
-              DTS:IncludeInDebugDump="6789"
-              DTS:Namespace="User"
-              DTS:ObjectName="invoiceid">
-              <DTS:VariableValue
-                DTS:DataType="3">0</DTS:VariableValue>
-            </DTS:Variable>
-            <DTS:Variable
-              DTS:CreationName=""
-              DTS:DTSID="{660BCD02-D40B-48E0-8FF1-44E9DBFD8102}"
-              DTS:IncludeInDebugDump="2345"
-              DTS:Namespace="User"
-              DTS:ObjectName="units">
-              <DTS:VariableValue
-                DTS:DataType="14">0</DTS:VariableValue>
-            </DTS:Variable>
-            <DTS:Variable
-              DTS:CreationName=""
-              DTS:DTSID="{02CD159B-95B3-47BC-9096-43BF62CA0CF5}"
-              DTS:IncludeInDebugDump="2345"
-              DTS:Namespace="User"
-              DTS:ObjectName="unitvalue">
-              <DTS:VariableValue
-                DTS:DataType="14">0</DTS:VariableValue>
-            </DTS:Variable>
-          </DTS:Variables>
-          <DTS:Executables>
-            <DTS:Executable
-              DTS:refId="Package\Sequence Container\Foreach Loop Container - invoice details\est_checkrowexistsinedw"
-              DTS:CreationName="Microsoft.ExecuteSQLTask"
-              DTS:Description="Execute SQL Task"
-              DTS:DTSID="{30D5C9BB-346C-4D12-B2ED-5074CBA2E2F5}"
-              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-              DTS:LocaleID="-1"
-              DTS:ObjectName="est_checkrowexistsinedw"
-              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
-              <DTS:Variables />
-              <DTS:ObjectData>
-                <SQLTask:SqlTaskData
-                  SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
-                  SQLTask:SqlStatementSource="SELECT COUNT(*) FROM public.&quot;dimInvoiceDetails&quot; where invoiceid=? and feetypeid=?"
-                  SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-                  <SQLTask:ResultBinding
-                    SQLTask:ResultName="1"
-                    SQLTask:DtsVariableName="User::countbyinvoiceid" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="1"
-                    SQLTask:DtsVariableName="User::invoiceid"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="4"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="2"
-                    SQLTask:DtsVariableName="User::feetypeid"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="4"
-                    SQLTask:ParameterSize="-1" />
-                </SQLTask:SqlTaskData>
-              </DTS:ObjectData>
-            </DTS:Executable>
-            <DTS:Executable
-              DTS:refId="Package\Sequence Container\Foreach Loop Container - invoice details\est_insertaddress"
-              DTS:CreationName="Microsoft.ExecuteSQLTask"
-              DTS:Description="Execute SQL Task"
-              DTS:DTSID="{18C16065-843F-4AB5-9091-83B2737E1D29}"
-              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-              DTS:LocaleID="-1"
-              DTS:ObjectName="est_insertaddress"
-              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
-              <DTS:Variables />
-              <DTS:ObjectData>
-                <SQLTask:SqlTaskData
-                  SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
-                  SQLTask:SqlStatementSource="INSERT INTO public.&quot;dimInvoiceDetails&quot;&#xA;(&#xA;invoiceid, &#xA;feetypeid, &#xA;invoiceamount, &#xA;unitvalue, &#xA;units, &#xA;chargedamount, &#xA;incurredamount, &#xA;feewaived&#xA;)&#xA;VALUES (?, ?, ?, ?, ?, ?, ?, ?);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="1"
-                    SQLTask:DtsVariableName="User::invoiceid"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="4"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="2"
-                    SQLTask:DtsVariableName="User::feetypeid"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="4"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="3"
-                    SQLTask:DtsVariableName="User::invoiceamount"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="3"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="4"
-                    SQLTask:DtsVariableName="User::unitvalue"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="3"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="5"
-                    SQLTask:DtsVariableName="User::units"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="3"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="6"
-                    SQLTask:DtsVariableName="User::chargedamount"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="3"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="7"
-                    SQLTask:DtsVariableName="User::incurredamount"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="3"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="8"
-                    SQLTask:DtsVariableName="User::feewaived"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="3"
-                    SQLTask:ParameterSize="-1" />
-                </SQLTask:SqlTaskData>
-              </DTS:ObjectData>
-            </DTS:Executable>
-            <DTS:Executable
-              DTS:refId="Package\Sequence Container\Foreach Loop Container - invoice details\est_updateaddress"
-              DTS:CreationName="Microsoft.ExecuteSQLTask"
-              DTS:Description="Execute SQL Task"
-              DTS:DTSID="{83AA8B9B-56E1-4E7A-B5F0-77A1D88E0012}"
-              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-              DTS:LocaleID="-1"
-              DTS:ObjectName="est_updateaddress"
-              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
-              <DTS:Variables />
-              <DTS:ObjectData>
-                <SQLTask:SqlTaskData
-                  SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
-                  SQLTask:SqlStatementSource="UPDATE public.&quot;dimInvoiceDetails&quot;&#xA;&#x9;SET invoiceamount=?, unitvalue=?, units=?, chargedamount=?, incurredamount=?, feewaived=?&#xA;&#x9;WHERE invoiceid=? and feetypeid=?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="1"
-                    SQLTask:DtsVariableName="User::invoiceamount"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="3"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="2"
-                    SQLTask:DtsVariableName="User::unitvalue"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="3"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="3"
-                    SQLTask:DtsVariableName="User::units"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="3"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="4"
-                    SQLTask:DtsVariableName="User::chargedamount"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="3"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="5"
-                    SQLTask:DtsVariableName="User::incurredamount"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="3"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="6"
-                    SQLTask:DtsVariableName="User::feewaived"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="3"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="7"
-                    SQLTask:DtsVariableName="User::invoiceid"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="4"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="8"
-                    SQLTask:DtsVariableName="User::feetypeid"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="4"
-                    SQLTask:ParameterSize="-1" />
-                </SQLTask:SqlTaskData>
-              </DTS:ObjectData>
-            </DTS:Executable>
-          </DTS:Executables>
-          <DTS:PrecedenceConstraints>
-            <DTS:PrecedenceConstraint
-              DTS:refId="Package\Sequence Container\Foreach Loop Container - invoice details.PrecedenceConstraints[Constraint]"
-              DTS:CreationName=""
-              DTS:DTSID="{BF8D0990-5994-4293-BBE4-A5BD15B8E6D5}"
-              DTS:EvalOp="1"
-              DTS:Expression="@[User::countbyinvoiceid] &gt; 0"
-              DTS:From="Package\Sequence Container\Foreach Loop Container - invoice details\est_checkrowexistsinedw"
-              DTS:LogicalAnd="True"
-              DTS:ObjectName="Constraint"
-              DTS:To="Package\Sequence Container\Foreach Loop Container - invoice details\est_updateaddress" />
-            <DTS:PrecedenceConstraint
-              DTS:refId="Package\Sequence Container\Foreach Loop Container - invoice details.PrecedenceConstraints[Constraint 1]"
-              DTS:CreationName=""
-              DTS:DTSID="{E799F384-CE37-4C5D-8059-D97B83834484}"
-              DTS:EvalOp="1"
-              DTS:Expression="@[User::countbyinvoiceid] == 0"
-              DTS:From="Package\Sequence Container\Foreach Loop Container - invoice details\est_checkrowexistsinedw"
-              DTS:LogicalAnd="True"
-              DTS:ObjectName="Constraint 1"
-              DTS:To="Package\Sequence Container\Foreach Loop Container - invoice details\est_insertaddress" />
-          </DTS:PrecedenceConstraints>
-          <DTS:ForEachVariableMappings>
-            <DTS:ForEachVariableMapping
-              DTS:CreationName=""
-              DTS:DTSID="{C5E3A0E1-E07C-4976-93EC-8C321E0AB2A1}"
-              DTS:ObjectName="{C5E3A0E1-E07C-4976-93EC-8C321E0AB2A1}"
-              DTS:ValueIndex="0"
-              DTS:VariableName="User::invoiceid" />
-            <DTS:ForEachVariableMapping
-              DTS:CreationName=""
-              DTS:DTSID="{D639DA49-6FD9-440C-B779-3F1436F56737}"
-              DTS:ObjectName="{D639DA49-6FD9-440C-B779-3F1436F56737}"
-              DTS:ValueIndex="1"
-              DTS:VariableName="User::feetypeid" />
-            <DTS:ForEachVariableMapping
-              DTS:CreationName=""
-              DTS:DTSID="{02DD1360-E1CF-4002-9134-4ACB7C9889DF}"
-              DTS:ObjectName="{02DD1360-E1CF-4002-9134-4ACB7C9889DF}"
-              DTS:ValueIndex="2"
-              DTS:VariableName="User::invoiceamount" />
-            <DTS:ForEachVariableMapping
-              DTS:CreationName=""
-              DTS:DTSID="{B4BCFCB6-D37D-494F-A183-B9C02D84FFB6}"
-              DTS:ObjectName="{B4BCFCB6-D37D-494F-A183-B9C02D84FFB6}"
-              DTS:ValueIndex="3"
-              DTS:VariableName="User::unitvalue" />
-            <DTS:ForEachVariableMapping
-              DTS:CreationName=""
-              DTS:DTSID="{C74CF800-4EE2-43CF-A74D-AAE433B46246}"
-              DTS:ObjectName="{C74CF800-4EE2-43CF-A74D-AAE433B46246}"
-              DTS:ValueIndex="4"
-              DTS:VariableName="User::units" />
-            <DTS:ForEachVariableMapping
-              DTS:CreationName=""
-              DTS:DTSID="{5929E7BE-9E9D-4B9A-86EA-0968F268D6C1}"
-              DTS:ObjectName="{5929E7BE-9E9D-4B9A-86EA-0968F268D6C1}"
-              DTS:ValueIndex="5"
-              DTS:VariableName="User::chargedamount" />
-            <DTS:ForEachVariableMapping
-              DTS:CreationName=""
-              DTS:DTSID="{32CBF374-FE4F-4C53-B7D5-AEA41DA62DDE}"
-              DTS:ObjectName="{32CBF374-FE4F-4C53-B7D5-AEA41DA62DDE}"
-              DTS:ValueIndex="6"
-              DTS:VariableName="User::incurredamount" />
-            <DTS:ForEachVariableMapping
-              DTS:CreationName=""
-              DTS:DTSID="{41DCB890-4BCD-4915-A609-3BC8574A4F9C}"
-              DTS:ObjectName="{41DCB890-4BCD-4915-A609-3BC8574A4F9C}"
-              DTS:ValueIndex="7"
-              DTS:VariableName="User::feewaived" />
-          </DTS:ForEachVariableMappings>
         </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
@@ -985,30 +616,10 @@ From tblInvoiceDetails</property>
           DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
           DTS:DTSID="{39CBD8A5-3D8A-4980-BAD6-D3A6495FE0B8}"
-          DTS:EvalOp="1"
-          DTS:Expression="@[User::edwInvoiceDetailsCount] == 0"
           DTS:From="Package\Sequence Container\Execute SQL Task"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
           DTS:To="Package\Sequence Container\DFT_DimInvoiceDetails_InitialLoad" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
-          DTS:CreationName=""
-          DTS:DTSID="{0B25BC2B-F0A5-4620-8ABF-D50B5CB23DC8}"
-          DTS:EvalOp="1"
-          DTS:Expression="@[User::edwInvoiceDetailsCount] &gt; 0"
-          DTS:From="Package\Sequence Container\Execute SQL Task"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint 1"
-          DTS:To="Package\Sequence Container\EST_GETInvoiceDetailsRows" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
-          DTS:CreationName=""
-          DTS:DTSID="{A3AA4DD5-688A-4BCA-91EF-342347F972EA}"
-          DTS:From="Package\Sequence Container\EST_GETInvoiceDetailsRows"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint 2"
-          DTS:To="Package\Sequence Container\Foreach Loop Container - invoice details" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -1095,196 +706,41 @@ From tblInvoiceDetails</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="240.8,41.6"
           Id="Package\Sequence Container\DFT_DimInvoiceDetails_InitialLoad"
-          TopLeft="124.29998698632,157.333336033291" />
-        <NodeLayout
-          Size="232,41.6"
-          Id="Package\Sequence Container\EST_GETInvoiceDetailsRows"
-          TopLeft="600.966634711956,183.333336239921" />
+          TopLeft="485.133305981426,237.066670000288" />
         <NodeLayout
           Size="164.8,41.6"
           Id="Package\Sequence Container\Execute SQL Task"
           TopLeft="510.966638288234,56.8000019009909" />
-        <NodeLayout
-          Size="196,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container - invoice details\est_checkrowexistsinedw"
-          TopLeft="244.83329435852,27.800004525185" />
-        <NodeLayout
-          Size="160.8,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container - invoice details\est_insertaddress"
-          TopLeft="365.966627360716,136.133338388867" />
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container - invoice details\est_updateaddress"
-          TopLeft="23.4666409704433,136.933338636822" />
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container - invoice details.PrecedenceConstraints[Constraint]"
-          TopLeft="311.499961025187,69.400004525185">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-205.633320054743,67.533334111637"
-              Start="0,0"
-              End="-205.633320054743,60.033334111637">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.3414308144279" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.3414308144279"
-                    Point2="0,27.3414308144279"
-                    Point3="-4,27.3414308144279" />
-                  <mssgle:LineSegment
-                    End="-201.633320054743,27.3414308144279" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-201.633320054743,27.3414308144279"
-                    Point2="-205.633320054743,27.3414308144279"
-                    Point3="-205.633320054743,31.3414308144279" />
-                  <mssgle:LineSegment
-                    End="-205.633320054743,60.033334111637" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-110.816660027372,32.3414308144279,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container - invoice details.PrecedenceConstraints[Constraint 1]"
-          TopLeft="374.166627691853,69.400004525185">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="72.1999996688627,66.733333863682"
-              Start="0,0"
-              End="72.1999996688627,59.233333863682">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.0175440743652" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.0175440743652"
-                    Point2="0,27.0175440743652"
-                    Point3="4,27.0175440743652" />
-                  <mssgle:LineSegment
-                    End="68.1999996688627,27.0175440743652" />
-                  <mssgle:CubicBezierSegment
-                    Point1="68.1999996688627,27.0175440743652"
-                    Point2="72.1999996688627,27.0175440743652"
-                    Point3="72.1999996688627,31.0175440743652" />
-                  <mssgle:LineSegment
-                    End="72.1999996688627,59.233333863682" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="28.0999998344314,32.0175440743652,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="595.2,268"
-          Size="595.2,311.2"
-          Id="Package\Sequence Container\Foreach Loop Container - invoice details"
-          TopLeft="420.133308564293,394.800004587174" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
-          TopLeft="567.233304954901,98.4000019009909">
+          TopLeft="593.366638288234,98.4000019009909">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-322.533317968581,58.9333341323001"
+              EndConnector="12.1666676931916,138.666668099297"
               Start="0,0"
-              End="-322.533317968581,51.4333341323001">
+              End="12.1666676931916,131.166668099297">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19.9133336575295" />
+                    End="0,65.3333340496485" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,19.9133336575295"
-                    Point2="0,23.9133336575295"
-                    Point3="-4,23.9133336575295" />
+                    Point1="0,65.3333340496485"
+                    Point2="0,69.3333340496485"
+                    Point3="4,69.3333340496485" />
                   <mssgle:LineSegment
-                    End="-318.533317968581,23.9133336575295" />
+                    End="8.16666769319158,69.3333340496485" />
                   <mssgle:CubicBezierSegment
-                    Point1="-318.533317968581,23.9133336575295"
-                    Point2="-322.533317968581,23.9133336575295"
-                    Point3="-322.533317968581,27.9133336575295" />
+                    Point1="8.16666769319158,69.3333340496485"
+                    Point2="12.1666676931916,69.3333340496485"
+                    Point3="12.1666676931916,73.3333340496485" />
                   <mssgle:LineSegment
-                    End="-322.533317968581,51.4333341323001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-169.26665898429,28.9133336575295,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
-          TopLeft="619.499971621568,98.4000019009909">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="97.4666630903887,84.93333433893"
-              Start="0,0"
-              End="97.4666630903887,77.43333433893">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.4633337413735" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,30.4633337413735"
-                    Point2="0,34.4633337413735"
-                    Point3="4,34.4633337413735" />
-                  <mssgle:LineSegment
-                    End="93.4666630903887,34.4633337413735" />
-                  <mssgle:CubicBezierSegment
-                    Point1="93.4666630903887,34.4633337413735"
-                    Point2="97.4666630903887,34.4633337413735"
-                    Point3="97.4666630903887,38.4633337413735" />
-                  <mssgle:LineSegment
-                    End="97.4666630903887,77.43333433893" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="40.7333315451943,39.4633337413735,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
-          TopLeft="717.349971638124,224.933336239921">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,169.866668347253"
-              Start="0,0"
-              End="0,162.366668347253">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,162.366668347253" />
+                    End="12.1666676931916,131.166668099297" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1314,14 +770,14 @@ From tblInvoiceDetails</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,55.4666674380836"
+              EndConnector="0,55.4666674380833"
               Start="0,0"
-              End="0,47.9666674380836">
+              End="0,47.9666674380833">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.9666674380836" />
+                    End="0,47.9666674380833" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1336,14 +792,14 @@ From tblInvoiceDetails</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60.2000053930308"
+              EndConnector="0,60.2000053930311"
               Start="0,0"
-              End="0,52.7000053930308">
+              End="0,52.7000053930311">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.7000053930308" />
+                    End="0,52.7000053930311" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1359,7 +815,7 @@ From tblInvoiceDetails</property>
     design-time-name="Package\Sequence Container\DFT_DimInvoiceDetails_InitialLoad">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="152,41.6"
           Id="Package\Sequence Container\DFT_DimInvoiceDetails_InitialLoad\OLE DB Source"
@@ -1387,7 +843,9 @@ From tblInvoiceDetails</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

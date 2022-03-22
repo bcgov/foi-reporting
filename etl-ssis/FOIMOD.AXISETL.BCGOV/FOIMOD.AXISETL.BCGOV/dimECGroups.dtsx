@@ -9,7 +9,7 @@
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.180"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="dimECGroups"
   DTS:PackageType="5"
   DTS:VersionBuild="55"
   DTS:VersionGUID="{5A9CC15E-6AA9-4A25-B141-8933119206B4}">
