@@ -7,12 +7,12 @@
   DTS:CreatorName="DESKTOP-U67UC02\abina"
   DTS:DTSID="{72040194-8620-4D37-AD66-381863CA9958}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
   DTS:LocaleID="1033"
   DTS:ObjectName="dimAddressETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{F4A95E11-E14E-49AA-9C5D-C3B97A193F17}">
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{7EB0EA1F-FE4C-4A65-8582-8AC67B2D507E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -563,394 +563,32 @@ LEFT OUTER JOIN tblTerminologyLookup stccl ON s.iLabelID = stccl.iLabelID and st
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Sequence Container\EST_GETAddressRows"
+          DTS:refId="Package\Sequence Container\EST_truncate_address"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{C3184E84-95CF-43BE-B765-F5B8CEBB88CC}"
+          DTS:DTSID="{0DABDA92-E8E8-45BD-8F34-4DD380718FE1}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="EST_GETAddressRows"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
-              SQLTask:SqlStatementSource="Select&#xA;a.iAddressID,&#xA;ISNULL(a.vcAddress1,'') as vcAddress1,&#xA;ISNULL(a.vcAddress2,'') as vcAddress2,&#xA;ISNULL(a.vcCity,'') vcCity,&#xA;COALESCE (isnull(stccl.vcTerminology, ''), NULL) as State,&#xA;COALESCE (isnull(ctccl.vcTerminology, ''), NULL) as Country,&#xA;ISNULL(a.vcZipCode,'') as vcZipCode&#xA;from tblAddress a&#xA;LEFT OUTER JOIN tblCountries c ON a.siCountryID = c.siCountryID&#xA;LEFT OUTER JOIN tblTerminologyLookup ctccl ON c.iLabelID = ctccl.iLabelID and ctccl.tiLocaleID = 1&#xA;LEFT OUTER JOIN [dbo].[tblStates] s ON a.siStateID = s.siStateID&#xA;LEFT OUTER JOIN tblTerminologyLookup stccl ON s.iLabelID = stccl.iLabelID and stccl.tiLocaleID = 1"
-              SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-              <SQLTask:ResultBinding
-                SQLTask:ResultName="0"
-                SQLTask:DtsVariableName="User::sourceaddressrows" />
-            </SQLTask:SqlTaskData>
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\Sequence Container\Execute SQL Task"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:DTSID="{56B235F6-F3BF-4578-A1AB-868B449DA90C}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Execute SQL Task"
+          DTS:ObjectName="EST_truncate_address"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
-              SQLTask:SqlStatementSource="SELECT COUNT(addressid) as cnt FROM public.&quot;dimAddress&quot;"
-              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-              <SQLTask:ResultBinding
-                SQLTask:ResultName="1"
-                SQLTask:DtsVariableName="User::edwAddressCount" />
-            </SQLTask:SqlTaskData>
+              SQLTask:SqlStatementSource="truncate public.&quot;dimAddress&quot; restart identity;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\Sequence Container\Foreach Loop Container - address"
-          DTS:CreationName="STOCK:FOREACHLOOP"
-          DTS:Description="Foreach Loop Container"
-          DTS:DTSID="{A3A432BC-2EC8-452B-8960-86537BD172BB}"
-          DTS:ExecutableType="STOCK:FOREACHLOOP"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Foreach Loop Container - address">
-          <DTS:ForEachEnumerator
-            DTS:CreationName="Microsoft.ForEachADOEnumerator"
-            DTS:DTSID="{64318934-176A-479F-9B54-4CE0AA2C0D71}"
-            DTS:ObjectName="{64318934-176A-479F-9B54-4CE0AA2C0D71}">
-            <DTS:ObjectData>
-              <FEEADO
-                EnumType="EnumerateRowsInFirstTable"
-                VarName="User::sourceaddressrows" />
-            </DTS:ObjectData>
-          </DTS:ForEachEnumerator>
-          <DTS:Variables>
-            <DTS:Variable
-              DTS:CreationName=""
-              DTS:DTSID="{E43E8FC1-E561-40FD-B922-EB8D72338B5F}"
-              DTS:IncludeInDebugDump="6789"
-              DTS:Namespace="User"
-              DTS:ObjectName="addresscountbyid">
-              <DTS:VariableValue
-                DTS:DataType="3">0</DTS:VariableValue>
-            </DTS:Variable>
-            <DTS:Variable
-              DTS:CreationName=""
-              DTS:DTSID="{DB57D4B1-3E17-491D-B052-2E38BE7DEE98}"
-              DTS:IncludeInDebugDump="2345"
-              DTS:Namespace="User"
-              DTS:ObjectName="Country">
-              <DTS:VariableValue
-                DTS:DataType="8"
-                xml:space="preserve"></DTS:VariableValue>
-            </DTS:Variable>
-            <DTS:Variable
-              DTS:CreationName=""
-              DTS:DTSID="{76FAC92D-C165-4F3F-BC28-78105D7393EA}"
-              DTS:IncludeInDebugDump="6789"
-              DTS:Namespace="User"
-              DTS:ObjectName="iAddressID">
-              <DTS:VariableValue
-                DTS:DataType="3">0</DTS:VariableValue>
-            </DTS:Variable>
-            <DTS:Variable
-              DTS:CreationName=""
-              DTS:DTSID="{46D0B351-7441-4125-8085-4A3B2681D625}"
-              DTS:IncludeInDebugDump="2345"
-              DTS:Namespace="User"
-              DTS:ObjectName="State">
-              <DTS:VariableValue
-                DTS:DataType="8"
-                xml:space="preserve"></DTS:VariableValue>
-            </DTS:Variable>
-            <DTS:Variable
-              DTS:CreationName=""
-              DTS:DTSID="{9137AD42-AE21-4FF8-8FAC-F4ACD924AD90}"
-              DTS:IncludeInDebugDump="2345"
-              DTS:Namespace="User"
-              DTS:ObjectName="vcAddress1">
-              <DTS:VariableValue
-                DTS:DataType="8"
-                xml:space="preserve"></DTS:VariableValue>
-            </DTS:Variable>
-            <DTS:Variable
-              DTS:CreationName=""
-              DTS:DTSID="{39969B77-EBAF-4185-92FE-3A28F31B1FD7}"
-              DTS:IncludeInDebugDump="2345"
-              DTS:Namespace="User"
-              DTS:ObjectName="vcAddress2">
-              <DTS:VariableValue
-                DTS:DataType="8"
-                xml:space="preserve"></DTS:VariableValue>
-            </DTS:Variable>
-            <DTS:Variable
-              DTS:CreationName=""
-              DTS:DTSID="{F35A3D2D-F9CB-48A3-AFD6-F67DD4CEF467}"
-              DTS:IncludeInDebugDump="2345"
-              DTS:Namespace="User"
-              DTS:ObjectName="vcCity">
-              <DTS:VariableValue
-                DTS:DataType="8"
-                xml:space="preserve"></DTS:VariableValue>
-            </DTS:Variable>
-            <DTS:Variable
-              DTS:CreationName=""
-              DTS:DTSID="{A661E035-C99D-411C-B579-67EF752E475C}"
-              DTS:IncludeInDebugDump="2345"
-              DTS:Namespace="User"
-              DTS:ObjectName="vcZipCode">
-              <DTS:VariableValue
-                DTS:DataType="8"
-                xml:space="preserve"></DTS:VariableValue>
-            </DTS:Variable>
-          </DTS:Variables>
-          <DTS:Executables>
-            <DTS:Executable
-              DTS:refId="Package\Sequence Container\Foreach Loop Container - address\est_checkrowexistsinedw"
-              DTS:CreationName="Microsoft.ExecuteSQLTask"
-              DTS:Description="Execute SQL Task"
-              DTS:DTSID="{FD320435-622D-44A6-ADF7-6F2FFE3014D5}"
-              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-              DTS:LocaleID="-1"
-              DTS:ObjectName="est_checkrowexistsinedw"
-              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
-              <DTS:Variables />
-              <DTS:ObjectData>
-                <SQLTask:SqlTaskData
-                  SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
-                  SQLTask:SqlStatementSource="SELECT COUNT(addressid) FROM public.&quot;dimAddress&quot; where addressid=?"
-                  SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-                  <SQLTask:ResultBinding
-                    SQLTask:ResultName="1"
-                    SQLTask:DtsVariableName="User::addresscountbyid" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="1"
-                    SQLTask:DtsVariableName="User::iAddressID"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="4"
-                    SQLTask:ParameterSize="-1" />
-                </SQLTask:SqlTaskData>
-              </DTS:ObjectData>
-            </DTS:Executable>
-            <DTS:Executable
-              DTS:refId="Package\Sequence Container\Foreach Loop Container - address\est_insertaddress"
-              DTS:CreationName="Microsoft.ExecuteSQLTask"
-              DTS:Description="Execute SQL Task"
-              DTS:DTSID="{18765c62-151e-4847-8faa-0978586bf95e}"
-              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-              DTS:LocaleID="-1"
-              DTS:ObjectName="est_insertaddress"
-              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
-              <DTS:Variables />
-              <DTS:ObjectData>
-                <SQLTask:SqlTaskData
-                  SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
-                  SQLTask:SqlStatementSource="INSERT INTO public.&quot;dimAddress&quot;(&#xA;&#x9; address1, address2, city, state, country, zipcode,addressid)&#xA;&#x9;VALUES (?, ?, ?, ?, ?, ?, ?);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="1"
-                    SQLTask:DtsVariableName="User::vcAddress1"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="-9"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="2"
-                    SQLTask:DtsVariableName="User::vcAddress2"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="-9"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="3"
-                    SQLTask:DtsVariableName="User::vcCity"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="-9"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="4"
-                    SQLTask:DtsVariableName="User::State"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="-9"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="5"
-                    SQLTask:DtsVariableName="User::Country"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="-9"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="6"
-                    SQLTask:DtsVariableName="User::vcZipCode"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="-9"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="7"
-                    SQLTask:DtsVariableName="User::iAddressID"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="4"
-                    SQLTask:ParameterSize="-1" />
-                </SQLTask:SqlTaskData>
-              </DTS:ObjectData>
-            </DTS:Executable>
-            <DTS:Executable
-              DTS:refId="Package\Sequence Container\Foreach Loop Container - address\est_updateaddress"
-              DTS:CreationName="Microsoft.ExecuteSQLTask"
-              DTS:Description="Execute SQL Task"
-              DTS:DTSID="{48DCE8A7-B59A-4F5D-A09F-91457215B678}"
-              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-              DTS:LocaleID="-1"
-              DTS:ObjectName="est_updateaddress"
-              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
-              <DTS:Variables />
-              <DTS:ObjectData>
-                <SQLTask:SqlTaskData
-                  SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
-                  SQLTask:SqlStatementSource="UPDATE public.&quot;dimAddress&quot;&#xA;&#x9;SET  address1=?, address2=?, city=?, state=?, country=?, zipcode=?&#xA;&#x9;WHERE addressid=?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="1"
-                    SQLTask:DtsVariableName="User::vcAddress1"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="-9"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="2"
-                    SQLTask:DtsVariableName="User::vcAddress2"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="-9"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="3"
-                    SQLTask:DtsVariableName="User::vcCity"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="-9"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="4"
-                    SQLTask:DtsVariableName="User::State"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="-9"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="5"
-                    SQLTask:DtsVariableName="User::Country"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="-9"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="6"
-                    SQLTask:DtsVariableName="User::vcZipCode"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="-9"
-                    SQLTask:ParameterSize="-1" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="7"
-                    SQLTask:DtsVariableName="User::iAddressID"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="4"
-                    SQLTask:ParameterSize="-1" />
-                </SQLTask:SqlTaskData>
-              </DTS:ObjectData>
-            </DTS:Executable>
-          </DTS:Executables>
-          <DTS:PrecedenceConstraints>
-            <DTS:PrecedenceConstraint
-              DTS:refId="Package\Sequence Container\Foreach Loop Container - address.PrecedenceConstraints[Constraint]"
-              DTS:CreationName=""
-              DTS:DTSID="{664B2AD7-388B-4D7D-A8D2-59D4D9632783}"
-              DTS:EvalOp="1"
-              DTS:Expression="@[User::addresscountbyid] &gt; 0"
-              DTS:From="Package\Sequence Container\Foreach Loop Container - address\est_checkrowexistsinedw"
-              DTS:LogicalAnd="True"
-              DTS:ObjectName="Constraint"
-              DTS:To="Package\Sequence Container\Foreach Loop Container - address\est_updateaddress" />
-            <DTS:PrecedenceConstraint
-              DTS:refId="Package\Sequence Container\Foreach Loop Container - address.PrecedenceConstraints[Constraint 1]"
-              DTS:CreationName=""
-              DTS:DTSID="{FCA03722-A2AD-4266-9578-752DC819C17F}"
-              DTS:EvalOp="1"
-              DTS:Expression="@[User::addresscountbyid] == 0"
-              DTS:From="Package\Sequence Container\Foreach Loop Container - address\est_checkrowexistsinedw"
-              DTS:LogicalAnd="True"
-              DTS:ObjectName="Constraint 1"
-              DTS:To="Package\Sequence Container\Foreach Loop Container - address\est_insertaddress" />
-          </DTS:PrecedenceConstraints>
-          <DTS:ForEachVariableMappings>
-            <DTS:ForEachVariableMapping
-              DTS:CreationName=""
-              DTS:DTSID="{D6441572-8AA0-43E8-9D4D-4449E8492195}"
-              DTS:ObjectName="{D6441572-8AA0-43E8-9D4D-4449E8492195}"
-              DTS:ValueIndex="0"
-              DTS:VariableName="User::iAddressID" />
-            <DTS:ForEachVariableMapping
-              DTS:CreationName=""
-              DTS:DTSID="{B7736E84-CA72-4588-84B5-0D38AD01AC14}"
-              DTS:ObjectName="{B7736E84-CA72-4588-84B5-0D38AD01AC14}"
-              DTS:ValueIndex="1"
-              DTS:VariableName="User::vcAddress1" />
-            <DTS:ForEachVariableMapping
-              DTS:CreationName=""
-              DTS:DTSID="{9E4B8815-F7D6-468A-817F-6ACDE214AB74}"
-              DTS:ObjectName="{9E4B8815-F7D6-468A-817F-6ACDE214AB74}"
-              DTS:ValueIndex="2"
-              DTS:VariableName="User::vcAddress2" />
-            <DTS:ForEachVariableMapping
-              DTS:CreationName=""
-              DTS:DTSID="{1F95198A-D442-462E-951F-978959D9BBF1}"
-              DTS:ObjectName="{1F95198A-D442-462E-951F-978959D9BBF1}"
-              DTS:ValueIndex="3"
-              DTS:VariableName="User::vcCity" />
-            <DTS:ForEachVariableMapping
-              DTS:CreationName=""
-              DTS:DTSID="{DAE7F76C-A1BF-4361-86E3-BD062DCDEA6B}"
-              DTS:ObjectName="{DAE7F76C-A1BF-4361-86E3-BD062DCDEA6B}"
-              DTS:ValueIndex="4"
-              DTS:VariableName="User::State" />
-            <DTS:ForEachVariableMapping
-              DTS:CreationName=""
-              DTS:DTSID="{4B6ED33B-822D-4D2B-8D54-4F7C28C380FD}"
-              DTS:ObjectName="{4B6ED33B-822D-4D2B-8D54-4F7C28C380FD}"
-              DTS:ValueIndex="5"
-              DTS:VariableName="User::Country" />
-            <DTS:ForEachVariableMapping
-              DTS:CreationName=""
-              DTS:DTSID="{B06F888C-FCDF-4724-9007-3E8D5A92BCD1}"
-              DTS:ObjectName="{B06F888C-FCDF-4724-9007-3E8D5A92BCD1}"
-              DTS:ValueIndex="6"
-              DTS:VariableName="User::vcZipCode" />
-          </DTS:ForEachVariableMappings>
         </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{1BC2E410-D76B-4C29-8A46-F67C299E73B9}"
-          DTS:EvalOp="1"
-          DTS:Expression="@[User::edwAddressCount] == 0"
-          DTS:From="Package\Sequence Container\Execute SQL Task"
+          DTS:DTSID="{2A19B966-0E30-4FB7-A92A-2B823A8A28F6}"
+          DTS:From="Package\Sequence Container\EST_truncate_address"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
           DTS:To="Package\Sequence Container\DFT_Dimaddress_InitialLoad" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
-          DTS:CreationName=""
-          DTS:DTSID="{59F1BE80-7BA1-4924-8286-3B784A9A03E3}"
-          DTS:EvalOp="1"
-          DTS:Expression="@[User::edwAddressCount] &gt;0"
-          DTS:From="Package\Sequence Container\Execute SQL Task"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint 1"
-          DTS:To="Package\Sequence Container\EST_GETAddressRows" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
-          DTS:CreationName=""
-          DTS:DTSID="{B6730464-A9AB-4ADC-BB2A-E5287F30F856}"
-          DTS:From="Package\Sequence Container\EST_GETAddressRows"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint 2"
-          DTS:To="Package\Sequence Container\Foreach Loop Container - address" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -1037,196 +675,41 @@ LEFT OUTER JOIN tblTerminologyLookup stccl ON s.iLabelID = stccl.iLabelID and st
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="249.6,41.6"
           Id="Package\Sequence Container\DFT_Dimaddress_InitialLoad"
-          TopLeft="124.29998698632,157.333336033291" />
+          TopLeft="418.466641963854,252.666670124266" />
         <NodeLayout
-          Size="232,41.6"
-          Id="Package\Sequence Container\EST_GETAddressRows"
-          TopLeft="600.966634711956,183.333336239921" />
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\Execute SQL Task"
-          TopLeft="510.966638288234,56.8000019009909" />
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container - address\est_checkrowexistsinedw"
-          TopLeft="244.83329435852,27.800004525185" />
-        <NodeLayout
-          Size="160.8,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container - address\est_insertaddress"
-          TopLeft="365.966627360716,136.133338388867" />
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container - address\est_updateaddress"
-          TopLeft="23.4666409704433,136.933338636822" />
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container - address.PrecedenceConstraints[Constraint]"
-          TopLeft="327.23329435852,69.400004525185">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-221.366653388077,67.5333341116373"
-              Start="0,0"
-              End="-221.366653388077,60.0333341116373">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.7666670558186" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.7666670558186"
-                    Point2="0,33.7666670558186"
-                    Point3="-4,33.7666670558186" />
-                  <mssgle:LineSegment
-                    End="-217.366653388077,33.7666670558186" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-217.366653388077,33.7666670558186"
-                    Point2="-221.366653388077,33.7666670558186"
-                    Point3="-221.366653388077,37.7666670558186" />
-                  <mssgle:LineSegment
-                    End="-221.366653388077,60.0333341116373" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-118.683326694038,38.7666670558186,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container - address.PrecedenceConstraints[Constraint 1]"
-          TopLeft="353.366627691853,69.400004525185">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="100.199999668863,66.7333338636819"
-              Start="0,0"
-              End="100.199999668863,59.2333338636819">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.0783335485325" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.0783335485325"
-                    Point2="0,27.0783335485325"
-                    Point3="4,27.0783335485325" />
-                  <mssgle:LineSegment
-                    End="96.1999996688628,27.0783335485325" />
-                  <mssgle:CubicBezierSegment
-                    Point1="96.1999996688628,27.0783335485325"
-                    Point2="100.199999668863,27.0783335485325"
-                    Point3="100.199999668863,31.0783335485325" />
-                  <mssgle:LineSegment
-                    End="100.199999668863,59.2333338636819" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="42.0999998344314,32.0783335485325,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="595.2,268"
-          Size="595.2,311.2"
-          Id="Package\Sequence Container\Foreach Loop Container - address"
-          TopLeft="420.133308564293,394.800004587174" />
+          Size="184.8,41.6"
+          Id="Package\Sequence Container\EST_truncate_address"
+          TopLeft="410.933308961657,75.8666687191858" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
-          TopLeft="593.366638288234,98.4000019009909">
+          TopLeft="503.333308961657,117.466668719186">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-344.266651301914,58.9333341323005"
+              EndConnector="39.9333330021968,135.20000140508"
               Start="0,0"
-              End="-344.266651301914,51.4333341323005">
+              End="39.9333330021968,127.70000140508">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.3333337397045" />
+                    End="0,63.60000070254" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26.3333337397045"
-                    Point2="0,30.3333337397045"
-                    Point3="-4,30.3333337397045" />
+                    Point1="0,63.60000070254"
+                    Point2="0,67.60000070254"
+                    Point3="4,67.60000070254" />
                   <mssgle:LineSegment
-                    End="-340.266651301914,30.3333337397045" />
+                    End="35.9333330021968,67.60000070254" />
                   <mssgle:CubicBezierSegment
-                    Point1="-340.266651301914,30.3333337397045"
-                    Point2="-344.266651301914,30.3333337397045"
-                    Point3="-344.266651301914,34.3333337397045" />
+                    Point1="35.9333330021968,67.60000070254"
+                    Point2="39.9333330021968,67.60000070254"
+                    Point3="39.9333330021968,71.60000070254" />
                   <mssgle:LineSegment
-                    End="-344.266651301914,51.4333341323005" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-180.133325650957,35.3333337397045,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
-          TopLeft="619.499971621568,98.4000019009909">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="97.4666630903887,84.93333433893"
-              Start="0,0"
-              End="97.4666630903887,77.43333433893">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.4633337413735" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,30.4633337413735"
-                    Point2="0,34.4633337413735"
-                    Point3="4,34.4633337413735" />
-                  <mssgle:LineSegment
-                    End="93.4666630903887,34.4633337413735" />
-                  <mssgle:CubicBezierSegment
-                    Point1="93.4666630903887,34.4633337413735"
-                    Point2="97.4666630903887,34.4633337413735"
-                    Point3="97.4666630903887,38.4633337413735" />
-                  <mssgle:LineSegment
-                    End="97.4666630903887,77.43333433893" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="40.7333315451943,39.4633337413735,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
-          TopLeft="717.349971638124,224.933336239921">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,169.866668347253"
-              Start="0,0"
-              End="0,162.366668347253">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,162.366668347253" />
+                    End="39.9333330021968,127.70000140508" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1246,20 +729,24 @@ LEFT OUTER JOIN tblTerminologyLookup stccl ON s.iLabelID = stccl.iLabelID and st
           Size="151.2,41.6"
           Id="Package\Start Run Cycle"
           TopLeft="712.499971687795,43.3333336777157" />
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Stop Run Cycle"
+          TopLeft="689.166639281645,1004.60000650883" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="785.499981820584,84.9333336777157">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,54.6000007645292"
+              EndConnector="0,54.6000007645293"
               Start="0,0"
-              End="0,47.1000007645292">
+              End="0,47.1000007645293">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.1000007645292" />
+                    End="0,47.1000007645293" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1268,24 +755,20 @@ LEFT OUTER JOIN tblTerminologyLookup stccl ON s.iLabelID = stccl.iLabelID and st
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="184.8,41.6"
-          Id="Package\Stop Run Cycle"
-          TopLeft="689.166639281645,1004.60000650883" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="782.233315617509,943.533334442245">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,61.0666720665827"
+              EndConnector="0,61.0666720665852"
               Start="0,0"
-              End="0,53.5666720665827">
+              End="0,53.5666720665852">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,53.5666720665827" />
+                    End="0,53.5666720665852" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

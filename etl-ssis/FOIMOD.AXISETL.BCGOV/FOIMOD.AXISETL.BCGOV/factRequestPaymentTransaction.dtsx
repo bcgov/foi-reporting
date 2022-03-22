@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="factRequestPaymentTransaction"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{59AA7CE7-E26C-4789-B8E4-8AE6BAF72C18}">
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{A8CE904F-6722-4B1B-952C-5E9EA5A84D17}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -656,12 +656,9 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DECLARE @runcycleid integer 
-SET @runcycleid = ?
-
-Select 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select 
 	iRequestID as foirequestid,
-	@runcycleid as runcycleid,
+	CAST(? as INT) as runcycleid,
 	tiPaymentMode as paymentmodeid,
 	nEstimatedAmount as estimatedamount,
 	nIncurredAmount as incurredamount,
@@ -1926,12 +1923,9 @@ From tblRequests TR</property>
                           dataType="System.String"
                           description="The SQL command to be executed."
                           name="SqlCommand"
-                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DECLARE @runcycleid integer 
-SET @runcycleid = ?
-
-Select 
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select 
 	iRequestID as foirequestid,
-	@runcycleid as runcycleid,
+	CAST(? as INT) as runcycleid,
 	tiPaymentMode as paymentmodeid,
 	nEstimatedAmount as estimatedamount,
 	nIncurredAmount as incurredamount,
@@ -4436,12 +4430,9 @@ where iRequestID = ?</property>
                           dataType="System.String"
                           description="The SQL command to be executed."
                           name="SqlCommand"
-                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DECLARE @runcycleid integer 
-SET @runcycleid = ?
-
-Select 
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select 
 	iRequestID as foirequestid,
-	@runcycleid as runcycleid,
+	CAST(? as INT) as runcycleid,
 	tiPaymentMode as paymentmodeid,
 	nEstimatedAmount as estimatedamount,
 	nIncurredAmount as incurredamount,
@@ -5431,27 +5422,19 @@ where iRequestID = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="184.8,41.6"
+          Size="185,42"
           Id="Package\End Run Cycle"
           TopLeft="397.49998420477,861.266670268907" />
         <NodeLayout
-          Size="150.4,41.6"
+          Size="150,42"
           Id="Package\Sequence Container\First Time Load"
           TopLeft="81.7666617327268,110.400001983643" />
         <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Check if record exists"
-          TopLeft="284.366650407845,25.200001198451" />
-        <NodeLayout
-          Size="222.4,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details"
-          TopLeft="259.366651401256,114.466668491894" />
-        <NodeLayout
-          Size="220,41.6"
+          Size="220,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details"
           TopLeft="24.6999849994984,114.999999566078" />
         <NodeLayout
-          Size="189.6,41.6"
+          Size="190,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Update active flag to N for existing record"
           TopLeft="42.199984304111,26.5999988635381" />
         <EdgeLayout
@@ -5476,90 +5459,42 @@ where iRequestID = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests.PrecedenceConstraints[Constraint 1]"
-          TopLeft="284.366650407845,46.7000000309945">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-52.5666661037337,0"
-              Start="0,0"
-              End="-45.0666661037337,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-45.0666661037337,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-30.5333330518668,5,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests.PrecedenceConstraints[Constraint 2]"
-          TopLeft="368.66665090455,66.800001198451">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,47.666667293443"
-              Start="0,0"
-              End="0,40.166667293443">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,40.166667293443" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,12.0833336467215,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="492.8,212"
-          Size="492.8,255.2"
+          PanelSize="266,211"
+          Size="266,254"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests"
-          TopLeft="82.5999950329465,307.133335310089" />
+          TopLeft="310.099985992909,308.000001983643" />
         <NodeLayout
-          Size="201.6,41.6"
+          Size="202,42"
           Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details"
           TopLeft="34.0999724825232,55.1999988428751" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="253.6,210.4"
-          Size="253.6,253.6"
+          PanelSize="254,211"
+          Size="254,254"
           Id="Package\Sequence Container\Foreach Loop Container for new requests"
           TopLeft="615.933307173518,307.33333433893" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\Sequence Container\Get modified request count"
           TopLeft="360.099984006088,128.199999690056" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\Sequence Container\Get modified requests"
           TopLeft="364.266650507186,225.466666322284" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\Sequence Container\Get new request count"
           TopLeft="624.266640175715,96.1333327685462" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\Sequence Container\Get new requests"
           TopLeft="637.599972979229,218.399999669393" />
         <NodeLayout
-          Size="288,45.6"
+          Size="288,46"
           Id="Package\Sequence Container\Get record count from factRequestPaymentTransaction"
           TopLeft="266.766654381488,28.8666661776438" />
         <EdgeLayout
@@ -5801,12 +5736,12 @@ where iRequestID = ?</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="884.8,617.6"
-          Size="884.8,660.8"
+          PanelSize="885,618"
+          Size="885,661"
           Id="Package\Sequence Container"
           TopLeft="42.4999983112018,126.53333433893" />
         <NodeLayout
-          Size="184.8,41.6"
+          Size="185,42"
           Id="Package\Start Run Cycle"
           TopLeft="387.499984602134,33.8000002686183" />
         <EdgeLayout
@@ -5862,11 +5797,11 @@ where iRequestID = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="163.2,41.6"
+          Size="163,42"
           Id="Package\Sequence Container\First Time Load\ODBC Destination"
           TopLeft="385.833318001695,137.800001095136" />
         <NodeLayout
-          Size="152,41.6"
+          Size="152,42"
           Id="Package\Sequence Container\First Time Load\OLE DB Source"
           TopLeft="396.66665090455,37.2666669628355" />
         <EdgeLayout
@@ -5961,11 +5896,11 @@ where iRequestID = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="163.2,41.6"
+          Size="163,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination"
           TopLeft="376.333317703671,160.933335248099" />
         <NodeLayout
-          Size="152,41.6"
+          Size="152,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source"
           TopLeft="384.166651401255,42.4666670041614" />
         <EdgeLayout
@@ -6020,13 +5955,13 @@ where iRequestID = ?</property>
     design-time-name="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="163.2,41.6"
+          Size="163,42"
           Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination"
           TopLeft="376.333317703671,160.933335248099" />
         <NodeLayout
-          Size="152,41.6"
+          Size="152,42"
           Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source"
           TopLeft="384.166651401255,42.4666670041614" />
         <EdgeLayout

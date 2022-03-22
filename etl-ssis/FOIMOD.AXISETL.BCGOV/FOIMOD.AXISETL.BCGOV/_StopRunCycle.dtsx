@@ -7,12 +7,12 @@
   DTS:CreatorName="LAPTOP-1OFQE5A2\qi__h"
   DTS:DTSID="{8ACC8D50-A7E6-4DAE-92A1-D5EE00684DF3}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
   DTS:LocaleID="4105"
   DTS:ObjectName="_StopRunCycle"
   DTS:PackageType="5"
-  DTS:VersionBuild="66"
-  DTS:VersionGUID="{9C25096C-3780-4FA2-9B64-CC0B3B3D756A}">
+  DTS:VersionBuild="68"
+  DTS:VersionGUID="{FC282FE1-1960-45D7-B083-B6FC8F8076C7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,7 +23,7 @@
       DTS:ObjectName="localhost.foi_edw.postgres">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="uid=postgres;Dsn=localhost.foi_edw.postgres;" />
+          DTS:ConnectionString="uid=postgres;Dsn=PostgreSQLDEVEDW;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -80,7 +80,7 @@
       <DTS:VariableValue
         DTS:DataType="8">update public."dimRunCycle" 
 set 
-runcycleendat = '2022-03-17 11:19:22.171000000', 
+runcycleendat = '2022-03-22 13:55:37.608000000', 
 description = 'package:  complete', 
 success = False 
 where runcycleid = 1</DTS:VariableValue>

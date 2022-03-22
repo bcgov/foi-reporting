@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="factRequestCustomCalcFieldsETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{A1CF66D0-78AF-43FF-B5D0-B47335F3345F}">
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{F975CF5A-7BEC-4394-AF0F-0AF06E577455}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -656,11 +656,8 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DECLARE @runcycleid integer
-SET @runcycleid= ?
-
-Select 
-@runcycleid  as runcycleid,
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select 
+CAST(? as INT) as runcycleid,
 R.iRequestID as foirequestid,
 ISNULL(dbo.fn_StripCharacters(dbo.cst_GetRqstCustFieldValue (R.iRequestID, 'Subject'), '^a-z0-9 '),'') as subject,
 isnull((SELECT MAX(CAST(sdtActionDate AS DATE)) as Current_Activity_date FROM dbo.tblHistoryEvents hev WHERE hev.iRequestID = R.iRequestID AND hev.tiReviewID = R.tiReviewID), '') as currentactivitydate,
@@ -702,7 +699,7 @@ on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
-                      name="SqlCommandVariable"></property>
+                      name="SqlCommandVariable">$Package::MainDataloadQueru</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -735,6 +732,15 @@ on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
                       name="OLE DB Source Output">
                       <outputColumns>
                         <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[foirequestid]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[foirequestid]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[foirequestid]"
+                          name="foirequestid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
                           refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[runcycleid]"
                           dataType="i4"
                           errorOrTruncationOperation="Conversion"
@@ -744,13 +750,13 @@ on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
                           name="runcycleid"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[foirequestid]"
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[passduedays]"
                           dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[foirequestid]"
-                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[foirequestid]"
-                          name="foirequestid"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[passduedays]"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[passduedays]"
+                          name="passduedays"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[subject]"
@@ -944,15 +950,6 @@ on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
                           name="daysoverdue"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[passduedays]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[passduedays]"
-                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[passduedays]"
-                          name="passduedays"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[noofpagesreviewed]"
                           dataType="i4"
                           errorOrTruncationOperation="Conversion"
@@ -1106,13 +1103,17 @@ on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[foirequestid]"
+                          dataType="i4"
+                          name="foirequestid" />
+                        <externalMetadataColumn
                           refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[runcycleid]"
                           dataType="i4"
                           name="runcycleid" />
                         <externalMetadataColumn
-                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[foirequestid]"
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[passduedays]"
                           dataType="i4"
-                          name="foirequestid" />
+                          name="passduedays" />
                         <externalMetadataColumn
                           refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[subject]"
                           dataType="nText"
@@ -1210,10 +1211,6 @@ on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
                           dataType="i4"
                           name="daysoverdue" />
                         <externalMetadataColumn
-                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[passduedays]"
-                          dataType="i4"
-                          name="passduedays" />
-                        <externalMetadataColumn
                           refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[noofpagesreviewed]"
                           dataType="i4"
                           name="noofpagesreviewed" />
@@ -1301,15 +1298,15 @@ on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
                       name="OLE DB Source Error Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[runcycleid]"
-                          dataType="i4"
-                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[runcycleid]"
-                          name="runcycleid" />
-                        <outputColumn
                           refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[foirequestid]"
                           dataType="i4"
                           lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[foirequestid]"
                           name="foirequestid" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[runcycleid]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[runcycleid]"
+                          name="runcycleid" />
                         <outputColumn
                           refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[subject]"
                           dataType="nText"
@@ -1675,7 +1672,7 @@ on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
           HeaderHeight="43"
           IsExpanded="True"
           PanelSize="608,255.2"
-          Size="608,298.4"
+          Size="608,297.6"
           Id="Package\Sequence Container"
           TopLeft="499.999980131786,217.533335062133" />
         <NodeLayout
@@ -1761,37 +1758,25 @@ on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
         <NodeLayout
           Size="152,41.6"
           Id="Package\Sequence Container\Data Flow Task\OLE DB Source"
-          TopLeft="537.49997864167,133.466667727364" />
+          TopLeft="521,133" />
         <NodeLayout
           Size="163.2,41.6"
           Id="Package\Sequence Container\Data Flow Task\ODBC Destination"
           TopLeft="522.499979237716,356.200002830823" />
         <EdgeLayout
           Id="Package\Sequence Container\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="613.49997864167,175.066667727364">
+          TopLeft="600.499989618858,175">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-9.39999940395342,181.133335103459"
+              EndConnector="0,181.200002830823"
               Start="0,0"
-              End="-9.39999940395342,173.633335103459">
+              End="0,173.700002830823">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,86.5666675517294" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,86.5666675517294"
-                    Point2="0,90.5666675517294"
-                    Point3="-4,90.5666675517294" />
-                  <mssgle:LineSegment
-                    End="-5.39999940395342,90.5666675517294" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-5.39999940395342,90.5666675517294"
-                    Point2="-9.39999940395342,90.5666675517294"
-                    Point3="-9.39999940395342,94.5666675517294" />
-                  <mssgle:LineSegment
-                    End="-9.39999940395342,173.633335103459" />
+                    End="0,173.700002830823" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
