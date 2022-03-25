@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="dimRequesters"
   DTS:PackageType="5"
-  DTS:VersionBuild="47"
-  DTS:VersionGUID="{3B6EA4E4-44E6-4B30-9E84-D1B8315DDB45}">
+  DTS:VersionBuild="54"
+  DTS:VersionGUID="{FE965BB0-89B0-4825-A36A-F9839157EC83}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -309,7 +309,7 @@
         <DTS:Variable
           DTS:CreationName=""
           DTS:DTSID="{AAD4DCC8-6618-4202-9797-43AE7CDD5D43}"
-          DTS:IncludeInDebugDump="6789"
+          DTS:IncludeInDebugDump="2345"
           DTS:Namespace="User"
           DTS:ObjectName="reasonid">
           <DTS:VariableValue
@@ -1582,12 +1582,12 @@ left outer join tblTerminologyLookup tlc ON ecc.iLabelID = tlc.iLabelID and tlc.
           DTS:LocaleID="-1"
           DTS:ObjectName="exeModifiedRequester"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
-              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;trs.iRequesterID as requesterid,&#xA;&#x9;isnull(trs.vcFirstName,'') as firstname,&#xA;&#x9;isnull(trs.vcLastName,'') as lastname,&#xA;&#x9;isnull(trs.vcMiddleName,'') as middlename,&#xA;&#x9;isnull(LTRIM(RTRIM(TRS.vcLastName)) + ', ' + LTRIM(RTRIM(TRS.vcFirstName)),'') as fullname,&#xA;&#x9;isnull(trs.vcJobTitle,'') as jobtitle,&#xA;&#x9;isnull(trs.vcAddress1,'') as addressline1,&#xA;&#x9;isnull(trs.vcAddress2,'') as addressline2,&#xA;&#x9;isnull(trs.vcCity,'') as city,&#xA;&#x9;isnull(trs.vcZipCode,'') as zipcode,&#xA;&#x9;isnull(tls.cAccessKey,'')  as statecode,&#xA;&#x9;isnull(tls.vcTerminology,'') as statename,&#xA;&#x9;isnull(tlc.vcTerminology,'') as countryname,&#xA;&#x9;isnull(trs.vcWork1,'') as workphone1,&#xA;&#x9;isnull(trs.vcWork2,'') as workphone2,&#xA;&#x9;isnull(trs.vcMobile,'') as mobile,&#xA;&#x9;isnull(trs.vcHome,'') as home,&#xA;&#x9;isnull(trs.vcFax,'') as fax,&#xA;&#x9;isnull(trs.vcEmailID,'') as email,&#xA;&#x9;isnull(trs.vcCompany,'') as company,&#xA;&#x9;isnull(trs.vcNotes,'') as notes,&#xA;&#x9;trs.sdtCreatedDate as createddate,&#xA;&#x9;trs.sdtModifiedDate as modifieddate,&#xA;&#x9;isnull(trs.cActive,'') as cactive,&#xA;&#x9;trs.tiReasonID as reasonid,&#xA;&#x9;isnull(trs.cMailDue,'') as maildue&#xA;From [dbo].[tblRequesters] trs &#xA;left outer join [dbo].[tblStates] ecs on trs.siStateID = ecs.siStateID &#xA;left outer join tblTerminologyLookup tls ON ecs.iLabelID = tls.iLabelID and tls.tiLocaleID = 1 &#xA;left outer join [dbo].[tblCountries] ecc on trs.siCountryID = ecc.siCountryID &#xA;left outer join tblTerminologyLookup tlc ON ecc.iLabelID = tlc.iLabelID and tlc.tiLocaleID = 1 &#xA;WHERE   trs.sdtModifiedDate &gt;= @lastruntime AND trs.sdtCreatedDate &lt; @lastruntime"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;trs.iRequesterID as requesterid,&#xA;&#x9;isnull(trs.vcFirstName,'') as firstname,&#xA;&#x9;isnull(trs.vcLastName,'') as lastname,&#xA;&#x9;isnull(trs.vcMiddleName,'') as middlename,&#xA;&#x9;isnull(LTRIM(RTRIM(TRS.vcLastName)) + ', ' + LTRIM(RTRIM(TRS.vcFirstName)),'') as fullname,&#xA;&#x9;isnull(trs.vcJobTitle,'') as jobtitle,&#xA;&#x9;isnull(trs.vcAddress1,'') as addressline1,&#xA;&#x9;isnull(trs.vcAddress2,'') as addressline2,&#xA;&#x9;isnull(trs.vcCity,'') as city,&#xA;&#x9;isnull(trs.vcZipCode,'') as zipcode,&#xA;&#x9;isnull(tls.cAccessKey,'')  as statecode,&#xA;&#x9;isnull(tls.vcTerminology,'') as statename,&#xA;&#x9;isnull(tlc.vcTerminology,'') as countryname,&#xA;&#x9;isnull(trs.vcWork1,'') as workphone1,&#xA;&#x9;isnull(trs.vcWork2,'') as workphone2,&#xA;&#x9;isnull(trs.vcMobile,'') as mobile,&#xA;&#x9;isnull(trs.vcHome,'') as home,&#xA;&#x9;isnull(trs.vcFax,'') as fax,&#xA;&#x9;isnull(trs.vcEmailID,'') as email,&#xA;&#x9;isnull(trs.vcCompany,'') as company,&#xA;&#x9;isnull(trs.vcNotes,'') as notes,&#xA;&#x9;trs.sdtCreatedDate as createddate,&#xA;&#x9;trs.sdtModifiedDate as modifieddate,&#xA;&#x9;isnull(trs.cActive,'') as cactive,&#xA;&#x9;isnull(trs.tiReasonID,'') as reasonid,&#xA;&#x9;isnull(trs.cMailDue,'') as maildue&#xA;From [dbo].[tblRequesters] trs &#xA;left outer join [dbo].[tblStates] ecs on trs.siStateID = ecs.siStateID &#xA;left outer join tblTerminologyLookup tls ON ecs.iLabelID = tls.iLabelID and tls.tiLocaleID = 1 &#xA;left outer join [dbo].[tblCountries] ecc on trs.siCountryID = ecc.siCountryID &#xA;left outer join tblTerminologyLookup tlc ON ecc.iLabelID = tlc.iLabelID and tlc.tiLocaleID = 1 &#xA;WHERE   trs.sdtModifiedDate &gt;= @lastruntime AND trs.sdtCreatedDate &lt; @lastruntime"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -1610,7 +1610,7 @@ left outer join tblTerminologyLookup tlc ON ecc.iLabelID = tlc.iLabelID and tlc.
           DTS:LocaleID="-1"
           DTS:ObjectName="exeModifiedRequesterCount"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1638,12 +1638,12 @@ left outer join tblTerminologyLookup tlc ON ecc.iLabelID = tlc.iLabelID and tlc.
           DTS:LocaleID="-1"
           DTS:ObjectName="exeNewRequester"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
-              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;trs.iRequesterID as requesterid,&#xA;&#x9;isnull(trs.vcFirstName,'') as firstname,&#xA;&#x9;isnull(trs.vcLastName,'') as lastname,&#xA;&#x9;isnull(trs.vcMiddleName,'') as middlename,&#xA;&#x9;isnull(LTRIM(RTRIM(TRS.vcLastName)) + ', ' + LTRIM(RTRIM(TRS.vcFirstName)),'') as fullname,&#xA;&#x9;isnull(trs.vcJobTitle,'') as jobtitle,&#xA;&#x9;isnull(trs.vcAddress1,'') as addressline1,&#xA;&#x9;isnull(trs.vcAddress2,'') as addressline2,&#xA;&#x9;isnull(trs.vcCity,'') as city,&#xA;&#x9;isnull(trs.vcZipCode,'') as zipcode,&#xA;&#x9;isnull(tls.cAccessKey,'')  as statecode,&#xA;&#x9;isnull(tls.vcTerminology,'') as statename,&#xA;&#x9;isnull(tlc.vcTerminology,'') as countryname,&#xA;&#x9;isnull(trs.vcWork1,'') as workphone1,&#xA;&#x9;isnull(trs.vcWork2,'') as workphone2,&#xA;&#x9;isnull(trs.vcMobile,'') as mobile,&#xA;&#x9;isnull(trs.vcHome,'') as home,&#xA;&#x9;isnull(trs.vcFax,'') as fax,&#xA;&#x9;isnull(trs.vcEmailID,'') as email,&#xA;&#x9;isnull(trs.vcCompany,'') as company,&#xA;&#x9;isnull(trs.vcNotes,'') as notes,&#xA;&#x9;trs.sdtCreatedDate as createddate,&#xA;&#x9;trs.sdtModifiedDate as modifieddate,&#xA;&#x9;isnull(trs.cActive,'') as cactive,&#xA;&#x9;trs.tiReasonID as reasonid,&#xA;&#x9;isnull(trs.cMailDue,'') as maildue&#xA;From [dbo].[tblRequesters] trs &#xA;left outer join [dbo].[tblStates] ecs on trs.siStateID = ecs.siStateID &#xA;left outer join tblTerminologyLookup tls ON ecs.iLabelID = tls.iLabelID and tls.tiLocaleID = 1 &#xA;left outer join [dbo].[tblCountries] ecc on trs.siCountryID = ecc.siCountryID &#xA;left outer join tblTerminologyLookup tlc ON ecc.iLabelID = tlc.iLabelID and tlc.tiLocaleID = 1 &#xA;WHERE   trs.sdtCreatedDate &gt;= @lastruntime"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;trs.iRequesterID as requesterid,&#xA;&#x9;isnull(trs.vcFirstName,'') as firstname,&#xA;&#x9;isnull(trs.vcLastName,'') as lastname,&#xA;&#x9;isnull(trs.vcMiddleName,'') as middlename,&#xA;&#x9;isnull(LTRIM(RTRIM(TRS.vcLastName)) + ', ' + LTRIM(RTRIM(TRS.vcFirstName)),'') as fullname,&#xA;&#x9;isnull(trs.vcJobTitle,'') as jobtitle,&#xA;&#x9;isnull(trs.vcAddress1,'') as addressline1,&#xA;&#x9;isnull(trs.vcAddress2,'') as addressline2,&#xA;&#x9;isnull(trs.vcCity,'') as city,&#xA;&#x9;isnull(trs.vcZipCode,'') as zipcode,&#xA;&#x9;isnull(tls.cAccessKey,'')  as statecode,&#xA;&#x9;isnull(tls.vcTerminology,'') as statename,&#xA;&#x9;isnull(tlc.vcTerminology,'') as countryname,&#xA;&#x9;isnull(trs.vcWork1,'') as workphone1,&#xA;&#x9;isnull(trs.vcWork2,'') as workphone2,&#xA;&#x9;isnull(trs.vcMobile,'') as mobile,&#xA;&#x9;isnull(trs.vcHome,'') as home,&#xA;&#x9;isnull(trs.vcFax,'') as fax,&#xA;&#x9;isnull(trs.vcEmailID,'') as email,&#xA;&#x9;isnull(trs.vcCompany,'') as company,&#xA;&#x9;isnull(trs.vcNotes,'') as notes,&#xA;&#x9;trs.sdtCreatedDate as createddate,&#xA;&#x9;trs.sdtModifiedDate as modifieddate,&#xA;&#x9;isnull(trs.cActive,'') as cactive,&#xA;&#x9;isnull(trs.tiReasonID,'') as reasonid,&#xA;&#x9;isnull(trs.cMailDue,'') as maildue&#xA;From [dbo].[tblRequesters] trs &#xA;left outer join [dbo].[tblStates] ecs on trs.siStateID = ecs.siStateID &#xA;left outer join tblTerminologyLookup tls ON ecs.iLabelID = tls.iLabelID and tls.tiLocaleID = 1 &#xA;left outer join [dbo].[tblCountries] ecc on trs.siCountryID = ecc.siCountryID &#xA;left outer join tblTerminologyLookup tlc ON ecc.iLabelID = tlc.iLabelID and tlc.tiLocaleID = 1 &#xA;WHERE   trs.sdtCreatedDate &gt;= @lastruntime"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -1666,7 +1666,7 @@ left outer join tblTerminologyLookup tlc ON ecc.iLabelID = tlc.iLabelID and tlc.
           DTS:LocaleID="-1"
           DTS:ObjectName="extNewRequesterCount"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1714,7 +1714,7 @@ left outer join tblTerminologyLookup tlc ON ecc.iLabelID = tlc.iLabelID and tlc.
               DTS:LocaleID="-1"
               DTS:ObjectName="Execute SQL Task"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -2057,8 +2057,46 @@ left outer join tblTerminologyLookup tlc ON ecc.iLabelID = tlc.iLabelID and tlc.
                 VarName="User::newrequester" />
             </DTS:ObjectData>
           </DTS:ForEachEnumerator>
-          <DTS:Variables />
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{0ADC3B39-E453-4E0F-A786-F464B587A62F}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="checkifrecordexists">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
           <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Sequence Container\Foreach Loop Container for new requester\Check if record exists"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{5F2081CE-8B06-461A-BA47-F046CEE35789}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Check if record exists"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+                  SQLTask:SqlStatementSource="Select count(*) from public.&quot;dimRequesters&quot; WHERE requesterid=?;"
+                  SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="1"
+                    SQLTask:DtsVariableName="User::checkifrecordexists" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="1"
+                    SQLTask:DtsVariableName="User::requesterid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
             <DTS:Executable
               DTS:refId="Package\Sequence Container\Foreach Loop Container for new requester\Execute SQL Task"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
@@ -2068,7 +2106,7 @@ left outer join tblTerminologyLookup tlc ON ecc.iLabelID = tlc.iLabelID and tlc.
               DTS:LocaleID="-1"
               DTS:ObjectName="Execute SQL Task"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -2234,161 +2272,173 @@ left outer join tblTerminologyLookup tlc ON ecc.iLabelID = tlc.iLabelID and tlc.
               </DTS:ObjectData>
             </DTS:Executable>
           </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Sequence Container\Foreach Loop Container for new requester.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{EA31A8D6-4E34-4293-8675-6FC848EE980B}"
+              DTS:EvalOp="1"
+              DTS:Expression="@[User::checkifrecordexists] == 0"
+              DTS:From="Package\Sequence Container\Foreach Loop Container for new requester\Check if record exists"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\Sequence Container\Foreach Loop Container for new requester\Execute SQL Task" />
+          </DTS:PrecedenceConstraints>
           <DTS:ForEachVariableMappings>
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{FE64233C-292F-42E8-8190-5D94A9CFF773}"
-              DTS:ObjectName="{FE64233C-292F-42E8-8190-5D94A9CFF773}"
+              DTS:DTSID="{8678F3FF-563D-4BFE-ACCB-38981737D277}"
+              DTS:ObjectName="{8678F3FF-563D-4BFE-ACCB-38981737D277}"
               DTS:ValueIndex="0"
               DTS:VariableName="User::requesterid" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{CA59DA5D-4FE3-462A-B407-DD242C8A3D11}"
-              DTS:ObjectName="{CA59DA5D-4FE3-462A-B407-DD242C8A3D11}"
+              DTS:DTSID="{550F3088-A0AB-42ED-879D-761DC5D28167}"
+              DTS:ObjectName="{550F3088-A0AB-42ED-879D-761DC5D28167}"
               DTS:ValueIndex="1"
               DTS:VariableName="User::firstname" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{CC1E8790-54BC-4C6A-BA70-BD9B064EB759}"
-              DTS:ObjectName="{CC1E8790-54BC-4C6A-BA70-BD9B064EB759}"
+              DTS:DTSID="{B7DFD319-5F7B-46FC-A09D-B7615A75667E}"
+              DTS:ObjectName="{B7DFD319-5F7B-46FC-A09D-B7615A75667E}"
               DTS:ValueIndex="2"
               DTS:VariableName="User::lastname" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{E4B04886-974D-4DEF-940E-A3EE6E1E73FE}"
-              DTS:ObjectName="{E4B04886-974D-4DEF-940E-A3EE6E1E73FE}"
+              DTS:DTSID="{6890A58A-D2AF-4298-ABD6-278BB8DCAF79}"
+              DTS:ObjectName="{6890A58A-D2AF-4298-ABD6-278BB8DCAF79}"
               DTS:ValueIndex="3"
               DTS:VariableName="User::middlename" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{E01F3016-545E-43CB-AD5E-F1353C233A4D}"
-              DTS:ObjectName="{E01F3016-545E-43CB-AD5E-F1353C233A4D}"
+              DTS:DTSID="{884FEF99-9464-4FA6-968F-098B18DA7C21}"
+              DTS:ObjectName="{884FEF99-9464-4FA6-968F-098B18DA7C21}"
               DTS:ValueIndex="4"
               DTS:VariableName="User::fullname" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{195DF626-38E8-42FA-91FC-9EE20947D11F}"
-              DTS:ObjectName="{195DF626-38E8-42FA-91FC-9EE20947D11F}"
+              DTS:DTSID="{BD3308EE-8C24-4889-971A-6ED574C32D9A}"
+              DTS:ObjectName="{BD3308EE-8C24-4889-971A-6ED574C32D9A}"
               DTS:ValueIndex="5"
               DTS:VariableName="User::jobtitle" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{82614DA2-245D-4770-AF99-02F57F10DC9C}"
-              DTS:ObjectName="{82614DA2-245D-4770-AF99-02F57F10DC9C}"
+              DTS:DTSID="{C1808B76-281A-4A62-8F22-B603AED7B109}"
+              DTS:ObjectName="{C1808B76-281A-4A62-8F22-B603AED7B109}"
               DTS:ValueIndex="6"
               DTS:VariableName="User::addressline1" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{A6B49677-3C8B-4C8D-91DA-1BE54F5CA5F2}"
-              DTS:ObjectName="{A6B49677-3C8B-4C8D-91DA-1BE54F5CA5F2}"
+              DTS:DTSID="{F711761D-77D1-483E-904F-2292220A875A}"
+              DTS:ObjectName="{F711761D-77D1-483E-904F-2292220A875A}"
               DTS:ValueIndex="7"
               DTS:VariableName="User::addressline2" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{F1D99BC0-5E6B-4C64-893E-720942502BF1}"
-              DTS:ObjectName="{F1D99BC0-5E6B-4C64-893E-720942502BF1}"
+              DTS:DTSID="{119A34FD-0A58-4E00-B0E1-58A78E81F8C1}"
+              DTS:ObjectName="{119A34FD-0A58-4E00-B0E1-58A78E81F8C1}"
               DTS:ValueIndex="8"
               DTS:VariableName="User::city" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{E4CBE462-EDE0-40A4-A89E-1E5E591F5E84}"
-              DTS:ObjectName="{E4CBE462-EDE0-40A4-A89E-1E5E591F5E84}"
+              DTS:DTSID="{B3C8D533-2C3F-450D-AB0D-E5BDCE855CFD}"
+              DTS:ObjectName="{B3C8D533-2C3F-450D-AB0D-E5BDCE855CFD}"
               DTS:ValueIndex="9"
               DTS:VariableName="User::zipcode" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{63C51E53-DACA-4D69-B570-319FFF4F58DE}"
-              DTS:ObjectName="{63C51E53-DACA-4D69-B570-319FFF4F58DE}"
+              DTS:DTSID="{0B5A5233-65A1-41F8-9ADE-051EE32A9414}"
+              DTS:ObjectName="{0B5A5233-65A1-41F8-9ADE-051EE32A9414}"
               DTS:ValueIndex="10"
               DTS:VariableName="User::statecode" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{5760CAEE-0346-4357-B13B-33F13A2C7A31}"
-              DTS:ObjectName="{5760CAEE-0346-4357-B13B-33F13A2C7A31}"
+              DTS:DTSID="{1BC960E9-B68E-4FB0-893E-F5C37F3C3BED}"
+              DTS:ObjectName="{1BC960E9-B68E-4FB0-893E-F5C37F3C3BED}"
               DTS:ValueIndex="11"
               DTS:VariableName="User::statename" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{C26CC8C5-0208-49E6-8A4E-099CE67C08F8}"
-              DTS:ObjectName="{C26CC8C5-0208-49E6-8A4E-099CE67C08F8}"
+              DTS:DTSID="{21D860D7-A08E-4AFC-A173-5A1B4AB15314}"
+              DTS:ObjectName="{21D860D7-A08E-4AFC-A173-5A1B4AB15314}"
               DTS:ValueIndex="12"
               DTS:VariableName="User::countryname" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{5C68DE07-5D9F-47D6-9105-DE4E091E2C60}"
-              DTS:ObjectName="{5C68DE07-5D9F-47D6-9105-DE4E091E2C60}"
+              DTS:DTSID="{D0BD7364-88B5-49F2-B558-F7565CD25000}"
+              DTS:ObjectName="{D0BD7364-88B5-49F2-B558-F7565CD25000}"
               DTS:ValueIndex="13"
               DTS:VariableName="User::workphone1" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{42A2FFAD-0BF3-4868-82ED-27EC49AE266F}"
-              DTS:ObjectName="{42A2FFAD-0BF3-4868-82ED-27EC49AE266F}"
+              DTS:DTSID="{F64FF253-20A5-4309-9C9B-3D07CFD96A13}"
+              DTS:ObjectName="{F64FF253-20A5-4309-9C9B-3D07CFD96A13}"
               DTS:ValueIndex="14"
               DTS:VariableName="User::workphone2" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{0FECB2A6-6DB7-4C2D-A8A1-7850FF6D3985}"
-              DTS:ObjectName="{0FECB2A6-6DB7-4C2D-A8A1-7850FF6D3985}"
+              DTS:DTSID="{E1DAF837-B470-4CA6-A4FA-903AF59F61DF}"
+              DTS:ObjectName="{E1DAF837-B470-4CA6-A4FA-903AF59F61DF}"
               DTS:ValueIndex="15"
               DTS:VariableName="User::mobile" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{9D069565-5E30-4FD2-B8A9-A775EC29B5D6}"
-              DTS:ObjectName="{9D069565-5E30-4FD2-B8A9-A775EC29B5D6}"
+              DTS:DTSID="{7FDA7CEB-D5EA-4C69-A5C7-03E2A3A28E99}"
+              DTS:ObjectName="{7FDA7CEB-D5EA-4C69-A5C7-03E2A3A28E99}"
               DTS:ValueIndex="16"
               DTS:VariableName="User::home" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{9F6405E8-8A10-428D-A442-327B1BAF1AD3}"
-              DTS:ObjectName="{9F6405E8-8A10-428D-A442-327B1BAF1AD3}"
+              DTS:DTSID="{EE817BE2-537E-473B-9836-3D891B07FE99}"
+              DTS:ObjectName="{EE817BE2-537E-473B-9836-3D891B07FE99}"
               DTS:ValueIndex="17"
               DTS:VariableName="User::fax" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{5D26FE4A-6D74-49A8-81E2-66B6027C6771}"
-              DTS:ObjectName="{5D26FE4A-6D74-49A8-81E2-66B6027C6771}"
+              DTS:DTSID="{B04E4AB0-1928-4B5E-9FEA-B8C0A3EA1464}"
+              DTS:ObjectName="{B04E4AB0-1928-4B5E-9FEA-B8C0A3EA1464}"
               DTS:ValueIndex="18"
               DTS:VariableName="User::email" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{73AD5227-73EB-4BF1-ABAA-65FC223DEAD0}"
-              DTS:ObjectName="{73AD5227-73EB-4BF1-ABAA-65FC223DEAD0}"
+              DTS:DTSID="{066964E7-8EB0-43BC-A160-00297FD562FB}"
+              DTS:ObjectName="{066964E7-8EB0-43BC-A160-00297FD562FB}"
               DTS:ValueIndex="19"
               DTS:VariableName="User::company" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{5F3649E4-8FD7-4886-B59A-DB98622775F8}"
-              DTS:ObjectName="{5F3649E4-8FD7-4886-B59A-DB98622775F8}"
+              DTS:DTSID="{5ECC44CC-5E6E-4B8A-85E6-67AE38E4999B}"
+              DTS:ObjectName="{5ECC44CC-5E6E-4B8A-85E6-67AE38E4999B}"
               DTS:ValueIndex="20"
               DTS:VariableName="User::notes" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{AC27EC5B-8C7E-4B34-A5AF-429B44BCAB4D}"
-              DTS:ObjectName="{AC27EC5B-8C7E-4B34-A5AF-429B44BCAB4D}"
+              DTS:DTSID="{7C5EFE08-A040-4FEE-8863-575D9B3E2677}"
+              DTS:ObjectName="{7C5EFE08-A040-4FEE-8863-575D9B3E2677}"
               DTS:ValueIndex="21"
               DTS:VariableName="User::createddate" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{0107B72F-6616-489D-84EC-03C8655EAC45}"
-              DTS:ObjectName="{0107B72F-6616-489D-84EC-03C8655EAC45}"
+              DTS:DTSID="{5FF79CC7-F069-4D85-AB53-18DD4BA8917F}"
+              DTS:ObjectName="{5FF79CC7-F069-4D85-AB53-18DD4BA8917F}"
               DTS:ValueIndex="22"
               DTS:VariableName="User::modifieddate" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{4E21AB3B-9443-468A-AC0C-7BD13FE1DEC3}"
-              DTS:ObjectName="{4E21AB3B-9443-468A-AC0C-7BD13FE1DEC3}"
+              DTS:DTSID="{ADE41011-BB97-4199-B28E-517C995EE856}"
+              DTS:ObjectName="{ADE41011-BB97-4199-B28E-517C995EE856}"
               DTS:ValueIndex="23"
               DTS:VariableName="User::cactive" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{A022A458-EE47-4717-AA54-0838541F50F8}"
-              DTS:ObjectName="{A022A458-EE47-4717-AA54-0838541F50F8}"
+              DTS:DTSID="{4195A0CB-8EA7-4629-B5E1-F48A9BF6A541}"
+              DTS:ObjectName="{4195A0CB-8EA7-4629-B5E1-F48A9BF6A541}"
               DTS:ValueIndex="24"
               DTS:VariableName="User::reasonid" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{B123DC47-0C2B-4EC3-8B36-FC94D399E328}"
-              DTS:ObjectName="{B123DC47-0C2B-4EC3-8B36-FC94D399E328}"
+              DTS:DTSID="{8DCDEDAE-5716-42F1-8422-616414F6A818}"
+              DTS:ObjectName="{8DCDEDAE-5716-42F1-8422-616414F6A818}"
               DTS:ValueIndex="25"
               DTS:VariableName="User::maildue" />
           </DTS:ForEachVariableMappings>
@@ -2584,14 +2634,42 @@ left outer join tblTerminologyLookup tlc ON ecc.iLabelID = tlc.iLabelID and tlc.
           Id="Package\Sequence Container\Foreach Loop Container for modified requester"
           TopLeft="258.566656169627,367.000001219114" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="151.2,41.6"
           Id="Package\Sequence Container\Foreach Loop Container for new requester\Execute SQL Task"
-          TopLeft="48.0666395796682,30.4666696490183" />
+          TopLeft="73.0666395796683,100.466669649018" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container for new requester\Check if record exists"
+          TopLeft="72.0000000000002,17.8000000000001" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container for new requester.PrecedenceConstraints[Constraint]"
+          TopLeft="150.933319789834,59.4000000000001">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.0666696490182"
+              Start="0,0"
+              End="0,33.5666696490182">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5666696490182" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,8.78333482450911,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="288.8,160.8"
-          Size="288.8,204"
+          PanelSize="333.6,196.8"
+          Size="333.6,240"
           Id="Package\Sequence Container\Foreach Loop Container for new requester"
           TopLeft="627.733308166929,364.200001425743" />
         <EdgeLayout
@@ -2790,26 +2868,26 @@ left outer join tblTerminologyLookup tlc ON ecc.iLabelID = tlc.iLabelID and tlc.
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-12.39999721845,64.3333332024673"
+              EndConnector="10.0000027815499,64.333333202467"
               Start="0,0"
-              End="-12.39999721845,56.8333332024673">
+              End="10.0000027815499,56.833333202467">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.1666666012336" />
+                    End="0,28.1666666012335" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,28.1666666012336"
-                    Point2="0,32.1666666012336"
-                    Point3="-4,32.1666666012336" />
+                    Point1="0,28.1666666012335"
+                    Point2="0,32.1666666012335"
+                    Point3="4,32.1666666012335" />
                   <mssgle:LineSegment
-                    End="-8.39999721845004,32.1666666012336" />
+                    End="6.00000278154994,32.1666666012335" />
                   <mssgle:CubicBezierSegment
-                    Point1="-8.39999721845004,32.1666666012336"
-                    Point2="-12.39999721845,32.1666666012336"
-                    Point3="-12.39999721845,36.1666666012336" />
+                    Point1="6.00000278154994,32.1666666012335"
+                    Point2="10.0000027815499,32.1666666012335"
+                    Point3="10.0000027815499,36.1666666012335" />
                   <mssgle:LineSegment
-                    End="-12.39999721845,56.8333332024673" />
+                    End="10.0000027815499,56.833333202467" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2821,28 +2899,32 @@ left outer join tblTerminologyLookup tlc ON ecc.iLabelID = tlc.iLabelID and tlc.
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="945.6,622.4"
-          Size="945.6,665.6"
+          PanelSize="966.4,659.2"
+          Size="966.4,702.4"
           Id="Package\Sequence Container"
           TopLeft="75.8333303199875,104.866667500072" />
         <NodeLayout
           Size="184.8,41.6"
           Id="Package\Start Run Cycle"
           TopLeft="461.666648321682,35.3333335124122" />
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Stop Run Cycle"
+          TopLeft="457.499981820584,835.266673203045" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="551.349989320835,76.9333335124122">
+          TopLeft="556.549989320835,76.9333335124122">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,27.9333339876599"
+              EndConnector="0,27.9333339876598"
               Start="0,0"
-              End="0,20.4333339876599">
+              End="0,20.4333339876598">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.4333339876599" />
+                    End="0,20.4333339876598" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2851,24 +2933,32 @@ left outer join tblTerminologyLookup tlc ON ecc.iLabelID = tlc.iLabelID and tlc.
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="184.8,41.6"
-          Id="Package\Stop Run Cycle"
-          TopLeft="457.499981820584,835.266673203045" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="549.266656070286,770.466667500072">
+          TopLeft="559.033330319988,807.266667500072">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,64.8000057029724"
+              EndConnector="-9.1333484994035,28.0000057029731"
               Start="0,0"
-              End="0,57.3000057029724">
+              End="-9.1333484994035,20.5000057029731">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,57.3000057029724" />
+                    End="0,10.0000028514866" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.0000028514866"
+                    Point2="0,14.0000028514866"
+                    Point3="-4,14.0000028514866" />
+                  <mssgle:LineSegment
+                    End="-5.1333484994035,14.0000028514866" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.1333484994035,14.0000028514866"
+                    Point2="-9.1333484994035,14.0000028514866"
+                    Point3="-9.1333484994035,18.0000028514866" />
+                  <mssgle:LineSegment
+                    End="-9.1333484994035,20.5000057029731" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2884,7 +2974,7 @@ left outer join tblTerminologyLookup tlc ON ecc.iLabelID = tlc.iLabelID and tlc.
     design-time-name="Package\Sequence Container\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="152,41.6"
           Id="Package\Sequence Container\Data Flow Task\OLE DB Source"
@@ -2912,9 +3002,7 @@ left outer join tblTerminologyLookup tlc ON ecc.iLabelID = tlc.iLabelID and tlc.
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="factRequestPaymentTransaction"
   DTS:PackageType="5"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{A8CE904F-6722-4B1B-952C-5E9EA5A84D17}">
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{F304BD08-BA6F-41AD-A995-6E74BE4E0062}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -1394,1256 +1394,8 @@ From tblRequests TR</property>
                 VarName="User::modifiedfoirequestids" />
             </DTS:ObjectData>
           </DTS:ForEachEnumerator>
-          <DTS:Variables>
-            <DTS:Variable
-              DTS:CreationName=""
-              DTS:DTSID="{68C3418D-A64C-4A5B-AF15-DB4E7D45F28C}"
-              DTS:IncludeInDebugDump="6789"
-              DTS:Namespace="User"
-              DTS:ObjectName="checkifmodifiedrecexist">
-              <DTS:VariableValue
-                DTS:DataType="3">0</DTS:VariableValue>
-            </DTS:Variable>
-          </DTS:Variables>
+          <DTS:Variables />
           <DTS:Executables>
-            <DTS:Executable
-              DTS:refId="Package\Sequence Container\Foreach Loop Container for modified requests\Check if record exists"
-              DTS:CreationName="Microsoft.ExecuteSQLTask"
-              DTS:Description="Execute SQL Task"
-              DTS:DTSID="{CD91DBB3-4829-4319-9C9B-5AAEAB008584}"
-              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-              DTS:LocaleID="-1"
-              DTS:ObjectName="Check if record exists"
-              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
-              <DTS:Variables />
-              <DTS:ObjectData>
-                <SQLTask:SqlTaskData
-                  SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
-                  SQLTask:SqlStatementSource="Select &#xA;count(foirequestid) &#xA;From public.&quot;factRequestPaymentTransaction&quot; &#xA;WHERE foirequestid = ?"
-                  SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-                  <SQLTask:ResultBinding
-                    SQLTask:ResultName="1"
-                    SQLTask:DtsVariableName="User::checkifmodifiedrecexist" />
-                  <SQLTask:ParameterBinding
-                    SQLTask:ParameterName="1"
-                    SQLTask:DtsVariableName="User::modifiedfoirequestid"
-                    SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="4"
-                    SQLTask:ParameterSize="-1" />
-                </SQLTask:SqlTaskData>
-              </DTS:ObjectData>
-            </DTS:Executable>
-            <DTS:Executable
-              DTS:refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details"
-              DTS:CreationName="Microsoft.Pipeline"
-              DTS:Description="Data Flow Task"
-              DTS:DTSID="{96aac7f0-e3e8-46f0-92c6-7354f28180d4}"
-              DTS:ExecutableType="Microsoft.Pipeline"
-              DTS:LocaleID="-1"
-              DTS:ObjectName="Insert Modified Request Details"
-              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-              <DTS:Variables />
-              <DTS:ObjectData>
-                <pipeline
-                  version="1">
-                  <components>
-                    <component
-                      refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination"
-                      componentClassID="Microsoft.SSISODBCDst"
-                      contactInfo="ODBC Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-                      description="ODBC Destination"
-                      name="ODBC Destination"
-                      usesDispositions="true"
-                      version="1">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="The name of the table to be fetched."
-                          expressionType="Notify"
-                          name="TableName">"public"."factRequestPaymentTransaction"</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specify the number of rows fetched per batch."
-                          expressionType="Notify"
-                          name="BatchSize">1000</property>
-                        <property
-                          dataType="System.Int32"
-                          description="The number of rows inserted under the same transaction."
-                          expressionType="Notify"
-                          name="TransactionSize">1000</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Determines the chunk size allocation for LOB columns"
-                          expressionType="Notify"
-                          name="LobChunkSize">32768</property>
-                        <property
-                          dataType="System.Int32"
-                          description="The number of seconds to wait for an SQL statement to execute before returning to the application."
-                          expressionType="Notify"
-                          name="StatementTimeout">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="The code page to use when code page information is unavailable from the data source."
-                          expressionType="Notify"
-                          name="DefaultCodePage">1252</property>
-                        <property
-                          dataType="System.Int32"
-                          description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
-                          expressionType="Notify"
-                          name="InsertMethod">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="The ODBC C data type for binding numeric data."
-                          expressionType="Notify"
-                          name="BindNumericAs">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
-                          expressionType="Notify"
-                          name="BindCharColumnsAs">0</property>
-                      </properties>
-                      <connections>
-                        <connection
-                          refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Connections[ODBCConnection]"
-                          connectionManagerID="{F1356C9E-12B8-4059-B557-91D2500C60CE}:external"
-                          connectionManagerRefId="Project.ConnectionManagers[localhost.foi_edw.postgres]"
-                          description="The ODBC runtime connection used to access the database."
-                          name="ODBCConnection" />
-                      </connections>
-                      <inputs>
-                        <input
-                          refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input]"
-                          errorOrTruncationOperation="Insert"
-                          errorRowDisposition="FailComponent"
-                          hasSideEffects="true"
-                          name="ODBC Destination Input"
-                          truncationRowDisposition="FailComponent">
-                          <inputColumns>
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[runcycleid]"
-                              cachedDataType="i4"
-                              cachedName="runcycleid"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[runcycleid]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[runcycleid]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[foirequestid]"
-                              cachedDataType="i4"
-                              cachedName="foirequestid"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[foirequestid]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[foirequestid]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[activeflag]"
-                              cachedCodepage="1252"
-                              cachedDataType="str"
-                              cachedLength="1"
-                              cachedName="activeflag"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[activeflag]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[activeflag]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[paymentmodeid]"
-                              cachedDataType="ui1"
-                              cachedName="paymentmodeid"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[paymentmodeid]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paymentmodeid]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[estimatedamount]"
-                              cachedDataType="numeric"
-                              cachedName="estimatedamount"
-                              cachedPrecision="11"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estimatedamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[estimatedamount]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[incurredamount]"
-                              cachedDataType="numeric"
-                              cachedName="incurredamount"
-                              cachedPrecision="11"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[incurredamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[incurredamount]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[interestamount]"
-                              cachedDataType="numeric"
-                              cachedName="interestamount"
-                              cachedPrecision="15"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[interestamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[interestamount]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[invoicenumber]"
-                              cachedCodepage="1252"
-                              cachedDataType="str"
-                              cachedLength="11"
-                              cachedName="invoicenumber"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[invoicenumber]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicenumber]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[invoicedamount]"
-                              cachedDataType="numeric"
-                              cachedName="invoicedamount"
-                              cachedPrecision="11"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[invoicedamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedamount]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[paidamount]"
-                              cachedDataType="numeric"
-                              cachedName="paidamount"
-                              cachedPrecision="11"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[paidamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paidamount]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[willingamount]"
-                              cachedDataType="numeric"
-                              cachedName="willingamount"
-                              cachedPrecision="11"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[willingamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[willingamount]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[applicationfee]"
-                              cachedDataType="numeric"
-                              cachedName="applicationfee"
-                              cachedPrecision="11"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[applicationfee]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicationfee]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[applicationfeetype]"
-                              cachedCodepage="1252"
-                              cachedDataType="str"
-                              cachedLength="1"
-                              cachedName="applicationfeetype"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[applicationfeetype]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicationfeetype]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[feewaivegranted]"
-                              cachedCodepage="1252"
-                              cachedDataType="str"
-                              cachedLength="1"
-                              cachedName="feewaivegranted"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[feewaivegranted]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[feewaivegranted]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[feewaiverequested]"
-                              cachedCodepage="1252"
-                              cachedDataType="str"
-                              cachedLength="1"
-                              cachedName="feewaiverequested"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[feewaiverequested]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[feewaiverequested]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[payallfees]"
-                              cachedCodepage="1252"
-                              cachedDataType="str"
-                              cachedLength="1"
-                              cachedName="payallfees"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[payallfees]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[payallfees]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[feewaivedescription]"
-                              cachedCodepage="1252"
-                              cachedDataType="str"
-                              cachedLength="500"
-                              cachedName="feewaivedescription"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[feewaivedescription]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[feewaivedescription]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[invoicedate]"
-                              cachedDataType="dbTimeStamp"
-                              cachedName="invoicedate"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[invoicedate]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedate]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[feewaived]"
-                              cachedDataType="numeric"
-                              cachedName="feewaived"
-                              cachedPrecision="11"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[feewaived]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[feewaived]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[totalinvoicedamount]"
-                              cachedDataType="numeric"
-                              cachedName="totalinvoicedamount"
-                              cachedPrecision="38"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[totalinvoicedamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[totalinvoicedamount]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[prepaymentamount]"
-                              cachedCodepage="1252"
-                              cachedDataType="str"
-                              cachedLength="20"
-                              cachedName="prepaymentamount"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[prepaymentamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[prepaymentamount]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[applicationfeeflag]"
-                              cachedCodepage="1252"
-                              cachedDataType="str"
-                              cachedLength="1"
-                              cachedName="applicationfeeflag"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[applicationfeeflag]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicationfeeflag]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[refundamount]"
-                              cachedCodepage="1252"
-                              cachedDataType="str"
-                              cachedLength="20"
-                              cachedName="refundamount"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refundamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refundamount]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[feepaidamount]"
-                              cachedCodepage="1252"
-                              cachedDataType="str"
-                              cachedLength="20"
-                              cachedName="feepaidamount"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[feepaidamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[feepaidamount]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[paymentstatus]"
-                              cachedCodepage="1252"
-                              cachedDataType="str"
-                              cachedLength="10"
-                              cachedName="paymentstatus"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[paymentstatus]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paymentstatus]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[costestimated]"
-                              cachedCodepage="1252"
-                              cachedDataType="str"
-                              cachedLength="1"
-                              cachedName="costestimated"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[costestimated]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[costestimated]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[paymentreceiveddate]"
-                              cachedDataType="dbTimeStamp"
-                              cachedName="paymentreceiveddate"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[paymentreceiveddate]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paymentreceiveddate]" />
-                          </inputColumns>
-                          <externalMetadataColumns
-                            isUsed="True">
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[runcycleid]"
-                              dataType="i4"
-                              name="runcycleid" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[foirequestid]"
-                              dataType="i4"
-                              name="foirequestid" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[activeflag]"
-                              dataType="wstr"
-                              length="1"
-                              name="activeflag" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[paymentmodeid]"
-                              dataType="i4"
-                              name="paymentmodeid" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estimatedamount]"
-                              dataType="numeric"
-                              name="estimatedamount"
-                              precision="11"
-                              scale="2" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[incurredamount]"
-                              dataType="numeric"
-                              name="incurredamount"
-                              precision="11"
-                              scale="2" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[interestamount]"
-                              dataType="numeric"
-                              name="interestamount"
-                              precision="15"
-                              scale="2" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[invoicenumber]"
-                              dataType="wstr"
-                              length="11"
-                              name="invoicenumber" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[invoicedamount]"
-                              dataType="numeric"
-                              name="invoicedamount"
-                              precision="11"
-                              scale="2" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[paidamount]"
-                              dataType="numeric"
-                              name="paidamount"
-                              precision="11"
-                              scale="2" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[willingamount]"
-                              dataType="numeric"
-                              name="willingamount"
-                              precision="11"
-                              scale="2" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[applicationfee]"
-                              dataType="numeric"
-                              name="applicationfee"
-                              precision="11"
-                              scale="2" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[applicationfeetype]"
-                              dataType="wstr"
-                              length="1"
-                              name="applicationfeetype" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[feewaivegranted]"
-                              dataType="wstr"
-                              length="1"
-                              name="feewaivegranted" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[feewaiverequested]"
-                              dataType="wstr"
-                              length="1"
-                              name="feewaiverequested" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[payallfees]"
-                              dataType="wstr"
-                              length="1"
-                              name="payallfees" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[feewaivedescription]"
-                              dataType="wstr"
-                              length="500"
-                              name="feewaivedescription" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[invoicedate]"
-                              dataType="dbTimeStamp2"
-                              name="invoicedate"
-                              scale="6" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[feewaived]"
-                              dataType="numeric"
-                              name="feewaived"
-                              precision="11"
-                              scale="2" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[totalinvoicedamount]"
-                              dataType="numeric"
-                              name="totalinvoicedamount"
-                              precision="38"
-                              scale="2" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[prepaymentamount]"
-                              dataType="wstr"
-                              length="20"
-                              name="prepaymentamount" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[applicationfeeflag]"
-                              dataType="wstr"
-                              length="1"
-                              name="applicationfeeflag" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refundamount]"
-                              dataType="wstr"
-                              length="20"
-                              name="refundamount" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[feepaidamount]"
-                              dataType="wstr"
-                              length="20"
-                              name="feepaidamount" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[paymentstatus]"
-                              dataType="wstr"
-                              length="10"
-                              name="paymentstatus" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[costestimated]"
-                              dataType="wstr"
-                              length="1"
-                              name="costestimated" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[paymentreceiveddate]"
-                              dataType="dbTimeStamp2"
-                              name="paymentreceiveddate"
-                              scale="6" />
-                          </externalMetadataColumns>
-                        </input>
-                      </inputs>
-                      <outputs>
-                        <output
-                          refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Outputs[ODBC Destination Error Output]"
-                          exclusionGroup="1"
-                          isErrorOut="true"
-                          name="ODBC Destination Error Output"
-                          synchronousInputId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input]">
-                          <outputColumns>
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
-                              dataType="i4"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
-                              name="ErrorCode"
-                              specialFlags="1" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
-                              dataType="i4"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
-                              name="ErrorColumn"
-                              specialFlags="2" />
-                          </outputColumns>
-                          <externalMetadataColumns />
-                        </output>
-                      </outputs>
-                    </component>
-                    <component
-                      refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source"
-                      componentClassID="Microsoft.OLEDBSource"
-                      contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-                      description="OLE DB Source"
-                      name="OLE DB Source"
-                      usesDispositions="true"
-                      version="7">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                          name="CommandTimeout">0</property>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the name of the database object used to open a rowset."
-                          name="OpenRowset"></property>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the variable that contains the name of the database object used to open a rowset."
-                          name="OpenRowsetVariable"></property>
-                        <property
-                          dataType="System.String"
-                          description="The SQL command to be executed."
-                          name="SqlCommand"
-                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select 
-	iRequestID as foirequestid,
-	CAST(? as INT) as runcycleid,
-	tiPaymentMode as paymentmodeid,
-	nEstimatedAmount as estimatedamount,
-	nIncurredAmount as incurredamount,
-	nInterestAmount as interestamount,
-	cInvoiceNumber as invoicenumber,
-	nInvoicedAmount as invoicedamount,
-	nPaidAmount as paidamount,
-	nWillingAmount as willingamount,
-	nApplicationFee as applicationfee,
-	cApplicationFeeType as applicationfeetype,
-	cFeeWaiveGranted as feewaivegranted,
-	cFeeWaiveRequested as feewaiverequested,
-	cPayAllFees as payallfees,
-	vcFeeWaiveDesc as feewaivedescription,
-	sdtInvoicedDate as invoicedate,
-	nFeeWaived as feewaived,
-	ISNULL((Select SUM(ISNULL(nChargedAmount, 0)) from tblInvoices where TR.iRequestID = iRequestID AND cInvoiceNumber &lt;&gt; '0' GROUP By iRequestID), 0) as totalinvoicedamount,
-	[dbo].AFX_GetRequestAmount(TR.iRequestID, 'PREPAYMENTAMOUNT', GETDATE()) as prepaymentamount,
-	cApplicationFee as applicationfeeflag,
-	[dbo].AFX_GetRequestAmount(TR.iRequestID, 'REFUNDAMOUNT', GETDATE()) as refundamount,
-	[dbo].AFX_GetRequestAmount(TR.iRequestID, 'AMOUNTPAID',getdate()) as feepaidamount,
-	vcPaymentStatus as paymentstatus,
-	cCostEstimated as costestimated,
-	COALESCE(isnull((Select sdtPaymentReceivedDate from (Select t.iRequestID, t.cInvoiceNumber , max(t.sdtPaymentReceivedDate) as sdtPaymentReceivedDate from [dbo].[tblTransactions] t group by t.iRequestID, t.cInvoiceNumber) prd WHERE prd.iRequestID = TR.iRequestID and prd.cInvoiceNumber = TR.cInvoiceNumber), ''), NULL) as paymentreceiveddate,
-	'Y' as activeflag
-From tblRequests TR 
-where iRequestID = ?</property>
-                        <property
-                          dataType="System.String"
-                          description="The variable that contains the SQL command to be executed."
-                          name="SqlCommandVariable"></property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the column code page to use when code page information is unavailable from the data source."
-                          name="DefaultCodePage">1252</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Forces the use of the DefaultCodePage property value when describing character data."
-                          name="AlwaysUseDefaultCodePage">false</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the mode used to access the database."
-                          name="AccessMode"
-                          typeConverter="AccessMode">2</property>
-                        <property
-                          dataType="System.String"
-                          description="The mappings between the parameters in the SQL command and variables."
-                          name="ParameterMapping">"0:Input",{0F14A084-42ED-40F7-AADA-20F9120CAB48};"1:Input",{B7250C7E-B4FC-4E55-9AE2-5C022B7715FD};</property>
-                      </properties>
-                      <connections>
-                        <connection
-                          refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Connections[OleDbConnection]"
-                          connectionManagerID="{4505C521-0836-4CAA-8A51-8DA634D4EA56}:external"
-                          connectionManagerRefId="Project.ConnectionManagers[LocalHost.ATIPD]"
-                          description="The OLE DB runtime connection used to access the database."
-                          name="OleDbConnection" />
-                      </connections>
-                      <outputs>
-                        <output
-                          refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output]"
-                          name="OLE DB Source Output">
-                          <outputColumns>
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[runcycleid]"
-                              dataType="i4"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[runcycleid]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[runcycleid]"
-                              name="runcycleid"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[foirequestid]"
-                              dataType="i4"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[foirequestid]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[foirequestid]"
-                              name="foirequestid"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[activeflag]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[activeflag]"
-                              length="1"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[activeflag]"
-                              name="activeflag"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paymentmodeid]"
-                              dataType="ui1"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[paymentmodeid]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paymentmodeid]"
-                              name="paymentmodeid"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[estimatedamount]"
-                              dataType="numeric"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[estimatedamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[estimatedamount]"
-                              name="estimatedamount"
-                              precision="11"
-                              scale="2"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[incurredamount]"
-                              dataType="numeric"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[incurredamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[incurredamount]"
-                              name="incurredamount"
-                              precision="11"
-                              scale="2"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[interestamount]"
-                              dataType="numeric"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[interestamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[interestamount]"
-                              name="interestamount"
-                              precision="15"
-                              scale="2"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicenumber]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[invoicenumber]"
-                              length="11"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicenumber]"
-                              name="invoicenumber"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedamount]"
-                              dataType="numeric"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[invoicedamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedamount]"
-                              name="invoicedamount"
-                              precision="11"
-                              scale="2"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paidamount]"
-                              dataType="numeric"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[paidamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paidamount]"
-                              name="paidamount"
-                              precision="11"
-                              scale="2"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[willingamount]"
-                              dataType="numeric"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[willingamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[willingamount]"
-                              name="willingamount"
-                              precision="11"
-                              scale="2"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicationfee]"
-                              dataType="numeric"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[applicationfee]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicationfee]"
-                              name="applicationfee"
-                              precision="11"
-                              scale="2"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicationfeetype]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[applicationfeetype]"
-                              length="1"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicationfeetype]"
-                              name="applicationfeetype"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[feewaivegranted]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[feewaivegranted]"
-                              length="1"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[feewaivegranted]"
-                              name="feewaivegranted"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[feewaiverequested]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[feewaiverequested]"
-                              length="1"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[feewaiverequested]"
-                              name="feewaiverequested"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[payallfees]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[payallfees]"
-                              length="1"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[payallfees]"
-                              name="payallfees"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[feewaivedescription]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[feewaivedescription]"
-                              length="500"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[feewaivedescription]"
-                              name="feewaivedescription"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedate]"
-                              dataType="dbTimeStamp"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[invoicedate]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedate]"
-                              name="invoicedate"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[feewaived]"
-                              dataType="numeric"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[feewaived]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[feewaived]"
-                              name="feewaived"
-                              precision="11"
-                              scale="2"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[totalinvoicedamount]"
-                              dataType="numeric"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[totalinvoicedamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[totalinvoicedamount]"
-                              name="totalinvoicedamount"
-                              precision="38"
-                              scale="2"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[prepaymentamount]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[prepaymentamount]"
-                              length="20"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[prepaymentamount]"
-                              name="prepaymentamount"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicationfeeflag]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[applicationfeeflag]"
-                              length="1"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicationfeeflag]"
-                              name="applicationfeeflag"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refundamount]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refundamount]"
-                              length="20"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refundamount]"
-                              name="refundamount"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[feepaidamount]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[feepaidamount]"
-                              length="20"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[feepaidamount]"
-                              name="feepaidamount"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paymentstatus]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[paymentstatus]"
-                              length="10"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paymentstatus]"
-                              name="paymentstatus"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[costestimated]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[costestimated]"
-                              length="1"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[costestimated]"
-                              name="costestimated"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paymentreceiveddate]"
-                              dataType="dbTimeStamp"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[paymentreceiveddate]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paymentreceiveddate]"
-                              name="paymentreceiveddate"
-                              truncationRowDisposition="FailComponent" />
-                          </outputColumns>
-                          <externalMetadataColumns
-                            isUsed="True">
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[runcycleid]"
-                              dataType="i4"
-                              name="runcycleid" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[foirequestid]"
-                              dataType="i4"
-                              name="foirequestid" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[activeflag]"
-                              codePage="1252"
-                              dataType="str"
-                              length="1"
-                              name="activeflag" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[paymentmodeid]"
-                              dataType="ui1"
-                              name="paymentmodeid" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[estimatedamount]"
-                              dataType="numeric"
-                              name="estimatedamount"
-                              precision="11"
-                              scale="2" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[incurredamount]"
-                              dataType="numeric"
-                              name="incurredamount"
-                              precision="11"
-                              scale="2" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[interestamount]"
-                              dataType="numeric"
-                              name="interestamount"
-                              precision="15"
-                              scale="2" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[invoicenumber]"
-                              codePage="1252"
-                              dataType="str"
-                              length="11"
-                              name="invoicenumber" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[invoicedamount]"
-                              dataType="numeric"
-                              name="invoicedamount"
-                              precision="11"
-                              scale="2" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[paidamount]"
-                              dataType="numeric"
-                              name="paidamount"
-                              precision="11"
-                              scale="2" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[willingamount]"
-                              dataType="numeric"
-                              name="willingamount"
-                              precision="11"
-                              scale="2" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[applicationfee]"
-                              dataType="numeric"
-                              name="applicationfee"
-                              precision="11"
-                              scale="2" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[applicationfeetype]"
-                              codePage="1252"
-                              dataType="str"
-                              length="1"
-                              name="applicationfeetype" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[feewaivegranted]"
-                              codePage="1252"
-                              dataType="str"
-                              length="1"
-                              name="feewaivegranted" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[feewaiverequested]"
-                              codePage="1252"
-                              dataType="str"
-                              length="1"
-                              name="feewaiverequested" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[payallfees]"
-                              codePage="1252"
-                              dataType="str"
-                              length="1"
-                              name="payallfees" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[feewaivedescription]"
-                              codePage="1252"
-                              dataType="str"
-                              length="500"
-                              name="feewaivedescription" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[invoicedate]"
-                              dataType="dbTimeStamp"
-                              name="invoicedate" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[feewaived]"
-                              dataType="numeric"
-                              name="feewaived"
-                              precision="11"
-                              scale="2" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[totalinvoicedamount]"
-                              dataType="numeric"
-                              name="totalinvoicedamount"
-                              precision="38"
-                              scale="2" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[prepaymentamount]"
-                              codePage="1252"
-                              dataType="str"
-                              length="20"
-                              name="prepaymentamount" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[applicationfeeflag]"
-                              codePage="1252"
-                              dataType="str"
-                              length="1"
-                              name="applicationfeeflag" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refundamount]"
-                              codePage="1252"
-                              dataType="str"
-                              length="20"
-                              name="refundamount" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[feepaidamount]"
-                              codePage="1252"
-                              dataType="str"
-                              length="20"
-                              name="feepaidamount" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[paymentstatus]"
-                              codePage="1252"
-                              dataType="str"
-                              length="10"
-                              name="paymentstatus" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[costestimated]"
-                              codePage="1252"
-                              dataType="str"
-                              length="1"
-                              name="costestimated" />
-                            <externalMetadataColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[paymentreceiveddate]"
-                              dataType="dbTimeStamp"
-                              name="paymentreceiveddate" />
-                          </externalMetadataColumns>
-                        </output>
-                        <output
-                          refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output]"
-                          isErrorOut="true"
-                          name="OLE DB Source Error Output">
-                          <outputColumns>
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[runcycleid]"
-                              dataType="i4"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[runcycleid]"
-                              name="runcycleid" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[foirequestid]"
-                              dataType="i4"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[foirequestid]"
-                              name="foirequestid" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[paymentmodeid]"
-                              dataType="ui1"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[paymentmodeid]"
-                              name="paymentmodeid" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[estimatedamount]"
-                              dataType="numeric"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[estimatedamount]"
-                              name="estimatedamount"
-                              precision="11"
-                              scale="2" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[incurredamount]"
-                              dataType="numeric"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[incurredamount]"
-                              name="incurredamount"
-                              precision="11"
-                              scale="2" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[interestamount]"
-                              dataType="numeric"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[interestamount]"
-                              name="interestamount"
-                              precision="15"
-                              scale="2" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoicenumber]"
-                              codePage="1252"
-                              dataType="str"
-                              length="11"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoicenumber]"
-                              name="invoicenumber" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoicedamount]"
-                              dataType="numeric"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoicedamount]"
-                              name="invoicedamount"
-                              precision="11"
-                              scale="2" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[paidamount]"
-                              dataType="numeric"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[paidamount]"
-                              name="paidamount"
-                              precision="11"
-                              scale="2" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[willingamount]"
-                              dataType="numeric"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[willingamount]"
-                              name="willingamount"
-                              precision="11"
-                              scale="2" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[applicationfee]"
-                              dataType="numeric"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[applicationfee]"
-                              name="applicationfee"
-                              precision="11"
-                              scale="2" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[applicationfeetype]"
-                              codePage="1252"
-                              dataType="str"
-                              length="1"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[applicationfeetype]"
-                              name="applicationfeetype" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[feewaivegranted]"
-                              codePage="1252"
-                              dataType="str"
-                              length="1"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[feewaivegranted]"
-                              name="feewaivegranted" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[feewaiverequested]"
-                              codePage="1252"
-                              dataType="str"
-                              length="1"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[feewaiverequested]"
-                              name="feewaiverequested" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[payallfees]"
-                              codePage="1252"
-                              dataType="str"
-                              length="1"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[payallfees]"
-                              name="payallfees" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[feewaivedescription]"
-                              codePage="1252"
-                              dataType="str"
-                              length="500"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[feewaivedescription]"
-                              name="feewaivedescription" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoicedate]"
-                              dataType="dbTimeStamp"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoicedate]"
-                              name="invoicedate" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[feewaived]"
-                              dataType="numeric"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[feewaived]"
-                              name="feewaived"
-                              precision="11"
-                              scale="2" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[totalinvoicedamount]"
-                              dataType="numeric"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[totalinvoicedamount]"
-                              name="totalinvoicedamount"
-                              precision="38"
-                              scale="2" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[prepaymentamount]"
-                              codePage="1252"
-                              dataType="str"
-                              length="20"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[prepaymentamount]"
-                              name="prepaymentamount" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[applicationfeeflag]"
-                              codePage="1252"
-                              dataType="str"
-                              length="1"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[applicationfeeflag]"
-                              name="applicationfeeflag" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refundamount]"
-                              codePage="1252"
-                              dataType="str"
-                              length="20"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refundamount]"
-                              name="refundamount" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[feepaidamount]"
-                              codePage="1252"
-                              dataType="str"
-                              length="20"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[feepaidamount]"
-                              name="feepaidamount" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[paymentstatus]"
-                              codePage="1252"
-                              dataType="str"
-                              length="10"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[paymentstatus]"
-                              name="paymentstatus" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[costestimated]"
-                              codePage="1252"
-                              dataType="str"
-                              length="1"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[costestimated]"
-                              name="costestimated" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[paymentreceiveddate]"
-                              dataType="dbTimeStamp"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[paymentreceiveddate]"
-                              name="paymentreceiveddate" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[activeflag]"
-                              codePage="1252"
-                              dataType="str"
-                              length="1"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[activeflag]"
-                              name="activeflag" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                              dataType="i4"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                              name="ErrorCode"
-                              specialFlags="1" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                              dataType="i4"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                              name="ErrorColumn"
-                              specialFlags="2" />
-                          </outputColumns>
-                          <externalMetadataColumns />
-                        </output>
-                      </outputs>
-                    </component>
-                  </components>
-                  <paths>
-                    <path
-                      refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details.Paths[OLE DB Source Output]"
-                      endId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input]"
-                      name="OLE DB Source Output"
-                      startId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output]" />
-                  </paths>
-                </pipeline>
-              </DTS:ObjectData>
-            </DTS:Executable>
             <DTS:Executable
               DTS:refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details"
               DTS:CreationName="Microsoft.Pipeline"
@@ -2658,6 +1410,83 @@ where iRequestID = ?</property>
                 <pipeline
                   version="1">
                   <components>
+                    <component
+                      refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion"
+                      componentClassID="Microsoft.DataConvert"
+                      contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                      description="Data Conversion"
+                      name="Data Conversion"
+                      usesDispositions="true">
+                      <inputs>
+                        <input
+                          refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Inputs[Data Conversion Input]"
+                          name="Data Conversion Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Inputs[Data Conversion Input].Columns[estimatedamount]"
+                              cachedDataType="numeric"
+                              cachedName="estimatedamount"
+                              cachedPrecision="11"
+                              cachedScale="2"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[estimatedamount]" />
+                          </inputColumns>
+                          <externalMetadataColumns />
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output]"
+                          exclusionGroup="1"
+                          name="Data Conversion Output"
+                          synchronousInputId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Inputs[Data Conversion Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_estimatedamount]"
+                              dataType="r8"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_estimatedamount]"
+                              name="DC_estimatedamount"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Specifies the input column used as the source of data for the conversion."
+                                  name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[estimatedamount]}</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                              </properties>
+                            </outputColumn>
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="Data Conversion Error Output"
+                          synchronousInputId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Inputs[Data Conversion Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
                     <component
                       refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination"
                       componentClassID="Microsoft.SSISODBCDst"
@@ -2756,14 +1585,6 @@ where iRequestID = ?</property>
                               cachedName="paymentmodeid"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[paymentmodeid]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paymentmodeid]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[estimatedamount]"
-                              cachedDataType="numeric"
-                              cachedName="estimatedamount"
-                              cachedPrecision="11"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estimatedamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[estimatedamount]" />
                             <inputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[incurredamount]"
                               cachedDataType="numeric"
@@ -2936,6 +1757,12 @@ where iRequestID = ?</property>
                               cachedName="paymentreceiveddate"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[paymentreceiveddate]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paymentreceiveddate]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_estimatedamount]"
+                              cachedDataType="r8"
+                              cachedName="DC_estimatedamount"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estimatedamount]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_estimatedamount]" />
                           </inputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -3133,12 +1960,9 @@ where iRequestID = ?</property>
                           dataType="System.String"
                           description="The SQL command to be executed."
                           name="SqlCommand"
-                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DECLARE @runcycleid integer 
-SET @runcycleid = ?
-
-Select 
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select 
 	iRequestID as foirequestid,
-	@runcycleid as runcycleid,
+	CAST(? as INT) as runcycleid,
 	tiPaymentMode as paymentmodeid,
 	nEstimatedAmount as estimatedamount,
 	nIncurredAmount as incurredamount,
@@ -3849,8 +2673,13 @@ where iRequestID = ?</property>
                   </components>
                   <paths>
                     <path
-                      refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details.Paths[OLE DB Source Output]"
+                      refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details.Paths[Data Conversion Output]"
                       endId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input]"
+                      name="Data Conversion Output"
+                      startId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output]" />
+                    <path
+                      refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details.Paths[OLE DB Source Output]"
+                      endId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Inputs[Data Conversion Input]"
                       name="OLE DB Source Output"
                       startId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output]" />
                   </paths>
@@ -3891,26 +2720,6 @@ where iRequestID = ?</property>
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint"
               DTS:To="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details" />
-            <DTS:PrecedenceConstraint
-              DTS:refId="Package\Sequence Container\Foreach Loop Container for modified requests.PrecedenceConstraints[Constraint 1]"
-              DTS:CreationName=""
-              DTS:DTSID="{AD930E60-3A8C-4A7E-A1BA-41AC9F85AFF0}"
-              DTS:EvalOp="1"
-              DTS:Expression="@[User::checkifmodifiedrecexist] &gt; 0"
-              DTS:From="Package\Sequence Container\Foreach Loop Container for modified requests\Check if record exists"
-              DTS:LogicalAnd="True"
-              DTS:ObjectName="Constraint 1"
-              DTS:To="Package\Sequence Container\Foreach Loop Container for modified requests\Update active flag to N for existing record" />
-            <DTS:PrecedenceConstraint
-              DTS:refId="Package\Sequence Container\Foreach Loop Container for modified requests.PrecedenceConstraints[Constraint 2]"
-              DTS:CreationName=""
-              DTS:DTSID="{30690D42-E73F-43D4-BD38-F4D07119EF80}"
-              DTS:EvalOp="1"
-              DTS:Expression="@[User::checkifmodifiedrecexist] == 0"
-              DTS:From="Package\Sequence Container\Foreach Loop Container for modified requests\Check if record exists"
-              DTS:LogicalAnd="True"
-              DTS:ObjectName="Constraint 2"
-              DTS:To="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details" />
           </DTS:PrecedenceConstraints>
           <DTS:ForEachVariableMappings>
             <DTS:ForEachVariableMapping
@@ -3955,6 +2764,83 @@ where iRequestID = ?</property>
                 <pipeline
                   version="1">
                   <components>
+                    <component
+                      refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion"
+                      componentClassID="Microsoft.DataConvert"
+                      contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                      description="Data Conversion"
+                      name="Data Conversion"
+                      usesDispositions="true">
+                      <inputs>
+                        <input
+                          refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Inputs[Data Conversion Input]"
+                          name="Data Conversion Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Inputs[Data Conversion Input].Columns[estimatedamount]"
+                              cachedDataType="numeric"
+                              cachedName="estimatedamount"
+                              cachedPrecision="18"
+                              cachedScale="2"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[estimatedamount]" />
+                          </inputColumns>
+                          <externalMetadataColumns />
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output]"
+                          exclusionGroup="1"
+                          name="Data Conversion Output"
+                          synchronousInputId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Inputs[Data Conversion Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_estimatedamount]"
+                              dataType="r8"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_estimatedamount]"
+                              name="DC_estimatedamount"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Specifies the input column used as the source of data for the conversion."
+                                  name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[estimatedamount]}</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                              </properties>
+                            </outputColumn>
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="Data Conversion Error Output"
+                          synchronousInputId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Inputs[Data Conversion Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
                     <component
                       refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination"
                       componentClassID="Microsoft.SSISODBCDst"
@@ -4053,14 +2939,6 @@ where iRequestID = ?</property>
                               cachedName="paymentmodeid"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[paymentmodeid]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paymentmodeid]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[estimatedamount]"
-                              cachedDataType="numeric"
-                              cachedName="estimatedamount"
-                              cachedPrecision="11"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estimatedamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[estimatedamount]" />
                             <inputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[incurredamount]"
                               cachedDataType="numeric"
@@ -4233,6 +3111,12 @@ where iRequestID = ?</property>
                               cachedName="paymentreceiveddate"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[paymentreceiveddate]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paymentreceiveddate]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_estimatedamount]"
+                              cachedDataType="r8"
+                              cachedName="DC_estimatedamount"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estimatedamount]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_estimatedamount]" />
                           </inputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -4447,7 +3331,7 @@ where iRequestID = ?</property>
 	cFeeWaiveRequested as feewaiverequested,
 	cPayAllFees as payallfees,
 	vcFeeWaiveDesc as feewaivedescription,
-	sdtInvoicedDate as invoicedate,
+	sdtInvoicedDate as invoicedate, --- 1
 	nFeeWaived as feewaived,
 	ISNULL((Select SUM(ISNULL(nChargedAmount, 0)) from tblInvoices where TR.iRequestID = iRequestID AND cInvoiceNumber &lt;&gt; '0' GROUP By iRequestID), 0) as totalinvoicedamount,
 	[dbo].AFX_GetRequestAmount(TR.iRequestID, 'PREPAYMENTAMOUNT', GETDATE()) as prepaymentamount,
@@ -4456,10 +3340,10 @@ where iRequestID = ?</property>
 	[dbo].AFX_GetRequestAmount(TR.iRequestID, 'AMOUNTPAID',getdate()) as feepaidamount,
 	vcPaymentStatus as paymentstatus,
 	cCostEstimated as costestimated,
-	COALESCE(isnull((Select sdtPaymentReceivedDate from (Select t.iRequestID, t.cInvoiceNumber , max(t.sdtPaymentReceivedDate) as sdtPaymentReceivedDate from [dbo].[tblTransactions] t group by t.iRequestID, t.cInvoiceNumber) prd WHERE prd.iRequestID = TR.iRequestID and prd.cInvoiceNumber = TR.cInvoiceNumber), ''), NULL) as paymentreceiveddate,
-	'Y' as activeflag
+	COALESCE(isnull((Select sdtPaymentReceivedDate from (Select t.iRequestID, t.cInvoiceNumber , max(t.sdtPaymentReceivedDate) as sdtPaymentReceivedDate from [dbo].[tblTransactions] t group by t.iRequestID, t.cInvoiceNumber) prd WHERE prd.iRequestID = TR.iRequestID and prd.cInvoiceNumber = TR.cInvoiceNumber), ''), NULL) as paymentreceiveddate ---2
+	,'Y' as activeflag
 From tblRequests TR 
-where iRequestID = ?</property>
+where iRequestID in  (?)</property>
                         <property
                           dataType="System.String"
                           description="The variable that contains the SQL command to be executed."
@@ -4532,61 +3416,6 @@ where iRequestID = ?</property>
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[paymentmodeid]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paymentmodeid]"
                               name="paymentmodeid"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[estimatedamount]"
-                              dataType="numeric"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[estimatedamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[estimatedamount]"
-                              name="estimatedamount"
-                              precision="11"
-                              scale="2"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[incurredamount]"
-                              dataType="numeric"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[incurredamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[incurredamount]"
-                              name="incurredamount"
-                              precision="11"
-                              scale="2"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[interestamount]"
-                              dataType="numeric"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[interestamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[interestamount]"
-                              name="interestamount"
-                              precision="15"
-                              scale="2"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicenumber]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[invoicenumber]"
-                              length="11"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicenumber]"
-                              name="invoicenumber"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedamount]"
-                              dataType="numeric"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[invoicedamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedamount]"
-                              name="invoicedamount"
-                              precision="11"
-                              scale="2"
                               truncationRowDisposition="FailComponent" />
                             <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paidamount]"
@@ -4782,6 +3611,61 @@ where iRequestID = ?</property>
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paymentreceiveddate]"
                               name="paymentreceiveddate"
                               truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicenumber]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[invoicenumber]"
+                              length="11"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicenumber]"
+                              name="invoicenumber"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[estimatedamount]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[estimatedamount]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[estimatedamount]"
+                              name="estimatedamount"
+                              precision="18"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[incurredamount]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[incurredamount]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[incurredamount]"
+                              name="incurredamount"
+                              precision="11"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[interestamount]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[interestamount]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[interestamount]"
+                              name="interestamount"
+                              precision="15"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedamount]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[invoicedamount]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedamount]"
+                              name="invoicedamount"
+                              precision="11"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
                           </outputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -4960,41 +3844,6 @@ where iRequestID = ?</property>
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[paymentmodeid]"
                               name="paymentmodeid" />
                             <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[estimatedamount]"
-                              dataType="numeric"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[estimatedamount]"
-                              name="estimatedamount"
-                              precision="11"
-                              scale="2" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[incurredamount]"
-                              dataType="numeric"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[incurredamount]"
-                              name="incurredamount"
-                              precision="11"
-                              scale="2" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[interestamount]"
-                              dataType="numeric"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[interestamount]"
-                              name="interestamount"
-                              precision="15"
-                              scale="2" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoicenumber]"
-                              codePage="1252"
-                              dataType="str"
-                              length="11"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoicenumber]"
-                              name="invoicenumber" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoicedamount]"
-                              dataType="numeric"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoicedamount]"
-                              name="invoicedamount"
-                              precision="11"
-                              scale="2" />
-                            <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[paidamount]"
                               dataType="numeric"
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[paidamount]"
@@ -5135,6 +3984,41 @@ where iRequestID = ?</property>
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                               name="ErrorColumn"
                               specialFlags="2" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoicenumber]"
+                              codePage="1252"
+                              dataType="str"
+                              length="11"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoicenumber]"
+                              name="invoicenumber" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[estimatedamount]"
+                              dataType="numeric"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[estimatedamount]"
+                              name="estimatedamount"
+                              precision="11"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[incurredamount]"
+                              dataType="numeric"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[incurredamount]"
+                              name="incurredamount"
+                              precision="11"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[interestamount]"
+                              dataType="numeric"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[interestamount]"
+                              name="interestamount"
+                              precision="15"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoicedamount]"
+                              dataType="numeric"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoicedamount]"
+                              name="invoicedamount"
+                              precision="11"
+                              scale="2" />
                           </outputColumns>
                           <externalMetadataColumns />
                         </output>
@@ -5143,8 +4027,13 @@ where iRequestID = ?</property>
                   </components>
                   <paths>
                     <path
-                      refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details.Paths[OLE DB Source Output]"
+                      refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details.Paths[Data Conversion Output]"
                       endId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input]"
+                      name="Data Conversion Output"
+                      startId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output]" />
+                    <path
+                      refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details.Paths[OLE DB Source Output]"
+                      endId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Inputs[Data Conversion Input]"
                       name="OLE DB Source Output"
                       startId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output]" />
                   </paths>
@@ -5175,7 +4064,7 @@ where iRequestID = ?</property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
-              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA; COUNT(TR.iRequestID)&#xA;From [dbo].tblRequests AS TR LEFT OUTER JOIN [dbo].tblInvoices AS TI ON TR.iRequestID = TI.iRequestID   &#xA;WHERE TR.sdtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121)  AND TR.sdtCreatedDate &lt; CONVERT(VARCHAR(19),@lastruntime , 121) &#xA;or &#xA;TI.sdtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121) "
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA; COUNT(iRequestID)&#xA;From tblRequests   &#xA;WHERE sdtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121) AND sdtCreatedDate &lt; CONVERT(VARCHAR(19),@lastruntime , 121) "
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -5203,7 +4092,7 @@ where iRequestID = ?</property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
-              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select distinct &#xA; TR.iRequestID&#xA;From [dbo].tblRequests AS TR LEFT OUTER JOIN [dbo].tblInvoices AS TI ON TR.iRequestID = TI.iRequestID   &#xA;WHERE TR.sdtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121)  AND TR.sdtCreatedDate &lt; CONVERT(VARCHAR(19),@lastruntime , 121) &#xA;or &#xA;TI.sdtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121) "
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA; iRequestID&#xA;From tblRequests   &#xA;WHERE sdtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121) AND sdtCreatedDate &lt; CONVERT(VARCHAR(19),@lastruntime , 121) "
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -5231,7 +4120,7 @@ where iRequestID = ?</property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
-              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA; COUNT(iRequestID) &#xA;From &#xA;(Select &#xA; TR.iRequestID, TR.sdtCreatedDate, TI.sdtModifiedDate&#xA;From [dbo].tblRequests AS TR LEFT OUTER JOIN [dbo].tblInvoices AS TI ON TR.iRequestID = TI.iRequestID) A    &#xA;WHERE sdtCreatedDate &gt;= CONVERT(VARCHAR(19),@lastruntime , 121) &#xA;and &#xA;(sdtModifiedDate &lt; CONVERT(VARCHAR(19),@lastruntime , 121) or sdtModifiedDate is null)"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA; COUNT(iRequestID)&#xA;From tblRequests   &#xA;WHERE sdtCreatedDate &gt;= CONVERT(VARCHAR(19),@lastruntime , 121) "
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -5259,7 +4148,7 @@ where iRequestID = ?</property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
-              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select distinct &#xA; iRequestID &#xA;From &#xA;(Select &#xA; TR.iRequestID, TR.sdtCreatedDate, TI.sdtModifiedDate&#xA;From [dbo].tblRequests AS TR LEFT OUTER JOIN [dbo].tblInvoices AS TI ON TR.iRequestID = TI.iRequestID) A    &#xA;WHERE sdtCreatedDate &gt;= CONVERT(VARCHAR(19),@lastruntime , 121) &#xA;and &#xA;(sdtModifiedDate &lt; CONVERT(VARCHAR(19),@lastruntime , 121) or sdtModifiedDate is null)"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;R.iRequestID as foirequestid&#xA;From [dbo].tblRequests R  &#xA;WHERE R.sdtCreatedDate &gt;= CONVERT(VARCHAR(19),@lastruntime , 121) "
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -5667,30 +4556,18 @@ where iRequestID = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 5]"
-          TopLeft="446.666650507186,267.066666322284">
+          TopLeft="444.783318250048,267.066666322284">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-117.66665547424,40.0666689878047"
+              EndConnector="0,40.9333356613582"
               Start="0,0"
-              End="-117.66665547424,32.5666689878047">
+              End="0,33.4333356613582">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.0333344939023" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.0333344939023"
-                    Point2="0,20.0333344939023"
-                    Point3="-4,20.0333344939023" />
-                  <mssgle:LineSegment
-                    End="-113.66665547424,20.0333344939023" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-113.66665547424,20.0333344939023"
-                    Point2="-117.66665547424,20.0333344939023"
-                    Point3="-117.66665547424,24.0333344939023" />
-                  <mssgle:LineSegment
-                    End="-117.66665547424,32.5666689878047" />
+                    End="0,33.4333356613582" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5772,14 +4649,14 @@ where iRequestID = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,73.933335929977"
+              EndConnector="0,73.9333359299767"
               Start="0,0"
-              End="0,66.433335929977">
+              End="0,66.4333359299767">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,66.433335929977" />
+                    End="0,66.4333359299767" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5851,80 +4728,88 @@ where iRequestID = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="163.2,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination"
-          TopLeft="376.333317703671,160.933335248099" />
-        <NodeLayout
-          Size="152,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source"
-          TopLeft="384.166651401255,42.4666670041614" />
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details.Paths[OLE DB Source Output]"
-          TopLeft="459.049984552463,84.0666670041614">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,76.8666682439376"
-              Start="0,0"
-              End="0,69.3666682439376">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,69.3666682439376" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
     design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="163,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination"
-          TopLeft="376.333317703671,160.933335248099" />
+          TopLeft="397.333317703671,341.933335248099" />
         <NodeLayout
           Size="152,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source"
-          TopLeft="384.166651401255,42.4666670041614" />
+          TopLeft="384.166651401255,43.4666670041614" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion"
+          TopLeft="465,185" />
         <EdgeLayout
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details.Paths[OLE DB Source Output]"
-          TopLeft="459.049984552463,84.0666670041614">
+          TopLeft="460.166651401255,85.4666670041614">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,76.8666682439376"
+              EndConnector="85.333348598745,99.5333329958386"
               Start="0,0"
-              End="0,69.3666682439376">
+              End="85.333348598745,92.0333329958386">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,69.3666682439376" />
+                    End="0,45.7666664979193" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45.7666664979193"
+                    Point2="0,49.7666664979193"
+                    Point3="4,49.7666664979193" />
+                  <mssgle:LineSegment
+                    End="81.333348598745,49.7666664979193" />
+                  <mssgle:CubicBezierSegment
+                    Point1="81.333348598745,49.7666664979193"
+                    Point2="85.333348598745,49.7666664979193"
+                    Point3="85.333348598745,53.7666664979193" />
+                  <mssgle:LineSegment
+                    End="85.333348598745,92.0333329958386" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details.Paths[Data Conversion Output]"
+          TopLeft="545.5,227">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-66.666682296329,114.933335248099"
+              Start="0,0"
+              End="-66.666682296329,107.433335248099">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.4666676240495" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,53.4666676240495"
+                    Point2="0,57.4666676240495"
+                    Point3="-4,57.4666676240495" />
+                  <mssgle:LineSegment
+                    End="-62.666682296329,57.4666676240495" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-62.666682296329,57.4666676240495"
+                    Point2="-66.666682296329,57.4666676240495"
+                    Point3="-66.666682296329,61.4666676240495" />
+                  <mssgle:LineSegment
+                    End="-66.666682296329,107.433335248099" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5955,42 +4840,103 @@ where iRequestID = ?</property>
     design-time-name="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="163,42"
           Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination"
-          TopLeft="376.333317703671,160.933335248099" />
+          TopLeft="374.333317703671,307.933335248099" />
         <NodeLayout
           Size="152,42"
           Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source"
           TopLeft="384.166651401255,42.4666670041614" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion"
+          TopLeft="429,161" />
         <EdgeLayout
           Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details.Paths[OLE DB Source Output]"
-          TopLeft="459.049984552463,84.0666670041614">
+          TopLeft="460.166651401255,84.4666670041614">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,76.8666682439376"
+              EndConnector="49.333348598745,76.5333329958386"
               Start="0,0"
-              End="0,69.3666682439376">
+              End="49.333348598745,69.0333329958386">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,69.3666682439376" />
+                    End="0,34.2666664979193" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.2666664979193"
+                    Point2="0,38.2666664979193"
+                    Point3="4,38.2666664979193" />
+                  <mssgle:LineSegment
+                    End="45.333348598745,38.2666664979193" />
+                  <mssgle:CubicBezierSegment
+                    Point1="45.333348598745,38.2666664979193"
+                    Point2="49.333348598745,38.2666664979193"
+                    Point3="49.333348598745,42.2666664979193" />
+                  <mssgle:LineSegment
+                    End="49.333348598745,69.0333329958386" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details.Paths[Data Conversion Output]"
+          TopLeft="509.5,203">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-53.666682296329,104.933335248099"
+              Start="0,0"
+              End="-53.666682296329,97.433335248099">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.4666676240495" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,48.4666676240495"
+                    Point2="0,52.4666676240495"
+                    Point3="-4,52.4666676240495" />
+                  <mssgle:LineSegment
+                    End="-49.666682296329,52.4666676240495" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-49.666682296329,52.4666676240495"
+                    Point2="-53.666682296329,52.4666676240495"
+                    Point3="-53.666682296329,56.4666676240495" />
+                  <mssgle:LineSegment
+                    End="-53.666682296329,97.433335248099" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source">
     <Properties>
