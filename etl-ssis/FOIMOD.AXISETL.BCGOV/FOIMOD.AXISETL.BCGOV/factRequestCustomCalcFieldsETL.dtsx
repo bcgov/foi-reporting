@@ -7,12 +7,12 @@
   DTS:CreatorName="DESKTOP-U67UC02\abina"
   DTS:DTSID="{0995F69E-A3D9-4C6D-B900-B113C87D7F23}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
   DTS:LocaleID="1033"
   DTS:ObjectName="factRequestCustomCalcFieldsETL"
   DTS:PackageType="5"
   DTS:VersionBuild="27"
-  DTS:VersionGUID="{F975CF5A-7BEC-4394-AF0F-0AF06E577455}">
+  DTS:VersionGUID="{5C09E383-5ACA-4548-8B81-A56D86798166}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -660,7 +660,7 @@
 CAST(? as INT) as runcycleid,
 R.iRequestID as foirequestid,
 ISNULL(dbo.fn_StripCharacters(dbo.cst_GetRqstCustFieldValue (R.iRequestID, 'Subject'), '^a-z0-9 '),'') as subject,
-isnull((SELECT MAX(CAST(sdtActionDate AS DATE)) as Current_Activity_date FROM dbo.tblHistoryEvents hev WHERE hev.iRequestID = R.iRequestID AND hev.tiReviewID = R.tiReviewID), '') as currentactivitydate,
+isnull((SELECT MAX(CAST(sdtActionDate AS DATE)) as Current_Activity_date FROM dbo.tblHistoryEvents hev WHERE hev.iRequestID = R.iRequestID AND hev.tiReviewID = R.tiReviewID  ), '') as currentactivitydate,
 ISNULL(dbo.cst_GetRqstCustFieldValue (R.iRequestID, 'XGOV'),'') as crossgovtno,
 ISNULL(dbo.fn_StripCharacters(dbo.cst_GetRqstCustFieldValue (R.iRequestID, 'Publication Status'), '^a-z0-9 '),'') as publication,
 ISNULL(dbo.fn_StripCharacters(dbo.cst_GetRqstCustFieldValue (R.iRequestID, 'Do Not Publish Reason'), '^a-z0-9 '),'') as publicationreason,
@@ -671,7 +671,7 @@ isnull([dbo].[cst_GetRqstCustFieldValue](R.iRequestID, 'Reason'), '') as reason,
 isnull([dbo].[cst_GetRqstCustFieldValue](R.iRequestID, 'Portfolio Officer'), '') as portfolioofficer,
 [dbo].[cst_GetRqstCustFieldValue](R.iRequestID, 'Coordinated NR Response Req''d') as coordinatednrresponsereqd,
 [dbo].[cst_GetRqstCustFieldValue](R.iRequestID, 'Applicant''s File Reference') as applicantfilereference,
-isnull((Select secondaryusers from (Select RAH.iRequestID, STRING_AGG(STCU.FULL_NAME, ':: ') as secondaryusers from [dbo].[tblRequestsAssignHistory] RAH left outer join [dbo].EC_USERS AS STCU ON RAH.iUserID = STCU.USER_ID group by RAH.iRequestID) su WHERE su.iRequestID = R.iRequestID), '') as secondaryusers,
+isnull((Select secondaryusers from (Select RAH.iRequestID, STRING_AGG(CAST(STCU.FULL_NAME as varchar(max)), ':: ') as secondaryusers from [dbo].[tblRequestsAssignHistory] RAH left outer join [dbo].EC_USERS AS STCU ON RAH.iUserID = STCU.USER_ID group by RAH.iRequestID) su WHERE su.iRequestID = R.iRequestID), '') as secondaryusers,
 isnull((Select noofdocdelivered from (Select iRequestID, Count(iDeliveryID) as noofdocdelivered from [dbo].[tblDeliveryLog] where tiStatus = 1 group by iRequestID) dl WHERE dl.iRequestID = R.iRequestID), '') as noofdocdelivered,
 COALESCE(isnull([dbo].[cst_GetRqstCustFieldValue](R.iRequestID, 'Status'), ''), NULL) as customfieldstatus,
 ISNULL([dbo].AFX_GetHoldCount(CASE Convert(int, [dbo].AFX_GetConfigValue ('Case','TDSCriteria')) WHEN 0 THEN R.sdtReceivedDate WHEN 1 THEN R.sdtAssignedDate ELSE R.sdtScreenedDate END, getdate(),  R.iRequestID, R.tiOfficeID), 0) as onholddays,
@@ -694,7 +694,7 @@ CASE WHEN R.sdtClosedDate &gt; R.sdtTargetDate THEN isnull([dbo].AFX_GetRequestA
 [dbo].[cst_GetRqstCustFieldValue](iRequestID, 'Application Fee Transferred') as applicationfeetransferred,
 linkedrequests.linkedrequests
 From [dbo].tblRequests R 
-left outer join (Select iRequestIDOrigin, STRING_AGG(vcVisibleRequestID,',') as linkedrequests from [dbo].[tblRequestLinks] left outer join tblRequests on iRequestIDDestin = iRequestID group by iRequestIDOrigin) linkedrequests 
+left outer join (Select iRequestIDOrigin, STRING_AGG(cast(vcVisibleRequestID as varchar(max)),',') as linkedrequests from [dbo].[tblRequestLinks] left outer join tblRequests on iRequestIDDestin = iRequestID group by iRequestIDOrigin) linkedrequests 
 on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
                     <property
                       dataType="System.String"
@@ -1181,8 +1181,7 @@ on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
                         <externalMetadataColumn
                           refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[secondaryusers]"
                           codePage="1252"
-                          dataType="str"
-                          length="8000"
+                          dataType="text"
                           name="secondaryusers" />
                         <externalMetadataColumn
                           refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[noofdocdelivered]"
@@ -1287,8 +1286,7 @@ on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
                         <externalMetadataColumn
                           refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[linkedrequests]"
                           codePage="1252"
-                          dataType="str"
-                          length="8000"
+                          dataType="text"
                           name="linkedrequests" />
                       </externalMetadataColumns>
                     </output>
@@ -1386,8 +1384,7 @@ on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
                         <outputColumn
                           refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[secondaryusers]"
                           codePage="1252"
-                          dataType="str"
-                          length="8000"
+                          dataType="text"
                           lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[secondaryusers]"
                           name="secondaryusers" />
                         <outputColumn
@@ -1517,8 +1514,7 @@ on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
                         <outputColumn
                           refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[linkedrequests]"
                           codePage="1252"
-                          dataType="str"
-                          length="8000"
+                          dataType="text"
                           lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[linkedrequests]"
                           name="linkedrequests" />
                         <outputColumn
@@ -1635,15 +1631,15 @@ on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="184.8,41.6"
+          Size="185,42"
           Id="Package\End Run Cycle"
           TopLeft="646.666640970444,677.733338719474" />
         <NodeLayout
-          Size="150.4,41.6"
+          Size="150,42"
           Id="Package\Sequence Container\Data Flow Task"
           TopLeft="230.833304292627,117.066669669681" />
         <NodeLayout
-          Size="264.8,41.6"
+          Size="265,42"
           Id="Package\Sequence Container\EST_TruncatefactRequestCustomFields"
           TopLeft="181.333326346345,20.2666688431633" />
         <EdgeLayout
@@ -1671,12 +1667,12 @@ on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="608,255.2"
-          Size="608,297.6"
+          PanelSize="608,255"
+          Size="608,298"
           Id="Package\Sequence Container"
           TopLeft="499.999980131786,217.533335062133" />
         <NodeLayout
-          Size="151.2,41.6"
+          Size="151,42"
           Id="Package\Start Run Cycle"
           TopLeft="615.833308862317,100.733333326446" />
         <EdgeLayout
@@ -1756,11 +1752,11 @@ on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="152,41.6"
+          Size="152,42"
           Id="Package\Sequence Container\Data Flow Task\OLE DB Source"
           TopLeft="521,133" />
         <NodeLayout
-          Size="163.2,41.6"
+          Size="163,42"
           Id="Package\Sequence Container\Data Flow Task\ODBC Destination"
           TopLeft="522.499979237716,356.200002830823" />
         <EdgeLayout
