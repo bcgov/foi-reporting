@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="factRequestCustomCalcFieldsETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="27"
-  DTS:VersionGUID="{5C09E383-5ACA-4548-8B81-A56D86798166}">
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{F8C1CD50-30D4-4545-AF7B-231A4482268F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -99,6 +99,112 @@
             <pipeline
               version="1">
               <components>
+                <component
+                  refId="Package\Sequence Container\Data Flow Task\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[linkedrequests]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="8000"
+                          cachedName="linkedrequests"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[linkedrequests]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[secondaryusers]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="8000"
+                          cachedName="secondaryusers"
+                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[secondaryusers]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Sequence Container\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[DC_linkedrequests]"
+                          codePage="1252"
+                          dataType="text"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[DC_linkedrequests]"
+                          name="DC_linkedrequests"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[linkedrequests]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[DC_secondaryusers]"
+                          codePage="1252"
+                          dataType="text"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[DC_secondaryusers]"
+                          name="DC_secondaryusers"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[secondaryusers]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Sequence Container\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
                 <component
                   refId="Package\Sequence Container\Data Flow Task\ODBC Destination"
                   componentClassID="Microsoft.SSISODBCDst"
@@ -272,14 +378,6 @@
                           externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[applicantfilereference]"
                           lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicantfilereference]" />
                         <inputColumn
-                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[secondaryusers]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="8000"
-                          cachedName="secondaryusers"
-                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[secondaryusers]"
-                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[secondaryusers]" />
-                        <inputColumn
                           refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[noofdocdelivered]"
                           cachedDataType="i4"
                           cachedName="noofdocdelivered"
@@ -424,13 +522,19 @@
                           externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[applicationfeetransferred]"
                           lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicationfeetransferred]" />
                         <inputColumn
-                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[linkedrequests]"
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_linkedrequests]"
                           cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="8000"
-                          cachedName="linkedrequests"
+                          cachedDataType="text"
+                          cachedName="DC_linkedrequests"
                           externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[linkedrequests]"
-                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[linkedrequests]" />
+                          lineageId="Package\Sequence Container\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[DC_linkedrequests]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_secondaryusers]"
+                          cachedCodepage="1252"
+                          cachedDataType="text"
+                          cachedName="DC_secondaryusers"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[secondaryusers]"
+                          lineageId="Package\Sequence Container\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[DC_secondaryusers]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -469,8 +573,7 @@
                           name="applicationfeetransferred" />
                         <externalMetadataColumn
                           refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[linkedrequests]"
-                          dataType="wstr"
-                          length="3000"
+                          dataType="nText"
                           name="linkedrequests" />
                         <externalMetadataColumn
                           refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[feepaidamount]"
@@ -504,8 +607,7 @@
                           name="customfieldstatus" />
                         <externalMetadataColumn
                           refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[secondaryusers]"
-                          dataType="wstr"
-                          length="3000"
+                          dataType="nText"
                           name="secondaryusers" />
                         <externalMetadataColumn
                           refId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[applicantfilereference]"
@@ -671,7 +773,7 @@ isnull([dbo].[cst_GetRqstCustFieldValue](R.iRequestID, 'Reason'), '') as reason,
 isnull([dbo].[cst_GetRqstCustFieldValue](R.iRequestID, 'Portfolio Officer'), '') as portfolioofficer,
 [dbo].[cst_GetRqstCustFieldValue](R.iRequestID, 'Coordinated NR Response Req''d') as coordinatednrresponsereqd,
 [dbo].[cst_GetRqstCustFieldValue](R.iRequestID, 'Applicant''s File Reference') as applicantfilereference,
-isnull((Select secondaryusers from (Select RAH.iRequestID, STRING_AGG(CAST(STCU.FULL_NAME as varchar(max)), ':: ') as secondaryusers from [dbo].[tblRequestsAssignHistory] RAH left outer join [dbo].EC_USERS AS STCU ON RAH.iUserID = STCU.USER_ID group by RAH.iRequestID) su WHERE su.iRequestID = R.iRequestID), '') as secondaryusers,
+SUBSTRING(isnull((Select secondaryusers from (Select RAH.iRequestID, STRING_AGG(CAST(STCU.FULL_NAME as varchar(max)) , ',') as secondaryusers from [dbo].[tblRequestsAssignHistory] RAH left outer join [dbo].EC_USERS AS STCU ON RAH.iUserID = STCU.USER_ID group by RAH.iRequestID) su WHERE su.iRequestID = R.iRequestID), '') ,1,8000) as secondaryusers,
 isnull((Select noofdocdelivered from (Select iRequestID, Count(iDeliveryID) as noofdocdelivered from [dbo].[tblDeliveryLog] where tiStatus = 1 group by iRequestID) dl WHERE dl.iRequestID = R.iRequestID), '') as noofdocdelivered,
 COALESCE(isnull([dbo].[cst_GetRqstCustFieldValue](R.iRequestID, 'Status'), ''), NULL) as customfieldstatus,
 ISNULL([dbo].AFX_GetHoldCount(CASE Convert(int, [dbo].AFX_GetConfigValue ('Case','TDSCriteria')) WHEN 0 THEN R.sdtReceivedDate WHEN 1 THEN R.sdtAssignedDate ELSE R.sdtScreenedDate END, getdate(),  R.iRequestID, R.tiOfficeID), 0) as onholddays,
@@ -692,9 +794,10 @@ CASE WHEN R.sdtClosedDate &gt; R.sdtTargetDate THEN isnull([dbo].AFX_GetRequestA
 [dbo].[cst_GetRqstCustFieldValue](iRequestID, 'Application Fee Paid') as applicationfeepaid,
 [dbo].[cst_GetRqstCustFieldValue](iRequestID, 'Application Fee Refunded') as applicationfeerefunded,
 [dbo].[cst_GetRqstCustFieldValue](iRequestID, 'Application Fee Transferred') as applicationfeetransferred,
-linkedrequests.linkedrequests
+SUBSTRING(linkedrequests.linkedrequests,1,8000) as linkedrequests
+
 From [dbo].tblRequests R 
-left outer join (Select iRequestIDOrigin, STRING_AGG(cast(vcVisibleRequestID as varchar(max)),',') as linkedrequests from [dbo].[tblRequestLinks] left outer join tblRequests on iRequestIDDestin = iRequestID group by iRequestIDOrigin) linkedrequests 
+left outer join (Select iRequestIDOrigin, STRING_AGG(CAST(vcVisibleRequestID as varchar(max)),',') as linkedrequests from [dbo].[tblRequestLinks] left outer join tblRequests on iRequestIDDestin = iRequestID group by iRequestIDOrigin) linkedrequests 
 on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
                     <property
                       dataType="System.String"
@@ -1537,8 +1640,13 @@ on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
               </components>
               <paths>
                 <path
-                  refId="Package\Sequence Container\Data Flow Task.Paths[OLE DB Source Output]"
+                  refId="Package\Sequence Container\Data Flow Task.Paths[Data Conversion Output]"
                   endId="Package\Sequence Container\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\Sequence Container\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Sequence Container\Data Flow Task.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
                   name="OLE DB Source Output"
                   startId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
               </paths>
@@ -1750,29 +1858,79 @@ on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
     design-time-name="Package\Sequence Container\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="152,42"
           Id="Package\Sequence Container\Data Flow Task\OLE DB Source"
           TopLeft="521,133" />
         <NodeLayout
-          Size="163,42"
+          Size="169,42"
           Id="Package\Sequence Container\Data Flow Task\ODBC Destination"
           TopLeft="522.499979237716,356.200002830823" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Sequence Container\Data Flow Task\Data Conversion"
+          TopLeft="464,253" />
         <EdgeLayout
           Id="Package\Sequence Container\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="600.499989618858,175">
+          TopLeft="597,175">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,181.200002830823"
+              EndConnector="-52.5,78"
               Start="0,0"
-              End="0,173.700002830823">
+              End="-52.5,70.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,173.700002830823" />
+                    End="0,35" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35"
+                    Point2="0,39"
+                    Point3="-4,39" />
+                  <mssgle:LineSegment
+                    End="-48.5,39" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-48.5,39"
+                    Point2="-52.5,39"
+                    Point3="-52.5,43" />
+                  <mssgle:LineSegment
+                    End="-52.5,70.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="544.5,295">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="62.499979237716,61.200002830823"
+              Start="0,0"
+              End="62.499979237716,53.700002830823">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.6000014154115" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.6000014154115"
+                    Point2="0,30.6000014154115"
+                    Point3="4,30.6000014154115" />
+                  <mssgle:LineSegment
+                    End="58.499979237716,30.6000014154115" />
+                  <mssgle:CubicBezierSegment
+                    Point1="58.499979237716,30.6000014154115"
+                    Point2="62.499979237716,30.6000014154115"
+                    Point3="62.499979237716,34.6000014154115" />
+                  <mssgle:LineSegment
+                    End="62.499979237716,53.700002830823" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1785,6 +1943,14 @@ on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\Data Flow Task\ODBC Destination">
     <Properties>
       <Property>
@@ -1794,14 +1960,6 @@ on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Data Flow Task\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

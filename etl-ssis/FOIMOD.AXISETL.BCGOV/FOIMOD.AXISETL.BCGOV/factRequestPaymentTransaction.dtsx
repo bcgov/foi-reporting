@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="factRequestPaymentTransaction"
   DTS:PackageType="5"
-  DTS:VersionBuild="35"
-  DTS:VersionGUID="{F304BD08-BA6F-41AD-A995-6E74BE4E0062}">
+  DTS:VersionBuild="36"
+  DTS:VersionGUID="{E5626964-9B52-4BC3-BD65-A6CDACBD8609}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -182,6 +182,299 @@
               version="1">
               <components>
                 <component
+                  refId="Package\Sequence Container\First Time Load\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\First Time Load\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\First Time Load\Data Conversion.Inputs[Data Conversion Input].Columns[estimatedamount]"
+                          cachedDataType="numeric"
+                          cachedName="estimatedamount"
+                          cachedPrecision="11"
+                          cachedScale="2"
+                          lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[estimatedamount]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\First Time Load\Data Conversion.Inputs[Data Conversion Input].Columns[incurredamount]"
+                          cachedDataType="numeric"
+                          cachedName="incurredamount"
+                          cachedPrecision="11"
+                          cachedScale="2"
+                          lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[incurredamount]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\First Time Load\Data Conversion.Inputs[Data Conversion Input].Columns[interestamount]"
+                          cachedDataType="numeric"
+                          cachedName="interestamount"
+                          cachedPrecision="15"
+                          cachedScale="2"
+                          lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[interestamount]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\First Time Load\Data Conversion.Inputs[Data Conversion Input].Columns[invoicedamount]"
+                          cachedDataType="numeric"
+                          cachedName="invoicedamount"
+                          cachedPrecision="11"
+                          cachedScale="2"
+                          lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedamount]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\First Time Load\Data Conversion.Inputs[Data Conversion Input].Columns[paidamount]"
+                          cachedDataType="numeric"
+                          cachedName="paidamount"
+                          cachedPrecision="11"
+                          cachedScale="2"
+                          lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[paidamount]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\First Time Load\Data Conversion.Inputs[Data Conversion Input].Columns[willingamount]"
+                          cachedDataType="numeric"
+                          cachedName="willingamount"
+                          cachedPrecision="11"
+                          cachedScale="2"
+                          lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[willingamount]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\First Time Load\Data Conversion.Inputs[Data Conversion Input].Columns[applicationfee]"
+                          cachedDataType="numeric"
+                          cachedName="applicationfee"
+                          cachedPrecision="11"
+                          cachedScale="2"
+                          lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicationfee]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\First Time Load\Data Conversion.Inputs[Data Conversion Input].Columns[feewaived]"
+                          cachedDataType="numeric"
+                          cachedName="feewaived"
+                          cachedPrecision="11"
+                          cachedScale="2"
+                          lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[feewaived]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\First Time Load\Data Conversion.Inputs[Data Conversion Input].Columns[totalinvoicedamount]"
+                          cachedDataType="numeric"
+                          cachedName="totalinvoicedamount"
+                          cachedPrecision="38"
+                          cachedScale="2"
+                          lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[totalinvoicedamount]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Sequence Container\First Time Load\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_estimatedamount]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_estimatedamount]"
+                          name="DC_estimatedamount"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[estimatedamount]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_incurredamount]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_incurredamount]"
+                          name="DC_incurredamount"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[incurredamount]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_interestamount]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_interestamount]"
+                          name="DC_interestamount"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[interestamount]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_invoicedamount]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_invoicedamount]"
+                          name="DC_invoicedamount"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedamount]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_paidamount]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_paidamount]"
+                          name="DC_paidamount"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[paidamount]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_willingamount]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_willingamount]"
+                          name="DC_willingamount"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[willingamount]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_applicationfee]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_applicationfee]"
+                          name="DC_applicationfee"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicationfee]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_feewaived]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_feewaived]"
+                          name="DC_feewaived"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[feewaived]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_totalinvoicedamount]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_totalinvoicedamount]"
+                          name="DC_totalinvoicedamount"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[totalinvoicedamount]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Sequence Container\First Time Load\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
                   refId="Package\Sequence Container\First Time Load\ODBC Destination"
                   componentClassID="Microsoft.SSISODBCDst"
                   contactInfo="ODBC Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -272,30 +565,6 @@
                           externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[paymentmodeid]"
                           lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[paymentmodeid]" />
                         <inputColumn
-                          refId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[estimatedamount]"
-                          cachedDataType="numeric"
-                          cachedName="estimatedamount"
-                          cachedPrecision="11"
-                          cachedScale="2"
-                          externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estimatedamount]"
-                          lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[estimatedamount]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[incurredamount]"
-                          cachedDataType="numeric"
-                          cachedName="incurredamount"
-                          cachedPrecision="11"
-                          cachedScale="2"
-                          externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[incurredamount]"
-                          lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[incurredamount]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[interestamount]"
-                          cachedDataType="numeric"
-                          cachedName="interestamount"
-                          cachedPrecision="15"
-                          cachedScale="2"
-                          externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[interestamount]"
-                          lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[interestamount]" />
-                        <inputColumn
                           refId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[invoicenumber]"
                           cachedCodepage="1252"
                           cachedDataType="str"
@@ -303,38 +572,6 @@
                           cachedName="invoicenumber"
                           externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[invoicenumber]"
                           lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicenumber]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[invoicedamount]"
-                          cachedDataType="numeric"
-                          cachedName="invoicedamount"
-                          cachedPrecision="11"
-                          cachedScale="2"
-                          externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[invoicedamount]"
-                          lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedamount]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[paidamount]"
-                          cachedDataType="numeric"
-                          cachedName="paidamount"
-                          cachedPrecision="11"
-                          cachedScale="2"
-                          externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[paidamount]"
-                          lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[paidamount]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[willingamount]"
-                          cachedDataType="numeric"
-                          cachedName="willingamount"
-                          cachedPrecision="11"
-                          cachedScale="2"
-                          externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[willingamount]"
-                          lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[willingamount]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[applicationfee]"
-                          cachedDataType="numeric"
-                          cachedName="applicationfee"
-                          cachedPrecision="11"
-                          cachedScale="2"
-                          externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[applicationfee]"
-                          lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicationfee]" />
                         <inputColumn
                           refId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[applicationfeetype]"
                           cachedCodepage="1252"
@@ -381,22 +618,6 @@
                           cachedName="invoicedate"
                           externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[invoicedate]"
                           lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedate]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[feewaived]"
-                          cachedDataType="numeric"
-                          cachedName="feewaived"
-                          cachedPrecision="11"
-                          cachedScale="2"
-                          externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[feewaived]"
-                          lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[feewaived]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[totalinvoicedamount]"
-                          cachedDataType="numeric"
-                          cachedName="totalinvoicedamount"
-                          cachedPrecision="38"
-                          cachedScale="2"
-                          externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[totalinvoicedamount]"
-                          lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[totalinvoicedamount]" />
                         <inputColumn
                           refId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[prepaymentamount]"
                           cachedCodepage="1252"
@@ -459,6 +680,60 @@
                           cachedName="activeflag"
                           externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[activeflag]"
                           lineageId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[activeflag]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_estimatedamount]"
+                          cachedDataType="r8"
+                          cachedName="DC_estimatedamount"
+                          externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estimatedamount]"
+                          lineageId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_estimatedamount]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_incurredamount]"
+                          cachedDataType="r8"
+                          cachedName="DC_incurredamount"
+                          externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[incurredamount]"
+                          lineageId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_incurredamount]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_interestamount]"
+                          cachedDataType="r8"
+                          cachedName="DC_interestamount"
+                          externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[interestamount]"
+                          lineageId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_interestamount]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_invoicedamount]"
+                          cachedDataType="r8"
+                          cachedName="DC_invoicedamount"
+                          externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[invoicedamount]"
+                          lineageId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_invoicedamount]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_paidamount]"
+                          cachedDataType="r8"
+                          cachedName="DC_paidamount"
+                          externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[paidamount]"
+                          lineageId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_paidamount]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_willingamount]"
+                          cachedDataType="r8"
+                          cachedName="DC_willingamount"
+                          externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[willingamount]"
+                          lineageId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_willingamount]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_applicationfee]"
+                          cachedDataType="r8"
+                          cachedName="DC_applicationfee"
+                          externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[applicationfee]"
+                          lineageId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_applicationfee]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_feewaived]"
+                          cachedDataType="r8"
+                          cachedName="DC_feewaived"
+                          externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[feewaived]"
+                          lineageId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_feewaived]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_totalinvoicedamount]"
+                          cachedDataType="r8"
+                          cachedName="DC_totalinvoicedamount"
+                          externalMetadataColumnId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[totalinvoicedamount]"
+                          lineageId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output].Columns[DC_totalinvoicedamount]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -1368,8 +1643,13 @@ From tblRequests TR</property>
               </components>
               <paths>
                 <path
-                  refId="Package\Sequence Container\First Time Load.Paths[OLE DB Source Output]"
+                  refId="Package\Sequence Container\First Time Load.Paths[Data Conversion Output]"
                   endId="Package\Sequence Container\First Time Load\ODBC Destination.Inputs[ODBC Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\Sequence Container\First Time Load\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Sequence Container\First Time Load.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\First Time Load\Data Conversion.Inputs[Data Conversion Input]"
                   name="OLE DB Source Output"
                   startId="Package\Sequence Container\First Time Load\OLE DB Source.Outputs[OLE DB Source Output]" />
               </paths>
@@ -1429,6 +1709,62 @@ From tblRequests TR</property>
                               cachedPrecision="11"
                               cachedScale="2"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[estimatedamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Inputs[Data Conversion Input].Columns[incurredamount]"
+                              cachedDataType="numeric"
+                              cachedName="incurredamount"
+                              cachedPrecision="11"
+                              cachedScale="2"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[incurredamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Inputs[Data Conversion Input].Columns[interestamount]"
+                              cachedDataType="numeric"
+                              cachedName="interestamount"
+                              cachedPrecision="15"
+                              cachedScale="2"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[interestamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Inputs[Data Conversion Input].Columns[invoicedamount]"
+                              cachedDataType="numeric"
+                              cachedName="invoicedamount"
+                              cachedPrecision="11"
+                              cachedScale="2"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Inputs[Data Conversion Input].Columns[paidamount]"
+                              cachedDataType="numeric"
+                              cachedName="paidamount"
+                              cachedPrecision="11"
+                              cachedScale="2"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paidamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Inputs[Data Conversion Input].Columns[willingamount]"
+                              cachedDataType="numeric"
+                              cachedName="willingamount"
+                              cachedPrecision="11"
+                              cachedScale="2"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[willingamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Inputs[Data Conversion Input].Columns[applicationfee]"
+                              cachedDataType="numeric"
+                              cachedName="applicationfee"
+                              cachedPrecision="11"
+                              cachedScale="2"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicationfee]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Inputs[Data Conversion Input].Columns[feewaived]"
+                              cachedDataType="numeric"
+                              cachedName="feewaived"
+                              cachedPrecision="11"
+                              cachedScale="2"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[feewaived]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Inputs[Data Conversion Input].Columns[totalinvoicedamount]"
+                              cachedDataType="numeric"
+                              cachedName="totalinvoicedamount"
+                              cachedPrecision="38"
+                              cachedScale="2"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[totalinvoicedamount]" />
                           </inputColumns>
                           <externalMetadataColumns />
                         </input>
@@ -1454,6 +1790,166 @@ From tblRequests TR</property>
                                   dataType="System.Int32"
                                   description="Specifies the input column used as the source of data for the conversion."
                                   name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[estimatedamount]}</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_incurredamount]"
+                              dataType="r8"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_incurredamount]"
+                              name="DC_incurredamount"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Specifies the input column used as the source of data for the conversion."
+                                  name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[incurredamount]}</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_interestamount]"
+                              dataType="r8"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_interestamount]"
+                              name="DC_interestamount"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Specifies the input column used as the source of data for the conversion."
+                                  name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[interestamount]}</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_invoicedamount]"
+                              dataType="r8"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_invoicedamount]"
+                              name="DC_invoicedamount"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Specifies the input column used as the source of data for the conversion."
+                                  name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedamount]}</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_paidamount]"
+                              dataType="r8"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_paidamount]"
+                              name="DC_paidamount"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Specifies the input column used as the source of data for the conversion."
+                                  name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paidamount]}</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_willingamount]"
+                              dataType="r8"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_willingamount]"
+                              name="DC_willingamount"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Specifies the input column used as the source of data for the conversion."
+                                  name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[willingamount]}</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_applicationfee]"
+                              dataType="r8"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_applicationfee]"
+                              name="DC_applicationfee"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Specifies the input column used as the source of data for the conversion."
+                                  name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicationfee]}</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_feewaived]"
+                              dataType="r8"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_feewaived]"
+                              name="DC_feewaived"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Specifies the input column used as the source of data for the conversion."
+                                  name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[feewaived]}</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_totalinvoicedamount]"
+                              dataType="r8"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_totalinvoicedamount]"
+                              name="DC_totalinvoicedamount"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Specifies the input column used as the source of data for the conversion."
+                                  name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[totalinvoicedamount]}</property>
                                 <property
                                   dataType="System.Boolean"
                                   description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -1586,22 +2082,6 @@ From tblRequests TR</property>
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[paymentmodeid]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paymentmodeid]" />
                             <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[incurredamount]"
-                              cachedDataType="numeric"
-                              cachedName="incurredamount"
-                              cachedPrecision="11"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[incurredamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[incurredamount]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[interestamount]"
-                              cachedDataType="numeric"
-                              cachedName="interestamount"
-                              cachedPrecision="15"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[interestamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[interestamount]" />
-                            <inputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[invoicenumber]"
                               cachedCodepage="1252"
                               cachedDataType="str"
@@ -1609,38 +2089,6 @@ From tblRequests TR</property>
                               cachedName="invoicenumber"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[invoicenumber]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicenumber]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[invoicedamount]"
-                              cachedDataType="numeric"
-                              cachedName="invoicedamount"
-                              cachedPrecision="11"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[invoicedamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedamount]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[paidamount]"
-                              cachedDataType="numeric"
-                              cachedName="paidamount"
-                              cachedPrecision="11"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[paidamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paidamount]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[willingamount]"
-                              cachedDataType="numeric"
-                              cachedName="willingamount"
-                              cachedPrecision="11"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[willingamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[willingamount]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[applicationfee]"
-                              cachedDataType="numeric"
-                              cachedName="applicationfee"
-                              cachedPrecision="11"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[applicationfee]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicationfee]" />
                             <inputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[applicationfeetype]"
                               cachedCodepage="1252"
@@ -1687,22 +2135,6 @@ From tblRequests TR</property>
                               cachedName="invoicedate"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[invoicedate]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedate]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[feewaived]"
-                              cachedDataType="numeric"
-                              cachedName="feewaived"
-                              cachedPrecision="11"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[feewaived]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[feewaived]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[totalinvoicedamount]"
-                              cachedDataType="numeric"
-                              cachedName="totalinvoicedamount"
-                              cachedPrecision="38"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[totalinvoicedamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[totalinvoicedamount]" />
                             <inputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[prepaymentamount]"
                               cachedCodepage="1252"
@@ -1763,6 +2195,54 @@ From tblRequests TR</property>
                               cachedName="DC_estimatedamount"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estimatedamount]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_estimatedamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_incurredamount]"
+                              cachedDataType="r8"
+                              cachedName="DC_incurredamount"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[incurredamount]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_incurredamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_interestamount]"
+                              cachedDataType="r8"
+                              cachedName="DC_interestamount"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[interestamount]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_interestamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_invoicedamount]"
+                              cachedDataType="r8"
+                              cachedName="DC_invoicedamount"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[invoicedamount]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_invoicedamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_paidamount]"
+                              cachedDataType="r8"
+                              cachedName="DC_paidamount"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[paidamount]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_paidamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_willingamount]"
+                              cachedDataType="r8"
+                              cachedName="DC_willingamount"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[willingamount]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_willingamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_applicationfee]"
+                              cachedDataType="r8"
+                              cachedName="DC_applicationfee"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[applicationfee]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_applicationfee]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_feewaived]"
+                              cachedDataType="r8"
+                              cachedName="DC_feewaived"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[feewaived]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_feewaived]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_totalinvoicedamount]"
+                              cachedDataType="r8"
+                              cachedName="DC_totalinvoicedamount"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[totalinvoicedamount]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_totalinvoicedamount]" />
                           </inputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -2695,7 +3175,7 @@ where iRequestID = ?</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="Update active flag to N for existing record"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -2783,6 +3263,62 @@ where iRequestID = ?</property>
                               cachedPrecision="18"
                               cachedScale="2"
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[estimatedamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Inputs[Data Conversion Input].Columns[incurredamount]"
+                              cachedDataType="numeric"
+                              cachedName="incurredamount"
+                              cachedPrecision="11"
+                              cachedScale="2"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[incurredamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Inputs[Data Conversion Input].Columns[interestamount]"
+                              cachedDataType="numeric"
+                              cachedName="interestamount"
+                              cachedPrecision="15"
+                              cachedScale="2"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[interestamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Inputs[Data Conversion Input].Columns[invoicedamount]"
+                              cachedDataType="numeric"
+                              cachedName="invoicedamount"
+                              cachedPrecision="11"
+                              cachedScale="2"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Inputs[Data Conversion Input].Columns[paidamount]"
+                              cachedDataType="numeric"
+                              cachedName="paidamount"
+                              cachedPrecision="11"
+                              cachedScale="2"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paidamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Inputs[Data Conversion Input].Columns[willingamount]"
+                              cachedDataType="numeric"
+                              cachedName="willingamount"
+                              cachedPrecision="11"
+                              cachedScale="2"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[willingamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Inputs[Data Conversion Input].Columns[applicationfee]"
+                              cachedDataType="numeric"
+                              cachedName="applicationfee"
+                              cachedPrecision="11"
+                              cachedScale="2"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicationfee]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Inputs[Data Conversion Input].Columns[feewaived]"
+                              cachedDataType="numeric"
+                              cachedName="feewaived"
+                              cachedPrecision="11"
+                              cachedScale="2"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[feewaived]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Inputs[Data Conversion Input].Columns[totalinvoicedamount]"
+                              cachedDataType="numeric"
+                              cachedName="totalinvoicedamount"
+                              cachedPrecision="38"
+                              cachedScale="2"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[totalinvoicedamount]" />
                           </inputColumns>
                           <externalMetadataColumns />
                         </input>
@@ -2808,6 +3344,166 @@ where iRequestID = ?</property>
                                   dataType="System.Int32"
                                   description="Specifies the input column used as the source of data for the conversion."
                                   name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[estimatedamount]}</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_incurredamount]"
+                              dataType="r8"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_incurredamount]"
+                              name="DC_incurredamount"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Specifies the input column used as the source of data for the conversion."
+                                  name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[incurredamount]}</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_interestamount]"
+                              dataType="r8"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_interestamount]"
+                              name="DC_interestamount"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Specifies the input column used as the source of data for the conversion."
+                                  name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[interestamount]}</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_invoicedamount]"
+                              dataType="r8"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_invoicedamount]"
+                              name="DC_invoicedamount"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Specifies the input column used as the source of data for the conversion."
+                                  name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedamount]}</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_paidamount]"
+                              dataType="r8"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_paidamount]"
+                              name="DC_paidamount"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Specifies the input column used as the source of data for the conversion."
+                                  name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paidamount]}</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_willingamount]"
+                              dataType="r8"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_willingamount]"
+                              name="DC_willingamount"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Specifies the input column used as the source of data for the conversion."
+                                  name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[willingamount]}</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_applicationfee]"
+                              dataType="r8"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_applicationfee]"
+                              name="DC_applicationfee"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Specifies the input column used as the source of data for the conversion."
+                                  name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicationfee]}</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_feewaived]"
+                              dataType="r8"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_feewaived]"
+                              name="DC_feewaived"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Specifies the input column used as the source of data for the conversion."
+                                  name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[feewaived]}</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_totalinvoicedamount]"
+                              dataType="r8"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_totalinvoicedamount]"
+                              name="DC_totalinvoicedamount"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Specifies the input column used as the source of data for the conversion."
+                                  name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[totalinvoicedamount]}</property>
                                 <property
                                   dataType="System.Boolean"
                                   description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -2940,22 +3636,6 @@ where iRequestID = ?</property>
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[paymentmodeid]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paymentmodeid]" />
                             <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[incurredamount]"
-                              cachedDataType="numeric"
-                              cachedName="incurredamount"
-                              cachedPrecision="11"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[incurredamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[incurredamount]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[interestamount]"
-                              cachedDataType="numeric"
-                              cachedName="interestamount"
-                              cachedPrecision="15"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[interestamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[interestamount]" />
-                            <inputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[invoicenumber]"
                               cachedCodepage="1252"
                               cachedDataType="str"
@@ -2963,38 +3643,6 @@ where iRequestID = ?</property>
                               cachedName="invoicenumber"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[invoicenumber]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicenumber]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[invoicedamount]"
-                              cachedDataType="numeric"
-                              cachedName="invoicedamount"
-                              cachedPrecision="11"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[invoicedamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedamount]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[paidamount]"
-                              cachedDataType="numeric"
-                              cachedName="paidamount"
-                              cachedPrecision="11"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[paidamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[paidamount]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[willingamount]"
-                              cachedDataType="numeric"
-                              cachedName="willingamount"
-                              cachedPrecision="11"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[willingamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[willingamount]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[applicationfee]"
-                              cachedDataType="numeric"
-                              cachedName="applicationfee"
-                              cachedPrecision="11"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[applicationfee]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[applicationfee]" />
                             <inputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[applicationfeetype]"
                               cachedCodepage="1252"
@@ -3041,22 +3689,6 @@ where iRequestID = ?</property>
                               cachedName="invoicedate"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[invoicedate]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoicedate]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[feewaived]"
-                              cachedDataType="numeric"
-                              cachedName="feewaived"
-                              cachedPrecision="11"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[feewaived]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[feewaived]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[totalinvoicedamount]"
-                              cachedDataType="numeric"
-                              cachedName="totalinvoicedamount"
-                              cachedPrecision="38"
-                              cachedScale="2"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[totalinvoicedamount]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[totalinvoicedamount]" />
                             <inputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[prepaymentamount]"
                               cachedCodepage="1252"
@@ -3117,6 +3749,54 @@ where iRequestID = ?</property>
                               cachedName="DC_estimatedamount"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estimatedamount]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_estimatedamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_incurredamount]"
+                              cachedDataType="r8"
+                              cachedName="DC_incurredamount"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[incurredamount]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_incurredamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_interestamount]"
+                              cachedDataType="r8"
+                              cachedName="DC_interestamount"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[interestamount]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_interestamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_invoicedamount]"
+                              cachedDataType="r8"
+                              cachedName="DC_invoicedamount"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[invoicedamount]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_invoicedamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_paidamount]"
+                              cachedDataType="r8"
+                              cachedName="DC_paidamount"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[paidamount]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_paidamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_willingamount]"
+                              cachedDataType="r8"
+                              cachedName="DC_willingamount"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[willingamount]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_willingamount]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_applicationfee]"
+                              cachedDataType="r8"
+                              cachedName="DC_applicationfee"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[applicationfee]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_applicationfee]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_feewaived]"
+                              cachedDataType="r8"
+                              cachedName="DC_feewaived"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[feewaived]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_feewaived]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[DC_totalinvoicedamount]"
+                              cachedDataType="r8"
+                              cachedName="DC_totalinvoicedamount"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[totalinvoicedamount]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[DC_totalinvoicedamount]" />
                           </inputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -4059,7 +4739,7 @@ where iRequestID in  (?)</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get modified request count"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -4087,7 +4767,7 @@ where iRequestID in  (?)</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get modified requests"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -4115,7 +4795,7 @@ where iRequestID in  (?)</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get new request count"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -4143,7 +4823,7 @@ where iRequestID in  (?)</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get new requests"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -4311,19 +4991,19 @@ where iRequestID in  (?)</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="185,42"
+          Size="184.8,41.6"
           Id="Package\End Run Cycle"
           TopLeft="397.49998420477,861.266670268907" />
         <NodeLayout
-          Size="150,42"
+          Size="150.4,41.6"
           Id="Package\Sequence Container\First Time Load"
           TopLeft="81.7666617327268,110.400001983643" />
         <NodeLayout
-          Size="220,42"
+          Size="220,41.6"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details"
           TopLeft="24.6999849994984,114.999999566078" />
         <NodeLayout
-          Size="190,42"
+          Size="190.4,41.6"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Update active flag to N for existing record"
           TopLeft="42.199984304111,26.5999988635381" />
         <EdgeLayout
@@ -4351,39 +5031,39 @@ where iRequestID in  (?)</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="266,211"
-          Size="266,254"
+          PanelSize="265.6,211.2"
+          Size="265.6,254.4"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests"
           TopLeft="310.099985992909,308.000001983643" />
         <NodeLayout
-          Size="202,42"
+          Size="182.4,41.6"
           Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details"
           TopLeft="34.0999724825232,55.1999988428751" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="254,211"
-          Size="254,254"
+          PanelSize="254.4,211.2"
+          Size="254.4,254.4"
           Id="Package\Sequence Container\Foreach Loop Container for new requests"
           TopLeft="615.933307173518,307.33333433893" />
         <NodeLayout
-          Size="165,42"
+          Size="164.8,41.6"
           Id="Package\Sequence Container\Get modified request count"
           TopLeft="360.099984006088,128.199999690056" />
         <NodeLayout
-          Size="165,42"
+          Size="164.8,41.6"
           Id="Package\Sequence Container\Get modified requests"
           TopLeft="364.266650507186,225.466666322284" />
         <NodeLayout
-          Size="165,42"
+          Size="164.8,41.6"
           Id="Package\Sequence Container\Get new request count"
           TopLeft="624.266640175715,96.1333327685462" />
         <NodeLayout
-          Size="165,42"
+          Size="164.8,41.6"
           Id="Package\Sequence Container\Get new requests"
           TopLeft="637.599972979229,218.399999669393" />
         <NodeLayout
-          Size="288,46"
+          Size="288,46.4"
           Id="Package\Sequence Container\Get record count from factRequestPaymentTransaction"
           TopLeft="266.766654381488,28.8666661776438" />
         <EdgeLayout
@@ -4613,12 +5293,12 @@ where iRequestID in  (?)</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="885,618"
-          Size="885,661"
+          PanelSize="884.8,617.6"
+          Size="884.8,660.8"
           Id="Package\Sequence Container"
           TopLeft="42.4999983112018,126.53333433893" />
         <NodeLayout
-          Size="185,42"
+          Size="184.8,41.6"
           Id="Package\Start Run Cycle"
           TopLeft="387.499984602134,33.8000002686183" />
         <EdgeLayout
@@ -4672,29 +5352,55 @@ where iRequestID in  (?)</property>
     design-time-name="Package\Sequence Container\First Time Load">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="163,42"
+          Size="163.2,41.6"
           Id="Package\Sequence Container\First Time Load\ODBC Destination"
-          TopLeft="385.833318001695,137.800001095136" />
+          TopLeft="398.833318001695,271.800001095136" />
         <NodeLayout
-          Size="152,42"
+          Size="152,41.6"
           Id="Package\Sequence Container\First Time Load\OLE DB Source"
           TopLeft="396.66665090455,37.2666669628355" />
+        <NodeLayout
+          Size="144,41.6"
+          Id="Package\Sequence Container\First Time Load\Data Conversion"
+          TopLeft="406,153" />
         <EdgeLayout
           Id="Package\Sequence Container\First Time Load.Paths[OLE DB Source Output]"
-          TopLeft="470.049984453123,78.8666669628355">
+          TopLeft="475.333325452275,78.8666669628355">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,58.9333341323004"
+              EndConnector="0,74.1333330371645"
               Start="0,0"
-              End="0,51.4333341323004">
+              End="0,66.6333330371645">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,51.4333341323004" />
+                    End="0,66.6333330371645" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\First Time Load.Paths[Data Conversion Output]"
+          TopLeft="479.216659000847,194.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,77.200001095136"
+              Start="0,0"
+              End="0,69.700001095136">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.700001095136" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4733,15 +5439,15 @@ where iRequestID in  (?)</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="163,42"
+          Size="163.2,41.6"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination"
           TopLeft="397.333317703671,341.933335248099" />
         <NodeLayout
-          Size="152,42"
+          Size="152,41.6"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source"
           TopLeft="384.166651401255,43.4666670041614" />
         <NodeLayout
-          Size="161,42"
+          Size="160.8,41.6"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion"
           TopLeft="465,185" />
         <EdgeLayout
@@ -4842,15 +5548,15 @@ where iRequestID in  (?)</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="163,42"
+          Size="163.2,41.6"
           Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination"
           TopLeft="374.333317703671,307.933335248099" />
         <NodeLayout
-          Size="152,42"
+          Size="152,41.6"
           Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source"
           TopLeft="384.166651401255,42.4666670041614" />
         <NodeLayout
-          Size="161,42"
+          Size="160.8,41.6"
           Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion"
           TopLeft="429,161" />
         <EdgeLayout
