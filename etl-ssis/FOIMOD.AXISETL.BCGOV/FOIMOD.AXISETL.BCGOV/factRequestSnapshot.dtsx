@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="3/25/2022 12:09:46 PM"
+  DTS:CreationDate="3/28/2022 3:49:46 PM"
   DTS:CreationName="Microsoft.Package"
-  DTS:CreatorComputerName="WALTZ"
-  DTS:CreatorName="IDIR\VBALAC_A"
-  DTS:DTSID="{6536E261-4D8B-4A02-BF4F-3D46159DA72C}"
+  DTS:CreatorComputerName="DESKTOP-MIA6OO6"
+  DTS:CreatorName="DESKTOP-MIA6OO6\AOT"
+  DTS:DTSID="{249458F7-57FB-4D08-8353-D65EDC1B3B00}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.180"
-  DTS:LocaleID="1033"
+  DTS:LocaleID="16393"
   DTS:ObjectName="factRequestSnapshot"
   DTS:PackageType="5"
   DTS:VersionBuild="7"
-  DTS:VersionGUID="{B9B5A35E-8E2B-438E-AD42-F1C097302CD2}">
+  DTS:VersionGUID="{3E063130-210F-4B98-BD6E-71EFC848166F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{DB16DAF3-475F-46AE-A5F1-C28CD3F5C1DE}"
+      DTS:DTSID="{2E763852-D40A-4C88-A671-9293E45E3C30}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="isComplete">
@@ -27,7 +27,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{01F14882-99FF-44B7-A989-5120763FD65B}"
+      DTS:DTSID="{74A0E5E5-E144-499C-876D-B867131488D6}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="lastRunCycleTime">
@@ -37,7 +37,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{9435F92E-FE7B-48D4-A01B-A488ABDBCAD9}"
+      DTS:DTSID="{52E7B99F-896F-4E17-A592-6FF393C9620C}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="runCycleID">
@@ -47,39 +47,10 @@
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\End Run Cycle"
-      DTS:CreationName="Microsoft.ExecutePackageTask"
-      DTS:Description="Execute Package Task"
-      DTS:DTSID="{c8b1cc1a-6374-41f8-be66-ed4ae4a034ea}"
-      DTS:ExecutableType="Microsoft.ExecutePackageTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="End Run Cycle"
-      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <ExecutePackageTask>
-          <UseProjectReference>True</UseProjectReference>
-          <PackageName>_StopRunCycle.dtsx</PackageName>
-          <ParameterAssignment>
-            <ParameterName>isComplete</ParameterName>
-            <BindedVariableOrParameterName>User::isComplete</BindedVariableOrParameterName>
-          </ParameterAssignment>
-          <ParameterAssignment>
-            <ParameterName>packageName</ParameterName>
-            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
-          </ParameterAssignment>
-          <ParameterAssignment>
-            <ParameterName>runCycleID</ParameterName>
-            <BindedVariableOrParameterName>User::runCycleID</BindedVariableOrParameterName>
-          </ParameterAssignment>
-        </ExecutePackageTask>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
       DTS:refId="Package\Sequence Container"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
-      DTS:DTSID="{65AFF857-48D5-428D-A735-24098EF8DE51}"
+      DTS:DTSID="{3AB4B3A9-BFDD-400B-A783-5BBB28BE3035}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
       DTS:ObjectName="Sequence Container">
@@ -89,7 +60,7 @@
           DTS:refId="Package\Sequence Container\Data Flow Task"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{02E3B58E-E5D7-47DB-9EE6-8D5FCDCE48B6}"
+          DTS:DTSID="{1F54D97D-26A6-435B-9F6E-7D4FE8DBAC4C}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="Data Flow Task"
@@ -752,7 +723,7 @@ or (R.vcRequestStatus &lt;&gt; 'Closed')</property>
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping">"0:Input",{9435F92E-FE7B-48D4-A01B-A488ABDBCAD9};</property>
+                      name="ParameterMapping">"0:Input",{52E7B99F-896F-4E17-A592-6FF393C9620C};</property>
                   </properties>
                   <connections>
                     <connection
@@ -1609,7 +1580,7 @@ or (R.vcRequestStatus &lt;&gt; 'Closed')</property>
       DTS:refId="Package\Start Run Cycle"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:DTSID="{bfa12789-1ca4-4578-9dce-ba18d210f502}"
+      DTS:DTSID="{9b7d1831-06c9-44b3-8043-007b3025339b}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Start Run Cycle"
@@ -1630,12 +1601,41 @@ or (R.vcRequestStatus &lt;&gt; 'Closed')</property>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Stop Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{06b4a4e5-82c8-45d3-ae1b-52e84c4098dd}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Stop Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StopRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>isComplete</ParameterName>
+            <BindedVariableOrParameterName>User::isComplete</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>runCycleID</ParameterName>
+            <BindedVariableOrParameterName>User::runCycleID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{CB0539B4-C705-45C4-9557-5049C59CF64D}"
+      DTS:DTSID="{EBEBCD02-0CA1-4706-9C33-FA7D7EF80C1E}"
       DTS:From="Package\Start Run Cycle"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -1643,11 +1643,11 @@ or (R.vcRequestStatus &lt;&gt; 'Closed')</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{4086B908-7ED0-4221-863F-DA6EFCF7C4DF}"
+      DTS:DTSID="{7462A076-551D-4E9F-9095-478E4CB951D4}"
       DTS:From="Package\Sequence Container"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\End Run Cycle" />
+      DTS:To="Package\Stop Run Cycle" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1662,34 +1662,46 @@ or (R.vcRequestStatus &lt;&gt; 'Closed')</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="151.2,41.6"
+          Size="184.8,41.6"
           Id="Package\Start Run Cycle"
-          TopLeft="544,23" />
+          TopLeft="362.49998797973,51.3333332644569" />
         <NodeLayout
-          Size="139.2,41.6"
+          Size="150.4,41.6"
           Id="Package\Sequence Container\Data Flow Task"
-          TopLeft="372,57.6" />
+          TopLeft="245.899983012677,41.8000008471808" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="848.8,174.4"
-          Size="848.8,217.6"
+          PanelSize="612.8,178.4"
+          Size="612.8,221.6"
           Id="Package\Sequence Container"
-          TopLeft="197,122" />
+          TopLeft="181.666659447882,160.333334607548" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="620.5,64.6">
+          TopLeft="454.89998797973,92.9333332644569">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,57.4000000000001"
+              EndConnector="33.1666714681519,67.4000013430913"
               Start="0,0"
-              End="0,49.9000000000001">
+              End="33.1666714681519,59.9000013430913">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,49.9000000000001" />
+                    End="0,29.7000006715457" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.7000006715457"
+                    Point2="0,33.7000006715457"
+                    Point3="4,33.7000006715457" />
+                  <mssgle:LineSegment
+                    End="29.1666714681519,33.7000006715457" />
+                  <mssgle:CubicBezierSegment
+                    Point1="29.1666714681519,33.7000006715457"
+                    Point2="33.1666714681519,33.7000006715457"
+                    Point3="33.1666714681519,37.7000006715457" />
+                  <mssgle:LineSegment
+                    End="33.1666714681519,59.9000013430913" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1699,23 +1711,23 @@ or (R.vcRequestStatus &lt;&gt; 'Closed')</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="136.8,41.6"
-          Id="Package\End Run Cycle"
-          TopLeft="550,399.2" />
+          Size="150.4,41.6"
+          Id="Package\Stop Run Cycle"
+          TopLeft="406.666650507186,442.800002272924" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="619.9,339.6">
+          TopLeft="484.966654977534,381.933334607548">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,59.6"
+              EndConnector="0,60.8666676653756"
               Start="0,0"
-              End="0,52.1">
+              End="0,53.3666676653756">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.1" />
+                    End="0,53.3666676653756" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1733,27 +1745,39 @@ or (R.vcRequestStatus &lt;&gt; 'Closed')</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="140.8,41.6"
+          Size="152,41.6"
           Id="Package\Sequence Container\Data Flow Task\OLE DB Source"
-          TopLeft="462,76" />
+          TopLeft="392.499984403452,65.0000005165736" />
         <NodeLayout
-          Size="150.4,41.6"
+          Size="163.2,41.6"
           Id="Package\Sequence Container\Data Flow Task\ODBC Destination"
-          TopLeft="457,211" />
+          TopLeft="395.833317604331,215.800001715024" />
         <EdgeLayout
           Id="Package\Sequence Container\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="532.3,117.6">
+          TopLeft="468.499984403452,106.600000516574">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,93.4"
+              EndConnector="8.93333320087862,109.200001198451"
               Start="0,0"
-              End="0,85.9">
+              End="8.93333320087862,101.700001198451">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,85.9" />
+                    End="0,50.6000005992254" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,50.6000005992254"
+                    Point2="0,54.6000005992254"
+                    Point3="4,54.6000005992254" />
+                  <mssgle:LineSegment
+                    End="4.93333320087862,54.6000005992254" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.93333320087862,54.6000005992254"
+                    Point2="8.93333320087862,54.6000005992254"
+                    Point3="8.93333320087862,58.6000005992254" />
+                  <mssgle:LineSegment
+                    End="8.93333320087862,101.700001198451" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
