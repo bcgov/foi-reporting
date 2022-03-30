@@ -1,0 +1,2018 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/24/2022 10:22:00 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-U67UC02"
+  DTS:CreatorName="DESKTOP-U67UC02\abina"
+  DTS:DTSID="{483B5FFD-F553-4C4A-A298-BEA3E7854EE9}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="dimECGroups"
+  DTS:PackageType="5"
+  DTS:VersionBuild="56"
+  DTS:VersionGUID="{5ED50ADF-E212-43CE-BD44-E7836E820437}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5C870839-A08B-46E0-A4BC-F3890FCECC74}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="isComplete">
+      <DTS:VariableValue
+        DTS:DataType="11">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B6F85FE1-1AD0-41E5-BD89-1A3FC1782878}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="lastRunCycleTime">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{96ADB5C2-F2DA-473E-A236-FDDAB85C3255}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="runCycleID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\seqc_ECGroups"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{11834680-e025-4850-a492-547cde8517ba}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="seqc_ECGroups">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{614aeffc-b4f0-45be-ada1-0dc370f5d4ee}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="edwgroupcount">
+          <DTS:VariableValue
+            DTS:DataType="20">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{a7a32645-33e6-43d9-b4d4-00a1951529bd}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="modifiedgroupcount">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{d82e7e8a-3ce3-43a9-ad9c-f4ec6bbe30b5}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="newecgroups">
+          <DTS:VariableValue
+            DTS:DataSubType="ManagedSerializable"
+            DTS:DataType="13">
+            <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+              <SOAP-ENV:Body>
+                <xsd:anyType
+                  id="ref-1"></xsd:anyType>
+              </SOAP-ENV:Body>
+            </SOAP-ENV:Envelope>
+          </DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{e6316ecc-37d6-403c-904e-2cc8f2eec309}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="newgroupcount">
+          <DTS:VariableValue
+            DTS:DataType="20">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{0c727548-7f3f-463e-acb1-c2ac38a87d01}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="updatedecgroups">
+          <DTS:VariableValue
+            DTS:DataSubType="ManagedSerializable"
+            DTS:DataType="13">
+            <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+              <SOAP-ENV:Body>
+                <xsd:anyType
+                  id="ref-1"></xsd:anyType>
+              </SOAP-ENV:Body>
+            </SOAP-ENV:Envelope>
+          </DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\seqc_ECGroups\dft_InitialLoadECGroups"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{8b22d967-213f-49f4-a5a4-483ac58808ba}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="dft_InitialLoadECGroups"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination"
+                  componentClassID="Microsoft.SSISODBCDst"
+                  contactInfo="ODBC Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="ODBC Destination"
+                  name="ODBC Destination"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="The name of the table to be fetched."
+                      expressionType="Notify"
+                      name="TableName">"public"."dimECGroups"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the number of rows fetched per batch."
+                      expressionType="Notify"
+                      name="BatchSize">1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of rows inserted under the same transaction."
+                      expressionType="Notify"
+                      name="TransactionSize">1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines the chunk size allocation for LOB columns"
+                      expressionType="Notify"
+                      name="LobChunkSize">32768</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                      expressionType="Notify"
+                      name="StatementTimeout">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The code page to use when code page information is unavailable from the data source."
+                      expressionType="Notify"
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                      expressionType="Notify"
+                      name="InsertMethod">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The ODBC C data type for binding numeric data."
+                      expressionType="Notify"
+                      name="BindNumericAs">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                      expressionType="Notify"
+                      name="BindCharColumnsAs">0</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Connections[ODBCConnection]"
+                      connectionManagerID="{F1356C9E-12B8-4059-B557-91D2500C60CE}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[localhost.foi_edw.postgres]"
+                      description="The ODBC runtime connection used to access the database."
+                      name="ODBCConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="ODBC Destination Input"
+                      truncationRowDisposition="FailComponent">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].Columns[groupid]"
+                          cachedDataType="i4"
+                          cachedName="groupid"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[groupid]"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[groupid]" />
+                        <inputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].Columns[groupname]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="groupname"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[groupname]"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[groupname]" />
+                        <inputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].Columns[tllgroupname]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3000"
+                          cachedName="tllgroupname"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[tllgroupname]"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[tllgroupname]" />
+                        <inputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].Columns[groupdescription]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="500"
+                          cachedName="groupdescription"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[groupdescription]"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[groupdescription]" />
+                        <inputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].Columns[isactive]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="isactive"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[isactive]"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[isactive]" />
+                        <inputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].Columns[createddate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="createddate"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[createddate]"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[createddate]" />
+                        <inputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].Columns[modifieddate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="modifieddate"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[modifieddate]"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[modifieddate]" />
+                        <inputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].Columns[groupcode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="4"
+                          cachedName="groupcode"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[groupcode]"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[groupcode]" />
+                        <inputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].Columns[deleteflag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="deleteflag"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[deleteflag]"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[deleteflag]" />
+                        <inputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].Columns[officeid]"
+                          cachedDataType="i4"
+                          cachedName="officeid"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[officeid]"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[officeid]" />
+                        <inputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].Columns[emailid]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="emailid"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[emailid]"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[emailid]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[groupid]"
+                          dataType="i4"
+                          name="groupid" />
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[groupname]"
+                          dataType="wstr"
+                          length="255"
+                          name="groupname" />
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[tllgroupname]"
+                          dataType="wstr"
+                          length="3000"
+                          name="tllgroupname" />
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[groupdescription]"
+                          dataType="wstr"
+                          length="500"
+                          name="groupdescription" />
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[isactive]"
+                          dataType="wstr"
+                          length="1"
+                          name="isactive" />
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[createddate]"
+                          dataType="dbTimeStamp2"
+                          name="createddate"
+                          scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[modifieddate]"
+                          dataType="dbTimeStamp2"
+                          name="modifieddate"
+                          scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[groupcode]"
+                          dataType="wstr"
+                          length="4"
+                          name="groupcode" />
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[deleteflag]"
+                          dataType="wstr"
+                          length="1"
+                          name="deleteflag" />
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[officeid]"
+                          dataType="i4"
+                          name="officeid" />
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[emailid]"
+                          dataType="wstr"
+                          length="255"
+                          name="emailid" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Outputs[ODBC Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="ODBC Destination Error Output"
+                      synchronousInputId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select 
+	ECG.GROUP_ID as groupid,
+	ECG.GROUP_NAME as groupname,
+	TLL.vcTerminology as tllgroupname,
+	ECG.DESCRIPTION as groupdescription,
+	ECG.IS_ACTIVE as isactive,
+	ECG.CREATED_DATE as createddate,
+	ECG.MODIFIED_DATE as modifieddate,
+	ECG.GROUP_CODE as groupcode,
+	ECG.DELETE_FLAG as deleteflag,
+	ECG.OFFICE_ID as officeid,
+	ECG.EMAIL_ID as emailid
+From EC_GROUPS ECG 
+LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.tiLocaleID = 1</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="{4505C521-0836-4CAA-8A51-8DA634D4EA56}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.ATIPD]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[groupid]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[groupid]"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[groupid]"
+                          name="groupid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[groupname]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[groupname]"
+                          length="255"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[groupname]"
+                          name="groupname"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[tllgroupname]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tllgroupname]"
+                          length="3000"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[tllgroupname]"
+                          name="tllgroupname"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[groupdescription]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[groupdescription]"
+                          length="500"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[groupdescription]"
+                          name="groupdescription"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[isactive]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[isactive]"
+                          length="1"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[isactive]"
+                          name="isactive"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[createddate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[createddate]"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[createddate]"
+                          name="createddate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[modifieddate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[modifieddate]"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[modifieddate]"
+                          name="modifieddate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[groupcode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[groupcode]"
+                          length="4"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[groupcode]"
+                          name="groupcode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[deleteflag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[deleteflag]"
+                          length="1"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[deleteflag]"
+                          name="deleteflag"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[officeid]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[officeid]"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[officeid]"
+                          name="officeid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[emailid]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[emailid]"
+                          length="255"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].Columns[emailid]"
+                          name="emailid"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[groupid]"
+                          dataType="i4"
+                          name="groupid" />
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[groupname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="groupname" />
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tllgroupname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          name="tllgroupname" />
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[groupdescription]"
+                          codePage="1252"
+                          dataType="str"
+                          length="500"
+                          name="groupdescription" />
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[isactive]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="isactive" />
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[createddate]"
+                          dataType="dbTimeStamp"
+                          name="createddate" />
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[modifieddate]"
+                          dataType="dbTimeStamp"
+                          name="modifieddate" />
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[groupcode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          name="groupcode" />
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[deleteflag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="deleteflag" />
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[officeid]"
+                          dataType="i4"
+                          name="officeid" />
+                        <externalMetadataColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[emailid]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="emailid" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[groupid]"
+                          dataType="i4"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[groupid]"
+                          name="groupid" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[groupname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[groupname]"
+                          name="groupname" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tllgroupname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tllgroupname]"
+                          name="tllgroupname" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[groupdescription]"
+                          codePage="1252"
+                          dataType="str"
+                          length="500"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[groupdescription]"
+                          name="groupdescription" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[isactive]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[isactive]"
+                          name="isactive" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[createddate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[createddate]"
+                          name="createddate" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[modifieddate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[modifieddate]"
+                          name="modifieddate" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[groupcode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[groupcode]"
+                          name="groupcode" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[deleteflag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[deleteflag]"
+                          name="deleteflag" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[officeid]"
+                          dataType="i4"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[officeid]"
+                          name="officeid" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[emailid]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[emailid]"
+                          name="emailid" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\seqc_ECGroups\dft_InitialLoadECGroups.Paths[OLE DB Source Output]"
+                  endId="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination.Inputs[ODBC Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\seqc_ECGroups\Execute SQL Task  - New EC Groups"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{a6ee5e40-e1d0-48c6-85b4-8644cee04416}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute SQL Task  - New EC Groups"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;SELECT ECG.GROUP_ID as groupid,&#xA;&#x9;ECG.GROUP_NAME as groupname,&#xA;&#x9;TLL.vcTerminology as tllgroupname,&#xA;&#x9;ECG.DESCRIPTION as groupdescription,&#xA;&#x9;ECG.IS_ACTIVE as isactive,&#xA;&#x9;convert(varchar, ECG.CREATED_DATE, 120) as createddate,&#xA;&#x9;convert(varchar, ECG.MODIFIED_DATE , 120)as modifieddate,&#x9;&#xA;&#x9;ECG.GROUP_CODE as groupcode,&#xA;&#x9;ECG.DELETE_FLAG as deleteflag,&#xA;&#x9;ECG.OFFICE_ID as officeid,&#xA;&#x9;ECG.EMAIL_ID as emailid FROM EC_GROUPS ECG &#xA;LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID WHERE TLL.tiLocaleID = 1 AND (ECG.CREATED_DATE &gt;= @lastruntime);"
+              SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::newecgroups" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\seqc_ECGroups\Execute SQL Task - Modified Groups exists"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{d4c104b4-ed76-4ac8-8dec-946f6a3acd0d}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute SQL Task - Modified Groups exists"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;count(ECG.GROUP_ID) &#xA;From EC_GROUPS ECG &#xA;LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.tiLocaleID = 1&#x9; &#xA;WHERE (  ECG.MODIFIED_DATE &gt;= @lastruntime AND ECG.CREATED_DATE &lt; @lastruntime )&#xA;&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::modifiedgroupcount" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\seqc_ECGroups\Execute SQL Task - Modified Offices"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{f8bc33e6-7a7e-4570-be5b-9526a30a4fda}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute SQL Task - Modified Offices"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;ECG.GROUP_ID as groupid,&#xA;&#x9;ECG.GROUP_NAME as groupname,&#xA;&#x9;TLL.vcTerminology as tllgroupname,&#xA;&#x9;ECG.DESCRIPTION as groupdescription,&#xA;&#x9;ECG.IS_ACTIVE as isactive,&#xA;&#x9;convert(varchar, ECG.CREATED_DATE, 120) as createddate,&#xA;&#x9;convert(varchar, ECG.MODIFIED_DATE , 120)as modifieddate,&#x9;&#xA;&#x9;ECG.GROUP_CODE as groupcode,&#xA;&#x9;ECG.DELETE_FLAG as deleteflag,&#xA;&#x9;ECG.OFFICE_ID as officeid,&#xA;&#x9;ISNULL(ECG.EMAIL_ID,'') as emailid&#xA;&#xA;From EC_GROUPS ECG &#xA;LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.tiLocaleID = 1&#x9; &#xA;WHERE ECG.MODIFIED_DATE &gt;= @lastruntime AND ECG.CREATED_DATE &lt; @lastruntime"
+              SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::updatedecgroups" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\seqc_ECGroups\exeSQLtask_newGroupsCount"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="exeSQLtask_newGroupsCount"
+          DTS:DTSID="{8e28c127-0393-4cf9-a08e-179ec3c86935}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="exeSQLtask_newGroupsCount"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;SELECT COUNT(ECG.GROUP_ID) FROM EC_GROUPS ECG &#xA;LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID WHERE TLL.tiLocaleID = 1 AND (ECG.CREATED_DATE &gt;= @lastruntime);"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::newgroupcount" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lastRunCycleTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\seqc_ECGroups\exeSQL_HasEGroupsEDW"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="exeSQL_HasEGroupsEDW"
+          DTS:DTSID="{689565de-1a5e-46dd-8273-d962e5119b19}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="exeSQL_HasEGroupsEDW"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+              SQLTask:SqlStatementSource="SELECT count(groupid) as cnt FROM public.&quot;dimECGroups&quot;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="1"
+                SQLTask:DtsVariableName="User::edwgroupcount" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\seqc_ECGroups\Foreach Loop ContainerModifiedGroups"
+          DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:Description="Foreach Loop ContainerModifiedGroups"
+          DTS:DTSID="{4e9f9b8f-1ff1-4750-987d-c7624115aa7c}"
+          DTS:ExecutableType="STOCK:FOREACHLOOP"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Foreach Loop ContainerModifiedGroups">
+          <DTS:ForEachEnumerator
+            DTS:CreationName="Microsoft.ForEachADOEnumerator"
+            DTS:DTSID="{66cbcb83-9a70-42c4-93f2-8bb971cc84a6}"
+            DTS:ObjectName="{3FEB147C-A26A-4B0F-9811-C6B5CBB4FF18}">
+            <DTS:ObjectData>
+              <FEEADO
+                EnumType="EnumerateRowsInFirstTable"
+                VarName="User::updatedecgroups" />
+            </DTS:ObjectData>
+          </DTS:ForEachEnumerator>
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{8FDFAE58-E992-4340-8586-2D3C72DB4779}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="createddate">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{CEDB4D24-9AEA-4674-934D-C7FE94AED726}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="deleteflag">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{A1F96A08-2BC0-4368-BF32-8BDD2492534F}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="emailid">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{12D8509A-A04F-479E-A91A-DF04F6784FBF}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="groupcode">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{10BB757F-CCA4-4580-BCF3-7F9F75F704CF}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="groupdescription">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{704DB779-F9E0-462C-946B-4C331D3F7270}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="groupid">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{B1D77FE5-146B-4FA4-A687-E38B9A4311E7}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="groupname">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{1B009A27-3184-4F10-B377-4AE81BC07BE8}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="isactive">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{4A652DAA-DACD-40FE-97DE-5B86B9310875}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="modifieddate">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{480BBF93-A4DA-4548-96D3-3BE859A6D424}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="officeid">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{527AD47B-8360-4349-92BB-B3013C552AA1}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="tllgroupname">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\seqc_ECGroups\Foreach Loop ContainerModifiedGroups\Execute SQL Task"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{dd4b07a8-b5bf-44a5-88b6-988256ce6fba}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Execute SQL Task"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+                  SQLTask:BypassPrepare="False"
+                  SQLTask:SqlStatementSource="UPDATE public.&quot;dimECGroups&quot;&#xA;&#x9;SET  groupname=?, tllgroupname=?, groupdescription=?, isactive=?, createddate=to_timestamp(?,'YYYY-MM-DD hh24:mi:ss'), modifieddate=to_timestamp(?,'YYYY-MM-DD hh24:mi:ss'), groupcode=?, deleteflag=?, officeid=?, emailid=?&#xA;&#x9;WHERE groupid=?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="1"
+                    SQLTask:DtsVariableName="User::groupname"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="2"
+                    SQLTask:DtsVariableName="User::tllgroupname"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="3"
+                    SQLTask:DtsVariableName="User::groupdescription"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="4"
+                    SQLTask:DtsVariableName="User::isactive"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="5"
+                    SQLTask:DtsVariableName="User::createddate"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="6"
+                    SQLTask:DtsVariableName="User::modifieddate"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="7"
+                    SQLTask:DtsVariableName="User::groupcode"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="8"
+                    SQLTask:DtsVariableName="User::deleteflag"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="9"
+                    SQLTask:DtsVariableName="User::officeid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="10"
+                    SQLTask:DtsVariableName="User::emailid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="11"
+                    SQLTask:DtsVariableName="User::groupid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:ForEachVariableMappings>
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{CC432097-FB1E-4D4A-B1DA-1EB286975F8C}"
+              DTS:ObjectName="{CC432097-FB1E-4D4A-B1DA-1EB286975F8C}"
+              DTS:ValueIndex="0"
+              DTS:VariableName="User::groupid" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{36D4AA34-AD34-4955-A7AD-2AF10A3347FF}"
+              DTS:ObjectName="{36D4AA34-AD34-4955-A7AD-2AF10A3347FF}"
+              DTS:ValueIndex="1"
+              DTS:VariableName="User::groupname" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{E9CCD20F-444B-49B3-B53E-AFB68FB9EF2D}"
+              DTS:ObjectName="{E9CCD20F-444B-49B3-B53E-AFB68FB9EF2D}"
+              DTS:ValueIndex="2"
+              DTS:VariableName="User::tllgroupname" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{3C54582C-F434-477D-9A73-6AC24D5F9BEC}"
+              DTS:ObjectName="{3C54582C-F434-477D-9A73-6AC24D5F9BEC}"
+              DTS:ValueIndex="3"
+              DTS:VariableName="User::groupdescription" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{D4B0FC08-35E6-4C3F-A21E-BFA418EB740D}"
+              DTS:ObjectName="{D4B0FC08-35E6-4C3F-A21E-BFA418EB740D}"
+              DTS:ValueIndex="4"
+              DTS:VariableName="User::isactive" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{A350E475-1FAA-4DA1-B48A-E98FCA27FCFD}"
+              DTS:ObjectName="{A350E475-1FAA-4DA1-B48A-E98FCA27FCFD}"
+              DTS:ValueIndex="5"
+              DTS:VariableName="User::createddate" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{347DA0C9-33FB-4571-9D4A-1F0C1D1AD19C}"
+              DTS:ObjectName="{347DA0C9-33FB-4571-9D4A-1F0C1D1AD19C}"
+              DTS:ValueIndex="6"
+              DTS:VariableName="User::modifieddate" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{446B45C2-6695-40B0-B54A-4B24B275808B}"
+              DTS:ObjectName="{446B45C2-6695-40B0-B54A-4B24B275808B}"
+              DTS:ValueIndex="7"
+              DTS:VariableName="User::groupcode" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{6559BC75-E445-4B69-BF72-CC110FC44554}"
+              DTS:ObjectName="{6559BC75-E445-4B69-BF72-CC110FC44554}"
+              DTS:ValueIndex="8"
+              DTS:VariableName="User::deleteflag" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{4186E123-B508-4C2E-81D9-C23782773723}"
+              DTS:ObjectName="{4186E123-B508-4C2E-81D9-C23782773723}"
+              DTS:ValueIndex="9"
+              DTS:VariableName="User::officeid" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{A692C94B-1AFA-401F-8AC4-54ED72DB6128}"
+              DTS:ObjectName="{A692C94B-1AFA-401F-8AC4-54ED72DB6128}"
+              DTS:ValueIndex="10"
+              DTS:VariableName="User::emailid" />
+          </DTS:ForEachVariableMappings>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\seqc_ECGroups\Foreach Loop ContainernewGroups"
+          DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:Description="Foreach Loop ContainernewGroups"
+          DTS:DTSID="{6de99199-4067-4b0f-bcab-54900ccccf37}"
+          DTS:ExecutableType="STOCK:FOREACHLOOP"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Foreach Loop ContainernewGroups">
+          <DTS:ForEachEnumerator
+            DTS:CreationName="Microsoft.ForEachADOEnumerator"
+            DTS:DTSID="{c802dddd-4f47-4c5d-bb44-fb8b7cbe2522}"
+            DTS:ObjectName="{3FEB147C-A26A-4B0F-9811-C6B5CBB4FF18}">
+            <DTS:ObjectData>
+              <FEEADO
+                EnumType="EnumerateRowsInFirstTable"
+                VarName="User::newecgroups" />
+            </DTS:ObjectData>
+          </DTS:ForEachEnumerator>
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{6fe98a07-1fdb-481b-96e1-4e1cd1899dc5}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="createddate">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{47034fe7-47ae-4fae-a0c5-ae16188752f8}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="deleteflag">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{f5d00eb4-7946-4901-b691-42e92dbd9d49}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="emailid">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{bc1da757-0945-4a56-bed5-b514c98812c5}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="groupcode">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{67ef0396-26b8-4556-a8fb-3b362ca23f2f}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="groupdescription">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{6629eeff-6f64-4446-9cfd-0d9e4badd33b}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="groupid">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{cfb46a1c-2595-4cee-80f3-494725acd14f}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="groupname">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{767fa7b4-067e-4d1c-9d32-fbb0b2f6b632}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="isactive">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{fe1c4bc3-2e16-4794-9de9-49d904137796}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="modifieddate">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{f8d10cba-a818-47a0-b99d-266c0a42d2a9}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="officeid">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{bf69df4a-3ae1-4249-aeec-bd4097ac5a69}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="tllgroupname">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\seqc_ECGroups\Foreach Loop ContainernewGroups\Execute SQL Task"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{ca9fa91b-6257-4223-a514-177e749003da}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Execute SQL Task"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+                  SQLTask:BypassPrepare="False"
+                  SQLTask:SqlStatementSource="INSERT INTO public.&quot;dimECGroups&quot;(&#xA;&#x9;groupname, tllgroupname, groupdescription, isactive, createddate, modifieddate, groupcode, deleteflag, officeid, emailid,groupid)&#xA;&#x9;VALUES (?, ?, ?, ?, to_timestamp(?,'YYYY-MM-DD hh24:mi:ss'), to_timestamp(?,'YYYY-MM-DD hh24:mi:ss'), ?, ?, ?, ?, ?);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="1"
+                    SQLTask:DtsVariableName="User::groupname"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="2"
+                    SQLTask:DtsVariableName="User::tllgroupname"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="3"
+                    SQLTask:DtsVariableName="User::groupdescription"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="4"
+                    SQLTask:DtsVariableName="User::isactive"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="5"
+                    SQLTask:DtsVariableName="User::createddate"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="6"
+                    SQLTask:DtsVariableName="User::modifieddate"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="7"
+                    SQLTask:DtsVariableName="User::groupcode"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="8"
+                    SQLTask:DtsVariableName="User::deleteflag"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="9"
+                    SQLTask:DtsVariableName="User::officeid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="10"
+                    SQLTask:DtsVariableName="User::emailid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="11"
+                    SQLTask:DtsVariableName="User::groupid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:ForEachVariableMappings>
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{95CC39AF-3BA8-41FD-B913-FBEAF77D9A76}"
+              DTS:ObjectName="{95CC39AF-3BA8-41FD-B913-FBEAF77D9A76}"
+              DTS:ValueIndex="0"
+              DTS:VariableName="User::groupid" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{D6F4D88E-B800-431B-8C7B-10FBA5A1F041}"
+              DTS:ObjectName="{D6F4D88E-B800-431B-8C7B-10FBA5A1F041}"
+              DTS:ValueIndex="1"
+              DTS:VariableName="User::groupname" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{E5BD9710-D567-404E-B811-459751C4035B}"
+              DTS:ObjectName="{E5BD9710-D567-404E-B811-459751C4035B}"
+              DTS:ValueIndex="2"
+              DTS:VariableName="User::tllgroupname" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{382AB4A7-17F1-4038-B5F6-E08CD5433C21}"
+              DTS:ObjectName="{382AB4A7-17F1-4038-B5F6-E08CD5433C21}"
+              DTS:ValueIndex="3"
+              DTS:VariableName="User::groupdescription" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{19B25FA6-E325-4004-B6E1-2C6EFBFAAE04}"
+              DTS:ObjectName="{19B25FA6-E325-4004-B6E1-2C6EFBFAAE04}"
+              DTS:ValueIndex="4"
+              DTS:VariableName="User::isactive" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{9562A9CF-AA28-4888-AB49-69F41529E906}"
+              DTS:ObjectName="{9562A9CF-AA28-4888-AB49-69F41529E906}"
+              DTS:ValueIndex="5"
+              DTS:VariableName="User::createddate" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{7BFD8026-8E75-4630-B082-0CEF9D8190D6}"
+              DTS:ObjectName="{7BFD8026-8E75-4630-B082-0CEF9D8190D6}"
+              DTS:ValueIndex="6"
+              DTS:VariableName="User::modifieddate" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{2F2E0BA5-909D-45C8-B83D-F7273AD80573}"
+              DTS:ObjectName="{2F2E0BA5-909D-45C8-B83D-F7273AD80573}"
+              DTS:ValueIndex="7"
+              DTS:VariableName="User::groupcode" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{048833EB-92C6-4135-AB66-F90659C0017F}"
+              DTS:ObjectName="{048833EB-92C6-4135-AB66-F90659C0017F}"
+              DTS:ValueIndex="8"
+              DTS:VariableName="User::deleteflag" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{B98BD97E-909E-40FA-8CC5-6357BA1AF3B5}"
+              DTS:ObjectName="{B98BD97E-909E-40FA-8CC5-6357BA1AF3B5}"
+              DTS:ValueIndex="9"
+              DTS:VariableName="User::officeid" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{8B5098C9-C724-48C4-8F77-E2E9562BE07D}"
+              DTS:ObjectName="{8B5098C9-C724-48C4-8F77-E2E9562BE07D}"
+              DTS:ValueIndex="10"
+              DTS:VariableName="User::emailid" />
+          </DTS:ForEachVariableMappings>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\seqc_ECGroups.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{6e755f8c-ef76-46e4-a94d-bfcebc834d76}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::edwgroupcount] == 0"
+          DTS:From="Package\seqc_ECGroups\exeSQL_HasEGroupsEDW"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\seqc_ECGroups\dft_InitialLoadECGroups" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\seqc_ECGroups.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{83b16ac7-89ad-4b55-9cda-867253c78098}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::edwgroupcount] &gt;  0"
+          DTS:From="Package\seqc_ECGroups\exeSQL_HasEGroupsEDW"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\seqc_ECGroups\Execute SQL Task - Modified Groups exists" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\seqc_ECGroups.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{0a09b201-3c6c-4d9a-ad2d-16642a9f1bb4}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::edwgroupcount] &gt;  0"
+          DTS:From="Package\seqc_ECGroups\exeSQL_HasEGroupsEDW"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\seqc_ECGroups\exeSQLtask_newGroupsCount" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\seqc_ECGroups.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{f92f29e1-2b86-4278-ae0b-74b40c1dbfcb}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::modifiedgroupcount] &gt; 0"
+          DTS:From="Package\seqc_ECGroups\Execute SQL Task - Modified Groups exists"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\seqc_ECGroups\Execute SQL Task - Modified Offices" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\seqc_ECGroups.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{48B59073-5D57-40D3-A456-214A16210C6C}"
+          DTS:From="Package\seqc_ECGroups\Execute SQL Task  - New EC Groups"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\seqc_ECGroups\Foreach Loop ContainernewGroups" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\seqc_ECGroups.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{f398c44b-58c6-4e6d-854e-f713d9c3ad27}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::modifiedgroupcount] &gt;0"
+          DTS:From="Package\seqc_ECGroups\Execute SQL Task - Modified Offices"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\seqc_ECGroups\Foreach Loop ContainerModifiedGroups" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\seqc_ECGroups.PrecedenceConstraints[Constraint 6]"
+          DTS:CreationName=""
+          DTS:DTSID="{e30e2f02-b602-4314-a479-bf9ff62f83de}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::newgroupcount] &gt;0"
+          DTS:From="Package\seqc_ECGroups\exeSQLtask_newGroupsCount"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 6"
+          DTS:To="Package\seqc_ECGroups\Execute SQL Task  - New EC Groups" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{796B0F48-54E2-4E6F-964F-BCBC804F53E6}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StartRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>packageID</ParameterName>
+            <BindedVariableOrParameterName>System::PackageID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Stop Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{69549CED-C8C7-48BF-8197-51C4EBEF4E7C}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Stop Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StopRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>isComplete</ParameterName>
+            <BindedVariableOrParameterName>User::isComplete</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>runCycleID</ParameterName>
+            <BindedVariableOrParameterName>User::runCycleID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{D4E33D64-2435-468B-B962-8D7BDC8A1E8C}"
+      DTS:From="Package\Start Run Cycle"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\seqc_ECGroups" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{BD71D573-AD6A-476F-8E2C-E8F0CDE81429}"
+      DTS:From="Package\seqc_ECGroups"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Stop Run Cycle" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="190.4,41.6"
+          Id="Package\seqc_ECGroups\dft_InitialLoadECGroups"
+          TopLeft="89.9666599445881,174.400002562205" />
+        <NodeLayout
+          Size="249.6,41.6"
+          Id="Package\seqc_ECGroups\Execute SQL Task  - New EC Groups"
+          TopLeft="854.16662954622,322.466670392885" />
+        <NodeLayout
+          Size="277.6,41.6"
+          Id="Package\seqc_ECGroups\Execute SQL Task - Modified Groups exists"
+          TopLeft="413.333313730028,293.266670186255" />
+        <NodeLayout
+          Size="248.8,41.6"
+          Id="Package\seqc_ECGroups\Execute SQL Task - Modified Offices"
+          TopLeft="503.333310153751,408.400003760656" />
+        <NodeLayout
+          Size="228,41.6"
+          Id="Package\seqc_ECGroups\exeSQL_HasEGroupsEDW"
+          TopLeft="319.09998420477,48.666668223275" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\seqc_ECGroups\exeSQLtask_newGroupsCount"
+          TopLeft="785.833298928209,229.866669008467" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\seqc_ECGroups\Foreach Loop ContainerModifiedGroups\Execute SQL Task"
+          TopLeft="118.166643056606,46.1333383475409" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="396,140.8"
+          Size="396,184"
+          Id="Package\seqc_ECGroups\Foreach Loop ContainerModifiedGroups"
+          TopLeft="233.333320882585,507.333338554171" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\seqc_ECGroups\Foreach Loop ContainernewGroups\Execute SQL Task"
+          TopLeft="118.166643056606,47.0000050210953" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="396,140.8"
+          Size="396,184"
+          Id="Package\seqc_ECGroups\Foreach Loop ContainernewGroups"
+          TopLeft="792.499966124695,476.133337727653" />
+        <EdgeLayout
+          Id="Package\seqc_ECGroups.PrecedenceConstraints[Constraint]"
+          TopLeft="378.09998420477,90.266668223275">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-192.933324260182,84.13333433893"
+              Start="0,0"
+              End="-192.933324260182,76.63333433893">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.6928712485368" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.6928712485368"
+                    Point2="0,28.6928712485368"
+                    Point3="-4,28.6928712485368" />
+                  <mssgle:LineSegment
+                    End="-188.933324260182,28.6928712485368" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-188.933324260182,28.6928712485368"
+                    Point2="-192.933324260182,28.6928712485368"
+                    Point3="-192.933324260182,32.6928712485368" />
+                  <mssgle:LineSegment
+                    End="-192.933324260182,76.63333433893" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-104.466662130091,33.6928712485368,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\seqc_ECGroups.PrecedenceConstraints[Constraint 1]"
+          TopLeft="433.09998420477,90.266668223275">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="119.033329525258,203.00000196298"
+              Start="0,0"
+              End="119.033329525258,195.50000196298">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,97.5000009814898" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,97.5000009814898"
+                    Point2="0,101.50000098149"
+                    Point3="4,101.50000098149" />
+                  <mssgle:LineSegment
+                    End="115.033329525258,101.50000098149" />
+                  <mssgle:CubicBezierSegment
+                    Point1="115.033329525258,101.50000098149"
+                    Point2="119.033329525258,101.50000098149"
+                    Point3="119.033329525258,105.50000098149" />
+                  <mssgle:LineSegment
+                    End="119.033329525258,195.50000196298" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="51.5166647626291,106.50000098149,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\seqc_ECGroups.PrecedenceConstraints[Constraint 2]"
+          TopLeft="488.09998420477,90.266668223275">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="380.133314723439,139.600000785192"
+              Start="0,0"
+              End="380.133314723439,132.100000785192">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.6092488226955" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.6092488226955"
+                    Point2="0,47.6092488226955"
+                    Point3="4,47.6092488226955" />
+                  <mssgle:LineSegment
+                    End="376.133314723439,47.6092488226955" />
+                  <mssgle:CubicBezierSegment
+                    Point1="376.133314723439,47.6092488226955"
+                    Point2="380.133314723439,47.6092488226955"
+                    Point3="380.133314723439,51.6092488226955" />
+                  <mssgle:LineSegment
+                    End="380.133314723439,132.100000785192" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="182.06665736172,52.6092488226955,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\seqc_ECGroups.PrecedenceConstraints[Constraint 3]"
+          TopLeft="552.133313730028,334.866670186255">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="75.5999964237222,73.5333335744016"
+              Start="0,0"
+              End="75.5999964237222,66.0333335744016">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.7666667872008" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.7666667872008"
+                    Point2="0,36.7666667872008"
+                    Point3="4,36.7666667872008" />
+                  <mssgle:LineSegment
+                    End="71.5999964237222,36.7666667872008" />
+                  <mssgle:CubicBezierSegment
+                    Point1="71.5999964237222,36.7666667872008"
+                    Point2="75.5999964237222,36.7666667872008"
+                    Point3="75.5999964237222,40.7666667872008" />
+                  <mssgle:LineSegment
+                    End="75.5999964237222,66.0333335744016" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="29.7999982118611,41.7666667872008,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\seqc_ECGroups.PrecedenceConstraints[Constraint 4]"
+          TopLeft="978.96662954622,364.066670392885">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.5333365784749,112.066667334768"
+              Start="0,0"
+              End="11.5333365784749,104.566667334768">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.033333667384" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,52.033333667384"
+                    Point2="0,56.033333667384"
+                    Point3="4,56.033333667384" />
+                  <mssgle:LineSegment
+                    End="7.53333657847486,56.033333667384" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.53333657847486,56.033333667384"
+                    Point2="11.5333365784749,56.033333667384"
+                    Point3="11.5333365784749,60.033333667384" />
+                  <mssgle:LineSegment
+                    End="11.5333365784749,104.566667334768" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\seqc_ECGroups.PrecedenceConstraints[Constraint 5]"
+          TopLeft="627.73331015375,450.000003760656">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-196.399989271165,57.3333347935151"
+              Start="0,0"
+              End="-196.399989271165,49.8333347935151">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.6666673967576" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.6666673967576"
+                    Point2="0,28.6666673967576"
+                    Point3="-4,28.6666673967576" />
+                  <mssgle:LineSegment
+                    End="-192.399989271165,28.6666673967576" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-192.399989271165,28.6666673967576"
+                    Point2="-196.399989271165,28.6666673967576"
+                    Point3="-196.399989271165,32.6666673967576" />
+                  <mssgle:LineSegment
+                    End="-196.399989271165,49.8333347935151" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-106.199994635583,33.6666673967576,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\seqc_ECGroups.PrecedenceConstraints[Constraint 6]"
+          TopLeft="868.233298928209,271.466669008467">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="110.733330618011,51.0000013844176"
+              Start="0,0"
+              End="110.733330618011,43.5000013844176">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5000006922088" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.5000006922088"
+                    Point2="0,25.5000006922088"
+                    Point3="4,25.5000006922088" />
+                  <mssgle:LineSegment
+                    End="106.733330618011,25.5000006922088" />
+                  <mssgle:CubicBezierSegment
+                    Point1="106.733330618011,25.5000006922088"
+                    Point2="110.733330618011,25.5000006922088"
+                    Point3="110.733330618011,29.5000006922088" />
+                  <mssgle:LineSegment
+                    End="110.733330618011,43.5000013844176" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="47.3666653090056,30.5000006922088,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="1305.6,751.2"
+          Size="1305.6,794.4"
+          Id="Package\seqc_ECGroups"
+          TopLeft="60,157.809524586844" />
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\Start Run Cycle"
+          TopLeft="640.476165025954,50.7619051653241" />
+        <NodeLayout
+          Size="192.8,41.6"
+          Id="Package\Stop Run Cycle"
+          TopLeft="622.619022878391,1030.0952462817" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="714.438082512977,92.3619051653241">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65.4476194215199"
+              Start="0,0"
+              End="0,57.9476194215199">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.9476194215199" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="715.909511439196,952.209524586844">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,77.8857216948559"
+              Start="0,0"
+              End="0,70.3857216948559">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.3857216948559" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\seqc_ECGroups\dft_InitialLoadECGroups">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source"
+          TopLeft="290.166655176216,100.533334132301" />
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination"
+          TopLeft="384.999984701475,442.0000035127" />
+        <EdgeLayout
+          Id="Package\seqc_ECGroups\dft_InitialLoadECGroups.Paths[OLE DB Source Output]"
+          TopLeft="366.166655176216,142.133334132301">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="100.433329525259,299.8666693804"
+              Start="0,0"
+              End="100.433329525259,292.3666693804">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,145.9333346902" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,145.9333346902"
+                    Point2="0,149.9333346902"
+                    Point3="4,149.9333346902" />
+                  <mssgle:LineSegment
+                    End="96.4333295252588,149.9333346902" />
+                  <mssgle:CubicBezierSegment
+                    Point1="96.4333295252588,149.9333346902"
+                    Point2="100.433329525259,149.9333346902"
+                    Point3="100.433329525259,153.9333346902" />
+                  <mssgle:LineSegment
+                    End="100.433329525259,292.3666693804" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

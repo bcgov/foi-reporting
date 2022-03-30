@@ -1,0 +1,855 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/28/2022 10:42:38 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-U67UC02"
+  DTS:CreatorName="DESKTOP-U67UC02\abina"
+  DTS:DTSID="{72040194-8620-4D37-AD66-381863CA9958}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="dimAddressETL"
+  DTS:PackageType="5"
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{7EB0EA1F-FE4C-4A65-8582-8AC67B2D507E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BFF81024-FC1D-42F2-937F-6D2B6B09328A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="isComplete">
+      <DTS:VariableValue
+        DTS:DataType="11">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{77190CBA-0385-452D-B387-9316949D3FCD}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="lastRunCycleTime">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3918ECA3-CAB8-45F4-AEA9-F02382A81A29}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="runCycleID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{7ACC1B70-5D1B-4440-BD77-9275BBEB94B8}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{C5F6484D-93C9-44DF-84FB-C459B9083E6C}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="edwAddressCount">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{7BEBA338-0469-4E3B-AF30-F96A0A45D8A7}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="sourceaddressrows">
+          <DTS:VariableValue
+            DTS:DataSubType="ManagedSerializable"
+            DTS:DataType="13">
+            <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+              <SOAP-ENV:Body>
+                <xsd:anyType
+                  id="ref-1"></xsd:anyType>
+              </SOAP-ENV:Body>
+            </SOAP-ENV:Envelope>
+          </DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{28663AB8-9008-4533-8529-DDB716EA2829}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT_Dimaddress_InitialLoad"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination"
+                  componentClassID="Microsoft.SSISODBCDst"
+                  contactInfo="ODBC Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="ODBC Destination"
+                  name="ODBC Destination"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="The name of the table to be fetched."
+                      expressionType="Notify"
+                      name="TableName">"public"."dimAddress"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the number of rows fetched per batch."
+                      expressionType="Notify"
+                      name="BatchSize">1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of rows inserted under the same transaction."
+                      expressionType="Notify"
+                      name="TransactionSize">1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines the chunk size allocation for LOB columns"
+                      expressionType="Notify"
+                      name="LobChunkSize">32768</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                      expressionType="Notify"
+                      name="StatementTimeout">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The code page to use when code page information is unavailable from the data source."
+                      expressionType="Notify"
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                      expressionType="Notify"
+                      name="InsertMethod">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The ODBC C data type for binding numeric data."
+                      expressionType="Notify"
+                      name="BindNumericAs">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                      expressionType="Notify"
+                      name="BindCharColumnsAs">0</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Connections[ODBCConnection]"
+                      connectionManagerID="{F1356C9E-12B8-4059-B557-91D2500C60CE}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[localhost.foi_edw.postgres]"
+                      description="The ODBC runtime connection used to access the database."
+                      name="ODBCConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="ODBC Destination Input"
+                      truncationRowDisposition="FailComponent">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input].Columns[State]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3000"
+                          cachedName="State"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[state]"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].Columns[State]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input].Columns[Country]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3000"
+                          cachedName="Country"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[country]"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].Columns[Country]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input].Columns[iAddressID]"
+                          cachedDataType="i4"
+                          cachedName="iAddressID"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[addressid]"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].Columns[iAddressID]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input].Columns[vcAddress1]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="150"
+                          cachedName="vcAddress1"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[address1]"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].Columns[vcAddress1]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input].Columns[vcAddress2]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="80"
+                          cachedName="vcAddress2"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[address2]"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].Columns[vcAddress2]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input].Columns[vcCity]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="vcCity"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[city]"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].Columns[vcCity]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input].Columns[vcZipCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="vcZipCode"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[zipcode]"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].Columns[vcZipCode]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[addressid]"
+                          dataType="i4"
+                          name="addressid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[address1]"
+                          dataType="wstr"
+                          length="150"
+                          name="address1" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[address2]"
+                          dataType="wstr"
+                          length="80"
+                          name="address2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[city]"
+                          dataType="wstr"
+                          length="30"
+                          name="city" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[state]"
+                          dataType="wstr"
+                          length="3000"
+                          name="state" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[country]"
+                          dataType="wstr"
+                          length="3000"
+                          name="country" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[zipcode]"
+                          dataType="wstr"
+                          length="10"
+                          name="zipcode" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Outputs[ODBC Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="ODBC Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select
+a.iAddressID,
+a.vcAddress1,
+a.vcAddress2,
+a.vcCity,
+COALESCE (isnull(stccl.vcTerminology, ''), NULL) as State,
+COALESCE (isnull(ctccl.vcTerminology, ''), NULL) as Country,
+a.vcZipCode
+from tblAddress a
+LEFT OUTER JOIN tblCountries c ON a.siCountryID = c.siCountryID
+LEFT OUTER JOIN tblTerminologyLookup ctccl ON c.iLabelID = ctccl.iLabelID and ctccl.tiLocaleID = 1
+LEFT OUTER JOIN [dbo].[tblStates] s ON a.siStateID = s.siStateID
+LEFT OUTER JOIN tblTerminologyLookup stccl ON s.iLabelID = stccl.iLabelID and stccl.tiLocaleID = 1</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="{4505C521-0836-4CAA-8A51-8DA634D4EA56}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.ATIPD]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].Columns[iAddressID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[iAddressID]"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].Columns[iAddressID]"
+                          name="iAddressID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].Columns[vcAddress1]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[vcAddress1]"
+                          length="150"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].Columns[vcAddress1]"
+                          name="vcAddress1"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].Columns[vcAddress2]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[vcAddress2]"
+                          length="80"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].Columns[vcAddress2]"
+                          name="vcAddress2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].Columns[vcCity]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[vcCity]"
+                          length="30"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].Columns[vcCity]"
+                          name="vcCity"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].Columns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                          length="3000"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].Columns[State]"
+                          name="State"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].Columns[Country]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                          length="3000"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].Columns[Country]"
+                          name="Country"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].Columns[vcZipCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[vcZipCode]"
+                          length="10"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].Columns[vcZipCode]"
+                          name="vcZipCode"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[iAddressID]"
+                          dataType="i4"
+                          name="iAddressID" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[vcAddress1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="150"
+                          name="vcAddress1" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[vcAddress2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="80"
+                          name="vcAddress2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[vcCity]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="vcCity" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          name="State" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          name="Country" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[vcZipCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="vcZipCode" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[iAddressID]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[iAddressID]"
+                          name="iAddressID" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[vcAddress1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="150"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[vcAddress1]"
+                          name="vcAddress1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[vcAddress2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="80"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[vcAddress2]"
+                          name="vcAddress2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[vcCity]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[vcCity]"
+                          name="vcCity" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[State]"
+                          name="State" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Country]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Country]"
+                          name="Country" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[vcZipCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[vcZipCode]"
+                          name="vcZipCode" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\DFT_Dimaddress_InitialLoad.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination.Inputs[ODBC Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\EST_truncate_address"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{0DABDA92-E8E8-45BD-8F34-4DD380718FE1}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EST_truncate_address"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+              SQLTask:SqlStatementSource="truncate public.&quot;dimAddress&quot; restart identity;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{2A19B966-0E30-4FB7-A92A-2B823A8A28F6}"
+          DTS:From="Package\Sequence Container\EST_truncate_address"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence Container\DFT_Dimaddress_InitialLoad" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{07120EA9-F69D-4848-B056-9F1027BED7A3}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StartRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>packageID</ParameterName>
+            <BindedVariableOrParameterName>System::PackageID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Stop Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{906FD162-F9DB-4958-9A76-9A9A262BCBC6}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Stop Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StopRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>isComplete</ParameterName>
+            <BindedVariableOrParameterName>User::isComplete</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>runCycleID</ParameterName>
+            <BindedVariableOrParameterName>User::runCycleID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{950418F5-8ABB-4419-A994-466B6F9983B1}"
+      DTS:From="Package\Start Run Cycle"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sequence Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{3BBDFFB2-B995-4AE2-A47A-9FDAB74F602A}"
+      DTS:From="Package\Sequence Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Stop Run Cycle" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="249.6,41.6"
+          Id="Package\Sequence Container\DFT_Dimaddress_InitialLoad"
+          TopLeft="418.466641963854,252.666670124266" />
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Sequence Container\EST_truncate_address"
+          TopLeft="410.933308961657,75.8666687191858" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          TopLeft="503.333308961657,117.466668719186">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="39.9333330021968,135.20000140508"
+              Start="0,0"
+              End="39.9333330021968,127.70000140508">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.60000070254" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,63.60000070254"
+                    Point2="0,67.60000070254"
+                    Point3="4,67.60000070254" />
+                  <mssgle:LineSegment
+                    End="35.9333330021968,67.60000070254" />
+                  <mssgle:CubicBezierSegment
+                    Point1="35.9333330021968,67.60000070254"
+                    Point2="39.9333330021968,67.60000070254"
+                    Point3="39.9333330021968,71.60000070254" />
+                  <mssgle:LineSegment
+                    End="39.9333330021968,127.70000140508" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="1160.8,760.8"
+          Size="1160.8,804"
+          Id="Package\Sequence Container"
+          TopLeft="202.499991953374,139.533334442245" />
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\Start Run Cycle"
+          TopLeft="712.499971687795,43.3333336777157" />
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Stop Run Cycle"
+          TopLeft="689.166639281645,1004.60000650883" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="785.499981820584,84.9333336777157">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54.6000007645293"
+              Start="0,0"
+              End="0,47.1000007645293">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.1000007645293" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="782.233315617509,943.533334442245">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.0666720665852"
+              Start="0,0"
+              End="0,53.5666720665852">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5666720665852" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence Container\DFT_Dimaddress_InitialLoad">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source"
+          TopLeft="251.666656666332,110.933334214952" />
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination"
+          TopLeft="231.666657461061,361.400002872149" />
+        <EdgeLayout
+          Id="Package\Sequence Container\DFT_Dimaddress_InitialLoad.Paths[OLE DB Source Output]"
+          TopLeft="327.666656666332,152.533334214952">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.3999992052713,208.866668657197"
+              Start="0,0"
+              End="-14.3999992052713,201.366668657197">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,100.433334328599" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,100.433334328599"
+                    Point2="0,104.433334328599"
+                    Point3="-4,104.433334328599" />
+                  <mssgle:LineSegment
+                    End="-10.3999992052713,104.433334328599" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.3999992052713,104.433334328599"
+                    Point2="-14.3999992052713,104.433334328599"
+                    Point3="-14.3999992052713,108.433334328599" />
+                  <mssgle:LineSegment
+                    End="-14.3999992052713,201.366668657197" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\DFT_Dimaddress_InitialLoad\ODBC Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\DFT_Dimaddress_InitialLoad\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,3042 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/26/2022 8:17:44 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-U67UC02"
+  DTS:CreatorName="DESKTOP-U67UC02\abina"
+  DTS:DTSID="{869A9CA9-61A3-4B73-9EC6-A2DF0D527C88}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="dimProgramOfficeETL"
+  DTS:PackageType="5"
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{FA99970E-6000-42A2-9AA2-65269643D2B5}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{14B431D5-96B1-48F4-A682-4507511082EC}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="isComplete">
+      <DTS:VariableValue
+        DTS:DataType="11">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AF533198-6DF4-42D8-8AD3-3E8EB4F88C9E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="lastRunCycleTime">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{508C2964-ECC5-4A51-A580-DA219CF36F7C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="runCycleID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{52347ED1-CADC-49C8-B943-4C82FF1C3955}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{E236C004-F206-4645-A853-E836953D1359}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="edwProgramOfficeCount">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{38F3DA2C-6ADF-4FE1-9221-67DF218D409D}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="programofficerows">
+          <DTS:VariableValue
+            DTS:DataSubType="ManagedSerializable"
+            DTS:DataType="13">
+            <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+              <SOAP-ENV:Body>
+                <xsd:anyType
+                  id="ref-1"></xsd:anyType>
+              </SOAP-ENV:Body>
+            </SOAP-ENV:Envelope>
+          </DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\dft_InitialLoadProgramOffices"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{EFE261C6-B8F3-4302-996F-58A19626A138}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="dft_InitialLoadProgramOffices"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination"
+                  componentClassID="Microsoft.SSISODBCDst"
+                  contactInfo="ODBC Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="ODBC Destination"
+                  name="ODBC Destination"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="The name of the table to be fetched."
+                      expressionType="Notify"
+                      name="TableName">"public"."dimProgramOffices"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the number of rows fetched per batch."
+                      expressionType="Notify"
+                      name="BatchSize">1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of rows inserted under the same transaction."
+                      expressionType="Notify"
+                      name="TransactionSize">1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines the chunk size allocation for LOB columns"
+                      expressionType="Notify"
+                      name="LobChunkSize">32768</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                      expressionType="Notify"
+                      name="StatementTimeout">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The code page to use when code page information is unavailable from the data source."
+                      expressionType="Notify"
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                      expressionType="Notify"
+                      name="InsertMethod">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The ODBC C data type for binding numeric data."
+                      expressionType="Notify"
+                      name="BindNumericAs">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                      expressionType="Notify"
+                      name="BindCharColumnsAs">0</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Connections[ODBCConnection]"
+                      connectionManagerID="{F1356C9E-12B8-4059-B557-91D2500C60CE}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[localhost.foi_edw.postgres]"
+                      description="The ODBC runtime connection used to access the database."
+                      name="ODBCConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="ODBC Destination Input"
+                      truncationRowDisposition="FailComponent">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[programofficeid]"
+                          cachedDataType="i2"
+                          cachedName="programofficeid"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[programofficeid]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[programofficeid]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[programofficename]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3000"
+                          cachedName="programofficename"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[programofficename]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[programofficename]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[corraddress1]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="150"
+                          cachedName="corraddress1"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[corraddress1]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[corraddress1]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[corraddress2]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="80"
+                          cachedName="corraddress2"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[corraddress2]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[corraddress2]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[corrcity]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="corrcity"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[corrcity]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[corrcity]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[corrstate]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3000"
+                          cachedName="corrstate"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[corrstate]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[corrstate]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[corrstatecode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="corrstatecode"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[corrstatecode]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[corrstatecode]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[corrzipcode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="corrzipcode"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[corrzipcode]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[corrzipcode]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[corrcountry]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3000"
+                          cachedName="corrcountry"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[corrcountry]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[corrcountry]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[emailid]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="4000"
+                          cachedName="emailid"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[emailid]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[emailid]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[phone]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="25"
+                          cachedName="phone"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[phone]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[phone]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[fax]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="25"
+                          cachedName="fax"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[fax]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[fax]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[tiofficeid]"
+                          cachedDataType="i4"
+                          cachedName="tiofficeid"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[tiofficeid]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[tiofficeid]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[ctype]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="ctype"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[ctype]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[ctype]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[lastname]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="25"
+                          cachedName="lastname"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[lastname]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[lastname]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[firstname]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="firstname"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[firstname]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[firstname]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[altphone]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="25"
+                          cachedName="altphone"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[altphone]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[altphone]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[englishtitle]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="englishtitle"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[englishtitle]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[englishtitle]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[ccname]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="25"
+                          cachedName="ccname"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[ccname]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[ccname]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[ccemail]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="4000"
+                          cachedName="ccemail"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[ccemail]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[ccemail]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[visibleid]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="visibleid"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[visibleid]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[visibleid]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[company]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="company"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[company]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[company]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[programoffice]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="programoffice"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[programoffice]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[programoffice]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[consultationoffice]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="consultationoffice"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[consultationoffice]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[consultationoffice]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[cactive]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="cactive"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cactive]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[cactive]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[remaddress1]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="150"
+                          cachedName="remaddress1"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[remaddress1]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[remaddress1]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[remaddress2]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="80"
+                          cachedName="remaddress2"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[remaddress2]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[remaddress2]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[remcity]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="remcity"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[remcity]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[remcity]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[remzipcode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="remzipcode"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[remzipcode]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[remzipcode]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[remstate]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3000"
+                          cachedName="remstate"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[remstate]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[remstate]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[remstatecode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="remstatecode"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[remstatecode]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[remstatecode]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].Columns[remcountry]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3000"
+                          cachedName="remcountry"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[remcountry]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[remcountry]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[programofficeid]"
+                          dataType="i4"
+                          name="programofficeid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[programofficename]"
+                          dataType="wstr"
+                          length="3000"
+                          name="programofficename" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[corraddress1]"
+                          dataType="wstr"
+                          length="150"
+                          name="corraddress1" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[corraddress2]"
+                          dataType="wstr"
+                          length="80"
+                          name="corraddress2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[corrcity]"
+                          dataType="wstr"
+                          length="30"
+                          name="corrcity" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[corrstate]"
+                          dataType="wstr"
+                          length="3000"
+                          name="corrstate" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[corrstatecode]"
+                          dataType="wstr"
+                          length="5"
+                          name="corrstatecode" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[corrzipcode]"
+                          dataType="wstr"
+                          length="10"
+                          name="corrzipcode" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[corrcountry]"
+                          dataType="wstr"
+                          length="3000"
+                          name="corrcountry" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[emailid]"
+                          dataType="wstr"
+                          length="4000"
+                          name="emailid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[phone]"
+                          dataType="wstr"
+                          length="25"
+                          name="phone" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[fax]"
+                          dataType="wstr"
+                          length="25"
+                          name="fax" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[tiofficeid]"
+                          dataType="i4"
+                          name="tiofficeid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[ctype]"
+                          dataType="wstr"
+                          length="1"
+                          name="ctype" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[lastname]"
+                          dataType="wstr"
+                          length="25"
+                          name="lastname" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[firstname]"
+                          dataType="wstr"
+                          length="50"
+                          name="firstname" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[altphone]"
+                          dataType="wstr"
+                          length="25"
+                          name="altphone" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[englishtitle]"
+                          dataType="wstr"
+                          length="255"
+                          name="englishtitle" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[ccname]"
+                          dataType="wstr"
+                          length="25"
+                          name="ccname" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[ccemail]"
+                          dataType="wstr"
+                          length="4000"
+                          name="ccemail" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[visibleid]"
+                          dataType="wstr"
+                          length="50"
+                          name="visibleid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[company]"
+                          dataType="wstr"
+                          length="50"
+                          name="company" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[programoffice]"
+                          dataType="wstr"
+                          length="1"
+                          name="programoffice" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[consultationoffice]"
+                          dataType="wstr"
+                          length="1"
+                          name="consultationoffice" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cactive]"
+                          dataType="wstr"
+                          length="1"
+                          name="cactive" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[remaddress1]"
+                          dataType="wstr"
+                          length="150"
+                          name="remaddress1" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[remaddress2]"
+                          dataType="wstr"
+                          length="80"
+                          name="remaddress2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[remcity]"
+                          dataType="wstr"
+                          length="30"
+                          name="remcity" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[remzipcode]"
+                          dataType="wstr"
+                          length="10"
+                          name="remzipcode" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[remstate]"
+                          dataType="wstr"
+                          length="3000"
+                          name="remstate" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[remstatecode]"
+                          dataType="wstr"
+                          length="5"
+                          name="remstatecode" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[remcountry]"
+                          dataType="wstr"
+                          length="3000"
+                          name="remcountry" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Outputs[ODBC Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="ODBC Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select 
+	COALESCE (Main.tiProgramOfficeID, NULL) as programofficeid,
+	Loc.vcTerminology as programofficename,
+	TAC.vcAddress1 as corraddress1,
+	TAC.vcAddress2 as corraddress2,
+	TAC.vcCity as corrcity,
+	COALESCE (isnull(TSCL.vcTerminology, ''), NULL) as corrstate,
+	COALESCE (isnull(TSCL.cAccessKey, ''), NULL) as corrstatecode,
+	TAC.vcZipCode as corrzipcode,
+	COALESCE (isnull(TCCL.vcTerminology, ''), NULL) as corrcountry,
+	Main.vcEmailID as emailid,
+	Main.vcPhone as phone,
+	Main.vcFax as fax,
+	Main.tiOfficeID as tiofficeid,
+	Main.cType as ctype,
+	Main.vcLastName as lastname,
+	Main.vcFirstName as firstname,
+	Main.vcAltPhone as altphone,
+	Main.vcEnglishTitle as englishtitle,
+	Main.vcCCName as ccname,
+	Main.vcCCEmail as ccemail,
+	Main.vcVisibleID as visibleid,
+	Main.vcCompany as company,
+	COALESCE(Main.cProgramOffice,null) as programoffice,
+	COALESCE(Main.cConsultationOffice,null) as consultationoffice,
+	COALESCE(Main.cActive, null) as cactive,
+	TAR.vcAddress1 as remaddress1,
+	TAR.vcAddress2 as remaddress2,
+	TAR.vcCity as remcity,
+	TAR.vcZipCode as remzipcode,
+	COALESCE(isnull(TSRL.vcTerminology, ''), NULL) as remstate,
+	COALESCE (isnull(TSRL.cAccessKey, ''), NULL) as remstatecode,
+	COALESCE(isnull(TCRL.vcTerminology, ''), NULL) as remcountry
+From tblProgramOffices Main left outer join tblTerminologyLookup Loc ON Loc.iLabelID = Main.iLabelID and Loc.tiLocaleID = 1 
+left outer join tblAddress TAC ON Main.iCorrespondenceAddressID = TAC.iAddressID 
+left outer join tblStates TSC ON TAC.siStateID = TSC.siStateID 
+left outer join tblTerminologyLookup TSCL ON TSC.iLabelID = TSCL.iLabelID AND Loc.tiLocaleID = TSCL.tiLocaleID and Loc.tiLocaleID = 1 
+left outer join tblCountries TCC ON TAC.siCountryID = TCC.siCountryID 
+left outer join tblTerminologyLookup TCCL ON TCC.iLabelID = TCCL.iLabelID AND Loc.tiLocaleID = TCCL.tiLocaleID  and Loc.tiLocaleID = 1 
+left outer join tblAddress TAR ON Main.iRemittanceAddressID = TAR.iAddressID 
+left outer join tblStates TSR ON TAR.siStateID = TSR.siStateID 
+left outer join	tblTerminologyLookup TSRL ON TSRL.iLabelID = TSR.iLabelID AND Loc.tiLocaleID = TSRL.tiLocaleID and Loc.tiLocaleID = 1 
+left outer join tblCountries TCR ON TAR.siCountryID = TCR.siCountryID 
+left outer join tblTerminologyLookup TCRL ON TCRL.iLabelID = TCR.iLabelID AND Loc.tiLocaleID = TCRL.tiLocaleID and Loc.tiLocaleID = 1</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="{4505C521-0836-4CAA-8A51-8DA634D4EA56}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.ATIPD]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[programofficeid]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[programofficeid]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[programofficeid]"
+                          name="programofficeid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[programofficename]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[programofficename]"
+                          length="3000"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[programofficename]"
+                          name="programofficename"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[corraddress1]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[corraddress1]"
+                          length="150"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[corraddress1]"
+                          name="corraddress1"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[corraddress2]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[corraddress2]"
+                          length="80"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[corraddress2]"
+                          name="corraddress2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[corrcity]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[corrcity]"
+                          length="30"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[corrcity]"
+                          name="corrcity"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[corrstate]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[corrstate]"
+                          length="3000"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[corrstate]"
+                          name="corrstate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[corrstatecode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[corrstatecode]"
+                          length="5"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[corrstatecode]"
+                          name="corrstatecode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[corrzipcode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[corrzipcode]"
+                          length="10"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[corrzipcode]"
+                          name="corrzipcode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[corrcountry]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[corrcountry]"
+                          length="3000"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[corrcountry]"
+                          name="corrcountry"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[emailid]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[emailid]"
+                          length="4000"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[emailid]"
+                          name="emailid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[phone]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[phone]"
+                          length="25"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[phone]"
+                          name="phone"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[fax]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fax]"
+                          length="25"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[fax]"
+                          name="fax"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[tiofficeid]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tiofficeid]"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[tiofficeid]"
+                          name="tiofficeid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[ctype]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ctype]"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[ctype]"
+                          name="ctype"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[lastname]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[lastname]"
+                          length="25"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[lastname]"
+                          name="lastname"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[firstname]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[firstname]"
+                          length="50"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[firstname]"
+                          name="firstname"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[altphone]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[altphone]"
+                          length="25"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[altphone]"
+                          name="altphone"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[englishtitle]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[englishtitle]"
+                          length="255"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[englishtitle]"
+                          name="englishtitle"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[ccname]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ccname]"
+                          length="25"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[ccname]"
+                          name="ccname"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[ccemail]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ccemail]"
+                          length="4000"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[ccemail]"
+                          name="ccemail"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[visibleid]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[visibleid]"
+                          length="50"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[visibleid]"
+                          name="visibleid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[company]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[company]"
+                          length="50"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[company]"
+                          name="company"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[programoffice]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[programoffice]"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[programoffice]"
+                          name="programoffice"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[consultationoffice]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[consultationoffice]"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[consultationoffice]"
+                          name="consultationoffice"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[cactive]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cactive]"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[cactive]"
+                          name="cactive"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[remaddress1]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[remaddress1]"
+                          length="150"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[remaddress1]"
+                          name="remaddress1"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[remaddress2]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[remaddress2]"
+                          length="80"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[remaddress2]"
+                          name="remaddress2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[remcity]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[remcity]"
+                          length="30"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[remcity]"
+                          name="remcity"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[remzipcode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[remzipcode]"
+                          length="10"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[remzipcode]"
+                          name="remzipcode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[remstate]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[remstate]"
+                          length="3000"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[remstate]"
+                          name="remstate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[remstatecode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[remstatecode]"
+                          length="5"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[remstatecode]"
+                          name="remstatecode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[remcountry]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[remcountry]"
+                          length="3000"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].Columns[remcountry]"
+                          name="remcountry"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[programofficeid]"
+                          dataType="i2"
+                          name="programofficeid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[programofficename]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          name="programofficename" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[corraddress1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="150"
+                          name="corraddress1" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[corraddress2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="80"
+                          name="corraddress2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[corrcity]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="corrcity" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[corrstate]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          name="corrstate" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[corrstatecode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="corrstatecode" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[corrzipcode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="corrzipcode" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[corrcountry]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          name="corrcountry" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[emailid]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4000"
+                          name="emailid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[phone]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          name="phone" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fax]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          name="fax" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tiofficeid]"
+                          dataType="i4"
+                          name="tiofficeid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ctype]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="ctype" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[lastname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          name="lastname" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[firstname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="firstname" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[altphone]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          name="altphone" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[englishtitle]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="englishtitle" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ccname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          name="ccname" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ccemail]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4000"
+                          name="ccemail" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[visibleid]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="visibleid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[company]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="company" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[programoffice]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="programoffice" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[consultationoffice]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="consultationoffice" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cactive]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="cactive" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[remaddress1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="150"
+                          name="remaddress1" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[remaddress2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="80"
+                          name="remaddress2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[remcity]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="remcity" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[remzipcode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="remzipcode" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[remstate]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          name="remstate" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[remstatecode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="remstatecode" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[remcountry]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          name="remcountry" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[programofficeid]"
+                          dataType="i2"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[programofficeid]"
+                          name="programofficeid" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[programofficename]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[programofficename]"
+                          name="programofficename" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[corraddress1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="150"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[corraddress1]"
+                          name="corraddress1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[corraddress2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="80"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[corraddress2]"
+                          name="corraddress2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[corrcity]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[corrcity]"
+                          name="corrcity" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[corrstate]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[corrstate]"
+                          name="corrstate" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[corrstatecode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[corrstatecode]"
+                          name="corrstatecode" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[corrzipcode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[corrzipcode]"
+                          name="corrzipcode" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[corrcountry]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[corrcountry]"
+                          name="corrcountry" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[emailid]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4000"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[emailid]"
+                          name="emailid" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[phone]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[phone]"
+                          name="phone" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fax]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fax]"
+                          name="fax" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tiofficeid]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tiofficeid]"
+                          name="tiofficeid" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ctype]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ctype]"
+                          name="ctype" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[lastname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[lastname]"
+                          name="lastname" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[firstname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[firstname]"
+                          name="firstname" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[altphone]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[altphone]"
+                          name="altphone" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[englishtitle]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[englishtitle]"
+                          name="englishtitle" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ccname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ccname]"
+                          name="ccname" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ccemail]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4000"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ccemail]"
+                          name="ccemail" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[visibleid]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[visibleid]"
+                          name="visibleid" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[company]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[company]"
+                          name="company" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[programoffice]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[programoffice]"
+                          name="programoffice" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[consultationoffice]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[consultationoffice]"
+                          name="consultationoffice" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cactive]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cactive]"
+                          name="cactive" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[remaddress1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="150"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[remaddress1]"
+                          name="remaddress1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[remaddress2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="80"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[remaddress2]"
+                          name="remaddress2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[remcity]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[remcity]"
+                          name="remcity" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[remzipcode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[remzipcode]"
+                          name="remzipcode" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[remstate]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[remstate]"
+                          name="remstate" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[remstatecode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[remstatecode]"
+                          name="remstatecode" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[remcountry]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[remcountry]"
+                          name="remcountry" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\dft_InitialLoadProgramOffices.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination.Inputs[ODBC Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\execSQLTaskProgramOfficesCount"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{CC3F02CF-3AA3-42E4-9C4D-B0678D11733A}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="execSQLTaskProgramOfficesCount"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="SELECT count(programofficeid) as cnt FROM public.&quot;dimProgramOffices&quot;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="1"
+                SQLTask:DtsVariableName="User::edwProgramOfficeCount" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Execute SQL Task"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{934645B4-8BB5-456B-885A-31BD02808964}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute SQL Task"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="Select &#xA;&#x9;COALESCE (Main.tiProgramOfficeID, NULL) as programofficeid,&#xA;&#x9;Loc.vcTerminology as programofficename,&#xA;&#x9;ISNULL(TAC.vcAddress1 ,'') as corraddress1,&#xA;&#x9;ISNULL(TAC.vcAddress2,'') as corraddress2,&#xA;&#x9;ISNULL(TAC.vcCity,'') as corrcity,&#xA;&#x9;COALESCE (isnull(TSCL.vcTerminology, ''), NULL) as corrstate,&#xA;&#x9;COALESCE (isnull(TSCL.cAccessKey, ''), NULL) as corrstatecode,&#xA;&#x9;ISNULL(TAC.vcZipCode,'') as corrzipcode,&#xA;&#x9;COALESCE (isnull(TCCL.vcTerminology, ''), NULL) as corrcountry,&#xA;&#x9;ISNULL(Main.vcEmailID,'') as emailid,&#xA;&#x9;ISNULL(Main.vcPhone,'') as phone,&#xA;&#x9;ISNULL(Main.vcFax ,'')as fax,&#xA;&#x9;Main.tiOfficeID as tiofficeid,&#xA;&#x9;ISNULL(Main.cType,'') as ctype,&#xA;&#x9;ISNULL(Main.vcLastName,'') as lastname,&#xA;&#x9;ISNULL(Main.vcFirstName,'') as firstname,&#xA;&#x9;ISNULL(Main.vcAltPhone,'') as altphone,&#xA;&#x9;ISNULL(Main.vcEnglishTitle,'') as englishtitle,&#xA;&#x9;ISNULL(Main.vcCCName,'') as ccname,&#xA;&#x9;ISNULL(Main.vcCCEmail,'') as ccemail,&#xA;&#x9;ISNULL(Main.vcVisibleID,'') as visibleid,&#xA;&#x9;ISNULL(Main.vcCompany,'') as company,&#xA;&#x9;COALESCE(Main.cProgramOffice,null) as programoffice,&#xA;&#x9;COALESCE(Main.cConsultationOffice,null) as consultationoffice,&#x9;&#xA;&#x9;ISNULL(TAR.vcAddress1,'') as remaddress1,&#xA;&#x9;ISNULL(TAR.vcAddress2,'') as remaddress2,&#xA;&#x9;ISNULL(TAR.vcCity,'') as remcity,&#xA;&#x9;ISNULL(TAR.vcZipCode,'') as remzipcode,&#x9;&#x9;&#xA;&#x9;COALESCE(isnull(TCRL.vcTerminology, ''), NULL) as remcountry,&#xA;&#x9;COALESCE(Main.cActive, null) as cactive,&#xA;&#x9;COALESCE(isnull(TSRL.vcTerminology, ''), NULL) as remstate,&#xA;&#x9;COALESCE (isnull(TSRL.cAccessKey, ''), NULL) as remstatecode&#xA;From tblProgramOffices Main left outer join tblTerminologyLookup Loc ON Loc.iLabelID = Main.iLabelID and Loc.tiLocaleID = 1 &#xA;left outer join tblAddress TAC ON Main.iCorrespondenceAddressID = TAC.iAddressID &#xA;left outer join tblStates TSC ON TAC.siStateID = TSC.siStateID &#xA;left outer join tblTerminologyLookup TSCL ON TSC.iLabelID = TSCL.iLabelID AND Loc.tiLocaleID = TSCL.tiLocaleID and Loc.tiLocaleID = 1 &#xA;left outer join tblCountries TCC ON TAC.siCountryID = TCC.siCountryID &#xA;left outer join tblTerminologyLookup TCCL ON TCC.iLabelID = TCCL.iLabelID AND Loc.tiLocaleID = TCCL.tiLocaleID  and Loc.tiLocaleID = 1 &#xA;left outer join tblAddress TAR ON Main.iRemittanceAddressID = TAR.iAddressID &#xA;left outer join tblStates TSR ON TAR.siStateID = TSR.siStateID &#xA;left outer join&#x9;tblTerminologyLookup TSRL ON TSRL.iLabelID = TSR.iLabelID AND Loc.tiLocaleID = TSRL.tiLocaleID and Loc.tiLocaleID = 1 &#xA;left outer join tblCountries TCR ON TAR.siCountryID = TCR.siCountryID &#xA;left outer join tblTerminologyLookup TCRL ON TCRL.iLabelID = TCR.iLabelID AND Loc.tiLocaleID = TCRL.tiLocaleID and Loc.tiLocaleID = 1"
+              SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::programofficerows" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Foreach Loop Container"
+          DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:Description="Foreach Loop Container"
+          DTS:DTSID="{157CE967-741A-4EC2-B854-4910440D383D}"
+          DTS:ExecutableType="STOCK:FOREACHLOOP"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Foreach Loop Container">
+          <DTS:ForEachEnumerator
+            DTS:CreationName="Microsoft.ForEachADOEnumerator"
+            DTS:DTSID="{C3422312-EEC7-472C-A376-80DEEC3BD47C}"
+            DTS:ObjectName="{C3422312-EEC7-472C-A376-80DEEC3BD47C}">
+            <DTS:ObjectData>
+              <FEEADO
+                EnumType="EnumerateRowsInFirstTable"
+                VarName="User::programofficerows" />
+            </DTS:ObjectData>
+          </DTS:ForEachEnumerator>
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{EA32A03B-02B0-497E-9A76-69C6E094101B}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="altphone">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{895FC7C0-E8C4-4BCA-8BB7-FFF09EAD598B}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="cactive">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{F1FEF068-598C-4D9D-A2D1-85D1EE29F128}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="ccemail">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{6C7E2FAF-3CAB-49F6-8117-BFE598DDF5D9}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="ccname">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{602966D9-B165-4870-8901-93730127BBF4}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="company">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{F282541E-0BE1-4377-B3D7-09FECEA0CB06}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="consultationoffice">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{1D945474-E310-48F6-A3B4-F78781C07808}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="corraddress1">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{8938DBC3-65CA-441F-AE8A-CAB078CDF93E}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="corraddress2">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{0A04FB1C-C8D2-4E5C-8C09-1EC60F78F173}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="corrcity">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{955987F2-71E8-4D94-B498-BE2BF2AE3E29}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="corrcountry">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{1BD1021F-1F50-4A3C-B3EA-DD3AE8DF565E}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="corrstate">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{85142E24-C07A-4634-95EE-57057A55A31C}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="corrstatecode">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{0076DFA6-9770-4AD9-A288-262049C36063}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="corrzipcode">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{0913BD92-CC05-40B4-9BDB-7020FC2B29FC}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="ctype">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{8049837A-1941-4341-9641-E21E9D56DEDE}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="emailid">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{C209E783-0955-4D3F-AF7C-088AB1048F07}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="englishtitle">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{6559EB92-426A-46E3-B257-B50E4B9B4C1A}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="fax">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{80F3AB37-6171-49CC-A6AB-650D380B1675}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="firstname">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{2E8F3756-BC37-44AC-BF9B-B314332D3418}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="hasprogramofficebyID">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{9B6285A3-4705-4CD5-9A8D-0185142C3F2D}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="lastname">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{B3FA00CE-68C8-4A4B-847E-652E9BF1EDB3}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="phone">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{C30C8B3E-F1C2-4766-B3BA-DC4B0FAAC73E}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="programoffice">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{8582CDD0-D1BF-4661-8789-7A29661E9EF7}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="programofficeid">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{C96B4E14-6925-4B45-9699-DAA0850E69BA}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="programofficename">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{65C98A16-5D56-49E5-AAA6-D89B7A015B94}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="remaddress1">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{D4E6239A-F36D-4264-A7FB-654F2707B643}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="remaddress2">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{1ED2D5E3-5382-4301-8AE5-8639B03C59E4}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="remcity">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{0885CE1E-7FF8-484E-AEAE-CD1F892EF918}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="remcountry">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{540490F5-6AE4-4ECD-BBAA-8AD920918B75}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="remstate">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{2C3C7090-3A3F-4854-8D92-754E2B2DE031}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="remstatecode">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{BB87AA55-FD67-4CDF-B899-E79D7AD9FDA4}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="remzipcode">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{86493C65-B9F3-48E7-AFAD-3B1911C37F36}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="tiofficeid">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{A6BC1EB0-8284-4682-B79F-AB2CA4A6EA33}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="visibleid">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Sequence Container\Foreach Loop Container\est_hasProgramOfficeinEDW"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{E42DEC0F-967D-4370-B43E-08220ACEA36A}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="est_hasProgramOfficeinEDW"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables>
+                <DTS:Variable
+                  DTS:CreationName=""
+                  DTS:DTSID="{2474CD93-EB16-4943-B56A-6E2D1C768564}"
+                  DTS:IncludeInDebugDump="6789"
+                  DTS:Namespace="User"
+                  DTS:ObjectName="hasrowsbyprogramofficeid">
+                  <DTS:VariableValue
+                    DTS:DataType="2">0</DTS:VariableValue>
+                </DTS:Variable>
+              </DTS:Variables>
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+                  SQLTask:SqlStatementSource="SELECT count(programofficeid) FROM public.&quot;dimProgramOffices&quot; where programofficeid = ?"
+                  SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="1"
+                    SQLTask:DtsVariableName="User::hasprogramofficebyID" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="1"
+                    SQLTask:DtsVariableName="User::programofficeid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Sequence Container\Foreach Loop Container\EST_InsertOffices"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{49d029d1-5bad-43cb-9c0c-fc4952f90e14}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="EST_InsertOffices"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+                  SQLTask:SqlStatementSource="INSERT INTO public.&quot;dimProgramOffices&quot;(&#x9; &#xA;&#x9;programofficename, &#xA;&#x9;corraddress1, &#xA;&#x9;corraddress2, &#xA;&#x9;corrcity, &#xA;&#x9;corrstate, &#xA;&#x9;corrstatecode, &#xA;&#x9;corrzipcode, &#xA;&#x9;corrcountry, &#xA;&#x9;emailid, &#xA;&#x9;phone, &#xA;&#x9;fax, tiofficeid, ctype, lastname, firstname, altphone, englishtitle, ccname, ccemail, visibleid, company, programoffice, consultationoffice, cactive, remaddress1, remaddress2, remcity, remzipcode, remstate, remstatecode, remcountry,programofficeid)&#xA;&#x9;VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="1"
+                    SQLTask:DtsVariableName="User::programofficename"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="2"
+                    SQLTask:DtsVariableName="User::corraddress1"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="3"
+                    SQLTask:DtsVariableName="User::corraddress2"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="4"
+                    SQLTask:DtsVariableName="User::corrcity"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="5"
+                    SQLTask:DtsVariableName="User::corrstate"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="6"
+                    SQLTask:DtsVariableName="User::corrstatecode"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="7"
+                    SQLTask:DtsVariableName="User::corrzipcode"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="8"
+                    SQLTask:DtsVariableName="User::corrcountry"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="9"
+                    SQLTask:DtsVariableName="User::emailid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="10"
+                    SQLTask:DtsVariableName="User::phone"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="11"
+                    SQLTask:DtsVariableName="User::fax"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="12"
+                    SQLTask:DtsVariableName="User::tiofficeid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="13"
+                    SQLTask:DtsVariableName="User::ctype"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="14"
+                    SQLTask:DtsVariableName="User::lastname"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="15"
+                    SQLTask:DtsVariableName="User::firstname"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="16"
+                    SQLTask:DtsVariableName="User::altphone"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="17"
+                    SQLTask:DtsVariableName="User::englishtitle"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="18"
+                    SQLTask:DtsVariableName="User::ccname"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="19"
+                    SQLTask:DtsVariableName="User::ccemail"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="20"
+                    SQLTask:DtsVariableName="User::visibleid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="21"
+                    SQLTask:DtsVariableName="User::company"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="22"
+                    SQLTask:DtsVariableName="User::programoffice"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="23"
+                    SQLTask:DtsVariableName="User::consultationoffice"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="24"
+                    SQLTask:DtsVariableName="User::cactive"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="25"
+                    SQLTask:DtsVariableName="User::remaddress1"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="26"
+                    SQLTask:DtsVariableName="User::remaddress2"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="27"
+                    SQLTask:DtsVariableName="User::remcity"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="28"
+                    SQLTask:DtsVariableName="User::remzipcode"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="29"
+                    SQLTask:DtsVariableName="User::remstate"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="30"
+                    SQLTask:DtsVariableName="User::remstatecode"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="31"
+                    SQLTask:DtsVariableName="User::remcountry"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="32"
+                    SQLTask:DtsVariableName="User::programofficeid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Sequence Container\Foreach Loop Container\EST_UpdateOffices"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{5C52A8DF-6CD9-45FC-9D9A-609E020BF740}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="EST_UpdateOffices"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+                  SQLTask:SqlStatementSource="UPDATE public.&quot;dimProgramOffices&quot;&#xA;&#x9;SET  &#xA;&#x9;programofficename=?, &#xA;&#x9;corraddress1=?, &#xA;&#x9;corraddress2=?, &#xA;&#x9;corrcity=?, &#xA;&#x9;corrstate=?, &#xA;&#x9;corrstatecode=?, &#xA;&#x9;corrzipcode=?, &#xA;&#x9;corrcountry=?, &#xA;&#x9;emailid=?, &#xA;&#x9;phone=?, &#xA;&#x9;fax=?, &#xA;&#x9;tiofficeid=?, &#xA;&#x9;ctype=?, &#xA;&#x9;lastname=?, &#xA;&#x9;firstname=?, &#xA;&#x9;altphone=?, &#xA;&#x9;englishtitle=?, &#xA;&#x9;ccname=?, &#xA;&#x9;ccemail=?, &#xA;&#x9;visibleid=?, &#xA;&#x9;company=?, &#xA;&#x9;programoffice=?, &#xA;&#x9;consultationoffice=?, &#xA;&#x9;cactive=?, &#xA;&#x9;remaddress1=?, &#xA;&#x9;remaddress2=?, &#xA;&#x9;remcity=?, &#xA;&#x9;remzipcode=?, &#xA;&#x9;remstate=?, &#xA;&#x9;remstatecode=?, &#xA;&#x9;remcountry=?&#xA;&#x9;WHERE programofficeid=?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="1"
+                    SQLTask:DtsVariableName="User::programofficename"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="2"
+                    SQLTask:DtsVariableName="User::corraddress1"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="3"
+                    SQLTask:DtsVariableName="User::corraddress2"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="4"
+                    SQLTask:DtsVariableName="User::corrcity"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="5"
+                    SQLTask:DtsVariableName="User::corrstate"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="6"
+                    SQLTask:DtsVariableName="User::corrstatecode"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="7"
+                    SQLTask:DtsVariableName="User::corrzipcode"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="8"
+                    SQLTask:DtsVariableName="User::corrcountry"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="9"
+                    SQLTask:DtsVariableName="User::emailid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="10"
+                    SQLTask:DtsVariableName="User::phone"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="11"
+                    SQLTask:DtsVariableName="User::fax"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="12"
+                    SQLTask:DtsVariableName="User::tiofficeid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="13"
+                    SQLTask:DtsVariableName="User::ctype"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="14"
+                    SQLTask:DtsVariableName="User::lastname"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="15"
+                    SQLTask:DtsVariableName="User::firstname"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="16"
+                    SQLTask:DtsVariableName="User::altphone"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="17"
+                    SQLTask:DtsVariableName="User::englishtitle"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="18"
+                    SQLTask:DtsVariableName="User::ccname"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="19"
+                    SQLTask:DtsVariableName="User::ccemail"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="20"
+                    SQLTask:DtsVariableName="User::visibleid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="21"
+                    SQLTask:DtsVariableName="User::company"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="22"
+                    SQLTask:DtsVariableName="User::programoffice"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="23"
+                    SQLTask:DtsVariableName="User::consultationoffice"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="24"
+                    SQLTask:DtsVariableName="User::cactive"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="25"
+                    SQLTask:DtsVariableName="User::remaddress1"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="26"
+                    SQLTask:DtsVariableName="User::remaddress2"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="27"
+                    SQLTask:DtsVariableName="User::remcity"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="28"
+                    SQLTask:DtsVariableName="User::remzipcode"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="29"
+                    SQLTask:DtsVariableName="User::remstate"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="30"
+                    SQLTask:DtsVariableName="User::remstatecode"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="31"
+                    SQLTask:DtsVariableName="User::remcountry"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="32"
+                    SQLTask:DtsVariableName="User::programofficeid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Sequence Container\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{A72C25CB-03DF-4AE9-B459-38C48058DB1A}"
+              DTS:EvalOp="1"
+              DTS:Expression="@[User::hasprogramofficebyID] &gt; 0"
+              DTS:From="Package\Sequence Container\Foreach Loop Container\est_hasProgramOfficeinEDW"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\Sequence Container\Foreach Loop Container\EST_UpdateOffices" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Sequence Container\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+              DTS:CreationName=""
+              DTS:DTSID="{F215EB13-8103-4556-BA12-947840938ABB}"
+              DTS:EvalOp="1"
+              DTS:Expression="@[User::hasprogramofficebyID] ==0"
+              DTS:From="Package\Sequence Container\Foreach Loop Container\est_hasProgramOfficeinEDW"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 1"
+              DTS:To="Package\Sequence Container\Foreach Loop Container\EST_InsertOffices" />
+          </DTS:PrecedenceConstraints>
+          <DTS:ForEachVariableMappings>
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{8834AE52-DC96-4D26-9989-DAEFA0C8BDB2}"
+              DTS:ObjectName="{8834AE52-DC96-4D26-9989-DAEFA0C8BDB2}"
+              DTS:ValueIndex="0"
+              DTS:VariableName="User::programofficeid" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{F671D729-D913-4D34-AD3D-4C67A0FD984B}"
+              DTS:ObjectName="{F671D729-D913-4D34-AD3D-4C67A0FD984B}"
+              DTS:ValueIndex="1"
+              DTS:VariableName="User::programofficename" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{291F684C-F69F-479B-B21C-6470E0B84EB1}"
+              DTS:ObjectName="{291F684C-F69F-479B-B21C-6470E0B84EB1}"
+              DTS:ValueIndex="2"
+              DTS:VariableName="User::corraddress1" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{7A0EF9B7-8A2E-49C0-A174-8631274B1C99}"
+              DTS:ObjectName="{7A0EF9B7-8A2E-49C0-A174-8631274B1C99}"
+              DTS:ValueIndex="3"
+              DTS:VariableName="User::corraddress2" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{3A061972-2EA5-4463-A539-9662BD0D50B3}"
+              DTS:ObjectName="{3A061972-2EA5-4463-A539-9662BD0D50B3}"
+              DTS:ValueIndex="4"
+              DTS:VariableName="User::corrcity" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{E07E7FB5-5969-43DC-8061-5DA1C2988F59}"
+              DTS:ObjectName="{E07E7FB5-5969-43DC-8061-5DA1C2988F59}"
+              DTS:ValueIndex="5"
+              DTS:VariableName="User::corrstate" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{E00A77EE-3D97-4B6D-9B54-44214B6A151F}"
+              DTS:ObjectName="{E00A77EE-3D97-4B6D-9B54-44214B6A151F}"
+              DTS:ValueIndex="6"
+              DTS:VariableName="User::corrstatecode" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{46D9AAC4-4FE7-4E48-AFE4-DFCE7D63C8F4}"
+              DTS:ObjectName="{46D9AAC4-4FE7-4E48-AFE4-DFCE7D63C8F4}"
+              DTS:ValueIndex="7"
+              DTS:VariableName="User::corrzipcode" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{0A813F98-C8B8-4B64-AD6B-829030C16182}"
+              DTS:ObjectName="{0A813F98-C8B8-4B64-AD6B-829030C16182}"
+              DTS:ValueIndex="8"
+              DTS:VariableName="User::corrcountry" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{07FAC118-5934-457E-80B2-694B6ACAE344}"
+              DTS:ObjectName="{07FAC118-5934-457E-80B2-694B6ACAE344}"
+              DTS:ValueIndex="9"
+              DTS:VariableName="User::emailid" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{9C0C07A4-B57D-4AF6-B7B6-D6AAB23AC96B}"
+              DTS:ObjectName="{9C0C07A4-B57D-4AF6-B7B6-D6AAB23AC96B}"
+              DTS:ValueIndex="10"
+              DTS:VariableName="User::phone" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{4079A97B-6D37-4082-83D6-ED147CDD96DD}"
+              DTS:ObjectName="{4079A97B-6D37-4082-83D6-ED147CDD96DD}"
+              DTS:ValueIndex="11"
+              DTS:VariableName="User::fax" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{9B9B3E1A-1B34-4D69-9683-56711A32378A}"
+              DTS:ObjectName="{9B9B3E1A-1B34-4D69-9683-56711A32378A}"
+              DTS:ValueIndex="12"
+              DTS:VariableName="User::tiofficeid" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{51965586-9D71-495D-93AA-8D186CB70EB9}"
+              DTS:ObjectName="{51965586-9D71-495D-93AA-8D186CB70EB9}"
+              DTS:ValueIndex="13"
+              DTS:VariableName="User::ctype" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{691476C8-DBE9-4675-BC20-C0865F677AA1}"
+              DTS:ObjectName="{691476C8-DBE9-4675-BC20-C0865F677AA1}"
+              DTS:ValueIndex="14"
+              DTS:VariableName="User::lastname" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{F351F83B-3E48-4779-997E-6D2BE459C969}"
+              DTS:ObjectName="{F351F83B-3E48-4779-997E-6D2BE459C969}"
+              DTS:ValueIndex="15"
+              DTS:VariableName="User::firstname" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{8D182978-A624-4297-8B01-B26F88F0713F}"
+              DTS:ObjectName="{8D182978-A624-4297-8B01-B26F88F0713F}"
+              DTS:ValueIndex="16"
+              DTS:VariableName="User::altphone" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{D28157F8-7B1C-459F-9B3D-857625842351}"
+              DTS:ObjectName="{D28157F8-7B1C-459F-9B3D-857625842351}"
+              DTS:ValueIndex="17"
+              DTS:VariableName="User::englishtitle" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{7DCDE595-9270-4FE7-B805-18056D50E512}"
+              DTS:ObjectName="{7DCDE595-9270-4FE7-B805-18056D50E512}"
+              DTS:ValueIndex="18"
+              DTS:VariableName="User::ccname" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{B0A580CE-453D-4E64-89FA-B2F8C6B82DE3}"
+              DTS:ObjectName="{B0A580CE-453D-4E64-89FA-B2F8C6B82DE3}"
+              DTS:ValueIndex="19"
+              DTS:VariableName="User::ccemail" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{1C6C9F13-5C28-4C00-9A17-85FD82A4C86F}"
+              DTS:ObjectName="{1C6C9F13-5C28-4C00-9A17-85FD82A4C86F}"
+              DTS:ValueIndex="20"
+              DTS:VariableName="User::visibleid" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{37B187F7-62B5-4645-9F8D-AA337789D99A}"
+              DTS:ObjectName="{37B187F7-62B5-4645-9F8D-AA337789D99A}"
+              DTS:ValueIndex="21"
+              DTS:VariableName="User::company" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{18422749-836C-4486-8CC0-F52323C49C8C}"
+              DTS:ObjectName="{18422749-836C-4486-8CC0-F52323C49C8C}"
+              DTS:ValueIndex="22"
+              DTS:VariableName="User::programoffice" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{1974EFD6-A680-4317-958B-451D65FFBBCF}"
+              DTS:ObjectName="{1974EFD6-A680-4317-958B-451D65FFBBCF}"
+              DTS:ValueIndex="23"
+              DTS:VariableName="User::consultationoffice" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{014966AE-84F7-4565-B51F-491C2C3234A7}"
+              DTS:ObjectName="{014966AE-84F7-4565-B51F-491C2C3234A7}"
+              DTS:ValueIndex="24"
+              DTS:VariableName="User::remaddress1" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{7DA5FFE4-BFB6-4E93-948C-0A05F85FCE66}"
+              DTS:ObjectName="{7DA5FFE4-BFB6-4E93-948C-0A05F85FCE66}"
+              DTS:ValueIndex="25"
+              DTS:VariableName="User::remaddress2" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{0226F189-70F4-4D55-87D4-B04AF15ABB16}"
+              DTS:ObjectName="{0226F189-70F4-4D55-87D4-B04AF15ABB16}"
+              DTS:ValueIndex="26"
+              DTS:VariableName="User::remcity" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{E80E94F1-C1CA-48B9-8687-AC17E8855CFB}"
+              DTS:ObjectName="{E80E94F1-C1CA-48B9-8687-AC17E8855CFB}"
+              DTS:ValueIndex="27"
+              DTS:VariableName="User::remzipcode" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{3F83D528-F8F4-456B-89CF-E258FDB60F78}"
+              DTS:ObjectName="{3F83D528-F8F4-456B-89CF-E258FDB60F78}"
+              DTS:ValueIndex="28"
+              DTS:VariableName="User::remcountry" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{32E2E1DB-F278-4F0D-B821-F675682EB3C5}"
+              DTS:ObjectName="{32E2E1DB-F278-4F0D-B821-F675682EB3C5}"
+              DTS:ValueIndex="29"
+              DTS:VariableName="User::cactive" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{31A3B92D-105E-47FB-9B3C-30EA24624F69}"
+              DTS:ObjectName="{31A3B92D-105E-47FB-9B3C-30EA24624F69}"
+              DTS:ValueIndex="30"
+              DTS:VariableName="User::remstate" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{8D8CA277-0A5E-4CA2-9CF5-35371E6AA02E}"
+              DTS:ObjectName="{8D8CA277-0A5E-4CA2-9CF5-35371E6AA02E}"
+              DTS:ValueIndex="31"
+              DTS:VariableName="User::remstatecode" />
+          </DTS:ForEachVariableMappings>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{2A4F0CCC-1B9B-438E-8E02-0B45ABCEBC68}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::edwProgramOfficeCount] == 0"
+          DTS:From="Package\Sequence Container\execSQLTaskProgramOfficesCount"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence Container\dft_InitialLoadProgramOffices" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{E78F5B14-AD77-45E4-BE78-FD59D5193E07}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::edwProgramOfficeCount] &gt; 0"
+          DTS:From="Package\Sequence Container\execSQLTaskProgramOfficesCount"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Sequence Container\Execute SQL Task" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{BABD3A50-340F-4766-ACD3-0F46240DFC4E}"
+          DTS:From="Package\Sequence Container\Execute SQL Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Sequence Container\Foreach Loop Container" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{1B7A0C93-D462-458A-97A3-89DD55269DF1}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StartRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>packageID</ParameterName>
+            <BindedVariableOrParameterName>System::PackageID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Stop Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{79603027-B66B-4DDA-86F2-FCBCD7B066BF}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Stop Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StopRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>isComplete</ParameterName>
+            <BindedVariableOrParameterName>User::isComplete</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>runCycleID</ParameterName>
+            <BindedVariableOrParameterName>User::runCycleID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{9971281A-58BE-4482-8CDA-9FA50A9E2760}"
+      DTS:From="Package\Start Run Cycle"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sequence Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{C9B766E3-4DF8-4E1F-BEDA-C556F2F6FFF2}"
+      DTS:From="Package\Sequence Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Stop Run Cycle" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="218.4,41.6"
+          Id="Package\Sequence Container\dft_InitialLoadProgramOffices"
+          TopLeft="42.4333261476628,161.400002293587" />
+        <NodeLayout
+          Size="298.4,41.6"
+          Id="Package\Sequence Container\execSQLTaskProgramOfficesCount"
+          TopLeft="457.433309657045,60.8666681612863" />
+        <NodeLayout
+          Size="196.8,47.2"
+          Id="Package\Sequence Container\Execute SQL Task"
+          TopLeft="570.766638486916,189.133335847325" />
+        <NodeLayout
+          Size="256,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container\est_hasProgramOfficeinEDW"
+          TopLeft="206.699964733921,34.9333373557195" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container\EST_InsertOffices"
+          TopLeft="340.866626069283,131.133338120248" />
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container\EST_UpdateOffices"
+          TopLeft="22.533305385379,139.666671426031" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          TopLeft="334.699964733921,76.5333373557195">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-225.366659348542,63.1333340703118"
+              Start="0,0"
+              End="-225.366659348542,55.6333340703118">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.4333337087104" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.4333337087104"
+                    Point2="0,32.4333337087104"
+                    Point3="-4,32.4333337087104" />
+                  <mssgle:LineSegment
+                    End="-221.366659348542,32.4333337087104" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-221.366659348542,32.4333337087104"
+                    Point2="-225.366659348542,32.4333337087104"
+                    Point3="-225.366659348542,36.4333337087104" />
+                  <mssgle:LineSegment
+                    End="-225.366659348542,55.6333340703118" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-120.683329674271,37.4333337087104,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="376.033298067254,76.5333373557195">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="54.433328002029,54.6000007645289"
+              Start="0,0"
+              End="54.433328002029,47.1000007645289">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.0434785695303" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.0434785695303"
+                    Point2="0,22.0434785695303"
+                    Point3="4,22.0434785695303" />
+                  <mssgle:LineSegment
+                    End="50.433328002029,22.0434785695303" />
+                  <mssgle:CubicBezierSegment
+                    Point1="50.433328002029,22.0434785695303"
+                    Point2="54.433328002029,22.0434785695303"
+                    Point3="54.433328002029,26.0434785695303" />
+                  <mssgle:LineSegment
+                    End="54.433328002029,47.1000007645289" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="19.2166640010145,27.0434785695303,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="567.2,260"
+          Size="567.2,303.2"
+          Id="Package\Sequence Container\Foreach Loop Container"
+          TopLeft="541.599972979229,300.066670062277" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          TopLeft="606.633309657045,102.466668161286">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-454.999983509382,58.9333341323006"
+              Start="0,0"
+              End="-454.999983509382,51.4333341323006">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.4666670661503" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.4666670661503"
+                    Point2="0,29.4666670661503"
+                    Point3="-4,29.4666670661503" />
+                  <mssgle:LineSegment
+                    End="-450.999983509382,29.4666670661503" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-450.999983509382,29.4666670661503"
+                    Point2="-454.999983509382,29.4666670661503"
+                    Point3="-454.999983509382,33.4666670661503" />
+                  <mssgle:LineSegment
+                    End="-454.999983509382,51.4333341323006" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-235.499991754691,34.4666670661503,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="655.033309657045,102.466668161286">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.1333288298715,86.6666676860386"
+              Start="0,0"
+              End="14.1333288298715,79.1666676860386">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.9440004110108" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.9440004110108"
+                    Point2="0,34.9440004110108"
+                    Point3="4,34.9440004110108" />
+                  <mssgle:LineSegment
+                    End="10.1333288298715,34.9440004110108" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.1333288298715,34.9440004110108"
+                    Point2="14.1333288298715,34.9440004110108"
+                    Point3="14.1333288298715,38.9440004110108" />
+                  <mssgle:LineSegment
+                    End="14.1333288298715,79.1666676860386" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-0.933335585064242,39.9440004110108,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="669.166638486916,236.333335847325">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="156.033334492312,63.7333342149523"
+              Start="0,0"
+              End="156.033334492312,56.2333342149523">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.8666671074762" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.8666671074762"
+                    Point2="0,31.8666671074762"
+                    Point3="4,31.8666671074762" />
+                  <mssgle:LineSegment
+                    End="152.033334492312,31.8666671074762" />
+                  <mssgle:CubicBezierSegment
+                    Point1="152.033334492312,31.8666671074762"
+                    Point2="156.033334492312,31.8666671074762"
+                    Point3="156.033334492312,35.8666671074762" />
+                  <mssgle:LineSegment
+                    End="156.033334492312,56.2333342149523" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="1272,658.4"
+          Size="1272,701.6"
+          Id="Package\Sequence Container"
+          TopLeft="139.16666113668,84.9333340083229" />
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Start Run Cycle"
+          TopLeft="675.833306478131,6.0666667148802" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="771.699983807405,47.6666667148802">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.2666672934427"
+              Start="0,0"
+              End="0,29.7666672934427">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.7666672934427" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Stop Run Cycle"
+          TopLeft="681.666639579668,836.533339752621" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="774.616650358174,786.533334008323">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.0000057442982"
+              Start="0,0"
+              End="0,42.5000057442982">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5000057442982" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence Container\dft_InitialLoadProgramOffices">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source"
+          TopLeft="371.666651897961,133.466667727364" />
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination"
+          TopLeft="375.833318399059,404.733336549865" />
+        <EdgeLayout
+          Id="Package\Sequence Container\dft_InitialLoadProgramOffices.Paths[OLE DB Source Output]"
+          TopLeft="447.666651897961,175.066667727364">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.76666650109826,229.666668822501"
+              Start="0,0"
+              End="9.76666650109826,222.166668822501">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,110.83333441125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,110.83333441125"
+                    Point2="0,114.83333441125"
+                    Point3="4,114.83333441125" />
+                  <mssgle:LineSegment
+                    End="5.76666650109826,114.83333441125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.76666650109826,114.83333441125"
+                    Point2="9.76666650109826,114.83333441125"
+                    Point3="9.76666650109826,118.83333441125" />
+                  <mssgle:LineSegment
+                    End="9.76666650109826,222.166668822501" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\dft_InitialLoadProgramOffices\ODBC Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\dft_InitialLoadProgramOffices\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
