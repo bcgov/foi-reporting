@@ -23,6 +23,6 @@ def upgrade():
 
 
 def downgrade():
-    op.add_column('factRequestSnapshot',sa.Column('currentactivity', sa.VARCHAR(length=4000)))
-    op.add_column('factRequestSnapshot',sa.Column('officecode', sa.VARCHAR(length=3000)))
-    op.add_column('factRequestSnapshot',sa.Column('officedescription', sa.VARCHAR(length=2000)))
+    op.drop_column('factRequestSnapshot', 'currentactivity')
+    op.drop_column('factRequestSnapshot', 'officecode')
+    op.drop_column('factRequestSnapshot', 'officedescription')
