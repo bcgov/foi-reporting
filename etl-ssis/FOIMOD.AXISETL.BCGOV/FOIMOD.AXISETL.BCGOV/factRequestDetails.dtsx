@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="factRequestDetails"
   DTS:PackageType="5"
-  DTS:VersionBuild="29"
-  DTS:VersionGUID="{5BBEF940-9F09-474E-A3C3-71F52712DC92}">
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{666524E6-2FCB-41AD-933C-47DC83EF7AEE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -215,7 +215,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="Check if record exist"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -1589,7 +1589,8 @@ R.sdtOriginalReceivedDate as originalreceiveddate,
 isnull((Select secondaryusers from (Select RAH.iRequestID, STRING_AGG(STCU.FULL_NAME, ':: ') as secondaryusers from [dbo].[tblRequestsAssignHistory] RAH left outer join [dbo].EC_USERS AS STCU ON RAH.iUserID = STCU.USER_ID group by RAH.iRequestID) su WHERE su.iRequestID = R.iRequestID), '')  as secondaryusers,
 isnull((Select noofdocdelivered from (Select iRequestID, Count(iDeliveryID) as noofdocdelivered from [dbo].[tblDeliveryLog] where tiStatus = 1 group by iRequestID) dl WHERE dl.iRequestID = R.iRequestID), '') noofdocdelivered,  
 'Y' as activeflag, 
-COALESCE(isnull([dbo].[cst_GetRqstCustFieldValue](R.iRequestID, 'Status'), ''), NULL) as customfieldstatus  
+COALESCE(isnull([dbo].[cst_GetRqstCustFieldValue](R.iRequestID, 'Status'), ''), NULL) as customfieldstatus, 
+R.vcVisibleRequestID as visualrequestfilenumber
 From [dbo].tblRequests R 
 left outer join dbo.tblTasks tsk ON R.tiReviewID = tsk.tiTaskID
 left outer join [dbo].EC_USERS AS RBU ON R.iReceivedBy = RBU.USER_ID 
@@ -2531,6 +2532,17 @@ where R.iRequestID = ?</property>
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[customfieldstatus]"
                               name="customfieldstatus"
                               truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[visualrequestfilenumber]"
+                              length="50"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]"
+                              name="visualrequestfilenumber"
+                              truncationRowDisposition="FailComponent" />
                           </outputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -2969,6 +2981,12 @@ where R.iRequestID = ?</property>
                               dataType="str"
                               length="1000"
                               name="customfieldstatus" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[visualrequestfilenumber]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="visualrequestfilenumber" />
                           </externalMetadataColumns>
                         </output>
                         <output
@@ -3502,6 +3520,13 @@ where R.iRequestID = ?</property>
                               length="1000"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[customfieldstatus]"
                               name="customfieldstatus" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[visualrequestfilenumber]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[visualrequestfilenumber]"
+                              name="visualrequestfilenumber" />
                             <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                               dataType="i4"
@@ -4890,7 +4915,8 @@ R.sdtOriginalReceivedDate as originalreceiveddate,
 isnull((Select secondaryusers from (Select RAH.iRequestID, STRING_AGG(STCU.FULL_NAME, ':: ') as secondaryusers from [dbo].[tblRequestsAssignHistory] RAH left outer join [dbo].EC_USERS AS STCU ON RAH.iUserID = STCU.USER_ID group by RAH.iRequestID) su WHERE su.iRequestID = R.iRequestID), '')  as secondaryusers,
 isnull((Select noofdocdelivered from (Select iRequestID, Count(iDeliveryID) as noofdocdelivered from [dbo].[tblDeliveryLog] where tiStatus = 1 group by iRequestID) dl WHERE dl.iRequestID = R.iRequestID), '') noofdocdelivered,  
 'Y' as activeflag, 
-COALESCE(isnull([dbo].[cst_GetRqstCustFieldValue](R.iRequestID, 'Status'), ''), NULL) as customfieldstatus  
+COALESCE(isnull([dbo].[cst_GetRqstCustFieldValue](R.iRequestID, 'Status'), ''), NULL) as customfieldstatus, 
+R.vcVisibleRequestID as visualrequestfilenumber
 From [dbo].tblRequests R 
 left outer join dbo.tblTasks tsk ON R.tiReviewID = tsk.tiTaskID
 left outer join [dbo].EC_USERS AS RBU ON R.iReceivedBy = RBU.USER_ID 
@@ -5832,6 +5858,17 @@ where R.iRequestID = ?</property>
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[customfieldstatus]"
                               name="customfieldstatus"
                               truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[visualrequestfilenumber]"
+                              length="50"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]"
+                              name="visualrequestfilenumber"
+                              truncationRowDisposition="FailComponent" />
                           </outputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -6270,6 +6307,12 @@ where R.iRequestID = ?</property>
                               dataType="str"
                               length="1000"
                               name="customfieldstatus" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[visualrequestfilenumber]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="visualrequestfilenumber" />
                           </externalMetadataColumns>
                         </output>
                         <output
@@ -6804,6 +6847,13 @@ where R.iRequestID = ?</property>
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[customfieldstatus]"
                               name="customfieldstatus" />
                             <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[visualrequestfilenumber]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[visualrequestfilenumber]"
+                              name="visualrequestfilenumber" />
+                            <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                               dataType="i4"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -6845,7 +6895,7 @@ where R.iRequestID = ?</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="Update active flag to N for existing record"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -8275,7 +8325,8 @@ R.sdtOriginalReceivedDate as originalreceiveddate,
 isnull((Select secondaryusers from (Select RAH.iRequestID, STRING_AGG(STCU.FULL_NAME, ':: ') as secondaryusers from [dbo].[tblRequestsAssignHistory] RAH left outer join [dbo].EC_USERS AS STCU ON RAH.iUserID = STCU.USER_ID group by RAH.iRequestID) su WHERE su.iRequestID = R.iRequestID), '')  as secondaryusers,
 isnull((Select noofdocdelivered from (Select iRequestID, Count(iDeliveryID) as noofdocdelivered from [dbo].[tblDeliveryLog] where tiStatus = 1 group by iRequestID) dl WHERE dl.iRequestID = R.iRequestID), '') noofdocdelivered,  
 'Y' as activeflag, 
-COALESCE(isnull([dbo].[cst_GetRqstCustFieldValue](R.iRequestID, 'Status'), ''), NULL) as customfieldstatus  
+COALESCE(isnull([dbo].[cst_GetRqstCustFieldValue](R.iRequestID, 'Status'), ''), NULL) as customfieldstatus, 
+R.vcVisibleRequestID as visualrequestfilenumber
 From [dbo].tblRequests R 
 left outer join dbo.tblTasks tsk ON R.tiReviewID = tsk.tiTaskID
 left outer join [dbo].EC_USERS AS RBU ON R.iReceivedBy = RBU.USER_ID 
@@ -9217,6 +9268,17 @@ where R.iRequestID = ?</property>
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[customfieldstatus]"
                               name="customfieldstatus"
                               truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[visualrequestfilenumber]"
+                              length="50"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]"
+                              name="visualrequestfilenumber"
+                              truncationRowDisposition="FailComponent" />
                           </outputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -9655,6 +9717,12 @@ where R.iRequestID = ?</property>
                               dataType="str"
                               length="1000"
                               name="customfieldstatus" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[visualrequestfilenumber]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="visualrequestfilenumber" />
                           </externalMetadataColumns>
                         </output>
                         <output
@@ -10189,6 +10257,13 @@ where R.iRequestID = ?</property>
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[customfieldstatus]"
                               name="customfieldstatus" />
                             <outputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[visualrequestfilenumber]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[visualrequestfilenumber]"
+                              name="visualrequestfilenumber" />
+                            <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                               dataType="i4"
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -10240,7 +10315,7 @@ where R.iRequestID = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get modified request count"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -10268,7 +10343,7 @@ where R.iRequestID = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get modified requests"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -10296,7 +10371,7 @@ where R.iRequestID = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get new request count"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -10324,7 +10399,7 @@ where R.iRequestID = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get new requests"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -11720,7 +11795,8 @@ R.sdtOriginalReceivedDate as originalreceiveddate,
 isnull((Select secondaryusers from (Select RAH.iRequestID, STRING_AGG(STCU.FULL_NAME, ':: ') as secondaryusers from [dbo].[tblRequestsAssignHistory] RAH left outer join [dbo].EC_USERS AS STCU ON RAH.iUserID = STCU.USER_ID group by RAH.iRequestID) su WHERE su.iRequestID = R.iRequestID), '')  as secondaryusers,
 isnull((Select noofdocdelivered from (Select iRequestID, Count(iDeliveryID) as noofdocdelivered from [dbo].[tblDeliveryLog] where tiStatus = 1 group by iRequestID) dl WHERE dl.iRequestID = R.iRequestID), '') noofdocdelivered,  
 'Y' as activeflag, 
-COALESCE(isnull([dbo].[cst_GetRqstCustFieldValue](R.iRequestID, 'Status'), ''), NULL) as customfieldstatus 
+COALESCE(isnull([dbo].[cst_GetRqstCustFieldValue](R.iRequestID, 'Status'), ''), NULL) as customfieldstatus, 
+R.vcVisibleRequestID as visualrequestfilenumber
 From [dbo].tblRequests R 
 left outer join dbo.tblTasks tsk ON R.tiReviewID = tsk.tiTaskID
 left outer join [dbo].EC_USERS AS RBU ON R.iReceivedBy = RBU.USER_ID 
@@ -12661,6 +12737,17 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
                           lineageId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[customfieldstatus]"
                           name="customfieldstatus"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[visualrequestfilenumber]"
+                          length="50"
+                          lineageId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]"
+                          name="visualrequestfilenumber"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -13099,6 +13186,12 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
                           dataType="str"
                           length="1000"
                           name="customfieldstatus" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[visualrequestfilenumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="visualrequestfilenumber" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -13633,6 +13726,13 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
                           lineageId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[customfieldstatus]"
                           name="customfieldstatus" />
                         <outputColumn
+                          refId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[visualrequestfilenumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[visualrequestfilenumber]"
+                          name="visualrequestfilenumber" />
+                        <outputColumn
                           refId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
                           lineageId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -13796,6 +13896,14 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
           Id="Package\End Run Cycle"
           TopLeft="403.333317306307,859.400002748171" />
         <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Check if record exist"
+          TopLeft="339.03331760433,18.4666676653757" />
+        <NodeLayout
+          Size="222.4,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details"
+          TopLeft="303.199985694886,112.000000082651" />
+        <NodeLayout
           Size="220,41.6"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details"
           TopLeft="29.1333202865395,112.60000477314" />
@@ -13825,10 +13933,6 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Check if record exist"
-          TopLeft="339.03331760433,18.4666676653757" />
         <EdgeLayout
           Id="Package\Sequence Container\Foreach Loop Container for modified requests.PrecedenceConstraints[Constraint 1]"
           TopLeft="339.03331760433,37.4000013430914">
@@ -13853,10 +13957,6 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="222.4,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details"
-          TopLeft="303.199985694886,112.000000082651" />
         <EdgeLayout
           Id="Package\Sequence Container\Foreach Loop Container for modified requests.PrecedenceConstraints[Constraint 2]"
           TopLeft="417.916651649608,60.0666676653757">
@@ -14194,6 +14294,90 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
     </LayoutInfo>
   </Package>
   <TaskHost
+    design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source"
+          TopLeft="384.166651401255,42.4666670041614" />
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination"
+          TopLeft="393.333317703671,240.933335248099" />
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\Data Conversion"
+          TopLeft="388.333317902354,141.266667789353" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details.Paths[OLE DB Source Output]"
+          TopLeft="463.249984651804,84.0666670041614">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.2000007851919"
+              Start="0,0"
+              End="0,49.7000007851919">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.7000007851919" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details.Paths[Data Conversion Output]"
+          TopLeft="466.333317902354,182.866667789353">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.59999980131795,58.0666674587461"
+              Start="0,0"
+              End="8.59999980131795,50.5666674587461">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.033333729373" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.033333729373"
+                    Point2="0,29.033333729373"
+                    Point3="4,29.033333729373" />
+                  <mssgle:LineSegment
+                    End="4.59999980131795,29.033333729373" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.59999980131795,29.033333729373"
+                    Point2="8.59999980131795,29.033333729373"
+                    Point3="8.59999980131795,33.033333729373" />
+                  <mssgle:LineSegment
+                    End="8.59999980131795,50.5666674587461" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details">
     <LayoutInfo>
       <GraphLayout
@@ -14484,81 +14668,5 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="152,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source"
-          TopLeft="384.166651401255,42.4666670041614" />
-        <NodeLayout
-          Size="163.2,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination"
-          TopLeft="393.333317703671,240.933335248099" />
-        <NodeLayout
-          Size="156,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\Data Conversion"
-          TopLeft="388.333317902354,141.266667789353" />
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details.Paths[Data Conversion Output]"
-          TopLeft="466.333317902354,182.866667789353">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="8.59999980131795,58.0666674587461"
-              Start="0,0"
-              End="8.59999980131795,50.5666674587461">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.033333729373" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.033333729373"
-                    Point2="0,29.033333729373"
-                    Point3="4,29.033333729373" />
-                  <mssgle:LineSegment
-                    End="4.59999980131795,29.033333729373" />
-                  <mssgle:CubicBezierSegment
-                    Point1="4.59999980131795,29.033333729373"
-                    Point2="8.59999980131795,29.033333729373"
-                    Point3="8.59999980131795,33.033333729373" />
-                  <mssgle:LineSegment
-                    End="8.59999980131795,50.5666674587461" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details.Paths[OLE DB Source Output]"
-          TopLeft="463.249984651804,84.0666670041614">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,57.2000007851919"
-              Start="0,0"
-              End="0,49.7000007851919">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,49.7000007851919" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
