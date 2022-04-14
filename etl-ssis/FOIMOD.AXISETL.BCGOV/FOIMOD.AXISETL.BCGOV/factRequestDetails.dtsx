@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="factRequestDetails"
   DTS:PackageType="5"
-  DTS:VersionBuild="30"
-  DTS:VersionGUID="{666524E6-2FCB-41AD-933C-47DC83EF7AEE}">
+  DTS:VersionBuild="32"
+  DTS:VersionGUID="{4BFBC88A-E9D9-4346-93A3-27A8CBC969C4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -215,7 +215,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="Check if record exist"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -1016,6 +1016,14 @@
                               cachedName="customfieldstatus"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[customfieldstatus]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[customfieldstatus]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[visualrequestfilenumber]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="50"
+                              cachedName="visualrequestfilenumber"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[visualrequestfilenumber]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]" />
                           </inputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -1442,6 +1450,11 @@
                               dataType="wstr"
                               length="1000"
                               name="customfieldstatus" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[visualrequestfilenumber]"
+                              dataType="wstr"
+                              length="50"
+                              name="visualrequestfilenumber" />
                           </externalMetadataColumns>
                         </input>
                       </inputs>
@@ -4342,6 +4355,14 @@ where R.iRequestID = ?</property>
                               cachedName="customfieldstatus"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[customfieldstatus]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[customfieldstatus]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[visualrequestfilenumber]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="50"
+                              cachedName="visualrequestfilenumber"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[visualrequestfilenumber]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]" />
                           </inputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -4768,6 +4789,11 @@ where R.iRequestID = ?</property>
                               dataType="wstr"
                               length="1000"
                               name="customfieldstatus" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[visualrequestfilenumber]"
+                              dataType="wstr"
+                              length="50"
+                              name="visualrequestfilenumber" />
                           </externalMetadataColumns>
                         </input>
                       </inputs>
@@ -6895,7 +6921,7 @@ where R.iRequestID = ?</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="Update active flag to N for existing record"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -7752,6 +7778,14 @@ where R.iRequestID = ?</property>
                               cachedName="customfieldstatus"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[customfieldstatus]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[customfieldstatus]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[visualrequestfilenumber]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="50"
+                              cachedName="visualrequestfilenumber"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[visualrequestfilenumber]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]" />
                           </inputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -8178,6 +8212,11 @@ where R.iRequestID = ?</property>
                               dataType="wstr"
                               length="1000"
                               name="customfieldstatus" />
+                            <externalMetadataColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[visualrequestfilenumber]"
+                              dataType="wstr"
+                              length="50"
+                              name="visualrequestfilenumber" />
                           </externalMetadataColumns>
                         </input>
                       </inputs>
@@ -10315,7 +10354,7 @@ where R.iRequestID = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get modified request count"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -10343,7 +10382,7 @@ where R.iRequestID = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get modified requests"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -10371,7 +10410,7 @@ where R.iRequestID = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get new request count"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -10399,7 +10438,7 @@ where R.iRequestID = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get new requests"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -11222,6 +11261,14 @@ where R.iRequestID = ?</property>
                           cachedName="customfieldstatus"
                           externalMetadataColumnId="Package\Sequence Container\Initial Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[customfieldstatus]"
                           lineageId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[customfieldstatus]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Initial Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[visualrequestfilenumber]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="visualrequestfilenumber"
+                          externalMetadataColumnId="Package\Sequence Container\Initial Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[visualrequestfilenumber]"
+                          lineageId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -11648,6 +11695,11 @@ where R.iRequestID = ?</property>
                           dataType="wstr"
                           length="1000"
                           name="customfieldstatus" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Initial Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[visualrequestfilenumber]"
+                          dataType="wstr"
+                          length="50"
+                          name="visualrequestfilenumber" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -13892,23 +13944,23 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="184.8,41.6"
+          Size="185,42"
           Id="Package\End Run Cycle"
           TopLeft="403.333317306307,859.400002748171" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Check if record exist"
           TopLeft="339.03331760433,18.4666676653757" />
         <NodeLayout
-          Size="222.4,41.6"
+          Size="222,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details"
           TopLeft="303.199985694886,112.000000082651" />
         <NodeLayout
-          Size="220,41.6"
+          Size="220,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details"
           TopLeft="29.1333202865395,112.60000477314" />
         <NodeLayout
-          Size="189.6,41.6"
+          Size="190,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Update active flag to N for existing record"
           TopLeft="40.7999864896145,14.7333350208071" />
         <EdgeLayout
@@ -13984,43 +14036,43 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="558.4,212.8"
-          Size="558.4,256"
+          PanelSize="558,213"
+          Size="558,256"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests"
           TopLeft="34.2666644149358,299.466669834984" />
         <NodeLayout
-          Size="228.8,41.6"
+          Size="229,42"
           Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details"
           TopLeft="24.7999737739576,51.9333367978204" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="268,205.6"
-          Size="268,248.8"
+          PanelSize="268,206"
+          Size="268,249"
           Id="Package\Sequence Container\Foreach Loop Container for new requests"
           TopLeft="612.599974767368,300.533334380256" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\Sequence Container\Get modified request count"
           TopLeft="364.266651301915,112.333335351414" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\Sequence Container\Get modified requests"
           TopLeft="368.433317803013,207.666669442389" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\Sequence Container\Get new request count"
           TopLeft="627.599974171322,110.066668367916" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\Sequence Container\Get new requests"
           TopLeft="635.099973873299,200.200002417565" />
         <NodeLayout
-          Size="228.8,41.6"
+          Size="229,42"
           Id="Package\Sequence Container\Get record count from factRequestDetails"
           TopLeft="338.433318995105,21.3333346282111" />
         <NodeLayout
-          Size="128.8,41.6"
+          Size="129,42"
           Id="Package\Sequence Container\Initial Load"
           TopLeft="88.4333289292125,67.2666683265899" />
         <EdgeLayout
@@ -14239,11 +14291,11 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
           HeaderHeight="43"
           IsExpanded="True"
           PanelSize="932,620"
-          Size="932,663.2"
+          Size="932,663"
           Id="Package\Sequence Container"
           TopLeft="22.4999991059305,126.53333433893" />
         <NodeLayout
-          Size="184.8,41.6"
+          Size="185,42"
           Id="Package\Start Run Cycle"
           TopLeft="394.999984304111,28.6000001446406" />
         <EdgeLayout
@@ -14299,15 +14351,15 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="152,41.6"
+          Size="152,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source"
           TopLeft="384.166651401255,42.4666670041614" />
         <NodeLayout
-          Size="163.2,41.6"
+          Size="163,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination"
           TopLeft="393.333317703671,240.933335248099" />
         <NodeLayout
-          Size="156,41.6"
+          Size="156,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\Data Conversion"
           TopLeft="388.333317902354,141.266667789353" />
         <EdgeLayout
@@ -14377,21 +14429,34 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details">
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="152,41.6"
+          Size="152,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source"
           TopLeft="384.166651401255,42.4666670041614" />
         <NodeLayout
-          Size="163.2,41.6"
+          Size="163,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination"
           TopLeft="393.333317703671,240.933335248099" />
         <NodeLayout
-          Size="156,41.6"
+          Size="156,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion"
           TopLeft="388.333317902354,141.266667789353" />
         <EdgeLayout
@@ -14480,15 +14545,15 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="152,41.6"
+          Size="152,42"
           Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source"
           TopLeft="384.166651401255,42.4666670041614" />
         <NodeLayout
-          Size="163.2,41.6"
+          Size="163,42"
           Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination"
           TopLeft="393.333317703671,240.933335248099" />
         <NodeLayout
-          Size="156,41.6"
+          Size="156,42"
           Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion"
           TopLeft="388.333317902354,141.266667789353" />
         <EdgeLayout
@@ -14577,15 +14642,15 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="152,41.6"
+          Size="152,42"
           Id="Package\Sequence Container\Initial Load\OLE DB Source"
           TopLeft="384.166651401255,42.4666670041614" />
         <NodeLayout
-          Size="163.2,41.6"
+          Size="163,42"
           Id="Package\Sequence Container\Initial Load\ODBC Destination"
           TopLeft="393.333317703671,240.933335248099" />
         <NodeLayout
-          Size="156,41.6"
+          Size="156,42"
           Id="Package\Sequence Container\Initial Load\Data Conversion"
           TopLeft="388.333317902354,141.266667789353" />
         <EdgeLayout
