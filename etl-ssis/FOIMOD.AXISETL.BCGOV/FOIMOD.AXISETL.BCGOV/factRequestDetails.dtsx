@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="factRequestDetails"
   DTS:PackageType="5"
-  DTS:VersionBuild="32"
-  DTS:VersionGUID="{4BFBC88A-E9D9-4346-93A3-27A8CBC969C4}">
+  DTS:VersionBuild="54"
+  DTS:VersionGUID="{DC2F3C0A-7635-4500-8DCC-73034BF4C579}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -248,84 +248,6 @@
                 <pipeline
                   version="1">
                   <components>
-                    <component
-                      refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\Data Conversion"
-                      componentClassID="Microsoft.DataConvert"
-                      contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-                      description="Data Conversion"
-                      name="Data Conversion"
-                      usesDispositions="true">
-                      <inputs>
-                        <input
-                          refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\Data Conversion.Inputs[Data Conversion Input]"
-                          name="Data Conversion Input">
-                          <inputColumns>
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\Data Conversion.Inputs[Data Conversion Input].Columns[refvisualrequestfilenumber]"
-                              cachedCodepage="1252"
-                              cachedDataType="text"
-                              cachedName="refvisualrequestfilenumber"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]" />
-                          </inputColumns>
-                          <externalMetadataColumns />
-                        </input>
-                      </inputs>
-                      <outputs>
-                        <output
-                          refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\Data Conversion.Outputs[Data Conversion Output]"
-                          exclusionGroup="1"
-                          name="Data Conversion Output"
-                          synchronousInputId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\Data Conversion.Inputs[Data Conversion Input]">
-                          <outputColumns>
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of refvisualrequestfilenumber]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              length="50"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of refvisualrequestfilenumber]"
-                              name="Copy of refvisualrequestfilenumber"
-                              truncationRowDisposition="FailComponent">
-                              <properties>
-                                <property
-                                  containsID="true"
-                                  dataType="System.Int32"
-                                  description="Specifies the input column used as the source of data for the conversion."
-                                  name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]}</property>
-                                <property
-                                  dataType="System.Boolean"
-                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                                  name="FastParse">false</property>
-                              </properties>
-                            </outputColumn>
-                          </outputColumns>
-                          <externalMetadataColumns />
-                        </output>
-                        <output
-                          refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\Data Conversion.Outputs[Data Conversion Error Output]"
-                          exclusionGroup="1"
-                          isErrorOut="true"
-                          name="Data Conversion Error Output"
-                          synchronousInputId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\Data Conversion.Inputs[Data Conversion Input]">
-                          <outputColumns>
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                              dataType="i4"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                              name="ErrorCode"
-                              specialFlags="1" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                              dataType="i4"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                              name="ErrorColumn"
-                              specialFlags="2" />
-                          </outputColumns>
-                          <externalMetadataColumns />
-                        </output>
-                      </outputs>
-                    </component>
                     <component
                       refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination"
                       componentClassID="Microsoft.SSISODBCDst"
@@ -1001,14 +923,6 @@
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[activeflag]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[activeflag]" />
                             <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[Copy of refvisualrequestfilenumber]"
-                              cachedCodepage="1252"
-                              cachedDataType="str"
-                              cachedLength="50"
-                              cachedName="Copy of refvisualrequestfilenumber"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refvisualrequestfilenumber]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of refvisualrequestfilenumber]" />
-                            <inputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[customfieldstatus]"
                               cachedCodepage="1252"
                               cachedDataType="str"
@@ -1024,6 +938,14 @@
                               cachedName="visualrequestfilenumber"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[visualrequestfilenumber]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[refvisualrequestfilenumber]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="1"
+                              cachedName="refvisualrequestfilenumber"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refvisualrequestfilenumber]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]" />
                           </inputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -1508,7 +1430,7 @@
                           dataType="System.String"
                           description="The SQL command to be executed."
                           name="SqlCommand"
-                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DECLARE @runcycleid integer 
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DECLARE @runcycleid integer
 SET @runcycleid = ?
 
 Select 
@@ -1593,7 +1515,7 @@ P.vcName as priority,
 R.iRequesterID as requesterid,
 R.iOnBehalfOf as onbehalfofrequesterid,
 R.ireferencenumber as referencenumber,
-[dbo].[AFX_GetReferenceRequests](r.iRequestID, 'R') as refvisualrequestfilenumber,
+'' as refvisualrequestfilenumber,
 R.iShipAddressID as shipaddressid,
 R.iBillAddressID as billaddressid,
 R.sdtOriginalReceivedDate as originalreceiveddate,
@@ -1618,7 +1540,7 @@ left outer join [dbo].viwDenialAuthorities VDA on R.siDelAuthorityID = VDA.siCod
 left outer join [dbo].tblRequestTypes RT on R.tiRequestTypeID = RT.tiRequestTypeID 
 left outer join [dbo].tblTerminologyLookup TLL ON RT.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 
 left outer join [dbo].EC_VW_OFFICE VO on R.tiOfficeID = VO.OFFICE_ID AND VO.LOCALE_ID = 1 
-left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiLocaleID = 1 
+left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiLocaleID = 1
 where R.iRequestID = ?</property>
                         <property
                           dataType="System.String"
@@ -2447,10 +2369,11 @@ where R.iRequestID = ?</property>
                             <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]"
                               codePage="1252"
-                              dataType="text"
+                              dataType="str"
                               errorOrTruncationOperation="Conversion"
                               errorRowDisposition="FailComponent"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
+                              length="1"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]"
                               name="refvisualrequestfilenumber"
                               truncationRowDisposition="FailComponent" />
@@ -2946,7 +2869,8 @@ where R.iRequestID = ?</property>
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
                               codePage="1252"
-                              dataType="text"
+                              dataType="str"
+                              length="1"
                               name="refvisualrequestfilenumber" />
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[shipaddressid]"
@@ -3475,7 +3399,8 @@ where R.iRequestID = ?</property>
                             <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
                               codePage="1252"
-                              dataType="text"
+                              dataType="str"
+                              length="1"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
                               name="refvisualrequestfilenumber" />
                             <outputColumn
@@ -3560,13 +3485,8 @@ where R.iRequestID = ?</property>
                   </components>
                   <paths>
                     <path
-                      refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details.Paths[Data Conversion Output]"
-                      endId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input]"
-                      name="Data Conversion Output"
-                      startId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\Data Conversion.Outputs[Data Conversion Output]" />
-                    <path
                       refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details.Paths[OLE DB Source Output]"
-                      endId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\Data Conversion.Inputs[Data Conversion Input]"
+                      endId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input]"
                       name="OLE DB Source Output"
                       startId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output]" />
                   </paths>
@@ -3587,84 +3507,6 @@ where R.iRequestID = ?</property>
                 <pipeline
                   version="1">
                   <components>
-                    <component
-                      refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion"
-                      componentClassID="Microsoft.DataConvert"
-                      contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-                      description="Data Conversion"
-                      name="Data Conversion"
-                      usesDispositions="true">
-                      <inputs>
-                        <input
-                          refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Inputs[Data Conversion Input]"
-                          name="Data Conversion Input">
-                          <inputColumns>
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Inputs[Data Conversion Input].Columns[refvisualrequestfilenumber]"
-                              cachedCodepage="1252"
-                              cachedDataType="text"
-                              cachedName="refvisualrequestfilenumber"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]" />
-                          </inputColumns>
-                          <externalMetadataColumns />
-                        </input>
-                      </inputs>
-                      <outputs>
-                        <output
-                          refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output]"
-                          exclusionGroup="1"
-                          name="Data Conversion Output"
-                          synchronousInputId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Inputs[Data Conversion Input]">
-                          <outputColumns>
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of refvisualrequestfilenumber]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              length="50"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of refvisualrequestfilenumber]"
-                              name="Copy of refvisualrequestfilenumber"
-                              truncationRowDisposition="FailComponent">
-                              <properties>
-                                <property
-                                  containsID="true"
-                                  dataType="System.Int32"
-                                  description="Specifies the input column used as the source of data for the conversion."
-                                  name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]}</property>
-                                <property
-                                  dataType="System.Boolean"
-                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                                  name="FastParse">false</property>
-                              </properties>
-                            </outputColumn>
-                          </outputColumns>
-                          <externalMetadataColumns />
-                        </output>
-                        <output
-                          refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Error Output]"
-                          exclusionGroup="1"
-                          isErrorOut="true"
-                          name="Data Conversion Error Output"
-                          synchronousInputId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Inputs[Data Conversion Input]">
-                          <outputColumns>
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                              dataType="i4"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                              name="ErrorCode"
-                              specialFlags="1" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                              dataType="i4"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                              name="ErrorColumn"
-                              specialFlags="2" />
-                          </outputColumns>
-                          <externalMetadataColumns />
-                        </output>
-                      </outputs>
-                    </component>
                     <component
                       refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination"
                       componentClassID="Microsoft.SSISODBCDst"
@@ -4340,14 +4182,6 @@ where R.iRequestID = ?</property>
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[activeflag]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[activeflag]" />
                             <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[Copy of refvisualrequestfilenumber]"
-                              cachedCodepage="1252"
-                              cachedDataType="str"
-                              cachedLength="50"
-                              cachedName="Copy of refvisualrequestfilenumber"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refvisualrequestfilenumber]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of refvisualrequestfilenumber]" />
-                            <inputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[customfieldstatus]"
                               cachedCodepage="1252"
                               cachedDataType="str"
@@ -4363,6 +4197,14 @@ where R.iRequestID = ?</property>
                               cachedName="visualrequestfilenumber"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[visualrequestfilenumber]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[refvisualrequestfilenumber]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="1"
+                              cachedName="refvisualrequestfilenumber"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refvisualrequestfilenumber]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]" />
                           </inputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -4847,7 +4689,7 @@ where R.iRequestID = ?</property>
                           dataType="System.String"
                           description="The SQL command to be executed."
                           name="SqlCommand"
-                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DECLARE @runcycleid integer 
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DECLARE @runcycleid integer
 SET @runcycleid = ?
 
 Select 
@@ -4932,7 +4774,7 @@ P.vcName as priority,
 R.iRequesterID as requesterid,
 R.iOnBehalfOf as onbehalfofrequesterid,
 R.ireferencenumber as referencenumber,
-[dbo].[AFX_GetReferenceRequests](r.iRequestID, 'R') as refvisualrequestfilenumber,
+'' as refvisualrequestfilenumber,
 R.iShipAddressID as shipaddressid,
 R.iBillAddressID as billaddressid,
 R.sdtOriginalReceivedDate as originalreceiveddate,
@@ -4957,7 +4799,7 @@ left outer join [dbo].viwDenialAuthorities VDA on R.siDelAuthorityID = VDA.siCod
 left outer join [dbo].tblRequestTypes RT on R.tiRequestTypeID = RT.tiRequestTypeID 
 left outer join [dbo].tblTerminologyLookup TLL ON RT.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 
 left outer join [dbo].EC_VW_OFFICE VO on R.tiOfficeID = VO.OFFICE_ID AND VO.LOCALE_ID = 1 
-left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiLocaleID = 1 
+left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiLocaleID = 1
 where R.iRequestID = ?</property>
                         <property
                           dataType="System.String"
@@ -5786,10 +5628,11 @@ where R.iRequestID = ?</property>
                             <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]"
                               codePage="1252"
-                              dataType="text"
+                              dataType="str"
                               errorOrTruncationOperation="Conversion"
                               errorRowDisposition="FailComponent"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
+                              length="1"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]"
                               name="refvisualrequestfilenumber"
                               truncationRowDisposition="FailComponent" />
@@ -6285,7 +6128,8 @@ where R.iRequestID = ?</property>
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
                               codePage="1252"
-                              dataType="text"
+                              dataType="str"
+                              length="1"
                               name="refvisualrequestfilenumber" />
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[shipaddressid]"
@@ -6814,7 +6658,8 @@ where R.iRequestID = ?</property>
                             <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
                               codePage="1252"
-                              dataType="text"
+                              dataType="str"
+                              length="1"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
                               name="refvisualrequestfilenumber" />
                             <outputColumn
@@ -6899,13 +6744,8 @@ where R.iRequestID = ?</property>
                   </components>
                   <paths>
                     <path
-                      refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details.Paths[Data Conversion Output]"
-                      endId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input]"
-                      name="Data Conversion Output"
-                      startId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Outputs[Data Conversion Output]" />
-                    <path
                       refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details.Paths[OLE DB Source Output]"
-                      endId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion.Inputs[Data Conversion Input]"
+                      endId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input]"
                       name="OLE DB Source Output"
                       startId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output]" />
                   </paths>
@@ -7010,84 +6850,6 @@ where R.iRequestID = ?</property>
                 <pipeline
                   version="1">
                   <components>
-                    <component
-                      refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion"
-                      componentClassID="Microsoft.DataConvert"
-                      contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-                      description="Data Conversion"
-                      name="Data Conversion"
-                      usesDispositions="true">
-                      <inputs>
-                        <input
-                          refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Inputs[Data Conversion Input]"
-                          name="Data Conversion Input">
-                          <inputColumns>
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Inputs[Data Conversion Input].Columns[refvisualrequestfilenumber]"
-                              cachedCodepage="1252"
-                              cachedDataType="text"
-                              cachedName="refvisualrequestfilenumber"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]" />
-                          </inputColumns>
-                          <externalMetadataColumns />
-                        </input>
-                      </inputs>
-                      <outputs>
-                        <output
-                          refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output]"
-                          exclusionGroup="1"
-                          name="Data Conversion Output"
-                          synchronousInputId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Inputs[Data Conversion Input]">
-                          <outputColumns>
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of refvisualrequestfilenumber]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              length="50"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of refvisualrequestfilenumber]"
-                              name="Copy of refvisualrequestfilenumber"
-                              truncationRowDisposition="FailComponent">
-                              <properties>
-                                <property
-                                  containsID="true"
-                                  dataType="System.Int32"
-                                  description="Specifies the input column used as the source of data for the conversion."
-                                  name="SourceInputColumnLineageID">#{Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]}</property>
-                                <property
-                                  dataType="System.Boolean"
-                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                                  name="FastParse">false</property>
-                              </properties>
-                            </outputColumn>
-                          </outputColumns>
-                          <externalMetadataColumns />
-                        </output>
-                        <output
-                          refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Error Output]"
-                          exclusionGroup="1"
-                          isErrorOut="true"
-                          name="Data Conversion Error Output"
-                          synchronousInputId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Inputs[Data Conversion Input]">
-                          <outputColumns>
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                              dataType="i4"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                              name="ErrorCode"
-                              specialFlags="1" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                              dataType="i4"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                              name="ErrorColumn"
-                              specialFlags="2" />
-                          </outputColumns>
-                          <externalMetadataColumns />
-                        </output>
-                      </outputs>
-                    </component>
                     <component
                       refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination"
                       componentClassID="Microsoft.SSISODBCDst"
@@ -7763,14 +7525,6 @@ where R.iRequestID = ?</property>
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[activeflag]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[activeflag]" />
                             <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[Copy of refvisualrequestfilenumber]"
-                              cachedCodepage="1252"
-                              cachedDataType="str"
-                              cachedLength="50"
-                              cachedName="Copy of refvisualrequestfilenumber"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refvisualrequestfilenumber]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of refvisualrequestfilenumber]" />
-                            <inputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[customfieldstatus]"
                               cachedCodepage="1252"
                               cachedDataType="str"
@@ -7786,6 +7540,14 @@ where R.iRequestID = ?</property>
                               cachedName="visualrequestfilenumber"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[visualrequestfilenumber]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]" />
+                            <inputColumn
+                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[refvisualrequestfilenumber]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="1"
+                              cachedName="refvisualrequestfilenumber"
+                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refvisualrequestfilenumber]"
+                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]" />
                           </inputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -8270,7 +8032,7 @@ where R.iRequestID = ?</property>
                           dataType="System.String"
                           description="The SQL command to be executed."
                           name="SqlCommand"
-                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DECLARE @runcycleid integer 
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DECLARE @runcycleid integer
 SET @runcycleid = ?
 
 Select 
@@ -8355,7 +8117,7 @@ P.vcName as priority,
 R.iRequesterID as requesterid,
 R.iOnBehalfOf as onbehalfofrequesterid,
 R.ireferencenumber as referencenumber,
-[dbo].[AFX_GetReferenceRequests](r.iRequestID, 'R') as refvisualrequestfilenumber,
+'' as refvisualrequestfilenumber,
 R.iShipAddressID as shipaddressid,
 R.iBillAddressID as billaddressid,
 R.sdtOriginalReceivedDate as originalreceiveddate,
@@ -8380,7 +8142,7 @@ left outer join [dbo].viwDenialAuthorities VDA on R.siDelAuthorityID = VDA.siCod
 left outer join [dbo].tblRequestTypes RT on R.tiRequestTypeID = RT.tiRequestTypeID 
 left outer join [dbo].tblTerminologyLookup TLL ON RT.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 
 left outer join [dbo].EC_VW_OFFICE VO on R.tiOfficeID = VO.OFFICE_ID AND VO.LOCALE_ID = 1 
-left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiLocaleID = 1 
+left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiLocaleID = 1
 where R.iRequestID = ?</property>
                         <property
                           dataType="System.String"
@@ -9209,10 +8971,11 @@ where R.iRequestID = ?</property>
                             <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]"
                               codePage="1252"
-                              dataType="text"
+                              dataType="str"
                               errorOrTruncationOperation="Conversion"
                               errorRowDisposition="FailComponent"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
+                              length="1"
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]"
                               name="refvisualrequestfilenumber"
                               truncationRowDisposition="FailComponent" />
@@ -9708,7 +9471,8 @@ where R.iRequestID = ?</property>
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
                               codePage="1252"
-                              dataType="text"
+                              dataType="str"
+                              length="1"
                               name="refvisualrequestfilenumber" />
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[shipaddressid]"
@@ -10237,7 +10001,8 @@ where R.iRequestID = ?</property>
                             <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
                               codePage="1252"
-                              dataType="text"
+                              dataType="str"
+                              length="1"
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
                               name="refvisualrequestfilenumber" />
                             <outputColumn
@@ -10322,13 +10087,8 @@ where R.iRequestID = ?</property>
                   </components>
                   <paths>
                     <path
-                      refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details.Paths[Data Conversion Output]"
-                      endId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input]"
-                      name="Data Conversion Output"
-                      startId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Outputs[Data Conversion Output]" />
-                    <path
                       refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details.Paths[OLE DB Source Output]"
-                      endId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion.Inputs[Data Conversion Input]"
+                      endId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input]"
                       name="OLE DB Source Output"
                       startId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output]" />
                   </paths>
@@ -10493,84 +10253,6 @@ where R.iRequestID = ?</property>
             <pipeline
               version="1">
               <components>
-                <component
-                  refId="Package\Sequence Container\Initial Load\Data Conversion"
-                  componentClassID="Microsoft.DataConvert"
-                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-                  description="Data Conversion"
-                  name="Data Conversion"
-                  usesDispositions="true">
-                  <inputs>
-                    <input
-                      refId="Package\Sequence Container\Initial Load\Data Conversion.Inputs[Data Conversion Input]"
-                      name="Data Conversion Input">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\Sequence Container\Initial Load\Data Conversion.Inputs[Data Conversion Input].Columns[refvisualrequestfilenumber]"
-                          cachedCodepage="1252"
-                          cachedDataType="text"
-                          cachedName="refvisualrequestfilenumber"
-                          lineageId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]" />
-                      </inputColumns>
-                      <externalMetadataColumns />
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\Sequence Container\Initial Load\Data Conversion.Outputs[Data Conversion Output]"
-                      exclusionGroup="1"
-                      name="Data Conversion Output"
-                      synchronousInputId="Package\Sequence Container\Initial Load\Data Conversion.Inputs[Data Conversion Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\Sequence Container\Initial Load\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of refvisualrequestfilenumber]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          length="50"
-                          lineageId="Package\Sequence Container\Initial Load\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of refvisualrequestfilenumber]"
-                          name="Copy of refvisualrequestfilenumber"
-                          truncationRowDisposition="FailComponent">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Specifies the input column used as the source of data for the conversion."
-                              name="SourceInputColumnLineageID">#{Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]}</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                          </properties>
-                        </outputColumn>
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\Sequence Container\Initial Load\Data Conversion.Outputs[Data Conversion Error Output]"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="Data Conversion Error Output"
-                      synchronousInputId="Package\Sequence Container\Initial Load\Data Conversion.Inputs[Data Conversion Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\Sequence Container\Initial Load\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\Sequence Container\Initial Load\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\Sequence Container\Initial Load\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\Sequence Container\Initial Load\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
                 <component
                   refId="Package\Sequence Container\Initial Load\ODBC Destination"
                   componentClassID="Microsoft.SSISODBCDst"
@@ -11246,14 +10928,6 @@ where R.iRequestID = ?</property>
                           externalMetadataColumnId="Package\Sequence Container\Initial Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[activeflag]"
                           lineageId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[activeflag]" />
                         <inputColumn
-                          refId="Package\Sequence Container\Initial Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[Copy of refvisualrequestfilenumber]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="50"
-                          cachedName="Copy of refvisualrequestfilenumber"
-                          externalMetadataColumnId="Package\Sequence Container\Initial Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refvisualrequestfilenumber]"
-                          lineageId="Package\Sequence Container\Initial Load\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of refvisualrequestfilenumber]" />
-                        <inputColumn
                           refId="Package\Sequence Container\Initial Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[customfieldstatus]"
                           cachedCodepage="1252"
                           cachedDataType="str"
@@ -11269,6 +10943,14 @@ where R.iRequestID = ?</property>
                           cachedName="visualrequestfilenumber"
                           externalMetadataColumnId="Package\Sequence Container\Initial Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[visualrequestfilenumber]"
                           lineageId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Initial Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[refvisualrequestfilenumber]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="refvisualrequestfilenumber"
+                          externalMetadataColumnId="Package\Sequence Container\Initial Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refvisualrequestfilenumber]"
+                          lineageId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -11838,7 +11520,7 @@ P.vcName as priority,
 R.iRequesterID as requesterid,
 R.iOnBehalfOf as onbehalfofrequesterid,
 R.ireferencenumber as referencenumber,
-[dbo].[AFX_GetReferenceRequests](r.iRequestID, 'R') as refvisualrequestfilenumber,
+'' as refvisualrequestfilenumber,
 R.iShipAddressID as shipaddressid,
 R.iBillAddressID as billaddressid,
 R.sdtOriginalReceivedDate as originalreceiveddate,
@@ -12691,10 +12373,11 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
                         <outputColumn
                           refId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]"
                           codePage="1252"
-                          dataType="text"
+                          dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
+                          length="1"
                           lineageId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]"
                           name="refvisualrequestfilenumber"
                           truncationRowDisposition="FailComponent" />
@@ -13190,7 +12873,8 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
                         <externalMetadataColumn
                           refId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
                           codePage="1252"
-                          dataType="text"
+                          dataType="str"
+                          length="1"
                           name="refvisualrequestfilenumber" />
                         <externalMetadataColumn
                           refId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[shipaddressid]"
@@ -13719,7 +13403,8 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
                         <outputColumn
                           refId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
                           codePage="1252"
-                          dataType="text"
+                          dataType="str"
+                          length="1"
                           lineageId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
                           name="refvisualrequestfilenumber" />
                         <outputColumn
@@ -13804,13 +13489,8 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
               </components>
               <paths>
                 <path
-                  refId="Package\Sequence Container\Initial Load.Paths[Data Conversion Output]"
-                  endId="Package\Sequence Container\Initial Load\ODBC Destination.Inputs[ODBC Destination Input]"
-                  name="Data Conversion Output"
-                  startId="Package\Sequence Container\Initial Load\Data Conversion.Outputs[Data Conversion Output]" />
-                <path
                   refId="Package\Sequence Container\Initial Load.Paths[OLE DB Source Output]"
-                  endId="Package\Sequence Container\Initial Load\Data Conversion.Inputs[Data Conversion Input]"
+                  endId="Package\Sequence Container\Initial Load\ODBC Destination.Inputs[ODBC Destination Input]"
                   name="OLE DB Source Output"
                   startId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output]" />
               </paths>
@@ -14047,8 +13727,8 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="268,206"
-          Size="268,249"
+          PanelSize="304,206"
+          Size="304,249"
           Id="Package\Sequence Container\Foreach Loop Container for new requests"
           TopLeft="612.599974767368,300.533334380256" />
         <NodeLayout
@@ -14072,42 +13752,42 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
           Id="Package\Sequence Container\Get record count from factRequestDetails"
           TopLeft="338.433318995105,21.3333346282111" />
         <NodeLayout
-          Size="129,42"
+          Size="132,42"
           Id="Package\Sequence Container\Initial Load"
           TopLeft="88.4333289292125,67.2666683265899" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
-          TopLeft="338.433318995105,42.1333346282111">
+          TopLeft="338.433318995105,42.3333346282111">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-121.199990065893,45.9333336983788"
+              EndConnector="-117.999990065893,45.9333336983788"
               Start="0,0"
-              End="-113.699990065893,45.9333336983788">
+              End="-110.499990065893,45.9333336983788">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-56.5999950329464,0" />
+                    End="-54.9999950329463,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="-56.5999950329464,0"
-                    Point2="-60.5999950329464,0"
-                    Point3="-60.5999950329464,4" />
+                    Point1="-54.9999950329463,0"
+                    Point2="-58.9999950329463,0"
+                    Point3="-58.9999950329463,4" />
                   <mssgle:LineSegment
-                    End="-60.5999950329464,41.9333336983788" />
+                    End="-58.9999950329463,41.9333336983788" />
                   <mssgle:CubicBezierSegment
-                    Point1="-60.5999950329464,41.9333336983788"
-                    Point2="-60.5999950329464,45.9333336983788"
-                    Point3="-64.5999950329464,45.9333336983788" />
+                    Point1="-58.9999950329463,41.9333336983788"
+                    Point2="-58.9999950329463,45.9333336983788"
+                    Point3="-62.9999950329463,45.9333336983788" />
                   <mssgle:LineSegment
-                    End="-113.699990065893,45.9333336983788" />
+                    End="-110.499990065893,45.9333336983788" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-68.5999950329464,-22,16,16"
+              BoundingBox="-66.9999950329463,-22,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -14131,7 +13811,7 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-8,12.9500003616016,16,16"
+              BoundingBox="-8,12.9500003616015,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -14255,30 +13935,30 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 6]"
-          TopLeft="717.499973873299,241.800002417565">
+          TopLeft="717.599973873299,242.200002417565">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="29.1000008940691,58.7333319626911"
+              EndConnector="47.0000008940691,58.333331962691"
               Start="0,0"
-              End="29.1000008940691,51.2333319626911">
+              End="47.0000008940691,50.833331962691">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.3666659813455" />
+                    End="0,25.1666659813455" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,25.3666659813455"
-                    Point2="0,29.3666659813455"
-                    Point3="4,29.3666659813455" />
+                    Point1="0,25.1666659813455"
+                    Point2="0,29.1666659813455"
+                    Point3="4,29.1666659813455" />
                   <mssgle:LineSegment
-                    End="25.1000008940691,29.3666659813455" />
+                    End="43.0000008940691,29.1666659813455" />
                   <mssgle:CubicBezierSegment
-                    Point1="25.1000008940691,29.3666659813455"
-                    Point2="29.1000008940691,29.3666659813455"
-                    Point3="29.1000008940691,33.3666659813455" />
+                    Point1="43.0000008940691,29.1666659813455"
+                    Point2="47.0000008940691,29.1666659813455"
+                    Point3="47.0000008940691,33.1666659813455" />
                   <mssgle:LineSegment
-                    End="29.1000008940691,51.2333319626911" />
+                    End="47.0000008940691,50.833331962691" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -14349,67 +14029,29 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
     design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="152,42"
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source"
-          TopLeft="384.166651401255,42.4666670041614" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="163,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination"
-          TopLeft="393.333317703671,240.933335248099" />
+          TopLeft="384.333317703671,240.933335248099" />
         <NodeLayout
-          Size="156,42"
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\Data Conversion"
-          TopLeft="388.333317902354,141.266667789353" />
+          Size="157,42"
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source"
+          TopLeft="384,88" />
         <EdgeLayout
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details.Paths[OLE DB Source Output]"
-          TopLeft="463.249984651804,84.0666670041614">
+          TopLeft="464.166658851836,130">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,57.2000007851919"
+              EndConnector="0,110.933335248099"
               Start="0,0"
-              End="0,49.7000007851919">
+              End="0,103.433335248099">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,49.7000007851919" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details.Paths[Data Conversion Output]"
-          TopLeft="466.333317902354,182.866667789353">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="8.59999980131795,58.0666674587461"
-              Start="0,0"
-              End="8.59999980131795,50.5666674587461">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.033333729373" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.033333729373"
-                    Point2="0,29.033333729373"
-                    Point3="4,29.033333729373" />
-                  <mssgle:LineSegment
-                    End="4.59999980131795,29.033333729373" />
-                  <mssgle:CubicBezierSegment
-                    Point1="4.59999980131795,29.033333729373"
-                    Point2="8.59999980131795,29.033333729373"
-                    Point3="8.59999980131795,33.033333729373" />
-                  <mssgle:LineSegment
-                    End="8.59999980131795,50.5666674587461" />
+                    End="0,103.433335248099" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -14421,14 +14063,6 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination">
     <Properties>
@@ -14446,67 +14080,29 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
     design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="152,42"
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source"
-          TopLeft="384.166651401255,42.4666670041614" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="163,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination"
-          TopLeft="393.333317703671,240.933335248099" />
+          TopLeft="385.333317703671,240.933335248099" />
         <NodeLayout
-          Size="156,42"
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\Data Conversion"
-          TopLeft="388.333317902354,141.266667789353" />
+          Size="157,42"
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source"
+          TopLeft="387,108" />
         <EdgeLayout
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details.Paths[OLE DB Source Output]"
-          TopLeft="463.249984651804,84.0666670041614">
+          TopLeft="466.166658851836,150">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,57.2000007851919"
+              EndConnector="0,90.933335248099"
               Start="0,0"
-              End="0,49.7000007851919">
+              End="0,83.433335248099">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,49.7000007851919" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details.Paths[Data Conversion Output]"
-          TopLeft="466.333317902354,182.866667789353">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="8.59999980131795,58.0666674587461"
-              Start="0,0"
-              End="8.59999980131795,50.5666674587461">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.033333729373" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.033333729373"
-                    Point2="0,29.033333729373"
-                    Point3="4,29.033333729373" />
-                  <mssgle:LineSegment
-                    End="4.59999980131795,29.033333729373" />
-                  <mssgle:CubicBezierSegment
-                    Point1="4.59999980131795,29.033333729373"
-                    Point2="8.59999980131795,29.033333729373"
-                    Point3="8.59999980131795,33.033333729373" />
-                  <mssgle:LineSegment
-                    End="8.59999980131795,50.5666674587461" />
+                    End="0,83.433335248099" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -14518,14 +14114,6 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination">
     <Properties>
@@ -14543,67 +14131,29 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
     design-time-name="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="152,42"
-          Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source"
-          TopLeft="384.166651401255,42.4666670041614" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="163,42"
           Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination"
-          TopLeft="393.333317703671,240.933335248099" />
+          TopLeft="382.333317703671,240.933335248099" />
         <NodeLayout
-          Size="156,42"
-          Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\Data Conversion"
-          TopLeft="388.333317902354,141.266667789353" />
+          Size="157,42"
+          Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source"
+          TopLeft="386,80" />
         <EdgeLayout
           Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details.Paths[OLE DB Source Output]"
-          TopLeft="463.249984651804,84.0666670041614">
+          TopLeft="464.166658851836,122">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,57.2000007851919"
+              EndConnector="0,118.933335248099"
               Start="0,0"
-              End="0,49.7000007851919">
+              End="0,111.433335248099">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,49.7000007851919" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details.Paths[Data Conversion Output]"
-          TopLeft="466.333317902354,182.866667789353">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="8.59999980131795,58.0666674587461"
-              Start="0,0"
-              End="8.59999980131795,50.5666674587461">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.033333729373" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.033333729373"
-                    Point2="0,29.033333729373"
-                    Point3="4,29.033333729373" />
-                  <mssgle:LineSegment
-                    End="4.59999980131795,29.033333729373" />
-                  <mssgle:CubicBezierSegment
-                    Point1="4.59999980131795,29.033333729373"
-                    Point2="8.59999980131795,29.033333729373"
-                    Point3="8.59999980131795,33.033333729373" />
-                  <mssgle:LineSegment
-                    End="8.59999980131795,50.5666674587461" />
+                    End="0,111.433335248099" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -14615,14 +14165,6 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination">
     <Properties>
@@ -14640,67 +14182,29 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
     design-time-name="Package\Sequence Container\Initial Load">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="152,42"
-          Id="Package\Sequence Container\Initial Load\OLE DB Source"
-          TopLeft="384.166651401255,42.4666670041614" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="163,42"
           Id="Package\Sequence Container\Initial Load\ODBC Destination"
-          TopLeft="393.333317703671,240.933335248099" />
+          TopLeft="383.333317703671,241.933335248099" />
         <NodeLayout
-          Size="156,42"
-          Id="Package\Sequence Container\Initial Load\Data Conversion"
-          TopLeft="388.333317902354,141.266667789353" />
+          Size="157,42"
+          Id="Package\Sequence Container\Initial Load\OLE DB Source"
+          TopLeft="380,50" />
         <EdgeLayout
           Id="Package\Sequence Container\Initial Load.Paths[OLE DB Source Output]"
-          TopLeft="463.249984651804,84.0666670041614">
+          TopLeft="461.666658851836,92">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,57.2000007851919"
+              EndConnector="0,149.933335248099"
               Start="0,0"
-              End="0,49.7000007851919">
+              End="0,142.433335248099">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,49.7000007851919" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Initial Load.Paths[Data Conversion Output]"
-          TopLeft="466.333317902354,182.866667789353">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="8.59999980131715,58.066667458746"
-              Start="0,0"
-              End="8.59999980131715,50.566667458746">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.033333729373" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.033333729373"
-                    Point2="0,29.033333729373"
-                    Point3="4,29.033333729373" />
-                  <mssgle:LineSegment
-                    End="4.59999980131715,29.033333729373" />
-                  <mssgle:CubicBezierSegment
-                    Point1="4.59999980131715,29.033333729373"
-                    Point2="8.59999980131715,29.033333729373"
-                    Point3="8.59999980131715,33.033333729373" />
-                  <mssgle:LineSegment
-                    End="8.59999980131715,50.566667458746" />
+                    End="0,142.433335248099" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -14713,14 +14217,6 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Initial Load\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\Initial Load\ODBC Destination">
     <Properties>
       <Property>
@@ -14730,6 +14226,38 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Initial Load\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
