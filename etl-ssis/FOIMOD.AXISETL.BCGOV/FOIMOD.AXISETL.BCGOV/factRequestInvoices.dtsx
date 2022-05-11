@@ -11,10 +11,21 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="factRequestInvoices"
   DTS:PackageType="5"
-  DTS:VersionBuild="37"
-  DTS:VersionGUID="{9FCA1201-6A69-47A6-8F9D-107E395BB8C7}">
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{1C568342-1F48-4857-982A-412B72C59119}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="11"
+      DTS:DTSID="{567A47F3-5133-4D07-A66C-26969E0F9932}"
+      DTS:ObjectName="requireDimRequests">
+      <DTS:Property
+        DTS:DataType="11"
+        DTS:Name="ParameterValue">-1</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
@@ -4439,6 +4450,10 @@ From tblInvoices</property>
             <ParameterName>packageName</ParameterName>
             <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
           </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>requireDimRequests</ParameterName>
+            <BindedVariableOrParameterName>$Package::requireDimRequests</BindedVariableOrParameterName>
+          </ParameterAssignment>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -4474,15 +4489,15 @@ From tblInvoices</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="184.8,41.6"
+          Size="185,42"
           Id="Package\End Run Cycle"
           TopLeft="403.333317306307,859.400002748171" />
         <NodeLayout
-          Size="220,41.6"
+          Size="220,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details"
           TopLeft="29.1333202865395,112.60000477314" />
         <NodeLayout
-          Size="190.4,41.6"
+          Size="190,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Update active flag to N for existing record"
           TopLeft="40.7999864896145,14.7333350208071" />
         <EdgeLayout
@@ -4511,15 +4526,15 @@ From tblInvoices</property>
           HeaderHeight="43"
           IsExpanded="True"
           PanelSize="284,212"
-          Size="284,255.2"
+          Size="284,255"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests"
           TopLeft="276.766654778852,303.200003140767" />
         <NodeLayout
-          Size="161.6,41.6"
+          Size="162,42"
           Id="Package\Sequence Container\Foreach Loop Container for new requests\Check if record exists"
           TopLeft="54.8000000000003,23" />
         <NodeLayout
-          Size="228.8,41.6"
+          Size="229,42"
           Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details"
           TopLeft="28.7999737739575,113.93333679782" />
         <EdgeLayout
@@ -4549,32 +4564,32 @@ From tblInvoices</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="268,206.4"
-          Size="268,248.8"
+          PanelSize="268,206"
+          Size="268,249"
           Id="Package\Sequence Container\Foreach Loop Container for new requests"
           TopLeft="612.599974767368,300.533334380256" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\Sequence Container\Get modified request count"
           TopLeft="364.266651301915,112.333335351414" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\Sequence Container\Get modified requests"
           TopLeft="368.433317803013,207.666669442389" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\Sequence Container\Get new request count"
           TopLeft="627.599974171322,110.93333504147" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\Sequence Container\Get new requests"
           TopLeft="635.099973873299,200.200002417565" />
         <NodeLayout
-          Size="228.8,41.6"
+          Size="229,42"
           Id="Package\Sequence Container\Get record count from factRequestDetails"
           TopLeft="338.433318995105,21.3333346282111" />
         <NodeLayout
-          Size="128.8,41.6"
+          Size="129,42"
           Id="Package\Sequence Container\Initial Load"
           TopLeft="88.4333289292125,67.2666683265899" />
         <EdgeLayout
@@ -4793,11 +4808,11 @@ From tblInvoices</property>
           HeaderHeight="43"
           IsExpanded="True"
           PanelSize="932,612"
-          Size="932,655.2"
+          Size="932,655"
           Id="Package\Sequence Container"
           TopLeft="22.4999991059304,126.53333433893" />
         <NodeLayout
-          Size="184.8,41.6"
+          Size="185,42"
           Id="Package\Start Run Cycle"
           TopLeft="394.999984304111,28.6000001446406" />
         <EdgeLayout
