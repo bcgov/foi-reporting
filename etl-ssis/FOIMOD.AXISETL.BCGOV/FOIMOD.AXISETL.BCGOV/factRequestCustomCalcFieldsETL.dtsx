@@ -11,10 +11,21 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="factRequestCustomCalcFieldsETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="35"
-  DTS:VersionGUID="{F8C1CD50-30D4-4545-AF7B-231A4482268F}">
+  DTS:VersionBuild="37"
+  DTS:VersionGUID="{27B2EE1D-A396-4D34-8809-3788E2477553}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="11"
+      DTS:DTSID="{D64C0471-262C-4AB5-8073-A8410D240A6F}"
+      DTS:ObjectName="requireDimRequests">
+      <DTS:Property
+        DTS:DataType="11"
+        DTS:Name="ParameterValue">-1</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
@@ -1703,6 +1714,10 @@ on R.iRequestID = linkedrequests.iRequestIDOrigin</property>
           <ParameterAssignment>
             <ParameterName>packageName</ParameterName>
             <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>requireDimRequests</ParameterName>
+            <BindedVariableOrParameterName>$Package::requireDimRequests</BindedVariableOrParameterName>
           </ParameterAssignment>
         </ExecutePackageTask>
       </DTS:ObjectData>

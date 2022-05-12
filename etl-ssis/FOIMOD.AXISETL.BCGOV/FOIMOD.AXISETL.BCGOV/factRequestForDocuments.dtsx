@@ -11,10 +11,21 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="factRequestForDocuments"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{29C17D2F-7E0C-455F-9431-DD1F9B9E32D1}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{CB33EAD1-ABFE-4A37-BF09-3A3B4E370403}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="11"
+      DTS:DTSID="{8C97616A-0FF2-4B93-A2B0-8A05B5DDC43A}"
+      DTS:ObjectName="requireDimRequests">
+      <DTS:Property
+        DTS:DataType="11"
+        DTS:Name="ParameterValue">-1</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
@@ -2604,6 +2615,10 @@ where RFD.iActionID = ?</property>
             <ParameterName>packageName</ParameterName>
             <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
           </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>requireDimRequests</ParameterName>
+            <BindedVariableOrParameterName>$Package::requireDimRequests</BindedVariableOrParameterName>
+          </ParameterAssignment>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -2639,17 +2654,36 @@ where RFD.iActionID = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="184.8,41.6"
-          Id="Package\Start Run Cycle"
-          TopLeft="397.49998420477,22.5333335124122" />
+          Size="147,42"
+          Id="Package\End Run Cycle"
+          TopLeft="406.666650507186,796.533334297604" />
         <NodeLayout
-          Size="228.8,41.6"
-          Id="Package\Sequence Container\Get record count from factRequestForDocuments"
-          TopLeft="329.233318597741,33.1333329545128" />
-        <NodeLayout
-          Size="150.4,41.6"
+          Size="150,42"
           Id="Package\Sequence Container\Data Flow Task"
           TopLeft="117.566660341952,112.26666867786" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Sequence Container\Foreach Loop Container\Data Flow Task"
+          TopLeft="34.166667693191,40.0666665082508" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="215,179"
+          Size="215,222"
+          Id="Package\Sequence Container\Foreach Loop Container"
+          TopLeft="375.066650109822,295.533335434066" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Sequence Container\Get new action count"
+          TopLeft="394.233316014873,118.533333099153" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Sequence Container\Get new action id"
+          TopLeft="395.066649315093,205.466668719186" />
+        <NodeLayout
+          Size="229,42"
+          Id="Package\Sequence Container\Get record count from factRequestForDocuments"
+          TopLeft="329.233318597741,33.1333329545128" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
           TopLeft="443.633318597741,74.7333329545127">
@@ -2686,10 +2720,6 @@ where RFD.iActionID = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\Get new action count"
-          TopLeft="394.233316014873,118.533333099153" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
           TopLeft="478.533317306307,74.7333329545127">
@@ -2714,10 +2744,6 @@ where RFD.iActionID = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\Get new action id"
-          TopLeft="395.066649315093,205.466668719186" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
           TopLeft="477.049982664983,160.133333099153">
@@ -2742,17 +2768,6 @@ where RFD.iActionID = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="150.4,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container\Data Flow Task"
-          TopLeft="34.166667693191,40.0666665082508" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="215.2,178.4"
-          Size="215.2,221.6"
-          Id="Package\Sequence Container\Foreach Loop Container"
-          TopLeft="375.066650109822,295.533335434066" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 3]"
           TopLeft="480.066649712457,247.066668719186">
@@ -2779,9 +2794,13 @@ where RFD.iActionID = ?</property>
           HeaderHeight="43"
           IsExpanded="True"
           PanelSize="888,572"
-          Size="888,615.2"
+          Size="888,615"
           Id="Package\Sequence Container"
           TopLeft="41.6666650109822,125.666667665376" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Start Run Cycle"
+          TopLeft="397.49998420477,22.5333335124122" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="487.783324607876,64.1333335124122">
@@ -2804,10 +2823,6 @@ where RFD.iActionID = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="147.2,41.6"
-          Id="Package\End Run Cycle"
-          TopLeft="406.666650507186,796.533334297604" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="482.966657759084,740.866667665376">
@@ -2872,14 +2887,6 @@ where RFD.iActionID = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Data Flow Task\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\Data Flow Task\ODBC Destination">
     <Properties>
       <Property>
@@ -2889,6 +2896,14 @@ where RFD.iActionID = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

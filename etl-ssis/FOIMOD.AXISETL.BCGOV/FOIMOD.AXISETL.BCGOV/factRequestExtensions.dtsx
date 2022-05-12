@@ -11,10 +11,21 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="factRequestExtensions"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{25DB02B8-CBB0-4FBC-B8F9-4C83F9B79A59}">
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{5CD9034F-CB6E-413B-A1F4-0669BCD29181}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="11"
+      DTS:DTSID="{780E3E89-1BFD-487B-AC3C-13D0BE7670CA}"
+      DTS:ObjectName="requireDimRequests">
+      <DTS:Property
+        DTS:DataType="11"
+        DTS:Name="ParameterValue">-1</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
@@ -95,15 +106,6 @@
         </DTS:Variable>
         <DTS:Variable
           DTS:CreationName=""
-          DTS:DTSID="{735DBC16-C609-4BE9-8D7E-EB7CE708421C}"
-          DTS:IncludeInDebugDump="6789"
-          DTS:Namespace="User"
-          DTS:ObjectName="modifiedfoirequestid">
-          <DTS:VariableValue
-            DTS:DataType="3">0</DTS:VariableValue>
-        </DTS:Variable>
-        <DTS:Variable
-          DTS:CreationName=""
           DTS:DTSID="{8BE849E6-1BCF-4DD6-AE0B-DA646116ED3E}"
           DTS:IncludeInDebugDump="6789"
           DTS:Namespace="User"
@@ -113,10 +115,19 @@
         </DTS:Variable>
         <DTS:Variable
           DTS:CreationName=""
+          DTS:DTSID="{735DBC16-C609-4BE9-8D7E-EB7CE708421C}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="modifiedrequestextid">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
           DTS:DTSID="{99434F1B-C1EA-41FE-9E72-9857A80BC761}"
           DTS:IncludeInDebugDump="6789"
           DTS:Namespace="User"
-          DTS:ObjectName="modifiedfoirequestids">
+          DTS:ObjectName="modifiedrequestextids">
           <DTS:VariableValue
             DTS:DataSubType="ManagedSerializable"
             DTS:DataType="13">
@@ -131,15 +142,6 @@
         </DTS:Variable>
         <DTS:Variable
           DTS:CreationName=""
-          DTS:DTSID="{2CFDBC13-CFB7-4DE5-8853-8184494C3A2B}"
-          DTS:IncludeInDebugDump="6789"
-          DTS:Namespace="User"
-          DTS:ObjectName="newfoirequestid">
-          <DTS:VariableValue
-            DTS:DataType="3">0</DTS:VariableValue>
-        </DTS:Variable>
-        <DTS:Variable
-          DTS:CreationName=""
           DTS:DTSID="{526ECB62-B8AD-4043-9FCB-E4DC97C8BC1B}"
           DTS:IncludeInDebugDump="6789"
           DTS:Namespace="User"
@@ -149,10 +151,19 @@
         </DTS:Variable>
         <DTS:Variable
           DTS:CreationName=""
+          DTS:DTSID="{2CFDBC13-CFB7-4DE5-8853-8184494C3A2B}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="newrequestextid">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
           DTS:DTSID="{22CBD1CF-2DAC-4B35-A055-59CF0AD211C0}"
           DTS:IncludeInDebugDump="6789"
           DTS:Namespace="User"
-          DTS:ObjectName="newfoirequestids">
+          DTS:ObjectName="newrequestextids">
           <DTS:VariableValue
             DTS:DataSubType="ManagedSerializable"
             DTS:DataType="13">
@@ -1361,7 +1372,7 @@ from tblRequestExtensions</property>
             <DTS:ObjectData>
               <FEEADO
                 EnumType="EnumerateRowsInFirstTable"
-                VarName="User::modifiedfoirequestids" />
+                VarName="User::modifiedrequestextids" />
             </DTS:ObjectData>
           </DTS:ForEachEnumerator>
           <DTS:Variables />
@@ -1878,7 +1889,7 @@ Select
 	iNoofPagesSent as noofpagessent,
 	'Y' as activeflag 
 from tblRequestExtensions 
-where iRequestID = ?</property>
+where iReqExtnID = ?</property>
                         <property
                           dataType="System.String"
                           description="The variable that contains the SQL command to be executed."
@@ -2555,15 +2566,15 @@ where iRequestID = ?</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="Update active flag to N for existing record"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
-                  SQLTask:SqlStatementSource="UPDATE public.&quot;factRequestExtensions&quot;&#xA;&#x9;SET activeflag='N'&#xA;&#x9;WHERE foirequestid = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  SQLTask:SqlStatementSource="UPDATE public.&quot;factRequestExtensions&quot;&#xA;&#x9;SET activeflag='N'&#xA;&#x9;WHERE requestextid = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
                   <SQLTask:ParameterBinding
                     SQLTask:ParameterName="1"
-                    SQLTask:DtsVariableName="User::modifiedfoirequestid"
+                    SQLTask:DtsVariableName="User::modifiedrequestextid"
                     SQLTask:ParameterDirection="Input"
                     SQLTask:DataType="4"
                     SQLTask:ParameterSize="-1" />
@@ -2584,10 +2595,10 @@ where iRequestID = ?</property>
           <DTS:ForEachVariableMappings>
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{D3FDA65A-5DE8-4A02-B895-8F68EC195163}"
-              DTS:ObjectName="{D3FDA65A-5DE8-4A02-B895-8F68EC195163}"
+              DTS:DTSID="{961F90C3-9FCD-490A-9AF9-1060487607E2}"
+              DTS:ObjectName="{961F90C3-9FCD-490A-9AF9-1060487607E2}"
               DTS:ValueIndex="0"
-              DTS:VariableName="User::modifiedfoirequestid" />
+              DTS:VariableName="User::modifiedrequestextid" />
           </DTS:ForEachVariableMappings>
         </DTS:Executable>
         <DTS:Executable
@@ -2605,7 +2616,7 @@ where iRequestID = ?</property>
             <DTS:ObjectData>
               <FEEADO
                 EnumType="EnumerateRowsInFirstTable"
-                VarName="User::newfoirequestids" />
+                VarName="User::newrequestextids" />
             </DTS:ObjectData>
           </DTS:ForEachEnumerator>
           <DTS:Variables />
@@ -3122,7 +3133,7 @@ Select
 	iNoofPagesSent as noofpagessent,
 	'Y' as activeflag 
 from tblRequestExtensions 
-where iRequestID = ?</property>
+where iReqExtnID = ?</property>
                         <property
                           dataType="System.String"
                           description="The variable that contains the SQL command to be executed."
@@ -3794,10 +3805,10 @@ where iRequestID = ?</property>
           <DTS:ForEachVariableMappings>
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{068F7212-09ED-4352-BB5E-97E7A2E50000}"
-              DTS:ObjectName="{068F7212-09ED-4352-BB5E-97E7A2E50000}"
+              DTS:DTSID="{A85F1012-FBAC-4708-807B-245CC17AC7BF}"
+              DTS:ObjectName="{A85F1012-FBAC-4708-807B-245CC17AC7BF}"
               DTS:ValueIndex="0"
-              DTS:VariableName="User::newfoirequestid" />
+              DTS:VariableName="User::newrequestextid" />
           </DTS:ForEachVariableMappings>
         </DTS:Executable>
         <DTS:Executable
@@ -3809,7 +3820,7 @@ where iRequestID = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get modified record count"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3837,16 +3848,16 @@ where iRequestID = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get modified requests"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
-              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;iRequestID&#xA;From tblRequestExtensions  &#x9;&#xA;WHERE dtModifiedDate &gt;=CONVERT(VARCHAR(10),@lastruntime , 121) AND dtCreatedDate &lt; CONVERT(VARCHAR(10),@lastruntime , 121) "
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;iReqExtnID&#xA;From tblRequestExtensions  &#x9;&#xA;WHERE dtModifiedDate &gt;=CONVERT(VARCHAR(10),@lastruntime , 121) AND dtCreatedDate &lt; CONVERT(VARCHAR(10),@lastruntime , 121) "
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
-                SQLTask:DtsVariableName="User::modifiedfoirequestids" />
+                SQLTask:DtsVariableName="User::modifiedrequestextids" />
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::lastRunCycleTime"
@@ -3865,7 +3876,7 @@ where iRequestID = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get new record count"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3893,16 +3904,16 @@ where iRequestID = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get new requests"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
-              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;iRequestID&#xA;From tblRequestExtensions &#x9;&#xA;WHERE dtCreatedDate &gt;= CONVERT(VARCHAR(10),@lastruntime , 121) "
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;iReqExtnID&#xA;From tblRequestExtensions &#x9;&#xA;WHERE dtCreatedDate &gt;= CONVERT(VARCHAR(10),@lastruntime , 121) "
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
-                SQLTask:DtsVariableName="User::newfoirequestids" />
+                SQLTask:DtsVariableName="User::newrequestextids" />
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::lastRunCycleTime"
@@ -4026,6 +4037,10 @@ where iRequestID = ?</property>
             <ParameterName>packageName</ParameterName>
             <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
           </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>requireDimRequests</ParameterName>
+            <BindedVariableOrParameterName>$Package::requireDimRequests</BindedVariableOrParameterName>
+          </ParameterAssignment>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -4112,8 +4127,8 @@ where iRequestID = ?</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="270,223"
-          Size="270,266"
+          PanelSize="304,223"
+          Size="304,266"
           Id="Package\Sequence Container\Foreach Loop Container for new requests"
           TopLeft="589.266659050518,286.599999276797" />
         <NodeLayout
@@ -4328,30 +4343,30 @@ where iRequestID = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 6]"
-          TopLeft="706.966639877691,237.266668450567">
+          TopLeft="707.066639877691,237.666668450567">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="17.1000191728268,49.3333308262295"
+              EndConnector="34.200019172827,48.93333082623"
               Start="0,0"
-              End="17.1000191728268,41.8333308262295">
+              End="34.200019172827,41.43333082623">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.6666654131147" />
+                    End="0,20.466665413115" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.6666654131147"
-                    Point2="0,24.6666654131147"
-                    Point3="4,24.6666654131147" />
+                    Point1="0,20.466665413115"
+                    Point2="0,24.466665413115"
+                    Point3="4,24.466665413115" />
                   <mssgle:LineSegment
-                    End="13.1000191728268,24.6666654131147" />
+                    End="30.200019172827,24.466665413115" />
                   <mssgle:CubicBezierSegment
-                    Point1="13.1000191728268,24.6666654131147"
-                    Point2="17.1000191728268,24.6666654131147"
-                    Point3="17.1000191728268,28.6666654131147" />
+                    Point1="30.200019172827,24.466665413115"
+                    Point2="34.200019172827,24.466665413115"
+                    Point3="34.200019172827,28.466665413115" />
                   <mssgle:LineSegment
-                    End="17.1000191728268,41.8333308262295" />
+                    End="34.200019172827,41.43333082623" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4363,8 +4378,8 @@ where iRequestID = ?</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="883,718"
-          Size="883,761"
+          PanelSize="898,718"
+          Size="898,761"
           Id="Package\Sequence Container"
           TopLeft="49.9999980131789,121.333334297604" />
         <NodeLayout
@@ -4481,13 +4496,13 @@ where iRequestID = ?</property>
     design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="163.2,41.6"
+          Size="163,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Data Flow Task\ODBC Destination"
           TopLeft="413.333316908943,174.200001384417" />
         <NodeLayout
-          Size="152,41.6"
+          Size="152,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Data Flow Task\OLE DB Source"
           TopLeft="415.833316809602,60.666667148802" />
         <EdgeLayout
@@ -4509,9 +4524,7 @@ where iRequestID = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
