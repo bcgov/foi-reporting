@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="3/16/2022 5:11:28 PM"
@@ -11,21 +11,10 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="factRequestsRFSCalcFields"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{2732428C-0B45-44F8-8F4F-13E546DE9A60}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{9E9941FD-6DB7-45C4-B441-40A1A792B099}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:PackageParameters>
-    <DTS:PackageParameter
-      DTS:CreationName=""
-      DTS:DataType="11"
-      DTS:DTSID="{82F45356-C919-4D11-9701-E405125C06F2}"
-      DTS:ObjectName="requireDimRequests">
-      <DTS:Property
-        DTS:DataType="11"
-        DTS:Name="ParameterValue">-1</DTS:Property>
-    </DTS:PackageParameter>
-  </DTS:PackageParameters>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
@@ -600,10 +589,6 @@ left outer join [dbo].[tblRequests] TR ON RFD.iRequestID = TR.iRequestID</proper
             <ParameterName>packageName</ParameterName>
             <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
           </ParameterAssignment>
-          <ParameterAssignment>
-            <ParameterName>requireDimRequests</ParameterName>
-            <BindedVariableOrParameterName>$Package::requireDimRequests</BindedVariableOrParameterName>
-          </ParameterAssignment>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -639,17 +624,17 @@ left outer join [dbo].[tblRequests] TR ON RFD.iRequestID = TR.iRequestID</proper
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="185,42"
-          Id="Package\End Run Cycle"
-          TopLeft="689.166639281645,610.66666867786" />
+          Size="151.2,41.6"
+          Id="Package\Start Run Cycle"
+          TopLeft="692.499974866709,78.2000001446406" />
         <NodeLayout
-          Size="150,42"
-          Id="Package\Sequence Container\Data Flow Task"
-          TopLeft="207.59997496605,140.53333504147" />
-        <NodeLayout
-          Size="265,42"
+          Size="264.8,41.6"
           Id="Package\Sequence Container\EST_TruncatefactRequestCustomFields"
           TopLeft="140.933310948479,22.1333333884346" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Sequence Container\Data Flow Task"
+          TopLeft="207.59997496605,140.53333504147" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
           TopLeft="273.333310948479,63.7333333884346">
@@ -687,14 +672,10 @@ left outer join [dbo].[tblRequests] TR ON RFD.iRequestID = TR.iRequestID</proper
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="700,255"
-          Size="700,298"
+          PanelSize="700,254.4"
+          Size="700,297.6"
           Id="Package\Sequence Container"
           TopLeft="422.499983211359,227.06666847123" />
-        <NodeLayout
-          Size="151,42"
-          Id="Package\Start Run Cycle"
-          TopLeft="692.499974866709,78.2000001446406" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="770.299979039034,119.800000144641">
@@ -717,6 +698,10 @@ left outer join [dbo].[tblRequests] TR ON RFD.iRequestID = TR.iRequestID</proper
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\End Run Cycle"
+          TopLeft="689.166639281645,610.66666867786" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="772.499983211359,524.66666847123">
@@ -805,6 +790,14 @@ left outer join [dbo].[tblRequests] TR ON RFD.iRequestID = TR.iRequestID</proper
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\Data Flow Task\ODBC Destination">
     <Properties>
       <Property>
@@ -814,14 +807,6 @@ left outer join [dbo].[tblRequests] TR ON RFD.iRequestID = TR.iRequestID</proper
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Data Flow Task\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
