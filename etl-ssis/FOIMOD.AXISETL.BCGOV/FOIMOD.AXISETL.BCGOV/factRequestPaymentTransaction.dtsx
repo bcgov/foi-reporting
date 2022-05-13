@@ -11,21 +11,10 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="factRequestPaymentTransaction"
   DTS:PackageType="5"
-  DTS:VersionBuild="38"
-  DTS:VersionGUID="{69665591-7324-4D82-81BE-2CD77DD083B9}">
+  DTS:VersionBuild="36"
+  DTS:VersionGUID="{E5626964-9B52-4BC3-BD65-A6CDACBD8609}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:PackageParameters>
-    <DTS:PackageParameter
-      DTS:CreationName=""
-      DTS:DataType="11"
-      DTS:DTSID="{1ADC321B-33B1-4CA4-A0D4-8A54F4D42AF1}"
-      DTS:ObjectName="requireDimRequests">
-      <DTS:Property
-        DTS:DataType="11"
-        DTS:Name="ParameterValue">-1</DTS:Property>
-    </DTS:PackageParameter>
-  </DTS:PackageParameters>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
@@ -3186,7 +3175,7 @@ where iRequestID = ?</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="Update active flag to N for existing record"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -4750,7 +4739,7 @@ where iRequestID in  (?)</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get modified request count"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -4778,7 +4767,7 @@ where iRequestID in  (?)</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get modified requests"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -4806,7 +4795,7 @@ where iRequestID in  (?)</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get new request count"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -4834,7 +4823,7 @@ where iRequestID in  (?)</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get new requests"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -4967,10 +4956,6 @@ where iRequestID in  (?)</property>
             <ParameterName>packageName</ParameterName>
             <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
           </ParameterAssignment>
-          <ParameterAssignment>
-            <ParameterName>requireDimRequests</ParameterName>
-            <BindedVariableOrParameterName>$Package::requireDimRequests</BindedVariableOrParameterName>
-          </ParameterAssignment>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -5006,19 +4991,19 @@ where iRequestID in  (?)</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="185,42"
+          Size="184.8,41.6"
           Id="Package\End Run Cycle"
           TopLeft="397.49998420477,861.266670268907" />
         <NodeLayout
-          Size="150,42"
+          Size="150.4,41.6"
           Id="Package\Sequence Container\First Time Load"
           TopLeft="81.7666617327268,110.400001983643" />
         <NodeLayout
-          Size="220,42"
+          Size="220,41.6"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details"
           TopLeft="24.6999849994984,114.999999566078" />
         <NodeLayout
-          Size="190,42"
+          Size="190.4,41.6"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Update active flag to N for existing record"
           TopLeft="42.199984304111,26.5999988635381" />
         <EdgeLayout
@@ -5046,39 +5031,39 @@ where iRequestID in  (?)</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="266,211"
-          Size="266,254"
+          PanelSize="265.6,211.2"
+          Size="265.6,254.4"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests"
           TopLeft="310.099985992909,308.000001983643" />
         <NodeLayout
-          Size="182,42"
+          Size="182.4,41.6"
           Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details"
           TopLeft="34.0999724825232,55.1999988428751" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="254,211"
-          Size="254,254"
+          PanelSize="254.4,211.2"
+          Size="254.4,254.4"
           Id="Package\Sequence Container\Foreach Loop Container for new requests"
           TopLeft="615.933307173518,307.33333433893" />
         <NodeLayout
-          Size="165,42"
+          Size="164.8,41.6"
           Id="Package\Sequence Container\Get modified request count"
           TopLeft="360.099984006088,128.199999690056" />
         <NodeLayout
-          Size="165,42"
+          Size="164.8,41.6"
           Id="Package\Sequence Container\Get modified requests"
           TopLeft="364.266650507186,225.466666322284" />
         <NodeLayout
-          Size="165,42"
+          Size="164.8,41.6"
           Id="Package\Sequence Container\Get new request count"
           TopLeft="624.266640175715,96.1333327685462" />
         <NodeLayout
-          Size="165,42"
+          Size="164.8,41.6"
           Id="Package\Sequence Container\Get new requests"
           TopLeft="637.599972979229,218.399999669393" />
         <NodeLayout
-          Size="288,46"
+          Size="288,46.4"
           Id="Package\Sequence Container\Get record count from factRequestPaymentTransaction"
           TopLeft="266.766654381488,28.8666661776438" />
         <EdgeLayout
@@ -5308,12 +5293,12 @@ where iRequestID in  (?)</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="885,618"
-          Size="885,661"
+          PanelSize="884.8,617.6"
+          Size="884.8,660.8"
           Id="Package\Sequence Container"
           TopLeft="42.4999983112018,126.53333433893" />
         <NodeLayout
-          Size="185,42"
+          Size="184.8,41.6"
           Id="Package\Start Run Cycle"
           TopLeft="387.499984602134,33.8000002686183" />
         <EdgeLayout

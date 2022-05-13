@@ -7,12 +7,12 @@
   DTS:CreatorName="LAPTOP-1OFQE5A2\qi__h"
   DTS:DTSID="{8ACC8D50-A7E6-4DAE-92A1-D5EE00684DF3}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
   DTS:LocaleID="4105"
   DTS:ObjectName="_StopRunCycle"
   DTS:PackageType="5"
-  DTS:VersionBuild="66"
-  DTS:VersionGUID="{BF1AE9EE-D76E-4745-B741-C5A9C8991852}">
+  DTS:VersionBuild="68"
+  DTS:VersionGUID="{FC282FE1-1960-45D7-B083-B6FC8F8076C7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -80,7 +80,7 @@
       <DTS:VariableValue
         DTS:DataType="8">update public."dimRunCycle" 
 set 
-runcycleendat = '2022-03-21 22:45:31.397000000', 
+runcycleendat = '2022-03-22 13:55:37.608000000', 
 description = 'package:  complete', 
 success = False 
 where runcycleid = 1</DTS:VariableValue>
@@ -119,7 +119,7 @@ where runcycleid = 1</DTS:VariableValue>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="150,42"
+          Size="149.6,41.6"
           Id="Package\Stop Run Cycle"
           TopLeft="393.333317703672,164.66666797532" />
       </GraphLayout>
