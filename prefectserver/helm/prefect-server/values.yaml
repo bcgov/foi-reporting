@@ -219,7 +219,7 @@ apollo:
   service:
     # type defines the service type and defaults to LoadBalancer
     # to expose the apollo service to users and the UI.
-    type: ClusterIP
+    type: LoadBalancer
     port: 4200
 
   ingress:
@@ -278,7 +278,7 @@ ui:
   service:
     # type defines the service type and defaults to LoadBalancer
     # to expose the ui service to users and the UI.
-    type: ClusterIP
+    type: LoadBalancer
     port: 8080
 
   ingress:
