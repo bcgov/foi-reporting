@@ -24,13 +24,13 @@ spec:
     {{- end }}
       {{- with .Values.jobs.createTenant.podSecurityContext }}
       securityContext:
-        {{- toYaml . | nindent 8 }}
+        runAsUser: 1011190000
       {{- end }}
       containers:
         - name: create-tenant
           {{- with .Values.jobs.createTenant.securityContext -}}
           securityContext:
-            {{- toYaml . | nindent 12 }}
+            runAsUser: 1011190000
           {{- end }}
           image: "{{ .Values.jobs.createTenant.image.name }}:{{ .Values.jobs.createTenant.image.tag |  default .Values.prefectVersionTag }}"
           imagePullPolicy: {{ .Values.jobs.createTenant.image.pullPolicy  }}

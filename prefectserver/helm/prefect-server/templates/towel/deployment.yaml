@@ -36,13 +36,13 @@ spec:
       serviceAccountName: {{ include "prefect-server.serviceAccountName" . }}
       {{- with .Values.towel.podSecurityContext }}
       securityContext:
-        {{- toYaml . | nindent 8 }}
+        runAsUser: 1011190000
       {{- end }}
       containers:
         - name: towel
           {{- with .Values.towel.securityContext -}}          
           securityContext:
-            {{- toYaml . | nindent 12 }}
+            runAsUser: 1011190000
           {{- end }}
           image: "{{ .Values.towel.image.name }}:{{ .Values.towel.image.tag |  default .Values.serverVersionTag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.towel.image.pullPolicy  }}

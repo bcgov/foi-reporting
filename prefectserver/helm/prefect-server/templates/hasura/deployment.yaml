@@ -36,13 +36,13 @@ spec:
       serviceAccountName: {{ include "prefect-server.serviceAccountName" . }}
       {{- with .Values.hasura.podSecurityContext }}
       securityContext:
-        {{- toYaml . | nindent 8 }}
+        runAsUser: 1011190000
       {{- end }}
       containers:
         - name: hasura
           {{- with .Values.hasura.securityContext -}}          
           securityContext:
-            {{- toYaml . | nindent 12 }}
+            runAsUser: 1011190000
           {{- end }}
           image: {{ .Values.hasura.image.name }}:{{ .Values.hasura.image.tag }}
           imagePullPolicy: {{ .Values.hasura.image.pullPolicy  }}

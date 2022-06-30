@@ -36,13 +36,13 @@ spec:
       serviceAccountName: {{ include "prefect-server.serviceAccountName" . }}
       {{- with .Values.ui.podSecurityContext }}
       securityContext:
-        {{- toYaml . | nindent 8 }}
+        runAsUser: 1011190000
       {{- end }}
       containers:
         - name: ui
           {{- with .Values.ui.securityContext -}}          
           securityContext:
-            {{- toYaml . | nindent 12 }}
+            runAsUser: 1011190000
           {{- end }}
           image: "{{ .Values.ui.image.name }}:{{ .Values.ui.image.tag | default .Values.uiVersionTag }}"
           imagePullPolicy: {{ .Values.ui.image.pullPolicy  }}
