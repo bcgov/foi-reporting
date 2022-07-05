@@ -1,4 +1,4 @@
-"""empty message
+"""dimDivisions
 
 Revision ID: a010fb34347d
 Revises: e6460d4979c4
@@ -11,7 +11,7 @@ import sqlalchemy as sa
 
 # revision identifiers, used by Alembic.
 revision = 'a010fb34347d'
-down_revision = 'e6460d4979c4'
+down_revision = 'ea59d5c1f1c0'
 branch_labels = None
 depends_on = None
 
