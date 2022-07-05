@@ -1,0 +1,683 @@
+---
+# Source: prefect-server/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: release-name-serviceaccount
+  labels:
+    app.kubernetes.io/name: prefect-server
+    app.kubernetes.io/instance:  release-name
+    helm.sh/chart: prefect-server-2022.04.14
+    app.kubernetes.io/version: "2022.04.14"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    {}
+---
+# Source: prefect-server/charts/postgresql/templates/secrets.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: release-name-postgresql
+  labels:
+    app.kubernetes.io/name: postgresql
+    helm.sh/chart: postgresql-9.3.4
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+type: Opaque
+data:
+  postgresql-password: "aFdHbmpwMjd0RA=="
+---
+# Source: prefect-server/charts/postgresql/templates/initialization-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: release-name-postgresql-init-scripts
+  labels:
+    app.kubernetes.io/name: postgresql
+    helm.sh/chart: postgresql-9.3.4
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+data:
+  create_pgcrypto.sql: |
+    -- create pgcrypto extension, required for Hasura UUID
+    CREATE EXTENSION IF NOT EXISTS pgcrypto;
+    CREATE EXTENSION IF NOT EXISTS "pg_trgm";
+    SET TIME ZONE 'UTC';
+---
+# Source: prefect-server/charts/postgresql/templates/svc-headless.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-postgresql-headless
+  labels:
+    app.kubernetes.io/name: postgresql
+    helm.sh/chart: postgresql-9.3.4
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+    - name: tcp-postgresql
+      port: 6432
+      targetPort: tcp-postgresql
+  selector:
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/instance: release-name
+---
+# Source: prefect-server/charts/postgresql/templates/svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-postgresql
+  labels:
+    app.kubernetes.io/name: postgresql
+    helm.sh/chart: postgresql-9.3.4
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+  annotations: {}
+spec:
+  type: ClusterIP
+  ports:
+    - name: tcp-postgresql
+      port: 6432
+      targetPort: tcp-postgresql
+  selector:
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/instance: release-name
+    role: master
+---
+# Source: prefect-server/templates/apollo/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-apollo
+  labels:
+    app.kubernetes.io/name: prefect-server
+    app.kubernetes.io/instance:  release-name
+    helm.sh/chart: prefect-server-2022.04.14
+    app.kubernetes.io/version: "2022.04.14"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: apollo
+  annotations:
+    {}
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 4200
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: prefect-server
+    app.kubernetes.io/instance:  release-name
+    app.kubernetes.io/component: apollo
+---
+# Source: prefect-server/templates/graphql/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-graphql
+  labels:
+    app.kubernetes.io/name: prefect-server
+    app.kubernetes.io/instance:  release-name
+    helm.sh/chart: prefect-server-2022.04.14
+    app.kubernetes.io/version: "2022.04.14"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: graphql
+  annotations:
+    {}
+spec:
+  type: ClusterIP
+  ports:
+    - port: 4201
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: prefect-server
+    app.kubernetes.io/instance:  release-name
+    app.kubernetes.io/component: graphql
+---
+# Source: prefect-server/templates/hasura/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-hasura
+  labels:
+    app.kubernetes.io/name: prefect-server
+    app.kubernetes.io/instance:  release-name
+    helm.sh/chart: prefect-server-2022.04.14
+    app.kubernetes.io/version: "2022.04.14"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: hasura
+  annotations:
+    {}
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3000
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: prefect-server
+    app.kubernetes.io/instance:  release-name
+    app.kubernetes.io/component: hasura
+---
+# Source: prefect-server/templates/ui/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-ui
+  labels:
+    app.kubernetes.io/name: prefect-server
+    app.kubernetes.io/instance:  release-name
+    helm.sh/chart: prefect-server-2022.04.14
+    app.kubernetes.io/version: "2022.04.14"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: ui
+  annotations:
+    {}
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8080
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: prefect-server
+    app.kubernetes.io/instance:  release-name
+    app.kubernetes.io/component: ui
+---
+# Source: prefect-server/templates/apollo/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: release-name-apollo
+  labels:
+    app.kubernetes.io/name: prefect-server
+    app.kubernetes.io/instance:  release-name
+    helm.sh/chart: prefect-server-2022.04.14
+    app.kubernetes.io/version: "2022.04.14"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: apollo
+  annotations:
+    {}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prefect-server
+      app.kubernetes.io/instance:  release-name
+      app.kubernetes.io/component: apollo
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: prefect-server
+        app.kubernetes.io/instance:  release-name
+        app.kubernetes.io/component: apollo
+    spec:
+      serviceAccountName: release-name-serviceaccount
+      containers:
+        - name: apollo
+          image: "prefecthq/apollo:2022.04.14"
+          imagePullPolicy: Always
+          command:
+            - bash
+            - "-c"
+            - "/apollo/post-start.sh && npm run serve"
+          env:
+            - name: HASURA_API_URL
+              value: http://release-name-hasura.c84b95-dev:3000/v1alpha1/graphql
+            - name: PREFECT_API_URL
+              value: http://release-name-graphql.c84b95-dev:4201/graphql/
+            - name: PREFECT_API_HEALTH_URL
+              value: http://release-name-graphql.c84b95-dev:4201/health
+            - name: GRAPHQL_SERVICE_HOST
+              value: "http://release-name-graphql.c84b95-dev"
+            - name: GRAPHQL_SERVICE_PORT
+              value: "4201"
+            - name: PREFECT_SERVER__API__URL
+              value: http://release-name-hasura.c84b95-dev:3000/v1alpha1/graphql
+            - name: PREFECT_SERVER__DATABASE__HOST
+              value: release-name-postgresql.c84b95-dev
+            - name: PREFECT_SERVER__DATABASE__PORT
+              value: "6432"
+            - name: PREFECT_SERVER__DATABASE__USERNAME
+              value: prefect
+            - name: PREFECT_SERVER__DATABASE__PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: release-name-postgresql
+                  key: postgresql-password
+            - name: PREFECT_SERVER__HASURA__HOST
+              value: release-name-hasura.c84b95-dev
+            - name: PREFECT_SERVER__HASURA__PORT
+              value: "3000"
+            - name: PREFECT_SERVER__SERVICES__APOLLO__PORT
+              value: "4200"
+            - name: PREFECT_SERVER__SERVICES__GRAPHQL__PORT
+              value: "4201"
+          ports:
+            - name: http
+              containerPort: 4200
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /.well-known/apollo/server-health
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /.well-known/apollo/server-health
+              port: http
+---
+# Source: prefect-server/templates/graphql/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: release-name-graphql
+  labels:
+    app.kubernetes.io/name: prefect-server
+    app.kubernetes.io/instance:  release-name
+    helm.sh/chart: prefect-server-2022.04.14
+    app.kubernetes.io/version: "2022.04.14"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: graphql
+  annotations:
+    {}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prefect-server
+      app.kubernetes.io/instance:  release-name
+      app.kubernetes.io/component: graphql
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: prefect-server
+        app.kubernetes.io/instance:  release-name
+        app.kubernetes.io/component: graphql
+    spec:
+      serviceAccountName: release-name-serviceaccount
+      initContainers:
+        - name: db-upgrade
+          image: "prefecthq/server:2022.04.14"
+          imagePullPolicy: Always
+          command:
+            - "bash"
+            - "-c"
+            - "/usr/local/bin/prefect-server database upgrade --yes"
+          env:
+            - name: PREFECT_SERVER__DATABASE__CONNECTION_URL
+              value: postgresql://prefect@release-name-postgresql.c84b95-dev:6432/prefect
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: release-name-postgresql
+                  key: postgresql-password
+            - name: PREFECT_SERVER__HASURA__HOST
+              value: release-name-hasura.c84b95-dev
+            - name: PREFECT_SERVER__API__URL
+              value: http://release-name-hasura.c84b95-dev:3000/v1alpha1/graphql
+            - name: PREFECT_SERVER__DATABASE__HOST
+              value: release-name-postgresql.c84b95-dev
+            - name: PREFECT_SERVER__DATABASE__PORT
+              value: "6432"
+            - name: PREFECT_SERVER__DATABASE__USERNAME
+              value: prefect
+            - name: PREFECT_SERVER__DATABASE__PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: release-name-postgresql
+                  key: postgresql-password
+            - name: PREFECT_SERVER__HASURA__HOST
+              value: release-name-hasura.c84b95-dev
+            - name: PREFECT_SERVER__HASURA__PORT
+              value: "3000"
+            - name: PREFECT_SERVER__SERVICES__APOLLO__PORT
+              value: "4200"
+            - name: PREFECT_SERVER__SERVICES__GRAPHQL__PORT
+              value: "4201"
+      containers:
+        - name: graphql
+          image: "prefecthq/server:2022.04.14"
+          imagePullPolicy: Always
+          command:
+            - bash
+            - "-c"
+            - "python src/prefect_server/services/graphql/server.py"
+          env:
+            - name: PREFECT_SERVER_DB_CMD
+              value: "echo 'DATABASE MIGRATIONS SKIPPED'"
+            - name: PREFECT_SERVER__DATABASE__CONNECTION_URL
+              value: postgresql://prefect@release-name-postgresql.c84b95-dev:6432/prefect
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: release-name-postgresql
+                  key: postgresql-password
+            - name: PREFECT_SERVER__HASURA__HOST
+              value: release-name-hasura.c84b95-dev
+            - name: PREFECT_SERVER__API__URL
+              value: http://release-name-hasura.c84b95-dev:3000/v1alpha1/graphql
+            - name: PREFECT_SERVER__DATABASE__HOST
+              value: release-name-postgresql.c84b95-dev
+            - name: PREFECT_SERVER__DATABASE__PORT
+              value: "6432"
+            - name: PREFECT_SERVER__DATABASE__USERNAME
+              value: prefect
+            - name: PREFECT_SERVER__DATABASE__PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: release-name-postgresql
+                  key: postgresql-password
+            - name: PREFECT_SERVER__HASURA__HOST
+              value: release-name-hasura.c84b95-dev
+            - name: PREFECT_SERVER__HASURA__PORT
+              value: "3000"
+            - name: PREFECT_SERVER__SERVICES__APOLLO__PORT
+              value: "4200"
+            - name: PREFECT_SERVER__SERVICES__GRAPHQL__PORT
+              value: "4201"
+          ports:
+            - name: http
+              containerPort: 4201
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+---
+# Source: prefect-server/templates/hasura/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: release-name-hasura
+  labels:
+    app.kubernetes.io/name: prefect-server
+    app.kubernetes.io/instance:  release-name
+    helm.sh/chart: prefect-server-2022.04.14
+    app.kubernetes.io/version: "2022.04.14"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: hasura
+  annotations:
+    {}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prefect-server
+      app.kubernetes.io/instance:  release-name
+      app.kubernetes.io/component: hasura
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: prefect-server
+        app.kubernetes.io/instance:  release-name
+        app.kubernetes.io/component: hasura
+    spec:
+      serviceAccountName: release-name-serviceaccount
+      containers:
+        - name: hasura
+          image: hasura/graphql-engine:v2.0.9
+          imagePullPolicy: IfNotPresent
+          command:
+            - "graphql-engine"
+            - "serve"
+          env:
+            - name: HASURA_GRAPHQL_DATABASE_URL
+              value: postgresql://prefect@release-name-postgresql.c84b95-dev:6432/prefect
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: release-name-postgresql
+                  key: postgresql-password
+            - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+              value: "true"
+            - name: HASURA_GRAPHQL_V1_BOOLEAN_NULL_COLLAPSE
+              value: "true"
+            - name: HASURA_GRAPHQL_SERVER_PORT
+              value: "3000"
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+---
+# Source: prefect-server/templates/towel/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: release-name-towel
+  labels:
+    app.kubernetes.io/name: prefect-server
+    app.kubernetes.io/instance:  release-name
+    helm.sh/chart: prefect-server-2022.04.14
+    app.kubernetes.io/version: "2022.04.14"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: towel
+  annotations:
+    {}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prefect-server
+      app.kubernetes.io/instance:  release-name
+      app.kubernetes.io/component: towel
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: prefect-server
+        app.kubernetes.io/instance:  release-name
+        app.kubernetes.io/component: towel
+    spec:
+      serviceAccountName: release-name-serviceaccount
+      containers:
+        - name: towel
+          image: "prefecthq/server:2022.04.14"
+          imagePullPolicy: Always
+          command:
+            - python
+            - src/prefect_server/services/towel/__main__.py
+          env:
+            - name: PREFECT_SERVER__HASURA__HOST
+              value: release-name-hasura.c84b95-dev
+            - name: PREFECT_SERVER__API__URL
+              value: http://release-name-hasura.c84b95-dev:3000/v1alpha1/graphql
+            - name: PREFECT_SERVER__DATABASE__HOST
+              value: release-name-postgresql.c84b95-dev
+            - name: PREFECT_SERVER__DATABASE__PORT
+              value: "6432"
+            - name: PREFECT_SERVER__DATABASE__USERNAME
+              value: prefect
+            - name: PREFECT_SERVER__DATABASE__PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: release-name-postgresql
+                  key: postgresql-password
+            - name: PREFECT_SERVER__HASURA__HOST
+              value: release-name-hasura.c84b95-dev
+            - name: PREFECT_SERVER__HASURA__PORT
+              value: "3000"
+            - name: PREFECT_SERVER__SERVICES__APOLLO__PORT
+              value: "4200"
+            - name: PREFECT_SERVER__SERVICES__GRAPHQL__PORT
+              value: "4201"
+---
+# Source: prefect-server/templates/ui/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: release-name-ui
+  labels:
+    app.kubernetes.io/name: prefect-server
+    app.kubernetes.io/instance:  release-name
+    helm.sh/chart: prefect-server-2022.04.14
+    app.kubernetes.io/version: "2022.04.14"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: ui
+  annotations:
+    {}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prefect-server
+      app.kubernetes.io/instance:  release-name
+      app.kubernetes.io/component: ui
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: prefect-server
+        app.kubernetes.io/instance:  release-name
+        app.kubernetes.io/component: ui
+    spec:
+      serviceAccountName: release-name-serviceaccount
+      containers:
+        - name: ui
+          image: "prefecthq/ui:2022-02-17"
+          imagePullPolicy: Always
+          command:
+            - "/intercept.sh"
+          env:
+            - name: PREFECT_SERVER__APOLLO_URL
+              value: http://localhost:4200/graphql
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+---
+# Source: prefect-server/charts/postgresql/templates/statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: release-name-postgresql
+  labels:
+    app.kubernetes.io/name: postgresql
+    helm.sh/chart: postgresql-9.3.4
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+  annotations: 
+  {}
+spec:
+  serviceName: release-name-postgresql-headless
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: postgresql
+      app.kubernetes.io/instance: release-name
+      role: master
+  template:
+    metadata:
+      name: release-name-postgresql
+      labels:
+        app.kubernetes.io/name: postgresql
+        helm.sh/chart: postgresql-9.3.4
+        app.kubernetes.io/instance: release-name
+        app.kubernetes.io/managed-by: Helm
+        role: master
+    spec:
+      securityContext:
+        fsGroup: 1011190000
+      containers:
+        - name: release-name-postgresql
+          image: docker.io/bitnami/postgresql:11.9.0-debian-10-r1
+          imagePullPolicy: "IfNotPresent"
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          securityContext:
+            runAsUser: 1011190000
+          env:
+            - name: BITNAMI_DEBUG
+              value: "false"
+            - name: POSTGRESQL_PORT_NUMBER
+              value: "6432"
+            - name: POSTGRESQL_VOLUME_DIR
+              value: "/bitnami/postgresql"
+            - name: POSTGRESQL_INITSCRIPTS_USERNAME
+              value: postgres
+            - name: PGDATA
+              value: "/bitnami/postgresql/data"
+            - name: POSTGRES_USER
+              value: "prefect"
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: release-name-postgresql
+                  key: postgresql-password
+            - name: POSTGRES_DB
+              value: "prefect"
+            - name: POSTGRESQL_ENABLE_LDAP
+              value: "no"
+            - name: POSTGRESQL_ENABLE_TLS
+              value: "no"
+          ports:
+            - name: tcp-postgresql
+              containerPort: 6432
+          livenessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - exec pg_isready -U "prefect" -d "dbname=prefect" -h 127.0.0.1 -p 6432
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          readinessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - -e
+                - |
+                  exec pg_isready -U "prefect" -d "dbname=prefect" -h 127.0.0.1 -p 6432
+                  [ -f /opt/bitnami/postgresql/tmp/.initialized ] || [ -f /bitnami/postgresql/.initialized ]
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          volumeMounts:
+            - name: custom-init-scripts
+              mountPath: /docker-entrypoint-initdb.d/
+            - name: dshm
+              mountPath: /dev/shm
+      volumes:
+        - name: custom-init-scripts
+          configMap:
+            name: release-name-postgresql-init-scripts
+        - name: dshm
+          emptyDir:
+            medium: Memory
+            sizeLimit: 1Gi
+        - name: data
+          emptyDir: {}
