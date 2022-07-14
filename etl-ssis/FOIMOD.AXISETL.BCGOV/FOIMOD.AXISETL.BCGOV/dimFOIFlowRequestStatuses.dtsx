@@ -1,0 +1,851 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/5/2022 2:05:51 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-U67UC02"
+  DTS:CreatorName="DESKTOP-U67UC02\abina"
+  DTS:DTSID="{81518444-7D32-4D13-A9D4-59B588756DFE}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="dimFOIFlowRequestStatuses"
+  DTS:PackageType="5"
+  DTS:VersionBuild="152"
+  DTS:VersionGUID="{ED3BCBCE-2494-4ECC-BDAA-1D6F34732E23}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0701542E-5494-4E07-9A26-551FBFB4D754}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExistingRequestStatusCount">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{67BD686A-1C95-4175-BD2B-C3B7D3511B65}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="existingRequestStatuses">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B0DE970E-ADF8-4E1D-8E87-2DC5BCFF7D77}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="isComplete">
+      <DTS:VariableValue
+        DTS:DataType="11">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1A11BFEB-25FE-4AF8-AF3D-D393688F5733}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="lastRunCycleTime">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F09485C1-2797-4E0C-A792-1A87637C4F1B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="runCycleID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{80692355-5B22-464F-8389-73571118F8B7}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{24EA7938-D3E3-46C7-98B2-D4FA4A4E5E33}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="description">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{28B4B4A3-7F07-4FEA-8B80-BD159D491EB9}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="isactive">
+          <DTS:VariableValue
+            DTS:DataType="11">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{26B86B53-F8AE-4D6B-BDA2-5AE2850E2721}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="name">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{0024C7C3-C2A6-4663-83F8-BE45C96F9CA0}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="newDivisions">
+          <DTS:VariableValue
+            DTS:DataSubType="ManagedSerializable"
+            DTS:DataType="13">
+            <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+              <SOAP-ENV:Body>
+                <xsd:anyType
+                  id="ref-1"></xsd:anyType>
+              </SOAP-ENV:Body>
+            </SOAP-ENV:Envelope>
+          </DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{F6B63BD8-D1B6-4DB8-904C-697DFB6CB9D6}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="requeststatusid">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{9231A346-B4BA-4BD1-A0A2-17F6EF9E6663}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="resultsetStatuses">
+          <DTS:VariableValue
+            DTS:DataSubType="ManagedSerializable"
+            DTS:DataType="13">
+            <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+              <SOAP-ENV:Body>
+                <xsd:anyType
+                  id="ref-1"></xsd:anyType>
+              </SOAP-ENV:Body>
+            </SOAP-ENV:Envelope>
+          </DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{1495F887-45B3-431E-9FD6-314EA40A0532}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="Variable"
+          DTS:ReadOnly="True">
+          <DTS:VariableValue
+            DTS:DataSubType="ManagedSerializable"
+            DTS:DataType="13">
+            <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+              <SOAP-ENV:Body>
+                <xsd:anyType
+                  id="ref-1"></xsd:anyType>
+              </SOAP-ENV:Body>
+            </SOAP-ENV:Envelope>
+          </DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{6B41EC91-9E35-4B66-A7F2-8268491D829E}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT_InitialLoad_FOIFlowRequestStatuses"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination"
+                  componentClassID="Microsoft.SSISODBCDst"
+                  contactInfo="ODBC Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="ODBC Destination"
+                  name="ODBC Destination"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="The name of the table to be fetched."
+                      expressionType="Notify"
+                      name="TableName">"public"."dimFOIFlowRequestStatus"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the number of rows fetched per batch."
+                      expressionType="Notify"
+                      name="BatchSize">1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of rows inserted under the same transaction."
+                      expressionType="Notify"
+                      name="TransactionSize">1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines the chunk size allocation for LOB columns"
+                      expressionType="Notify"
+                      name="LobChunkSize">32768</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                      expressionType="Notify"
+                      name="StatementTimeout">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The code page to use when code page information is unavailable from the data source."
+                      expressionType="Notify"
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                      expressionType="Notify"
+                      name="InsertMethod">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The ODBC C data type for binding numeric data."
+                      expressionType="Notify"
+                      name="BindNumericAs">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                      expressionType="Notify"
+                      name="BindCharColumnsAs">0</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination.Connections[ODBCConnection]"
+                      connectionManagerID="{F1356C9E-12B8-4059-B557-91D2500C60CE}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[localhost.foi_edw.postgres]"
+                      description="The ODBC runtime connection used to access the database."
+                      name="ODBCConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination.Inputs[ODBC Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="ODBC Destination Input"
+                      truncationRowDisposition="FailComponent">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination.Inputs[ODBC Destination Input].Columns[requeststatusid]"
+                          cachedDataType="i4"
+                          cachedName="requeststatusid"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requeststatusid]"
+                          lineageId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].Columns[requeststatusid]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination.Inputs[ODBC Destination Input].Columns[name]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="name"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[name]"
+                          lineageId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].Columns[name]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination.Inputs[ODBC Destination Input].Columns[description]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="description"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[description]"
+                          lineageId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].Columns[description]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination.Inputs[ODBC Destination Input].Columns[isactive]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="isactive"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[isactive]"
+                          lineageId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].Columns[isactive]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[description]"
+                          dataType="wstr"
+                          length="255"
+                          name="description" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[requeststatusid]"
+                          dataType="i4"
+                          name="requeststatusid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[name]"
+                          dataType="wstr"
+                          length="100"
+                          name="name" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[isactive]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="isactive" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination.Outputs[ODBC Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="ODBC Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination.Inputs[ODBC Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source"
+                  componentClassID="Microsoft.SSISODBCSrc"
+                  contactInfo="ODBC Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="ODBC Source"
+                  name="ODBC Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="The name of the table to be fetched."
+                      expressionType="Notify"
+                      name="TableName">"public"."ProgramAreaDivisions"</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT requeststatusid, name, description, isactive
+	FROM public."FOIRequestStatuses";</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the number of rows fetched per batch."
+                      expressionType="Notify"
+                      name="BatchSize">1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines the chunk size allocation for LOB columns"
+                      expressionType="Notify"
+                      name="LobChunkSize">32768</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                      expressionType="Notify"
+                      name="ExposeCharColumnsAsUnicode">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                      expressionType="Notify"
+                      name="StatementTimeout">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The code page to use when code page information is unavailable from the data source."
+                      expressionType="Notify"
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The method used for fetching data."
+                      expressionType="Notify"
+                      name="FetchMethod">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The ODBC C data type for binding numeric data."
+                      expressionType="Notify"
+                      name="BindNumericAs">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                      expressionType="Notify"
+                      name="BindCharColumnsAs">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The mode used to access the database."
+                      expressionType="Notify"
+                      name="AccessMode"
+                      typeConverter="AccessMode">1</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Connections[ODBCConnection]"
+                      connectionManagerID="{B9AFF419-55D9-46D5-A326-1394648E1030}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[PostgreSQLFOIFLOW.postgres]"
+                      description="The ODBC runtime connection used to access the database."
+                      name="ODBCConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output]"
+                      errorRowDisposition="FailComponent"
+                      name="ODBC Source Output"
+                      truncationRowDisposition="FailComponent">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].Columns[requeststatusid]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[requeststatusid]"
+                          lineageId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].Columns[requeststatusid]"
+                          name="requeststatusid" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].Columns[name]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[name]"
+                          length="100"
+                          lineageId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].Columns[name]"
+                          name="name" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].Columns[description]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[description]"
+                          length="255"
+                          lineageId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].Columns[description]"
+                          name="description" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].Columns[isactive]"
+                          codePage="1252"
+                          dataType="str"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[isactive]"
+                          length="5"
+                          lineageId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].Columns[isactive]"
+                          name="isactive" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[requeststatusid]"
+                          dataType="i4"
+                          name="requeststatusid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[name]"
+                          dataType="wstr"
+                          length="100"
+                          name="name" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[description]"
+                          dataType="wstr"
+                          length="255"
+                          name="description" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[isactive]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="isactive" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Error Output]"
+                      isErrorOut="true"
+                      name="ODBC Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[requeststatusid]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[requeststatusid]"
+                          lineageId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[requeststatusid]"
+                          name="requeststatusid" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[name]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[name]"
+                          length="100"
+                          lineageId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[name]"
+                          name="name" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[description]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[description]"
+                          length="255"
+                          lineageId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[description]"
+                          name="description" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[isactive]"
+                          codePage="1252"
+                          dataType="str"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[isactive]"
+                          length="5"
+                          lineageId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[isactive]"
+                          name="isactive" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses.Paths[ODBC Source Output]"
+                  endId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination.Inputs[ODBC Destination Input]"
+                  name="ODBC Source Output"
+                  startId="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source.Outputs[ODBC Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\EST_TruncateFOIFlowRequestStatuses"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{54011BEB-5B7E-4DD6-BEA4-156750FA6908}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EST_TruncateFOIFlowRequestStatuses"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+              SQLTask:SqlStatementSource="TRUNCATE  public.&quot;dimFOIFlowRequestStatus&quot;;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{2C65EA2C-2CF4-45F3-8EEC-5E5FD0FDFEBA}"
+          DTS:From="Package\Sequence Container\EST_TruncateFOIFlowRequestStatuses"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{1BCFF7ED-B59D-47AF-B6A2-B2DD8800C6DC}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StartRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>packageID</ParameterName>
+            <BindedVariableOrParameterName>System::PackageID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Stop Run Cycle"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{1232619D-1B0C-4A3D-8130-8287F127A3B0}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Stop Run Cycle"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>_StopRunCycle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>isComplete</ParameterName>
+            <BindedVariableOrParameterName>User::isComplete</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>packageName</ParameterName>
+            <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>runCycleID</ParameterName>
+            <BindedVariableOrParameterName>User::runCycleID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{4CDE4A6B-2E50-45EC-A64D-52870E1B8F1F}"
+      DTS:From="Package\Start Run Cycle"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sequence Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{1AF1646C-AAF8-47FF-B06C-1BFB01762AE6}"
+      DTS:From="Package\Sequence Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Stop Run Cycle" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="288,42"
+          Id="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses"
+          TopLeft="227.166666600439,192.600002520879" />
+        <NodeLayout
+          Size="251,42"
+          Id="Package\Sequence Container\EST_TruncateFOIFlowRequestStatuses"
+          TopLeft="219.699975661437,46.3333351447848" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          TopLeft="345.199975661437,88.3333351447848">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="25.9666909390023,104.266667376094"
+              Start="0,0"
+              End="25.9666909390023,96.7666673760942">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.1333336880471" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,48.1333336880471"
+                    Point2="0,52.1333336880471"
+                    Point3="4,52.1333336880471" />
+                  <mssgle:LineSegment
+                    End="21.9666909390023,52.1333336880471" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21.9666909390023,52.1333336880471"
+                    Point2="25.9666909390023,52.1333336880471"
+                    Point3="25.9666909390023,56.1333336880471" />
+                  <mssgle:LineSegment
+                    End="25.9666909390023,96.7666673760942" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="812,483"
+          Size="812,526"
+          Id="Package\Sequence Container"
+          TopLeft="384.999984701475,158.60000126044" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Start Run Cycle"
+          TopLeft="571.666643950675,32.933333595064" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Stop Run Cycle"
+          TopLeft="503.333313332664,741.600001239777" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="664.166643950675,74.933333595064">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="126.8333407508,83.666667665376"
+              Start="0,0"
+              End="126.8333407508,76.166667665376">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.833333832688" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.833333832688"
+                    Point2="0,41.833333832688"
+                    Point3="4,41.833333832688" />
+                  <mssgle:LineSegment
+                    End="122.8333407508,41.833333832688" />
+                  <mssgle:CubicBezierSegment
+                    Point1="122.8333407508,41.833333832688"
+                    Point2="126.8333407508,41.833333832688"
+                    Point3="126.8333407508,45.833333832688" />
+                  <mssgle:LineSegment
+                    End="126.8333407508,76.166667665376" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="790.999984701475,684.60000126044">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-195.166671368811,56.9999999793371"
+              Start="0,0"
+              End="-195.166671368811,49.4999999793371">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.4999999896685" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.4999999896685"
+                    Point2="0,28.4999999896685"
+                    Point3="-4,28.4999999896685" />
+                  <mssgle:LineSegment
+                    End="-191.166671368811,28.4999999896685" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-191.166671368811,28.4999999896685"
+                    Point2="-195.166671368811,28.4999999896685"
+                    Point3="-195.166671368811,32.4999999896685" />
+                  <mssgle:LineSegment
+                    End="-195.166671368811,49.4999999793371" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source"
+          TopLeft="274.166655772263,103.133334152963" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination"
+          TopLeft="263.333322869407,254.800002024968" />
+        <EdgeLayout
+          Id="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses.Paths[ODBC Source Output]"
+          TopLeft="345.549989320835,144.733334152963">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,110.066667872005"
+              Start="0,0"
+              End="0,102.566667872005">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,102.566667872005" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\DFT_InitialLoad_FOIFlowRequestStatuses\ODBC Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
