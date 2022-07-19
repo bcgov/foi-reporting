@@ -1,24 +1,24 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="7/5/2022 2:05:51 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-U67UC02"
   DTS:CreatorName="DESKTOP-U67UC02\abina"
-  DTS:DTSID="{5637EE3D-7D0F-453E-B78A-DD6109E6F12B}"
+  DTS:DTSID="{ADF842B6-DC7C-47A2-98C6-F391683AE594}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.180"
   DTS:LocaleID="1033"
   DTS:ObjectName="factFOIFlowRequestStatuses"
   DTS:PackageType="5"
-  DTS:VersionBuild="259"
-  DTS:VersionGUID="{3AFC1352-D7D8-4406-BCE2-FAE6EA84C038}">
+  DTS:VersionBuild="262"
+  DTS:VersionGUID="{210A55B6-C44E-40D6-938E-AE6A8BB55BC3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{3C247DE7-5E36-49D1-8007-BE5BCCED1502}"
+      DTS:DTSID="{80FC964E-770E-468A-8718-7566D0B93944}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="ExistingDivisionCount">
@@ -27,7 +27,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{55CF899A-B612-4B35-B43E-4EE54681EBDF}"
+      DTS:DTSID="{20394FFD-4E95-43C4-887F-DE34C357466B}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="isComplete">
@@ -36,7 +36,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{337B751C-17C2-4576-99BE-6BFA0D245DFD}"
+      DTS:DTSID="{2C5496C5-EC60-463A-9220-266FB66250AC}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="lastRunCycleTime">
@@ -46,7 +46,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{6BE272B6-FE0B-4C9A-8083-86B49274C952}"
+      DTS:DTSID="{DA0CD7D7-7567-4E9A-907D-71F6C6158021}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="runCycleID">
@@ -59,14 +59,14 @@
       DTS:refId="Package\Sequence Container"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
-      DTS:DTSID="{9244B651-9D27-4CAA-A6E2-5FB15732F030}"
+      DTS:DTSID="{2255F032-A50D-44A0-8AB4-02C7546147CE}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
       DTS:ObjectName="Sequence Container">
       <DTS:Variables>
         <DTS:Variable
           DTS:CreationName=""
-          DTS:DTSID="{C97B0C4B-88F2-4B5E-A051-F44A6F9A1F3B}"
+          DTS:DTSID="{16C72FAC-62CE-45EE-BD01-0EE8267E656C}"
           DTS:IncludeInDebugDump="6789"
           DTS:Namespace="User"
           DTS:ObjectName="newDivisions">
@@ -88,7 +88,7 @@
           DTS:refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{C5A96B61-E412-4BDA-B5BB-3D883A1EFB31}"
+          DTS:DTSID="{a9ffe957-5f45-40bb-aea0-2c23d73e6098}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1"
@@ -113,7 +113,13 @@
 		FMR.assignedministryperson as ministryperson, 
 		FMR.assignedministrygroup as ministryteam, 
 		FMR.cfrduedate as requestcfrduedate, 
-		FMR.closedate as requestclosedate			 			
+		FMR.closedate as requestclosedate,
+
+(SELECT CASE WHEN firstname IS NOT NULL THEN CONCAT(firstname , ' ', lastname) ELSE username END from public.\"FOIAssignees\"  WHERE username= FMR.assignedministryperson) as assigneefullname,
+		(SELECT CASE WHEN firstname IS NOT NULL THEN CONCAT(firstname , ' ', lastname) ELSE username END from public.\"FOIAssignees\"  WHERE username= FMR.assignedto) as iaoassigneefullname
+
+
+			 			
 FROM public.\"FOIMinistryRequests\" FMR INNER JOIN public.\"ProgramAreas\" PA on FMR.programareaid = PA.programareaid WHERE FMR.created_at  &gt;  to_timestamp('"+ @[User::lastRunCycleTime]  +"','YYYY-MM-DD hh24:mi:ss') ; "</DTS:PropertyExpression>
           <DTS:ObjectData>
             <pipeline
@@ -314,6 +320,27 @@ FROM public.\"FOIMinistryRequests\" FMR INNER JOIN public.\"ProgramAreas\" PA on
                           cachedScale="6"
                           externalMetadataColumnId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[modifieddate]"
                           lineageId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].Columns[requestupdatedat]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Destination.Inputs[ODBC Destination Input].Columns[iaoassignedto]"
+                          cachedDataType="wstr"
+                          cachedLength="120"
+                          cachedName="iaoassignedto"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[iaoassignedto]"
+                          lineageId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].Columns[iaoassignedto]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Destination.Inputs[ODBC Destination Input].Columns[iaoassigneefullname]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="iaoassigneefullname"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[iaoassigneefullname]"
+                          lineageId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].Columns[iaoassigneefullname]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Destination.Inputs[ODBC Destination Input].Columns[assigneefullname]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="assigneefullname"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[ministryassigneefullname]"
+                          lineageId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].Columns[assigneefullname]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -404,6 +431,21 @@ FROM public.\"FOIMinistryRequests\" FMR INNER JOIN public.\"ProgramAreas\" PA on
                           dataType="dbTimeStamp2"
                           name="modifieddate"
                           scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[iaoassignedto]"
+                          dataType="wstr"
+                          length="250"
+                          name="iaoassignedto" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[iaoassigneefullname]"
+                          dataType="wstr"
+                          length="700"
+                          name="iaoassigneefullname" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[ministryassigneefullname]"
+                          dataType="wstr"
+                          length="700"
+                          name="ministryassigneefullname" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -469,7 +511,13 @@ FROM public.\"FOIMinistryRequests\" FMR INNER JOIN public.\"ProgramAreas\" PA on
 		FMR.assignedministryperson as ministryperson, 
 		FMR.assignedministrygroup as ministryteam, 
 		FMR.cfrduedate as requestcfrduedate, 
-		FMR.closedate as requestclosedate			 			
+		FMR.closedate as requestclosedate,
+
+(SELECT CASE WHEN firstname IS NOT NULL THEN CONCAT(firstname , ' ', lastname) ELSE username END from public."FOIAssignees"  WHERE username= FMR.assignedministryperson) as assigneefullname,
+		(SELECT CASE WHEN firstname IS NOT NULL THEN CONCAT(firstname , ' ', lastname) ELSE username END from public."FOIAssignees"  WHERE username= FMR.assignedto) as iaoassigneefullname
+
+
+			 			
 FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR.programareaid = PA.programareaid WHERE FMR.created_at  &gt;  to_timestamp('','YYYY-MM-DD hh24:mi:ss') ; </property>
                     <property
                       dataType="System.Int32"
@@ -663,6 +711,20 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
                           lineageId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].Columns[requestclosedate]"
                           name="requestclosedate"
                           scale="6" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].Columns[assigneefullname]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[assigneefullname]"
+                          length="255"
+                          lineageId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].Columns[assigneefullname]"
+                          name="assigneefullname" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].Columns[iaoassigneefullname]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[iaoassigneefullname]"
+                          length="255"
+                          lineageId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].Columns[iaoassigneefullname]"
+                          name="iaoassigneefullname" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -758,6 +820,16 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
                           dataType="dbTimeStamp2"
                           name="requestclosedate"
                           scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[assigneefullname]"
+                          dataType="wstr"
+                          length="255"
+                          name="assigneefullname" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[iaoassigneefullname]"
+                          dataType="wstr"
+                          length="255"
+                          name="iaoassigneefullname" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -896,6 +968,20 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
                           name="requestclosedate"
                           scale="6" />
                         <outputColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Error Output].Columns[assigneefullname]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[assigneefullname]"
+                          length="255"
+                          lineageId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Error Output].Columns[assigneefullname]"
+                          name="assigneefullname" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Error Output].Columns[iaoassigneefullname]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[iaoassigneefullname]"
+                          length="255"
+                          lineageId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Error Output].Columns[iaoassigneefullname]"
+                          name="iaoassigneefullname" />
+                        <outputColumn
                           refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
                           lineageId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
@@ -927,7 +1013,7 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
           DTS:refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{FE4055BA-6231-408C-B534-32FBF123E7E9}"
+          DTS:DTSID="{8E237DBF-9202-41DF-BBA1-438D58EC223A}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="DFT_InitialLoadfactFOIFlowMinistryRequeststatuses"
@@ -952,7 +1038,16 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
 		FMR.assignedministryperson as ministryperson, 
 		FMR.assignedministrygroup as ministryteam, 
 		FMR.cfrduedate as requestcfrduedate, 
-		FMR.closedate as requestclosedate			 			
+		FMR.closedate as requestclosedate, 
+
+
+		(SELECT CASE WHEN firstname IS NOT NULL THEN CONCAT(firstname , ' ', lastname) ELSE username END from public.\"FOIAssignees\"  WHERE username= FMR.assignedministryperson) as assigneefullname,
+		(SELECT CASE WHEN firstname IS NOT NULL THEN CONCAT(firstname , ' ', lastname) ELSE username END from public.\"FOIAssignees\"  WHERE username= FMR.assignedto) as iaoassigneefullname
+
+
+
+
+			 			
 FROM public.\"FOIMinistryRequests\" FMR INNER JOIN public.\"ProgramAreas\" PA on FMR.programareaid = PA.programareaid;"</DTS:PropertyExpression>
           <DTS:ObjectData>
             <pipeline
@@ -1153,6 +1248,27 @@ FROM public.\"FOIMinistryRequests\" FMR INNER JOIN public.\"ProgramAreas\" PA on
                           cachedScale="6"
                           externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[modifieddate]"
                           lineageId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].Columns[requestupdatedat]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Destination.Inputs[ODBC Destination Input].Columns[iaoassignedto]"
+                          cachedDataType="wstr"
+                          cachedLength="120"
+                          cachedName="iaoassignedto"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[iaoassignedto]"
+                          lineageId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].Columns[iaoassignedto]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Destination.Inputs[ODBC Destination Input].Columns[iaoassigneefullname]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="iaoassigneefullname"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[iaoassigneefullname]"
+                          lineageId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].Columns[iaoassigneefullname]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Destination.Inputs[ODBC Destination Input].Columns[assigneefullname]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="assigneefullname"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[ministryassigneefullname]"
+                          lineageId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].Columns[assigneefullname]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -1243,6 +1359,21 @@ FROM public.\"FOIMinistryRequests\" FMR INNER JOIN public.\"ProgramAreas\" PA on
                           dataType="dbTimeStamp2"
                           name="modifieddate"
                           scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[iaoassignedto]"
+                          dataType="wstr"
+                          length="250"
+                          name="iaoassignedto" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[iaoassigneefullname]"
+                          dataType="wstr"
+                          length="700"
+                          name="iaoassigneefullname" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[ministryassigneefullname]"
+                          dataType="wstr"
+                          length="700"
+                          name="ministryassigneefullname" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -1308,7 +1439,16 @@ FROM public.\"FOIMinistryRequests\" FMR INNER JOIN public.\"ProgramAreas\" PA on
 		FMR.assignedministryperson as ministryperson, 
 		FMR.assignedministrygroup as ministryteam, 
 		FMR.cfrduedate as requestcfrduedate, 
-		FMR.closedate as requestclosedate			 			
+		FMR.closedate as requestclosedate, 
+
+
+		(SELECT CASE WHEN firstname IS NOT NULL THEN CONCAT(firstname , ' ', lastname) ELSE username END from public."FOIAssignees"  WHERE username= FMR.assignedministryperson) as assigneefullname,
+		(SELECT CASE WHEN firstname IS NOT NULL THEN CONCAT(firstname , ' ', lastname) ELSE username END from public."FOIAssignees"  WHERE username= FMR.assignedto) as iaoassigneefullname
+
+
+
+
+			 			
 FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR.programareaid = PA.programareaid;</property>
                     <property
                       dataType="System.Int32"
@@ -1502,6 +1642,20 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
                           lineageId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].Columns[requestclosedate]"
                           name="requestclosedate"
                           scale="6" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].Columns[assigneefullname]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[assigneefullname]"
+                          length="255"
+                          lineageId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].Columns[assigneefullname]"
+                          name="assigneefullname" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].Columns[iaoassigneefullname]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[iaoassigneefullname]"
+                          length="255"
+                          lineageId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].Columns[iaoassigneefullname]"
+                          name="iaoassigneefullname" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -1597,6 +1751,16 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
                           dataType="dbTimeStamp2"
                           name="requestclosedate"
                           scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[assigneefullname]"
+                          dataType="wstr"
+                          length="255"
+                          name="assigneefullname" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[iaoassigneefullname]"
+                          dataType="wstr"
+                          length="255"
+                          name="iaoassigneefullname" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -1735,6 +1899,20 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
                           name="requestclosedate"
                           scale="6" />
                         <outputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[assigneefullname]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[assigneefullname]"
+                          length="255"
+                          lineageId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[assigneefullname]"
+                          name="assigneefullname" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[iaoassigneefullname]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[iaoassigneefullname]"
+                          length="255"
+                          lineageId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[iaoassigneefullname]"
+                          name="iaoassigneefullname" />
+                        <outputColumn
                           refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
                           lineageId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
@@ -1766,7 +1944,7 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
           DTS:refId="Package\Sequence Container\EST_HasRequestDivisionStages"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{39E7052B-C9B6-4EFA-A6C7-978D56C6E1BD}"
+          DTS:DTSID="{ADD7CE61-883C-4B5F-B8D0-FC2D14840D80}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_HasRequestDivisionStages"
@@ -1789,7 +1967,7 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{6C80416D-81EB-4DBE-8915-252C825BE1E2}"
+          DTS:DTSID="{3559E231-D9D6-41B9-8830-6ABB80A29AE8}"
           DTS:EvalOp="3"
           DTS:Expression="@[User::ExistingDivisionCount] == 0"
           DTS:From="Package\Sequence Container\EST_HasRequestDivisionStages"
@@ -1799,7 +1977,7 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
-          DTS:DTSID="{0ECAFEA3-8149-41E2-80E6-2A517BF039CB}"
+          DTS:DTSID="{E8FC59CB-E528-4BEE-AA72-6A8F6B4ABF23}"
           DTS:EvalOp="3"
           DTS:Expression="@[User::ExistingDivisionCount] &gt; 0"
           DTS:From="Package\Sequence Container\EST_HasRequestDivisionStages"
@@ -1812,7 +1990,7 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
       DTS:refId="Package\Start Run Cycle"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:DTSID="{CF1534F6-7A93-4968-B9EE-D447D00DEFEE}"
+      DTS:DTSID="{9C2F797A-AD98-4ED3-A96C-4D98CEC625EF}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Start Run Cycle"
@@ -1837,7 +2015,7 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
       DTS:refId="Package\Stop Run Cycle"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:DTSID="{DB290E8F-D15F-4A28-B202-77AC0B871DBC}"
+      DTS:DTSID="{BCFAA8FA-4377-41FD-87FA-5DA765160E5D}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Stop Run Cycle"
@@ -1867,7 +2045,7 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{C6DB1568-C1B5-48EF-9796-68FBBB671BC6}"
+      DTS:DTSID="{7787532D-BA35-4251-888D-1A21D8DB91E1}"
       DTS:From="Package\Start Run Cycle"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -1875,7 +2053,7 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{8FC2D562-CFC5-4E7D-913C-68F3C6ED52B3}"
+      DTS:DTSID="{2794F899-0897-4CC8-9CE7-ABA8A3C03F70}"
       DTS:From="Package\Sequence Container"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
@@ -1893,6 +2071,10 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="377,42"
+          Id="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1"
+          TopLeft="463,157" />
         <NodeLayout
           Size="336,42"
           Id="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses"
@@ -1937,10 +2119,6 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="377,42"
-          Id="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1"
-          TopLeft="463,157" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
           TopLeft="477.533304789332,84.0000017770131">
@@ -2064,6 +2242,77 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
     </LayoutInfo>
   </Package>
   <TaskHost
+    design-time-name="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source"
+          TopLeft="318,126" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Destination"
+          TopLeft="353,322" />
+        <EdgeLayout
+          Id="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1.Paths[ODBC Source Output]"
+          TopLeft="392.5,168">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="45,154"
+              Start="0,0"
+              End="45,146.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,73"
+                    Point2="0,77"
+                    Point3="4,77" />
+                  <mssgle:LineSegment
+                    End="41,77" />
+                  <mssgle:CubicBezierSegment
+                    Point1="41,77"
+                    Point2="45,77"
+                    Point3="45,81" />
+                  <mssgle:LineSegment
+                    End="45,146.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses">
     <LayoutInfo>
       <GraphLayout
@@ -2114,14 +2363,6 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Destination">
     <Properties>
       <Property>
@@ -2134,55 +2375,13 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="149,42"
-          Id="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source"
-          TopLeft="318,126" />
-        <NodeLayout
-          Size="169,42"
-          Id="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Destination"
-          TopLeft="353,322" />
-        <EdgeLayout
-          Id="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1.Paths[ODBC Source Output]"
-          TopLeft="392.5,168">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="45,154"
-              Start="0,0"
-              End="45,146.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,73" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,73"
-                    Point2="0,77"
-                    Point3="4,77" />
-                  <mssgle:LineSegment
-                    End="41,77" />
-                  <mssgle:CubicBezierSegment
-                    Point1="41,77"
-                    Point2="45,77"
-                    Point3="45,81" />
-                  <mssgle:LineSegment
-                    End="45,146.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
