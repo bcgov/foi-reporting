@@ -160,7 +160,7 @@ CREATE OR REPLACE VIEW public.viw_analystworkloaddash
           GROUP BY "factFOIFlowRequestStatusDetails".foirequestnumber) uffrsd ON uffrsd.foirequestnumber::text = rd.visualrequestfilenumber::text
      LEFT JOIN "factFOIFlowRequestStatusDetails" ffrsd ON ffrsd.foirequestnumber::text = rd.visualrequestfilenumber::text AND uffrsd.createddate = ffrsd.createddate
      LEFT JOIN "dimFOIFlowRequestStatus" ffrs ON ffrs.requeststatusid = ffrsd.requeststatusid
-  WHERE rd.activeflag = 'Y'::bpchar AND (eco.officecode::text <> ALL (ARRAY['IMB'::character varying::text, 'IAO'::character varying::text, 'XGR'::character varying::text, 'TIC'::character varying::text])) AND (rt.requesttypename::text = ANY (ARRAY['Consultation'::character varying::text, 'Correction'::character varying::text, 'General'::character varying::text, 'Other'::character varying::text, 'Personal'::character varying::text, 'Review'::character varying::text]));commit;""")
+  WHERE rd.activeflag = 'Y'::bpchar AND (eco.officecode::text <> ALL (ARRAY['IMB'::character varying::text, 'IAO'::character varying::text, 'XGR'::character varying::text, 'TIC'::character varying::text])) AND (rt.requesttypename::text = ANY (ARRAY['Consultation'::character varying::text, 'Correction'::character varying::text, 'General'::character varying::text, 'Other'::character varying::text, 'Personal'::character varying::text, 'Review'::character varying::text]));ALTER TABLE public.viw_analystworkloaddash    OWNER TO postgres;GRANT ALL ON TABLE public.viw_analystworkloaddash TO postgres;GRANT SELECT ON TABLE public.viw_analystworkloaddash TO redash_role; commit;""")
 
 
 def downgrade():
