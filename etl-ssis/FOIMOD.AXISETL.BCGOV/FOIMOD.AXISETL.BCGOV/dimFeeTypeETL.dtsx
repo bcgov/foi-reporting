@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="dimFeeTypeETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{38A2DA12-72C4-49E5-B851-36D084CB2263}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{F692B101-301D-4CD2-8CE6-6444E3D50C03}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -947,7 +947,7 @@ From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID =
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#xA;CAST(Main.siFeeID as INT) as feetypeid,&#xA;&#x9;Loc.vcTerminology as feetypename,&#xA;&#x9;Main.vcFeeDesc as feetypedescription,&#xA;&#x9;CAST(Main.siOrder as INT) as sortorder,&#xA;&#x9;Main.cActive as cactive,&#xA;&#x9;CONVERT(varchar,Main.sdtCreatedDate,120) as createddate,&#xA;&#x9;CONVERT(varchar,Main.sdtModifiedDate,120) as modifieddate,&#xA;&#x9;Main.cIsChangeable as clschangeable,&#xA;&#x9;Main.cIsIndependent as clsindependent,&#xA;&#x9;CAST(Main.nRate as DECIMAL(18,2)) as nrate,&#xA;&#x9;&#xA;&#x9;ISNULL(Main.vcFeeCode,'') as vcfeecode,&#xA;&#x9;Main.cReport as creport,&#xA;&#x9;CAST(Main.nFeeWaived as DECIMAL(18,2)) as nfeewaived,&#xA;&#x9;ISNULL(CAST(Main.siRefFeeID as INT),0) as sireffeeid,&#xA;&#x9;Main.cAdministrativeCost as cadministrativecost,&#xA;&#x9;Main.cEnable as cenable&#xA; &#xA;From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID = Main.iLabelID and Loc.tiLocaleID = 1  &#xA;WHERE Main.sdtModifiedDate &gt;= @lastruntime AND Main.sdtCreatedDate &lt; @lastruntime"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#xA;CAST(Main.siFeeID as INT) as feetypeid,&#xA;&#x9;Loc.vcTerminology as feetypename,&#xA;&#x9;ISNULL(Main.vcFeeDesc,'') as feetypedescription,&#xA;&#x9;CAST(Main.siOrder as INT) as sortorder,&#xA;&#x9;Main.cActive as cactive,&#xA;&#x9;CONVERT(varchar,Main.sdtCreatedDate,120) as createddate,&#xA;&#x9;CONVERT(varchar,Main.sdtModifiedDate,120) as modifieddate,&#xA;&#x9;Main.cIsChangeable as clschangeable,&#xA;&#x9;Main.cIsIndependent as clsindependent,&#xA;&#x9;CAST(Main.nRate as DECIMAL(18,2)) as nrate,&#xA;&#x9;&#xA;&#x9;ISNULL(Main.vcFeeCode,'') as vcfeecode,&#xA;&#x9;Main.cReport as creport,&#xA;&#x9;CAST(Main.nFeeWaived as DECIMAL(18,2)) as nfeewaived,&#xA;&#x9;ISNULL(CAST(Main.siRefFeeID as INT),0) as sireffeeid,&#xA;&#x9;Main.cAdministrativeCost as cadministrativecost,&#xA;&#x9;Main.cEnable as cenable&#xA; &#xA;From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID = Main.iLabelID and Loc.tiLocaleID = 1  &#xA;WHERE Main.sdtModifiedDate &gt;= @lastruntime AND Main.sdtCreatedDate &lt; @lastruntime"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -2095,7 +2095,7 @@ From tblFeeTypes Main LEFT OUTER JOIN tblTerminologyLookup Loc ON Loc.iLabelID =
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="14.0499986920094,35.3515389142954,16,16"
+              BoundingBox="14.0499986920093,35.3515389142954,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
