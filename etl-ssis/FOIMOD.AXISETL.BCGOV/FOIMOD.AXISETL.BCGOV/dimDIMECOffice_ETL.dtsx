@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="dimDIMECOffice_ETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="204"
-  DTS:VersionGUID="{869BB13C-FCAE-428E-9745-DAD83E31FA08}">
+  DTS:VersionBuild="209"
+  DTS:VersionGUID="{2EABD5C0-A1E1-4969-A6C8-4D3D38EE314E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1944,7 +1944,7 @@
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;SELECT &#xA;&#xA;OFFICE_ID,&#xA;OFFICE_CODE,&#xA; [DESCRIPTION] ,&#xA;EMAIL_ID,&#xA;PAL,&#xA;cADDRESS1,&#xA;cADDRESS2,&#xA;PHONE_NO,&#xA;cCITY,&#xA;cZIPCODE,&#xA;cSTATE,&#xA;cSTATE_SHORT,&#xA;cCOUNTRY,&#xA;rADDRESS1,&#xA;rADDRESS2,&#xA;rCITY,&#xA;rZIPCODE,&#xA;rSTATE,&#xA;rSTATE_SHORT,&#xA;rCOUNTRY,&#xA;PARENT_OFFICE_DESCRIPTION,&#xA;OFFICE_NAME_FOR_PAL,&#xA;START_TIME,&#xA;END_TIME,&#xA;HEAD_OF_OFFICE,&#xA;OFFICE_COORDINATOR,&#xA;OFFICE_ALTERNATE,&#xA;FAX_NO,&#xA;ALTERNATE_OFFICE_FAX,&#xA;ISNULL(ALTERNATE_OFFICE_PHONE,''),&#xA;INVITATION_CONTACT,&#xA;INVITATION_CONTECT_PERSON,&#xA;IS_ACTIVE,&#xA;DISPLAY_NAME,&#xA;DISPLAY_NAME_FORMAT,&#xA;TENANT_ID,&#xA; convert(varchar, CREATED_DATE, 120) as CREATED_DATE,&#xA; convert(varchar, MODIFIED_DATE , 120) as MODIFIED_DATE &#xA;FROM [dbo].[EC_VW_OFFICE] WHERE LOCALE_ID=1 AND (CREATED_DATE &gt;= @lastruntime);&#xA;"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;SELECT &#xA;&#xA;OFFICE_ID,&#xA;OFFICE_CODE,&#xA; [DESCRIPTION] ,&#xA;EMAIL_ID,&#xA;PAL,&#xA;cADDRESS1,&#xA;cADDRESS2,&#xA;PHONE_NO,&#xA;cCITY,&#xA;cZIPCODE,&#xA;cSTATE,&#xA;cSTATE_SHORT,&#xA;cCOUNTRY,&#xA;rADDRESS1,&#xA;rADDRESS2,&#xA;rCITY,&#xA;rZIPCODE,&#xA;rSTATE,&#xA;rSTATE_SHORT,&#xA;rCOUNTRY,&#xA;ISNULL(PARENT_OFFICE_DESCRIPTION,''),&#xA;OFFICE_NAME_FOR_PAL,&#xA;START_TIME,&#xA;END_TIME,&#xA;HEAD_OF_OFFICE,&#xA;OFFICE_COORDINATOR,&#xA;OFFICE_ALTERNATE,&#xA;FAX_NO,&#xA;ALTERNATE_OFFICE_FAX,&#xA;ISNULL(ALTERNATE_OFFICE_PHONE,''),&#xA;INVITATION_CONTACT,&#xA;INVITATION_CONTECT_PERSON,&#xA;IS_ACTIVE,&#xA;DISPLAY_NAME,&#xA;DISPLAY_NAME_FORMAT,&#xA;TENANT_ID,&#xA; convert(varchar, CREATED_DATE, 120) as CREATED_DATE,&#xA; convert(varchar, MODIFIED_DATE , 120) as MODIFIED_DATE &#xA;FROM [dbo].[EC_VW_OFFICE] WHERE LOCALE_ID=1 AND (CREATED_DATE &gt;= @lastruntime);&#xA;"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -1973,7 +1973,7 @@
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;SELECT &#xA;&#xA;OFFICE_ID,&#xA;OFFICE_CODE,&#xA; [DESCRIPTION] ,&#xA;EMAIL_ID,&#xA;PAL,&#xA;cADDRESS1,&#xA;cADDRESS2,&#xA;PHONE_NO,&#xA;cCITY,&#xA;cZIPCODE,&#xA;cSTATE,&#xA;cSTATE_SHORT,&#xA;cCOUNTRY,&#xA;rADDRESS1,&#xA;rADDRESS2,&#xA;rCITY,&#xA;rZIPCODE,&#xA;rSTATE,&#xA;rSTATE_SHORT,&#xA;rCOUNTRY,&#xA;PARENT_OFFICE_DESCRIPTION,&#xA;OFFICE_NAME_FOR_PAL,&#xA;START_TIME,&#xA;END_TIME,&#xA;HEAD_OF_OFFICE,&#xA;OFFICE_COORDINATOR,&#xA;OFFICE_ALTERNATE,&#xA;FAX_NO,&#xA;ALTERNATE_OFFICE_FAX,&#xA;ISNULL(ALTERNATE_OFFICE_PHONE,''),&#xA;INVITATION_CONTACT,&#xA;INVITATION_CONTECT_PERSON,&#xA;IS_ACTIVE,&#xA;DISPLAY_NAME,&#xA;DISPLAY_NAME_FORMAT,&#xA;TENANT_ID,&#xA; convert(varchar, CREATED_DATE, 120) as CREATED_DATE,&#xA; convert(varchar, MODIFIED_DATE , 120) as MODIFIED_DATE &#xA;FROM [dbo].[EC_VW_OFFICE] WHERE LOCALE_ID=1 AND (MODIFIED_DATE &gt;= @lastruntime AND CREATED_DATE &lt; @lastruntime)&#xA;&#xA;&#xA;"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;SELECT &#xA;&#xA;OFFICE_ID,&#xA;OFFICE_CODE,&#xA; [DESCRIPTION] ,&#xA;EMAIL_ID,&#xA;PAL,&#xA;cADDRESS1,&#xA;cADDRESS2,&#xA;PHONE_NO,&#xA;cCITY,&#xA;cZIPCODE,&#xA;cSTATE,&#xA;cSTATE_SHORT,&#xA;cCOUNTRY,&#xA;rADDRESS1,&#xA;rADDRESS2,&#xA;rCITY,&#xA;rZIPCODE,&#xA;rSTATE,&#xA;rSTATE_SHORT,&#xA;rCOUNTRY,&#xA;ISNULL(PARENT_OFFICE_DESCRIPTION,''),&#xA;OFFICE_NAME_FOR_PAL,&#xA;START_TIME,&#xA;END_TIME,&#xA;HEAD_OF_OFFICE,&#xA;OFFICE_COORDINATOR,&#xA;OFFICE_ALTERNATE,&#xA;FAX_NO,&#xA;ALTERNATE_OFFICE_FAX,&#xA;ISNULL(ALTERNATE_OFFICE_PHONE,''),&#xA;INVITATION_CONTACT,&#xA;INVITATION_CONTECT_PERSON,&#xA;IS_ACTIVE,&#xA;DISPLAY_NAME,&#xA;DISPLAY_NAME_FORMAT,&#xA;TENANT_ID,&#xA; convert(varchar, CREATED_DATE, 120) as CREATED_DATE,&#xA; convert(varchar, MODIFIED_DATE , 120) as MODIFIED_DATE &#xA;FROM [dbo].[EC_VW_OFFICE] WHERE LOCALE_ID=1 AND (MODIFIED_DATE &gt;= @lastruntime AND CREATED_DATE &lt; @lastruntime)&#xA;&#xA;&#xA;"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -2360,7 +2360,7 @@
               DTS:Namespace="User"
               DTS:ObjectName="PARENT_OFFICE_DESCRIPTION">
               <DTS:VariableValue
-                DTS:DataType="1"
+                DTS:DataType="8"
                 xml:space="preserve"></DTS:VariableValue>
             </DTS:Variable>
             <DTS:Variable
@@ -3265,7 +3265,7 @@
               DTS:Namespace="User"
               DTS:ObjectName="PARENT_OFFICE_DESCRIPTION">
               <DTS:VariableValue
-                DTS:DataType="1"
+                DTS:DataType="8"
                 xml:space="preserve"></DTS:VariableValue>
             </DTS:Variable>
             <DTS:Variable
@@ -3384,7 +3384,7 @@
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
                   SQLTask:BypassPrepare="False"
-                  SQLTask:SqlStatementSource="INSERT INTO public.&quot;dimECOffice&quot;(&#xA;&#x9; officecode, officedescription,  emailid, pal, corraddress1, corraddress2, corrphonenumber, corrcity, corrzipcode, corrstatename, corrstatecode, corrcountry, remittaddress1, remittaddress2, remittcity, remittzipcode, remittstatename, remittstatecode, remittcountry, parentofficedesc, officenameforpal, starttime, endtime, headofoffice, officecoordinator, officealternate, faxno, alternateofficefax, alternateofficephone, invitationcontact, invitationcontactperson, isactive, displayname, displaynameformat, tenantid,createddate, modifieddate,officeid)&#xA;&#x9;VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, to_timestamp(?,'YYYY-MM-DD hh24:mi:ss'), to_timestamp(?,'YYYY-MM-DD hh24:mi:ss'), ?);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  SQLTask:SqlStatementSource="INSERT INTO public.&quot;dimECOffice&quot;(&#xA;&#x9; officecode, officedescription,  emailid, pal, corraddress1, corraddress2, corrphonenumber, corrcity, corrzipcode, corrstatename, corrstatecode, corrcountry, remittaddress1, remittaddress2, remittcity, remittzipcode, remittstatename, remittstatecode, remittcountry, parentofficedesc, officenameforpal, starttime, endtime, headofoffice, officecoordinator, officealternate, faxno, alternateofficefax, alternateofficephone, invitationcontact, invitationcontactperson, isactive, displayname, displaynameformat, tenantid,createddate, modifieddate,officeid)&#xA;&#x9;SELECT ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, to_timestamp(?,'YYYY-MM-DD hh24:mi:ss'), to_timestamp(?,'YYYY-MM-DD hh24:mi:ss'), ?&#xA;&#x9;WHERE NOT EXISTS ( SELECT officeid FROM public.&quot;dimECOffice&quot; WHERE officeid = ?)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
                   <SQLTask:ParameterBinding
                     SQLTask:ParameterName="1"
                     SQLTask:DtsVariableName="User::officecode"
@@ -3612,6 +3612,12 @@
                     SQLTask:DtsVariableName="User::MODIFIED_DATE"
                     SQLTask:ParameterDirection="Input"
                     SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="39"
+                    SQLTask:DtsVariableName="User::officeid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
                     SQLTask:ParameterSize="-1" />
                 </SQLTask:SqlTaskData>
               </DTS:ObjectData>
@@ -4008,48 +4014,48 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="190.4,41.6"
+          Size="190,42"
           Id="Package\seqc_ECOFFICE\dft_InitialLoadECOffices"
           TopLeft="89.9666599445881,174.400002562205" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\seqc_ECOFFICE\Execute SQL Task"
           TopLeft="785.833298928209,229.866669008467" />
         <NodeLayout
-          Size="249.6,41.6"
+          Size="250,42"
           Id="Package\seqc_ECOFFICE\Execute SQL Task  - New EC Offices"
           TopLeft="854.99996284644,320.733337045776" />
         <NodeLayout
-          Size="248.8,41.6"
+          Size="259,42"
           Id="Package\seqc_ECOFFICE\Execute SQL Task - Modified Offices"
           TopLeft="504.16664345397,407.533337087102" />
         <NodeLayout
-          Size="277.6,41.6"
+          Size="278,42"
           Id="Package\seqc_ECOFFICE\Execute SQL Task - Modified Offices exists"
           TopLeft="411.666647129589,291.533336839146" />
         <NodeLayout
-          Size="228,41.6"
+          Size="228,42"
           Id="Package\seqc_ECOFFICE\exeSQL_HasECOfficeinEDW"
           TopLeft="320.766650805209,49.5333348968293" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\seqc_ECOFFICE\Foreach Loop Container\Execute SQL Task"
           TopLeft="118.999976356826,46.133338347541" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="396,140.8"
+          PanelSize="396,141"
           Size="396,184"
           Id="Package\seqc_ECOFFICE\Foreach Loop Container"
           TopLeft="230.833320981926,508.200005227726" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\seqc_ECOFFICE\Foreach Loop Container - New offices\Execute SQL Task"
           TopLeft="118.166643056606,47.0000050210953" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="396,140.8"
+          PanelSize="396,141"
           Size="396,184"
           Id="Package\seqc_ECOFFICE\Foreach Loop Container - New offices"
           TopLeft="777.499965926013,405.666670888795" />
@@ -4163,37 +4169,37 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\seqc_ECOFFICE.PrecedenceConstraints[Constraint 3]"
-          TopLeft="550.466647129589,333.133336839146">
+          TopLeft="550.666647129589,333.533336839146">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="78.0999963243811,74.4000002479561"
+              EndConnector="82.999996324381,74.000000247956"
               Start="0,0"
-              End="78.0999963243811,66.9000002479561">
+              End="82.999996324381,66.500000247956">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.2000001239781" />
+                    End="0,33.000000123978" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,33.2000001239781"
-                    Point2="0,37.2000001239781"
-                    Point3="4,37.2000001239781" />
+                    Point1="0,33.000000123978"
+                    Point2="0,37.000000123978"
+                    Point3="4,37.000000123978" />
                   <mssgle:LineSegment
-                    End="74.0999963243811,37.2000001239781" />
+                    End="78.999996324381,37.000000123978" />
                   <mssgle:CubicBezierSegment
-                    Point1="74.0999963243811,37.2000001239781"
-                    Point2="78.0999963243811,37.2000001239781"
-                    Point3="78.0999963243811,41.2000001239781" />
+                    Point1="78.999996324381,37.000000123978"
+                    Point2="82.999996324381,37.000000123978"
+                    Point3="82.999996324381,41.000000123978" />
                   <mssgle:LineSegment
-                    End="78.0999963243811,66.9000002479561" />
+                    End="82.999996324381,66.500000247956" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="31.0499981621905,42.2000001239781,16,16"
+              BoundingBox="33.4999981621905,42.000000123978,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -4223,37 +4229,37 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\seqc_ECOFFICE.PrecedenceConstraints[Constraint 5]"
-          TopLeft="628.56664345397,449.133337087102">
+          TopLeft="633.66664345397,449.533337087102">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-199.733322472044,59.0666681406236"
+              EndConnector="-204.833322472044,58.666668140624"
               Start="0,0"
-              End="-199.733322472044,51.5666681406236">
+              End="-204.833322472044,51.166668140624">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.5333340703118" />
+                    End="0,25.333334070312" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,25.5333340703118"
-                    Point2="0,29.5333340703118"
-                    Point3="-4,29.5333340703118" />
+                    Point1="0,25.333334070312"
+                    Point2="0,29.333334070312"
+                    Point3="-4,29.333334070312" />
                   <mssgle:LineSegment
-                    End="-195.733322472044,29.5333340703118" />
+                    End="-200.833322472044,29.333334070312" />
                   <mssgle:CubicBezierSegment
-                    Point1="-195.733322472044,29.5333340703118"
-                    Point2="-199.733322472044,29.5333340703118"
-                    Point3="-199.733322472044,33.5333340703118" />
+                    Point1="-200.833322472044,29.333334070312"
+                    Point2="-204.833322472044,29.333334070312"
+                    Point3="-204.833322472044,33.333334070312" />
                   <mssgle:LineSegment
-                    End="-199.733322472044,51.5666681406236" />
+                    End="-204.833322472044,51.166668140624" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-107.866661236022,34.5333340703118,16,16"
+              BoundingBox="-110.416661236022,34.333334070312,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -4296,16 +4302,16 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1292.8,745.6"
-          Size="1292.8,788.8"
+          PanelSize="1293,746"
+          Size="1293,789"
           Id="Package\seqc_ECOFFICE"
           TopLeft="79.999996821086,107.466667520735" />
         <NodeLayout
-          Size="151.2,41.6"
+          Size="151,42"
           Id="Package\Start Run Cycle"
           TopLeft="631.481456388663,28.8888891184771" />
         <NodeLayout
-          Size="192.8,41.6"
+          Size="193,42"
           Id="Package\Stop Run Cycle"
           TopLeft="624.999975164732,947.407414555255" />
         <EdgeLayout
