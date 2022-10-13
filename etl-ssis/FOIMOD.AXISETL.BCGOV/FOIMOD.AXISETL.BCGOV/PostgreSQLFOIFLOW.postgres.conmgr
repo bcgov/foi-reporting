@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="PostgreSQLFOIFLOW.postgres"
+  DTS:DTSID="{B46B2B17-1B88-4178-A5C5-BD8B5F93353D}"
+  DTS:CreationName="ODBC">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="uid=postgres;Dsn=PostgreSQLFOIFLOW;">
+      <DTS:Password
+        DTS:Name="pwd"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhmzdbWJMQUWfATEVeqOBLAAAAAACAAAAAAAQZgAAAAEAACAAAACn13sYS7wM3DRPmpPstrmSZjQqh1l8EL4lyL8FEQAfowAAAAAOgAAAAAIAACAAAAB6wK7cLHNx5dU3iQryjCnbqbfq4WCgDRerayWT6E7fpZAAAAC0132gRz08Ob8uRqOD8CEtDRSsmHbedKg2IKLn0cE6CSi55n2yqWTjVb8FrKt7GyCXIVfUXNcn7w+KvhEJJt5C/Fp+42HZiMLjJbqs3tGHKFpKLjQNBfHu9MXSAO6KRx3kac7WeRHJlrRa197aXQHqDZg4kjrOm3WLrBq9UcKKmj/zrjNwbKYzxIS/1EgDPiBAAAAASIPsjgoh1oHHcOb/5pEzEA4a6YtPXVb7OlCIbGh9VJKxHOPm6vB58oxPLHxVrzrJA5ngBw9k3k4T0DURBXTqjA==</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
