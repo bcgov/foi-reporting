@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="factRequestDetails15000+"
   DTS:PackageType="5"
-  DTS:VersionBuild="61"
-  DTS:VersionGUID="{736C30A4-6376-45B2-A264-DFC21E1B5D96}">
+  DTS:VersionBuild="63"
+  DTS:VersionGUID="{DAD493A1-411D-47E4-AD51-6A524D592A6E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -1515,7 +1515,7 @@ P.vcName as priority,
 R.iRequesterID as requesterid,
 R.iOnBehalfOf as onbehalfofrequesterid,
 R.ireferencenumber as referencenumber,
-'' as refvisualrequestfilenumber,
+[dbo].AFX_GetReferenceRequests(R.iRequestID,',') as refvisualrequestfilenumber,
 R.iShipAddressID as shipaddressid,
 R.iBillAddressID as billaddressid,
 R.sdtOriginalReceivedDate as originalreceiveddate,
@@ -2869,8 +2869,7 @@ where R.iRequestID = ?</property>
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
                               codePage="1252"
-                              dataType="str"
-                              length="1"
+                              dataType="text"
                               name="refvisualrequestfilenumber" />
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[shipaddressid]"
@@ -3399,8 +3398,7 @@ where R.iRequestID = ?</property>
                             <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
                               codePage="1252"
-                              dataType="str"
-                              length="1"
+                              dataType="text"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
                               name="refvisualrequestfilenumber" />
                             <outputColumn
@@ -4774,7 +4772,7 @@ P.vcName as priority,
 R.iRequesterID as requesterid,
 R.iOnBehalfOf as onbehalfofrequesterid,
 R.ireferencenumber as referencenumber,
-'' as refvisualrequestfilenumber,
+[dbo].AFX_GetReferenceRequests(R.iRequestID,',') as refvisualrequestfilenumber,
 R.iShipAddressID as shipaddressid,
 R.iBillAddressID as billaddressid,
 R.sdtOriginalReceivedDate as originalreceiveddate,
@@ -6128,8 +6126,7 @@ where R.iRequestID = ?</property>
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
                               codePage="1252"
-                              dataType="str"
-                              length="1"
+                              dataType="text"
                               name="refvisualrequestfilenumber" />
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[shipaddressid]"
@@ -6658,8 +6655,7 @@ where R.iRequestID = ?</property>
                             <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
                               codePage="1252"
-                              dataType="str"
-                              length="1"
+                              dataType="text"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
                               name="refvisualrequestfilenumber" />
                             <outputColumn
@@ -7223,7 +7219,7 @@ where R.iRequestID = ?</property>
     design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="157,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source"
@@ -7251,9 +7247,7 @@ where R.iRequestID = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
