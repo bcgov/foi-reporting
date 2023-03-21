@@ -12,7 +12,7 @@
   DTS:ObjectName="dimECGroups"
   DTS:PackageType="5"
   DTS:VersionBuild="56"
-  DTS:VersionGUID="{5ED50ADF-E212-43CE-BD44-E7836E820437}">
+  DTS:VersionGUID="{5F87DF8D-9C2F-4A71-9BB4-D3CD5325282A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -1586,48 +1586,48 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="190.4,41.6"
+          Size="190,42"
           Id="Package\seqc_ECGroups\dft_InitialLoadECGroups"
           TopLeft="89.9666599445881,174.400002562205" />
         <NodeLayout
-          Size="249.6,41.6"
+          Size="250,42"
           Id="Package\seqc_ECGroups\Execute SQL Task  - New EC Groups"
-          TopLeft="854.16662954622,322.466670392885" />
+          TopLeft="853.16662954622,322.466670392885" />
         <NodeLayout
-          Size="277.6,41.6"
+          Size="278,42"
           Id="Package\seqc_ECGroups\Execute SQL Task - Modified Groups exists"
           TopLeft="413.333313730028,293.266670186255" />
         <NodeLayout
-          Size="248.8,41.6"
+          Size="249,42"
           Id="Package\seqc_ECGroups\Execute SQL Task - Modified Offices"
           TopLeft="503.333310153751,408.400003760656" />
         <NodeLayout
-          Size="228,41.6"
+          Size="228,42"
           Id="Package\seqc_ECGroups\exeSQL_HasEGroupsEDW"
           TopLeft="319.09998420477,48.666668223275" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\seqc_ECGroups\exeSQLtask_newGroupsCount"
           TopLeft="785.833298928209,229.866669008467" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\seqc_ECGroups\Foreach Loop ContainerModifiedGroups\Execute SQL Task"
           TopLeft="118.166643056606,46.1333383475409" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="396,140.8"
+          PanelSize="396,141"
           Size="396,184"
           Id="Package\seqc_ECGroups\Foreach Loop ContainerModifiedGroups"
           TopLeft="233.333320882585,507.333338554171" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\seqc_ECGroups\Foreach Loop ContainernewGroups\Execute SQL Task"
           TopLeft="118.166643056606,47.0000050210953" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="396,140.8"
+          PanelSize="396,141"
           Size="396,184"
           Id="Package\seqc_ECGroups\Foreach Loop ContainernewGroups"
           TopLeft="792.499966124695,476.133337727653" />
@@ -1699,7 +1699,7 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="51.5166647626291,106.50000098149,16,16"
+              BoundingBox="51.516664762629,106.50000098149,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1777,30 +1777,30 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
         </EdgeLayout>
         <EdgeLayout
           Id="Package\seqc_ECGroups.PrecedenceConstraints[Constraint 4]"
-          TopLeft="978.96662954622,364.066670392885">
+          TopLeft="978.16662954622,364.466670392885">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="11.5333365784749,112.066667334768"
+              EndConnector="12.333336578475,111.666667334768"
               Start="0,0"
-              End="11.5333365784749,104.566667334768">
+              End="12.333336578475,104.166667334768">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.033333667384" />
+                    End="0,51.833333667384" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,52.033333667384"
-                    Point2="0,56.033333667384"
-                    Point3="4,56.033333667384" />
+                    Point1="0,51.833333667384"
+                    Point2="0,55.833333667384"
+                    Point3="4,55.833333667384" />
                   <mssgle:LineSegment
-                    End="7.53333657847486,56.033333667384" />
+                    End="8.33333657847504,55.833333667384" />
                   <mssgle:CubicBezierSegment
-                    Point1="7.53333657847486,56.033333667384"
-                    Point2="11.5333365784749,56.033333667384"
-                    Point3="11.5333365784749,60.033333667384" />
+                    Point1="8.33333657847504,55.833333667384"
+                    Point2="12.333336578475,55.833333667384"
+                    Point3="12.333336578475,59.833333667384" />
                   <mssgle:LineSegment
-                    End="11.5333365784749,104.566667334768" />
+                    End="12.333336578475,104.166667334768" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1841,75 +1841,75 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-106.199994635583,33.6666673967576,16,16"
+              BoundingBox="-106.199994635582,33.6666673967576,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\seqc_ECGroups.PrecedenceConstraints[Constraint 6]"
-          TopLeft="868.233298928209,271.466669008467">
+          TopLeft="868.333298928209,271.866669008467">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="110.733330618011,51.0000013844176"
+              EndConnector="109.833330618011,50.600001384418"
               Start="0,0"
-              End="110.733330618011,43.5000013844176">
+              End="109.833330618011,43.100001384418">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.5000006922088" />
+                    End="0,21.300000692209" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,21.5000006922088"
-                    Point2="0,25.5000006922088"
-                    Point3="4,25.5000006922088" />
+                    Point1="0,21.300000692209"
+                    Point2="0,25.300000692209"
+                    Point3="4,25.300000692209" />
                   <mssgle:LineSegment
-                    End="106.733330618011,25.5000006922088" />
+                    End="105.833330618011,25.300000692209" />
                   <mssgle:CubicBezierSegment
-                    Point1="106.733330618011,25.5000006922088"
-                    Point2="110.733330618011,25.5000006922088"
-                    Point3="110.733330618011,29.5000006922088" />
+                    Point1="105.833330618011,25.300000692209"
+                    Point2="109.833330618011,25.300000692209"
+                    Point3="109.833330618011,29.300000692209" />
                   <mssgle:LineSegment
-                    End="110.733330618011,43.5000013844176" />
+                    End="109.833330618011,43.100001384418" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="47.3666653090056,30.5000006922088,16,16"
+              BoundingBox="46.9166653090055,30.300000692209,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1305.6,751.2"
-          Size="1305.6,794.4"
+          PanelSize="1306,751"
+          Size="1306,794"
           Id="Package\seqc_ECGroups"
           TopLeft="60,157.809524586844" />
         <NodeLayout
-          Size="151.2,41.6"
+          Size="151,42"
           Id="Package\Start Run Cycle"
           TopLeft="640.476165025954,50.7619051653241" />
         <NodeLayout
-          Size="192.8,41.6"
+          Size="193,42"
           Id="Package\Stop Run Cycle"
           TopLeft="622.619022878391,1030.0952462817" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="714.438082512977,92.3619051653241">
+          TopLeft="714.488082512977,92.7619051653241">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,65.4476194215199"
+              EndConnector="0,65.0476194215199"
               Start="0,0"
-              End="0,57.9476194215199">
+              End="0,57.5476194215199">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,57.9476194215199" />
+                    End="0,57.5476194215199" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1920,18 +1920,18 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="715.909511439196,952.209524586844">
+          TopLeft="716.059511439195,951.809524586844">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,77.8857216948559"
+              EndConnector="0,78.285721694856"
               Start="0,0"
-              End="0,70.3857216948559">
+              End="0,70.785721694856">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,70.3857216948559" />
+                    End="0,70.785721694856" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1949,11 +1949,11 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="152,41.6"
+          Size="152,42"
           Id="Package\seqc_ECGroups\dft_InitialLoadECGroups\OLE DB Source"
           TopLeft="290.166655176216,100.533334132301" />
         <NodeLayout
-          Size="163.2,41.6"
+          Size="163,42"
           Id="Package\seqc_ECGroups\dft_InitialLoadECGroups\ODBC Destination"
           TopLeft="384.999984701475,442.0000035127" />
         <EdgeLayout
