@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="factFOIFlowRequestStatuses"
   DTS:PackageType="5"
-  DTS:VersionBuild="262"
-  DTS:VersionGUID="{210A55B6-C44E-40D6-938E-AE6A8BB55BC3}">
+  DTS:VersionBuild="283"
+  DTS:VersionGUID="{A00F2A2E-5B60-4796-8615-67D7DE6B7854}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -116,7 +116,7 @@
 		FMR.closedate as requestclosedate,
 
 (SELECT CASE WHEN firstname IS NOT NULL THEN CONCAT(firstname , ' ', lastname) ELSE username END from public.\"FOIAssignees\"  WHERE username= FMR.assignedministryperson) as assigneefullname,
-		(SELECT CASE WHEN firstname IS NOT NULL THEN CONCAT(firstname , ' ', lastname) ELSE username END from public.\"FOIAssignees\"  WHERE username= FMR.assignedto) as iaoassigneefullname
+		(SELECT CASE WHEN firstname IS NOT NULL THEN CONCAT(firstname , ' ', lastname) ELSE username END from public.\"FOIAssignees\"  WHERE username= FMR.assignedto) as iaoassigneefullname, FMR.recordspagecount as recordspagecount, FMR.axislanpagecount as lanpagecount
 
 
 			 			
@@ -341,6 +341,20 @@ FROM public.\"FOIMinistryRequests\" FMR INNER JOIN public.\"ProgramAreas\" PA on
                           cachedName="assigneefullname"
                           externalMetadataColumnId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[ministryassigneefullname]"
                           lineageId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].Columns[assigneefullname]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Destination.Inputs[ODBC Destination Input].Columns[recordspagecount]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="recordspagecount"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[recordspagecount]"
+                          lineageId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].Columns[recordspagecount]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Destination.Inputs[ODBC Destination Input].Columns[lanpagecount]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="lanpagecount"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[lanpagecount]"
+                          lineageId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].Columns[lanpagecount]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -446,6 +460,16 @@ FROM public.\"FOIMinistryRequests\" FMR INNER JOIN public.\"ProgramAreas\" PA on
                           dataType="wstr"
                           length="700"
                           name="ministryassigneefullname" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[recordspagecount]"
+                          dataType="wstr"
+                          length="20"
+                          name="recordspagecount" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[lanpagecount]"
+                          dataType="wstr"
+                          length="20"
+                          name="lanpagecount" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -514,7 +538,7 @@ FROM public.\"FOIMinistryRequests\" FMR INNER JOIN public.\"ProgramAreas\" PA on
 		FMR.closedate as requestclosedate,
 
 (SELECT CASE WHEN firstname IS NOT NULL THEN CONCAT(firstname , ' ', lastname) ELSE username END from public."FOIAssignees"  WHERE username= FMR.assignedministryperson) as assigneefullname,
-		(SELECT CASE WHEN firstname IS NOT NULL THEN CONCAT(firstname , ' ', lastname) ELSE username END from public."FOIAssignees"  WHERE username= FMR.assignedto) as iaoassigneefullname
+		(SELECT CASE WHEN firstname IS NOT NULL THEN CONCAT(firstname , ' ', lastname) ELSE username END from public."FOIAssignees"  WHERE username= FMR.assignedto) as iaoassigneefullname, FMR.recordspagecount as recordspagecount, FMR.axislanpagecount as lanpagecount
 
 
 			 			
@@ -725,6 +749,20 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
                           length="255"
                           lineageId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].Columns[iaoassigneefullname]"
                           name="iaoassigneefullname" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].Columns[recordspagecount]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[recordspagecount]"
+                          length="20"
+                          lineageId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].Columns[recordspagecount]"
+                          name="recordspagecount" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].Columns[lanpagecount]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[lanpagecount]"
+                          length="20"
+                          lineageId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].Columns[lanpagecount]"
+                          name="lanpagecount" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -830,6 +868,16 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
                           dataType="wstr"
                           length="255"
                           name="iaoassigneefullname" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[recordspagecount]"
+                          dataType="wstr"
+                          length="20"
+                          name="recordspagecount" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[lanpagecount]"
+                          dataType="wstr"
+                          length="20"
+                          name="lanpagecount" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -982,6 +1030,13 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
                           lineageId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Error Output].Columns[iaoassigneefullname]"
                           name="iaoassigneefullname" />
                         <outputColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Error Output].Columns[recordspagecount]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[recordspagecount]"
+                          length="20"
+                          lineageId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Error Output].Columns[recordspagecount]"
+                          name="recordspagecount" />
+                        <outputColumn
                           refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
                           lineageId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
@@ -993,6 +1048,12 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
                           lineageId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Error Output].Columns[lanpagecount]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\DFT_IncrementalLoadfactFOIFlowMinistryRequeststatuses 1\ODBC Source.Outputs[ODBC Source Error Output].Columns[lanpagecount]"
+                          name="lanpagecount" />
                       </outputColumns>
                       <externalMetadataColumns />
                     </output>
@@ -1042,7 +1103,7 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
 
 
 		(SELECT CASE WHEN firstname IS NOT NULL THEN CONCAT(firstname , ' ', lastname) ELSE username END from public.\"FOIAssignees\"  WHERE username= FMR.assignedministryperson) as assigneefullname,
-		(SELECT CASE WHEN firstname IS NOT NULL THEN CONCAT(firstname , ' ', lastname) ELSE username END from public.\"FOIAssignees\"  WHERE username= FMR.assignedto) as iaoassigneefullname
+		(SELECT CASE WHEN firstname IS NOT NULL THEN CONCAT(firstname , ' ', lastname) ELSE username END from public.\"FOIAssignees\"  WHERE username= FMR.assignedto) as iaoassigneefullname, FMR.recordspagecount as recordspagecount, FMR.axislanpagecount as lanpagecount
 
 
 
@@ -1269,6 +1330,20 @@ FROM public.\"FOIMinistryRequests\" FMR INNER JOIN public.\"ProgramAreas\" PA on
                           cachedName="assigneefullname"
                           externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[ministryassigneefullname]"
                           lineageId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].Columns[assigneefullname]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Destination.Inputs[ODBC Destination Input].Columns[recordspagecount]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="recordspagecount"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[recordspagecount]"
+                          lineageId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].Columns[recordspagecount]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Destination.Inputs[ODBC Destination Input].Columns[lanpagecount]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="lanpagecount"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[lanpagecount]"
+                          lineageId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].Columns[lanpagecount]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -1374,6 +1449,16 @@ FROM public.\"FOIMinistryRequests\" FMR INNER JOIN public.\"ProgramAreas\" PA on
                           dataType="wstr"
                           length="700"
                           name="ministryassigneefullname" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[recordspagecount]"
+                          dataType="wstr"
+                          length="20"
+                          name="recordspagecount" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[lanpagecount]"
+                          dataType="wstr"
+                          length="20"
+                          name="lanpagecount" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -1443,7 +1528,7 @@ FROM public.\"FOIMinistryRequests\" FMR INNER JOIN public.\"ProgramAreas\" PA on
 
 
 		(SELECT CASE WHEN firstname IS NOT NULL THEN CONCAT(firstname , ' ', lastname) ELSE username END from public."FOIAssignees"  WHERE username= FMR.assignedministryperson) as assigneefullname,
-		(SELECT CASE WHEN firstname IS NOT NULL THEN CONCAT(firstname , ' ', lastname) ELSE username END from public."FOIAssignees"  WHERE username= FMR.assignedto) as iaoassigneefullname
+		(SELECT CASE WHEN firstname IS NOT NULL THEN CONCAT(firstname , ' ', lastname) ELSE username END from public."FOIAssignees"  WHERE username= FMR.assignedto) as iaoassigneefullname, FMR.recordspagecount as recordspagecount, FMR.axislanpagecount as lanpagecount
 
 
 
@@ -1656,6 +1741,20 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
                           length="255"
                           lineageId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].Columns[iaoassigneefullname]"
                           name="iaoassigneefullname" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].Columns[recordspagecount]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[recordspagecount]"
+                          length="20"
+                          lineageId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].Columns[recordspagecount]"
+                          name="recordspagecount" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].Columns[lanpagecount]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[lanpagecount]"
+                          length="20"
+                          lineageId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].Columns[lanpagecount]"
+                          name="lanpagecount" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -1761,6 +1860,16 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
                           dataType="wstr"
                           length="255"
                           name="iaoassigneefullname" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[recordspagecount]"
+                          dataType="wstr"
+                          length="20"
+                          name="recordspagecount" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[lanpagecount]"
+                          dataType="wstr"
+                          length="20"
+                          name="lanpagecount" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -1912,6 +2021,20 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
                           length="255"
                           lineageId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[iaoassigneefullname]"
                           name="iaoassigneefullname" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[recordspagecount]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[recordspagecount]"
+                          length="20"
+                          lineageId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[recordspagecount]"
+                          name="recordspagecount" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[lanpagecount]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[lanpagecount]"
+                          length="20"
+                          lineageId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[lanpagecount]"
+                          name="lanpagecount" />
                         <outputColumn
                           refId="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -2080,78 +2203,78 @@ FROM public."FOIMinistryRequests" FMR INNER JOIN public."ProgramAreas" PA on FMR
           Id="Package\Sequence Container\DFT_InitialLoadfactFOIFlowMinistryRequeststatuses"
           TopLeft="26.0333170082844,151.133336136606" />
         <NodeLayout
-          Size="230,42"
+          Size="240,42"
           Id="Package\Sequence Container\EST_HasRequestDivisionStages"
           TopLeft="325.533304789332,42.0000017770131" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
-          TopLeft="403.533304789332,84.0000017770131">
+          TopLeft="406.866638122665,84.0000017770131">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-209.499987781048,67.1333343595929"
+              EndConnector="-212.833321114381,67.1333343595929"
               Start="0,0"
-              End="-209.499987781048,59.6333343595929">
+              End="-212.833321114381,59.6333343595929">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.1316066323743" />
+                    End="0,23.1200887148024" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,23.1316066323743"
-                    Point2="0,27.1316066323743"
-                    Point3="-4,27.1316066323743" />
+                    Point1="0,23.1200887148024"
+                    Point2="0,27.1200887148024"
+                    Point3="-4,27.1200887148024" />
                   <mssgle:LineSegment
-                    End="-205.499987781048,27.1316066323743" />
+                    End="-208.833321114381,27.1200887148024" />
                   <mssgle:CubicBezierSegment
-                    Point1="-205.499987781048,27.1316066323743"
-                    Point2="-209.499987781048,27.1316066323743"
-                    Point3="-209.499987781048,31.1316066323743" />
+                    Point1="-208.833321114381,27.1200887148024"
+                    Point2="-212.833321114381,27.1200887148024"
+                    Point3="-212.833321114381,31.1200887148024" />
                   <mssgle:LineSegment
-                    End="-209.499987781048,59.6333343595929" />
+                    End="-212.833321114381,59.6333343595929" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-112.749993890524,32.1316066323743,16,16"
+              BoundingBox="-114.41666055719,32.1200887148024,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
-          TopLeft="477.533304789332,84.0000017770131">
+          TopLeft="484.199971455999,84.0000017770131">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="157.966695210668,72.9999982229869"
+              EndConnector="167.300028544001,72.9999982229869"
               Start="0,0"
-              End="157.966695210668,65.4999982229869">
+              End="167.300028544001,65.4999982229869">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.502589955404" />
+                    End="0,25.4900655072993" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,25.502589955404"
-                    Point2="0,29.502589955404"
-                    Point3="4,29.502589955404" />
+                    Point1="0,25.4900655072993"
+                    Point2="0,29.4900655072993"
+                    Point3="4,29.4900655072993" />
                   <mssgle:LineSegment
-                    End="153.966695210668,29.502589955404" />
+                    End="163.300028544001,29.4900655072993" />
                   <mssgle:CubicBezierSegment
-                    Point1="153.966695210668,29.502589955404"
-                    Point2="157.966695210668,29.502589955404"
-                    Point3="157.966695210668,33.502589955404" />
+                    Point1="163.300028544001,29.4900655072993"
+                    Point2="167.300028544001,29.4900655072993"
+                    Point3="167.300028544001,33.4900655072993" />
                   <mssgle:LineSegment
-                    End="157.966695210668,65.4999982229869" />
+                    End="167.300028544001,65.4999982229869" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="70.983347605334,34.502589955404,16,16"
+              BoundingBox="75.6500142720006,34.4900655072993,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

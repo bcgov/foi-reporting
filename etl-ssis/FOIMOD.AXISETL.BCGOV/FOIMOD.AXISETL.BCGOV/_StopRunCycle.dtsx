@@ -7,12 +7,12 @@
   DTS:CreatorName="LAPTOP-1OFQE5A2\qi__h"
   DTS:DTSID="{8ACC8D50-A7E6-4DAE-92A1-D5EE00684DF3}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
   DTS:LocaleID="4105"
   DTS:ObjectName="_StopRunCycle"
   DTS:PackageType="5"
   DTS:VersionBuild="68"
-  DTS:VersionGUID="{FC282FE1-1960-45D7-B083-B6FC8F8076C7}">
+  DTS:VersionGUID="{A1489002-CAE7-491D-9DB5-95F1D3035BA7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -73,14 +73,14 @@
       DTS:CreationName=""
       DTS:DTSID="{68C3EB60-1F54-47DA-AF15-892507DD8507}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;update public.\&quot;dimRunCycle\&quot; &#xA;set &#xA;runcycleendat = '&quot;+(DT_WSTR, 50) (DT_DBTIMESTAMP) GETDATE()+&quot;', &#xA;description = 'package: &quot;+@[$Package::packageName]+&quot; complete', &#xA;success = &quot;+@[User::isComplete]+&quot; &#xA;where runcycleid = &quot;+(DT_WSTR, 4) @[$Package::runCycleID]"
+      DTS:Expression="&quot;update public.\&quot;dimRunCycle\&quot; &#xA;set &#xA;runcycleendat = '&quot;+(DT_WSTR, 50) (DT_DBTIMESTAMP) GETDATE()+&quot;', &#xA;description = 'package: &quot;+@[$Package::packageName]+&quot; complete', &#xA;success = &quot;+@[User::isComplete]+&quot; &#xA;where runcycleid = &quot;+(DT_WSTR, 10) @[$Package::runCycleID]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="updateRunCycle">
       <DTS:VariableValue
         DTS:DataType="8">update public."dimRunCycle" 
 set 
-runcycleendat = '2022-03-22 13:55:37.608000000', 
+runcycleendat = '2024-05-08 12:06:21.559000000', 
 description = 'package:  complete', 
 success = False 
 where runcycleid = 1</DTS:VariableValue>
@@ -119,7 +119,7 @@ where runcycleid = 1</DTS:VariableValue>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="149.6,41.6"
+          Size="155,42"
           Id="Package\Stop Run Cycle"
           TopLeft="393.333317703672,164.66666797532" />
       </GraphLayout>

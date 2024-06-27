@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="dimECGroups"
   DTS:PackageType="5"
-  DTS:VersionBuild="56"
-  DTS:VersionGUID="{5F87DF8D-9C2F-4A71-9BB4-D3CD5325282A}">
+  DTS:VersionBuild="58"
+  DTS:VersionGUID="{DA1C2978-DB27-4A82-A13E-252C2A3E630D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -737,7 +737,7 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;SELECT ECG.GROUP_ID as groupid,&#xA;&#x9;ECG.GROUP_NAME as groupname,&#xA;&#x9;TLL.vcTerminology as tllgroupname,&#xA;&#x9;ECG.DESCRIPTION as groupdescription,&#xA;&#x9;ECG.IS_ACTIVE as isactive,&#xA;&#x9;convert(varchar, ECG.CREATED_DATE, 120) as createddate,&#xA;&#x9;convert(varchar, ECG.MODIFIED_DATE , 120)as modifieddate,&#x9;&#xA;&#x9;ECG.GROUP_CODE as groupcode,&#xA;&#x9;ECG.DELETE_FLAG as deleteflag,&#xA;&#x9;ECG.OFFICE_ID as officeid,&#xA;&#x9;ECG.EMAIL_ID as emailid FROM EC_GROUPS ECG &#xA;LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID WHERE TLL.tiLocaleID = 1 AND (ECG.CREATED_DATE &gt;= @lastruntime);"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;SELECT ECG.GROUP_ID as groupid,&#xA;&#x9;ECG.GROUP_NAME as groupname,&#xA;&#x9;TLL.vcTerminology as tllgroupname,&#xA;&#x9;ECG.DESCRIPTION as groupdescription,&#xA;&#x9;ECG.IS_ACTIVE as isactive,&#xA;&#x9;convert(varchar, ECG.CREATED_DATE, 120) as createddate,&#xA;&#x9;convert(varchar, ECG.MODIFIED_DATE , 120)as modifieddate,&#x9;&#xA;&#x9;ECG.GROUP_CODE as groupcode,&#xA;&#x9;ECG.DELETE_FLAG as deleteflag,&#xA;&#x9;ISNULL(ECG.OFFICE_ID, 0) as officeid,&#xA;&#x9;ISNULL(ECG.EMAIL_ID,'') as emailid FROM EC_GROUPS ECG &#xA;LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID WHERE TLL.tiLocaleID = 1 AND (ECG.CREATED_DATE &gt;= @lastruntime);"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -795,7 +795,7 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;ECG.GROUP_ID as groupid,&#xA;&#x9;ECG.GROUP_NAME as groupname,&#xA;&#x9;TLL.vcTerminology as tllgroupname,&#xA;&#x9;ECG.DESCRIPTION as groupdescription,&#xA;&#x9;ECG.IS_ACTIVE as isactive,&#xA;&#x9;convert(varchar, ECG.CREATED_DATE, 120) as createddate,&#xA;&#x9;convert(varchar, ECG.MODIFIED_DATE , 120)as modifieddate,&#x9;&#xA;&#x9;ECG.GROUP_CODE as groupcode,&#xA;&#x9;ECG.DELETE_FLAG as deleteflag,&#xA;&#x9;ECG.OFFICE_ID as officeid,&#xA;&#x9;ISNULL(ECG.EMAIL_ID,'') as emailid&#xA;&#xA;From EC_GROUPS ECG &#xA;LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.tiLocaleID = 1&#x9; &#xA;WHERE ECG.MODIFIED_DATE &gt;= @lastruntime AND ECG.CREATED_DATE &lt; @lastruntime"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select &#xA;&#x9;ECG.GROUP_ID as groupid,&#xA;&#x9;ECG.GROUP_NAME as groupname,&#xA;&#x9;TLL.vcTerminology as tllgroupname,&#xA;&#x9;ECG.DESCRIPTION as groupdescription,&#xA;&#x9;ECG.IS_ACTIVE as isactive,&#xA;&#x9;convert(varchar, ECG.CREATED_DATE, 120) as createddate,&#xA;&#x9;convert(varchar, ECG.MODIFIED_DATE , 120)as modifieddate,&#x9;&#xA;&#x9;ECG.GROUP_CODE as groupcode,&#xA;&#x9;ECG.DELETE_FLAG as deleteflag,&#xA;&#x9;ISNULL(ECG.OFFICE_ID, 0) as officeid,&#xA;&#x9;ISNULL(ECG.EMAIL_ID,'') as emailid&#xA;&#xA;From EC_GROUPS ECG &#xA;LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.tiLocaleID = 1&#x9; &#xA;WHERE ECG.MODIFIED_DATE &gt;= @lastruntime AND ECG.CREATED_DATE &lt; @lastruntime"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -1288,7 +1288,7 @@ LEFT OUTER JOIN tblTerminologyLookup TLL ON ECG.LABEL_ID = TLL.iLabelID and TLL.
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
                   SQLTask:BypassPrepare="False"
-                  SQLTask:SqlStatementSource="INSERT INTO public.&quot;dimECGroups&quot;(&#xA;&#x9;groupname, tllgroupname, groupdescription, isactive, createddate, modifieddate, groupcode, deleteflag, officeid, emailid,groupid)&#xA;&#x9;VALUES (?, ?, ?, ?, to_timestamp(?,'YYYY-MM-DD hh24:mi:ss'), to_timestamp(?,'YYYY-MM-DD hh24:mi:ss'), ?, ?, ?, ?, ?);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  SQLTask:SqlStatementSource="INSERT INTO public.&quot;dimECGroups&quot;(&#xA;&#x9;groupname, tllgroupname, groupdescription, isactive, createddate, modifieddate, groupcode, deleteflag, officeid, emailid,groupid)&#xA;&#x9;VALUES (?, ?, ?, ?, to_timestamp(?,'YYYY-MM-DD hh24:mi:ss'), to_timestamp(?,'YYYY-MM-DD hh24:mi:ss'), ?, ?, ?, ?, ?) ON CONFLICT (groupid) DO NOTHING;;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
                   <SQLTask:ParameterBinding
                     SQLTask:ParameterName="1"
                     SQLTask:DtsVariableName="User::groupname"

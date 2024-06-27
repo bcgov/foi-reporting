@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="dimDIMECOffice_ETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="209"
-  DTS:VersionGUID="{2EABD5C0-A1E1-4969-A6C8-4D3D38EE314E}">
+  DTS:VersionBuild="210"
+  DTS:VersionGUID="{DAE08096-CFA4-4CDF-8F61-358F03A77878}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1909,7 +1909,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1938,7 +1938,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task  - New EC Offices"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1967,7 +1967,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task - Modified Offices"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1996,7 +1996,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task - Modified Offices exists"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2473,7 +2473,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="Execute SQL Task"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -3378,7 +3378,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="Execute SQL Task"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -4127,7 +4127,7 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="49.8499981621899,105.200000971158,16,16"
+              BoundingBox="49.84999816219,105.200000971158,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -4223,7 +4223,7 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-8,9.91666692150966,16,16"
+              BoundingBox="-8,9.91666692150965,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -4295,7 +4295,7 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="47.7833319591153,29.6333340186542,16,16"
+              BoundingBox="47.7833319591155,29.6333340186542,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -4316,18 +4316,30 @@
           TopLeft="624.999975164732,947.407414555255" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="725.140726604874,70.4888891184771">
+          TopLeft="706.981456388663,70.8888891184771">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,36.9777784022578"
+              EndConnector="19.518540432423,36.5777784022579"
               Start="0,0"
-              End="0,29.4777784022578">
+              End="19.518540432423,29.0777784022579">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.4777784022578" />
+                    End="0,14.2888892011289" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.2888892011289"
+                    Point2="0,18.2888892011289"
+                    Point3="4,18.2888892011289" />
+                  <mssgle:LineSegment
+                    End="15.518540432423,18.2888892011289" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.518540432423,18.2888892011289"
+                    Point2="19.518540432423,18.2888892011289"
+                    Point3="19.518540432423,22.2888892011289" />
+                  <mssgle:LineSegment
+                    End="19.518540432423,29.0777784022579" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4338,18 +4350,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="723.899985992909,896.266667520735">
+          TopLeft="723.999985992909,896.466667520735">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,51.1407470345204"
+              EndConnector="0,50.94074703452"
               Start="0,0"
-              End="0,43.6407470345204">
+              End="0,43.44074703452">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,43.6407470345204" />
+                    End="0,43.44074703452" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
