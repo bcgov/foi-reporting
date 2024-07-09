@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="factRequestDetails30000+"
   DTS:PackageType="5"
-  DTS:VersionBuild="62"
-  DTS:VersionGUID="{97F2B360-1D5E-4D78-A07B-F762D506864A}">
+  DTS:VersionBuild="67"
+  DTS:VersionGUID="{D56DBDEC-78FB-45E6-A15B-9001C7BC85CB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -938,14 +938,6 @@
                               cachedName="visualrequestfilenumber"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[visualrequestfilenumber]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[refvisualrequestfilenumber]"
-                              cachedCodepage="1252"
-                              cachedDataType="str"
-                              cachedLength="1"
-                              cachedName="refvisualrequestfilenumber"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refvisualrequestfilenumber]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]" />
                           </inputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -1323,8 +1315,7 @@
                               name="referencenumber" />
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refvisualrequestfilenumber]"
-                              dataType="wstr"
-                              length="50"
+                              dataType="nText"
                               name="refvisualrequestfilenumber" />
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[extension]"
@@ -1515,7 +1506,7 @@ P.vcName as priority,
 R.iRequesterID as requesterid,
 R.iOnBehalfOf as onbehalfofrequesterid,
 R.ireferencenumber as referencenumber,
-[dbo].AFX_GetReferenceRequests(R.iRequestID,',') as refvisualrequestfilenumber,
+'' as refvisualrequestfilenumber,
 R.iShipAddressID as shipaddressid,
 R.iBillAddressID as billaddressid,
 R.sdtOriginalReceivedDate as originalreceiveddate,
@@ -2367,17 +2358,6 @@ where R.iRequestID = ?</property>
                               name="referencenumber"
                               truncationRowDisposition="FailComponent" />
                             <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
-                              length="1"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]"
-                              name="refvisualrequestfilenumber"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[shipaddressid]"
                               dataType="i4"
                               errorOrTruncationOperation="Conversion"
@@ -2869,7 +2849,8 @@ where R.iRequestID = ?</property>
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
                               codePage="1252"
-                              dataType="text"
+                              dataType="str"
+                              length="1"
                               name="refvisualrequestfilenumber" />
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[shipaddressid]"
@@ -3395,12 +3376,6 @@ where R.iRequestID = ?</property>
                               dataType="i4"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[referencenumber]"
                               name="referencenumber" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
-                              codePage="1252"
-                              dataType="text"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
-                              name="refvisualrequestfilenumber" />
                             <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[shipaddressid]"
                               dataType="i4"
@@ -4195,14 +4170,6 @@ where R.iRequestID = ?</property>
                               cachedName="visualrequestfilenumber"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[visualrequestfilenumber]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[refvisualrequestfilenumber]"
-                              cachedCodepage="1252"
-                              cachedDataType="str"
-                              cachedLength="1"
-                              cachedName="refvisualrequestfilenumber"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refvisualrequestfilenumber]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]" />
                           </inputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -4580,8 +4547,7 @@ where R.iRequestID = ?</property>
                               name="referencenumber" />
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refvisualrequestfilenumber]"
-                              dataType="wstr"
-                              length="50"
+                              dataType="nText"
                               name="refvisualrequestfilenumber" />
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[extension]"
@@ -4772,7 +4738,7 @@ P.vcName as priority,
 R.iRequesterID as requesterid,
 R.iOnBehalfOf as onbehalfofrequesterid,
 R.ireferencenumber as referencenumber,
-[dbo].AFX_GetReferenceRequests(R.iRequestID,',') as refvisualrequestfilenumber,
+'' as refvisualrequestfilenumber,
 R.iShipAddressID as shipaddressid,
 R.iBillAddressID as billaddressid,
 R.sdtOriginalReceivedDate as originalreceiveddate,
@@ -5624,17 +5590,6 @@ where R.iRequestID = ?</property>
                               name="referencenumber"
                               truncationRowDisposition="FailComponent" />
                             <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
-                              length="1"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]"
-                              name="refvisualrequestfilenumber"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[shipaddressid]"
                               dataType="i4"
                               errorOrTruncationOperation="Conversion"
@@ -6126,7 +6081,8 @@ where R.iRequestID = ?</property>
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
                               codePage="1252"
-                              dataType="text"
+                              dataType="str"
+                              length="1"
                               name="refvisualrequestfilenumber" />
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[shipaddressid]"
@@ -6653,12 +6609,6 @@ where R.iRequestID = ?</property>
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[referencenumber]"
                               name="referencenumber" />
                             <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
-                              codePage="1252"
-                              dataType="text"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
-                              name="refvisualrequestfilenumber" />
-                            <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[shipaddressid]"
                               dataType="i4"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[shipaddressid]"
@@ -6854,7 +6804,7 @@ where R.iRequestID = ?</property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4505C521-0836-4CAA-8A51-8DA634D4EA56}"
-              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select distinct &#xA; R.iRequestID &#xA;From [dbo].tblRequests R &#xA;left outer join dbo.tblTasks tsk ON R.tiReviewID = tsk.tiTaskID&#xA;left outer join [dbo].EC_USERS AS RBU ON R.iReceivedBy = RBU.USER_ID &#xA;left outer join [dbo].EC_USERS AS MBU ON R.iModifiedBy = MBU.USER_ID &#xA;left outer join [dbo].EC_USERS AS AT ON R.iAssignedTo = AT.USER_ID &#xA;left outer join [dbo].EC_USERS AS CW ON R.iCaseOwner = CW.USER_ID &#xA;left outer join [dbo].tblDispositions disp on R.vcFinalDisposition = disp.vcDispositionKey &#xA;left outer join [dbo].tblTerminologyLookup term ON disp.iLabelID = term.iLabelID and term.tiLocaleID = 1 &#xA;left outer join [dbo].viwRedactionCodes RC on R.siRedactionCodeID = RC.siRedactionCodeID and RC.tiLocaleID = 1 &#xA;left outer join [dbo].viwReleaseFormats VRF on R.siReleaseFormatID = VRF.siReleaseFormatID and VRF.tiLocaleID = 1 &#xA;left outer join [dbo].viwDenialAuthorities VDA on R.siDelAuthorityID = VDA.siCodeID and VDA.tiLocaleID = 1&#xA;left outer join [dbo].tblRequestTypes RT on R.tiRequestTypeID = RT.tiRequestTypeID &#xA;left outer join [dbo].tblTerminologyLookup TLL ON RT.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 &#xA;left outer join [dbo].EC_VW_OFFICE VO on R.tiOfficeID = VO.OFFICE_ID AND VO.LOCALE_ID = 1 &#xA;left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiLocaleID = 1  &#xA;WHERE R.sdtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121)  AND R.sdtCreatedDate &lt; CONVERT(VARCHAR(19),@lastruntime , 121) &#xA;or &#xA;tsk.sdtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121)  &#xA;or &#xA;RBU.MODIFIED_DATE &gt;=CONVERT(VARCHAR(19),@lastruntime , 121)  &#xA;or &#xA;MBU.MODIFIED_DATE &gt;=CONVERT(VARCHAR(19),@lastruntime , 121)  &#xA;or &#xA;AT.MODIFIED_DATE &gt;=CONVERT(VARCHAR(19),@lastruntime , 121)  &#xA;or &#xA;CW.MODIFIED_DATE &gt;=CONVERT(VARCHAR(19),@lastruntime , 121) &#xA;or &#xA;disp.dtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121) &#xA;or &#xA;RC.sdtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121) &#xA;or &#xA;VRF.dtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121) &#xA;or &#xA;VDA.dtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121) &#xA;or &#xA;RT.sdtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121) &#xA;or &#xA;VO.MODIFIED_DATE &gt;=CONVERT(VARCHAR(19),@lastruntime , 121)&#xA;order by R.iRequestID&#xA;offset 15000 rows;"
+              SQLTask:SqlStatementSource="DECLARE @lastruntime varchar(19) SET @lastruntime = ?&#xA;&#xA;Select distinct &#xA; R.iRequestID &#xA;From [dbo].tblRequests R &#xA;left outer join dbo.tblTasks tsk ON R.tiReviewID = tsk.tiTaskID&#xA;left outer join [dbo].EC_USERS AS RBU ON R.iReceivedBy = RBU.USER_ID &#xA;left outer join [dbo].EC_USERS AS MBU ON R.iModifiedBy = MBU.USER_ID &#xA;left outer join [dbo].EC_USERS AS AT ON R.iAssignedTo = AT.USER_ID &#xA;left outer join [dbo].EC_USERS AS CW ON R.iCaseOwner = CW.USER_ID &#xA;left outer join [dbo].tblDispositions disp on R.vcFinalDisposition = disp.vcDispositionKey &#xA;left outer join [dbo].tblTerminologyLookup term ON disp.iLabelID = term.iLabelID and term.tiLocaleID = 1 &#xA;left outer join [dbo].viwRedactionCodes RC on R.siRedactionCodeID = RC.siRedactionCodeID and RC.tiLocaleID = 1 &#xA;left outer join [dbo].viwReleaseFormats VRF on R.siReleaseFormatID = VRF.siReleaseFormatID and VRF.tiLocaleID = 1 &#xA;left outer join [dbo].viwDenialAuthorities VDA on R.siDelAuthorityID = VDA.siCodeID and VDA.tiLocaleID = 1&#xA;left outer join [dbo].tblRequestTypes RT on R.tiRequestTypeID = RT.tiRequestTypeID &#xA;left outer join [dbo].tblTerminologyLookup TLL ON RT.iLabelID = TLL.iLabelID and TLL.tiLocaleID = 1 &#xA;left outer join [dbo].EC_VW_OFFICE VO on R.tiOfficeID = VO.OFFICE_ID AND VO.LOCALE_ID = 1 &#xA;left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiLocaleID = 1  &#xA;WHERE R.sdtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121)  AND R.sdtCreatedDate &lt; CONVERT(VARCHAR(19),@lastruntime , 121) &#xA;or &#xA;tsk.sdtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121)  &#xA;or &#xA;RBU.MODIFIED_DATE &gt;=CONVERT(VARCHAR(19),@lastruntime , 121)  &#xA;or &#xA;MBU.MODIFIED_DATE &gt;=CONVERT(VARCHAR(19),@lastruntime , 121)  &#xA;or &#xA;AT.MODIFIED_DATE &gt;=CONVERT(VARCHAR(19),@lastruntime , 121)  &#xA;or &#xA;CW.MODIFIED_DATE &gt;=CONVERT(VARCHAR(19),@lastruntime , 121) &#xA;or &#xA;disp.dtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121) &#xA;or &#xA;RC.sdtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121) &#xA;or &#xA;VRF.dtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121) &#xA;or &#xA;VDA.dtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121) &#xA;or &#xA;RT.sdtModifiedDate &gt;=CONVERT(VARCHAR(19),@lastruntime , 121) &#xA;or &#xA;VO.MODIFIED_DATE &gt;=CONVERT(VARCHAR(19),@lastruntime , 121)&#xA;order by R.iRequestID&#xA;offset 30000 rows&#xA;fetch next 15000 rows only;"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"

@@ -13,6 +13,10 @@
     DTS:Name="UserName">@[$Project::DestinationFOIEDWUserName]</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="server=localhost;uid=postgres;Dsn=PostgreSQLDEVEDW;database=foi_edw;port=15432;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;" />
+      DTS:ConnectionString="server=142.34.194.68;uid=postgres;Dsn=PostgreSQLDEVEDW;database=foi_edw;port=17841;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;">
+      <DTS:Password
+        DTS:Name="pwd"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAkrHFluovdE2q9T+xO7GZngAAAAACAAAAAAADZgAAwAAAABAAAAAn5Y8o6cgiRLsJP57u4e/QAAAAAASAAACgAAAAEAAAAB1JnytVyf2pLD6CGpHcT5WIAAAAGyRRb28OH4wn0iaKv0JnC68LRpp7uW3h5XJJ1zdFOqDlhA9N+quUWCTCUOR5wVEOlcnRSm0yCvlGwV1Bh7aL874Opi4Hm0sS8eM/oT9w3jAfKW1D/M1NUiFfF2tSTn0V80nLKE8geOnWz6biVuCYFyTSSuplswI9rrVJheTgXgpVKbgaf+u5wBQAAADJT89CjR5W/AP3pwavsjNeGmYJBw==</DTS:Password>
+    </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>

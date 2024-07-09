@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="factRequestDetails"
   DTS:PackageType="5"
-  DTS:VersionBuild="61"
-  DTS:VersionGUID="{8543C99A-60D0-4E4D-AF5B-D1C19C2646EC}">
+  DTS:VersionBuild="66"
+  DTS:VersionGUID="{BBC61024-5D6E-47F4-81F3-C3EDD2FAEFBF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -938,14 +938,6 @@
                               cachedName="visualrequestfilenumber"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[visualrequestfilenumber]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[refvisualrequestfilenumber]"
-                              cachedCodepage="1252"
-                              cachedDataType="str"
-                              cachedLength="1"
-                              cachedName="refvisualrequestfilenumber"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refvisualrequestfilenumber]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]" />
                           </inputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -1323,8 +1315,7 @@
                               name="referencenumber" />
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refvisualrequestfilenumber]"
-                              dataType="wstr"
-                              length="50"
+                              dataType="nText"
                               name="refvisualrequestfilenumber" />
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[extension]"
@@ -1515,7 +1506,7 @@ P.vcName as priority,
 R.iRequesterID as requesterid,
 R.iOnBehalfOf as onbehalfofrequesterid,
 R.ireferencenumber as referencenumber,
-[dbo].AFX_GetReferenceRequests(R.iRequestID,',') as refvisualrequestfilenumber,
+'' as refvisualrequestfilenumber,
 R.iShipAddressID as shipaddressid,
 R.iBillAddressID as billaddressid,
 R.sdtOriginalReceivedDate as originalreceiveddate,
@@ -2367,17 +2358,6 @@ where R.iRequestID = ?</property>
                               name="referencenumber"
                               truncationRowDisposition="FailComponent" />
                             <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
-                              length="1"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]"
-                              name="refvisualrequestfilenumber"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[shipaddressid]"
                               dataType="i4"
                               errorOrTruncationOperation="Conversion"
@@ -2869,7 +2849,8 @@ where R.iRequestID = ?</property>
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
                               codePage="1252"
-                              dataType="text"
+                              dataType="str"
+                              length="1"
                               name="refvisualrequestfilenumber" />
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[shipaddressid]"
@@ -3395,12 +3376,6 @@ where R.iRequestID = ?</property>
                               dataType="i4"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[referencenumber]"
                               name="referencenumber" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
-                              codePage="1252"
-                              dataType="text"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
-                              name="refvisualrequestfilenumber" />
                             <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[shipaddressid]"
                               dataType="i4"
@@ -4195,14 +4170,6 @@ where R.iRequestID = ?</property>
                               cachedName="visualrequestfilenumber"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[visualrequestfilenumber]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[refvisualrequestfilenumber]"
-                              cachedCodepage="1252"
-                              cachedDataType="str"
-                              cachedLength="1"
-                              cachedName="refvisualrequestfilenumber"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refvisualrequestfilenumber]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]" />
                           </inputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -4580,8 +4547,7 @@ where R.iRequestID = ?</property>
                               name="referencenumber" />
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refvisualrequestfilenumber]"
-                              dataType="wstr"
-                              length="50"
+                              dataType="nText"
                               name="refvisualrequestfilenumber" />
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[extension]"
@@ -4772,7 +4738,7 @@ P.vcName as priority,
 R.iRequesterID as requesterid,
 R.iOnBehalfOf as onbehalfofrequesterid,
 R.ireferencenumber as referencenumber,
-[dbo].AFX_GetReferenceRequests(R.iRequestID,',') as refvisualrequestfilenumber,
+'' as refvisualrequestfilenumber,
 R.iShipAddressID as shipaddressid,
 R.iBillAddressID as billaddressid,
 R.sdtOriginalReceivedDate as originalreceiveddate,
@@ -5624,17 +5590,6 @@ where R.iRequestID = ?</property>
                               name="referencenumber"
                               truncationRowDisposition="FailComponent" />
                             <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
-                              length="1"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]"
-                              name="refvisualrequestfilenumber"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[shipaddressid]"
                               dataType="i4"
                               errorOrTruncationOperation="Conversion"
@@ -6126,7 +6081,8 @@ where R.iRequestID = ?</property>
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
                               codePage="1252"
-                              dataType="text"
+                              dataType="str"
+                              length="1"
                               name="refvisualrequestfilenumber" />
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[shipaddressid]"
@@ -6652,12 +6608,6 @@ where R.iRequestID = ?</property>
                               dataType="i4"
                               lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[referencenumber]"
                               name="referencenumber" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
-                              codePage="1252"
-                              dataType="text"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
-                              name="refvisualrequestfilenumber" />
                             <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[shipaddressid]"
                               dataType="i4"
@@ -7536,14 +7486,6 @@ where R.iRequestID = ?</property>
                               cachedName="visualrequestfilenumber"
                               externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[visualrequestfilenumber]"
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]" />
-                            <inputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].Columns[refvisualrequestfilenumber]"
-                              cachedCodepage="1252"
-                              cachedDataType="str"
-                              cachedLength="1"
-                              cachedName="refvisualrequestfilenumber"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refvisualrequestfilenumber]"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]" />
                           </inputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -7921,8 +7863,7 @@ where R.iRequestID = ?</property>
                               name="referencenumber" />
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refvisualrequestfilenumber]"
-                              dataType="wstr"
-                              length="50"
+                              dataType="nText"
                               name="refvisualrequestfilenumber" />
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[extension]"
@@ -8113,7 +8054,7 @@ P.vcName as priority,
 R.iRequesterID as requesterid,
 R.iOnBehalfOf as onbehalfofrequesterid,
 R.ireferencenumber as referencenumber,
-[dbo].AFX_GetReferenceRequests(R.iRequestID,',') as refvisualrequestfilenumber,
+'' as refvisualrequestfilenumber,
 R.iShipAddressID as shipaddressid,
 R.iBillAddressID as billaddressid,
 R.sdtOriginalReceivedDate as originalreceiveddate,
@@ -8965,17 +8906,6 @@ where R.iRequestID = ?</property>
                               name="referencenumber"
                               truncationRowDisposition="FailComponent" />
                             <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]"
-                              codePage="1252"
-                              dataType="str"
-                              errorOrTruncationOperation="Conversion"
-                              errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
-                              length="1"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]"
-                              name="refvisualrequestfilenumber"
-                              truncationRowDisposition="FailComponent" />
-                            <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].Columns[shipaddressid]"
                               dataType="i4"
                               errorOrTruncationOperation="Conversion"
@@ -9467,7 +9397,8 @@ where R.iRequestID = ?</property>
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
                               codePage="1252"
-                              dataType="text"
+                              dataType="str"
+                              length="1"
                               name="refvisualrequestfilenumber" />
                             <externalMetadataColumn
                               refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[shipaddressid]"
@@ -9993,12 +9924,6 @@ where R.iRequestID = ?</property>
                               dataType="i4"
                               lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[referencenumber]"
                               name="referencenumber" />
-                            <outputColumn
-                              refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
-                              codePage="1252"
-                              dataType="text"
-                              lineageId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
-                              name="refvisualrequestfilenumber" />
                             <outputColumn
                               refId="Package\Sequence Container\Foreach Loop Container for new requests\Load New Request Details\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[shipaddressid]"
                               dataType="i4"
@@ -10937,14 +10862,6 @@ where R.iRequestID = ?</property>
                           cachedName="visualrequestfilenumber"
                           externalMetadataColumnId="Package\Sequence Container\Initial Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[visualrequestfilenumber]"
                           lineageId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[visualrequestfilenumber]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\Initial Load\ODBC Destination.Inputs[ODBC Destination Input].Columns[refvisualrequestfilenumber]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="1"
-                          cachedName="refvisualrequestfilenumber"
-                          externalMetadataColumnId="Package\Sequence Container\Initial Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refvisualrequestfilenumber]"
-                          lineageId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -11322,8 +11239,7 @@ where R.iRequestID = ?</property>
                           name="referencenumber" />
                         <externalMetadataColumn
                           refId="Package\Sequence Container\Initial Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[refvisualrequestfilenumber]"
-                          dataType="wstr"
-                          length="50"
+                          dataType="nText"
                           name="refvisualrequestfilenumber" />
                         <externalMetadataColumn
                           refId="Package\Sequence Container\Initial Load\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[extension]"
@@ -11514,7 +11430,7 @@ P.vcName as priority,
 R.iRequesterID as requesterid,
 R.iOnBehalfOf as onbehalfofrequesterid,
 R.ireferencenumber as referencenumber,
-[dbo].AFX_GetReferenceRequests(R.iRequestID,',') as refvisualrequestfilenumber,
+'' as refvisualrequestfilenumber,
 R.iShipAddressID as shipaddressid,
 R.iBillAddressID as billaddressid,
 R.sdtOriginalReceivedDate as originalreceiveddate,
@@ -12365,17 +12281,6 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
                           name="referencenumber"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
-                          length="1"
-                          lineageId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[refvisualrequestfilenumber]"
-                          name="refvisualrequestfilenumber"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[shipaddressid]"
                           dataType="i4"
                           errorOrTruncationOperation="Conversion"
@@ -12867,7 +12772,8 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
                         <externalMetadataColumn
                           refId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[refvisualrequestfilenumber]"
                           codePage="1252"
-                          dataType="text"
+                          dataType="str"
+                          length="1"
                           name="refvisualrequestfilenumber" />
                         <externalMetadataColumn
                           refId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[shipaddressid]"
@@ -13393,12 +13299,6 @@ left outer join [dbo].[viwPriorities] P on R.tiPriority = P.tiPriority and P.tiL
                           dataType="i4"
                           lineageId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[referencenumber]"
                           name="referencenumber" />
-                        <outputColumn
-                          refId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
-                          codePage="1252"
-                          dataType="text"
-                          lineageId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[refvisualrequestfilenumber]"
-                          name="refvisualrequestfilenumber" />
                         <outputColumn
                           refId="Package\Sequence Container\Initial Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[shipaddressid]"
                           dataType="i4"

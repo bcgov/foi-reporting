@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="factRequestDocumentsDetails"
   DTS:PackageType="5"
-  DTS:VersionBuild="40"
-  DTS:VersionGUID="{E3A429A7-D943-495D-BA6B-56315AC57B3E}">
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{6A7D0583-659C-4457-84E2-BF7C99344C4A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -794,7 +794,7 @@ Group by R.iRequestID, R.tiOfficeID</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="Check if record exists"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -1982,7 +1982,7 @@ Group by R.iRequestID, R.tiOfficeID</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="Update active flag to N for existing record"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -2656,7 +2656,7 @@ Group by R.iRequestID, R.tiOfficeID</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get modified record count"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2684,7 +2684,7 @@ Group by R.iRequestID, R.tiOfficeID</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get modified requests"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2712,7 +2712,7 @@ Group by R.iRequestID, R.tiOfficeID</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get new record count"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2740,7 +2740,7 @@ Group by R.iRequestID, R.tiOfficeID</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Get new requests"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2908,29 +2908,53 @@ Group by R.iRequestID, R.tiOfficeID</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="163.2,52.8"
+          Size="163,53"
           Id="Package\End Run Cycle"
           TopLeft="393.333317703672,888.133335413404" />
         <NodeLayout
-          Size="150.4,41.6"
+          Size="150,42"
           Id="Package\Sequence Container\Data Flow Task"
           TopLeft="132.299993344148,108.600001549721" />
         <NodeLayout
-          Size="224.8,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Requests Details"
-          TopLeft="24.6666509045502,110.00000161171" />
-        <NodeLayout
-          Size="244,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Update active flag to N for existing record"
-          TopLeft="16.3999829133358,21.6666681612863" />
-        <NodeLayout
-          Size="177.6,41.6"
+          Size="178,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Check if record exists"
           TopLeft="337.633317405648,15.7333339669971" />
         <NodeLayout
-          Size="228,41.6"
+          Size="228,42"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Requests Details"
           TopLeft="302.633318796424,104.000000991821" />
+        <NodeLayout
+          Size="225,42"
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Requests Details"
+          TopLeft="24.6666509045502,110.00000161171" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Update active flag to N for existing record"
+          TopLeft="16.3999829133358,21.6666681612863" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests.PrecedenceConstraints[Constraint]"
+          TopLeft="337.633317405648,39.5000010641417">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-77.2333344923126,0"
+              Start="0,0"
+              End="-69.7333344923126,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-69.7333344923126,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-42.8666672461563,5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container\Foreach Loop Container for modified requests.PrecedenceConstraints[Constraint 2]"
           TopLeft="426.433317405648,57.3333339669971">
@@ -2989,66 +3013,42 @@ Group by R.iRequestID, R.tiOfficeID</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests.PrecedenceConstraints[Constraint]"
-          TopLeft="337.633317405648,39.5000010641417">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-77.2333344923126,0"
-              Start="0,0"
-              End="-69.7333344923126,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-69.7333344923126,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-42.8666672461563,5,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="536.8,206.4"
-          Size="536.8,249.6"
+          PanelSize="537,207"
+          Size="537,250"
           Id="Package\Sequence Container\Foreach Loop Container for modified requests"
           TopLeft="28.1333308166933,317.4666693804" />
         <NodeLayout
-          Size="206.4,41.6"
+          Size="206,42"
           Id="Package\Sequence Container\Foreach Loop Container for new requests\Load New Requests Details"
           TopLeft="63.4999655286485,45.0666669421728" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="312.8,197.6"
-          Size="312.8,240.8"
+          PanelSize="313,198"
+          Size="313,241"
           Id="Package\Sequence Container\Foreach Loop Container for new requests"
           TopLeft="573.966642460559,323.933334896829" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\Sequence Container\Get modified record count"
           TopLeft="413.966648818388,134.466668657197" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\Sequence Container\Get modified requests"
           TopLeft="414.799982118608,223.266668739849" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\Sequence Container\Get new record count"
           TopLeft="673.133305186697,129.133334524896" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package\Sequence Container\Get new requests"
           TopLeft="675.633305087356,221.866668429905" />
         <NodeLayout
-          Size="245.6,42.4"
+          Size="246,42"
           Id="Package\Sequence Container\Get record count from factRequestDocumentsDetails"
           TopLeft="330.633318796424,33.2000013637543" />
         <EdgeLayout
@@ -3266,12 +3266,12 @@ Group by R.iRequestID, R.tiOfficeID</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="892.8,652.8"
-          Size="892.8,696"
+          PanelSize="893,653"
+          Size="893,696"
           Id="Package\Sequence Container"
           TopLeft="34.9999986092252,114.400000909169" />
         <NodeLayout
-          Size="184.8,41.6"
+          Size="185,42"
           Id="Package\Start Run Cycle"
           TopLeft="388.333317902353,164.800001239777" />
         <EdgeLayout
@@ -3393,6 +3393,44 @@ Group by R.iRequestID, R.tiOfficeID</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
+    design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Requests Details">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Requests Details\OLE DB Source"
+          TopLeft="399.999984105429,34.6666669421726" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Requests Details\ODBC Destination"
+          TopLeft="399.999984105429,137.800001095136" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Requests Details.Paths[OLE DB Source Output]"
+          TopLeft="479.999984105429,76.6666669421726">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.1333341529634"
+              Start="0,0"
+              End="0,53.6333341529634">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.6333341529634" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
     design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Load Modified Requests Details">
     <LayoutInfo>
       <GraphLayout
@@ -3486,45 +3524,5 @@ Group by R.iRequestID, R.tiOfficeID</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Requests Details">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="163.2,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Requests Details\ODBC Destination"
-          TopLeft="399.999984105429,137.800001095136" />
-        <NodeLayout
-          Size="152,41.6"
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Requests Details\OLE DB Source"
-          TopLeft="399.999984105429,34.6666669421726" />
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container for modified requests\Insert Modified Requests Details.Paths[OLE DB Source Output]"
-          TopLeft="478.799984105429,76.2666669421726">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61.5333341529634"
-              Start="0,0"
-              End="0,54.0333341529634">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.0333341529634" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

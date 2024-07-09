@@ -13,10 +13,10 @@
     DTS:Name="UserName">@[$Project::PostgreSQLFOIFLOWPostgres_UserName]</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="uid=postgres;Dsn=PostgreSQLFOIFLOW;">
+      DTS:ConnectionString="server=142.34.194.68;uid=postgres;Dsn=PostgreSQLFOIFLOW;database=foidb;port=20895;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;">
       <DTS:Password
         DTS:Name="pwd"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhmzdbWJMQUWfATEVeqOBLAAAAAACAAAAAAAQZgAAAAEAACAAAACn13sYS7wM3DRPmpPstrmSZjQqh1l8EL4lyL8FEQAfowAAAAAOgAAAAAIAACAAAAB6wK7cLHNx5dU3iQryjCnbqbfq4WCgDRerayWT6E7fpZAAAAC0132gRz08Ob8uRqOD8CEtDRSsmHbedKg2IKLn0cE6CSi55n2yqWTjVb8FrKt7GyCXIVfUXNcn7w+KvhEJJt5C/Fp+42HZiMLjJbqs3tGHKFpKLjQNBfHu9MXSAO6KRx3kac7WeRHJlrRa197aXQHqDZg4kjrOm3WLrBq9UcKKmj/zrjNwbKYzxIS/1EgDPiBAAAAASIPsjgoh1oHHcOb/5pEzEA4a6YtPXVb7OlCIbGh9VJKxHOPm6vB58oxPLHxVrzrJA5ngBw9k3k4T0DURBXTqjA==</DTS:Password>
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAkrHFluovdE2q9T+xO7GZngAAAAACAAAAAAADZgAAwAAAABAAAADSwWwLc6D3g6AxNRXcjnD3AAAAAASAAACgAAAAEAAAAGlVFSs544gXsR4mVRRvDiGIAAAA8/mL0S4iQWT+3Uw+SMzhUyVnlMBuJeEy44Bgx8Ql3W0uzcz5d48GAp7vt9YdblPRXBzZ2SRINP/S7lhk1LKzNWHMAkvv53HuyjMnKcaKsB7retjtBB8qHW2efGzs3w3mJi8ntVgCZzfIxuZS5k8gP5jMtsZsfsgp56wGcXKMTtZq9p3SYT+KMRQAAACHSrvVOa9vwOVR6fcbirsamAURmg==</DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>
