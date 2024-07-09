@@ -5,20 +5,20 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-U67UC02"
   DTS:CreatorName="DESKTOP-U67UC02\abina"
-  DTS:DTSID="{1589DE89-4020-47BD-AEED-8D32B7A556A5}"
+  DTS:DTSID="{DC2311B1-DEB8-4A69-B32B-D0F585B46171}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
   DTS:LocaleID="1033"
   DTS:ObjectName="factRequestDivisionalStages"
   DTS:PackageType="5"
-  DTS:VersionBuild="237"
-  DTS:VersionGUID="{D82AB14F-F7BF-4449-89E9-E59A1867DD69}">
+  DTS:VersionBuild="239"
+  DTS:VersionGUID="{EA00E761-5A23-4E8E-B6BA-7C1FDC96157D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{8B70D58F-0EA8-4BDC-AE2A-951D758A4A17}"
+      DTS:DTSID="{6101CE83-4336-4543-9E51-3ABC32510B62}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="ExistingDivisionCount">
@@ -27,7 +27,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{A2196638-C3FA-42FB-96E2-98B6519283F1}"
+      DTS:DTSID="{78C9E494-EA42-41DD-B144-F6081DEF7F83}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="isComplete">
@@ -36,7 +36,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{D47CA11D-3DFB-4D6D-A76C-F1674F4B3DC6}"
+      DTS:DTSID="{E6867046-874D-4A09-8E0E-7A5E77949D1E}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="lastRunCycleTime">
@@ -46,7 +46,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{06AB4C16-71FA-462F-BB03-A6470C97A9A1}"
+      DTS:DTSID="{87D4615F-7607-47B3-B161-76E8855265BC}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="runCycleID">
@@ -59,14 +59,14 @@
       DTS:refId="Package\Sequence Container"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
-      DTS:DTSID="{88E4CE86-0653-479B-893F-F82D77AA335D}"
+      DTS:DTSID="{BDE74135-EDFE-4D68-B509-FE8EC9EA494C}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
       DTS:ObjectName="Sequence Container">
       <DTS:Variables>
         <DTS:Variable
           DTS:CreationName=""
-          DTS:DTSID="{7B8FDDCE-C6F7-4EE7-85DD-32298D188D85}"
+          DTS:DTSID="{C6CA5843-195D-4A65-8002-2FDDB07375A0}"
           DTS:IncludeInDebugDump="6789"
           DTS:Namespace="User"
           DTS:ObjectName="newDivisions">
@@ -88,7 +88,7 @@
           DTS:refId="Package\Sequence Container\DFT_InitialLoadfactrequestdivsionsstages"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{54A1B0A4-FDD6-4FCA-B712-0C7D5B10281F}"
+          DTS:DTSID="{3D2C9221-EA90-4AD6-A826-059D6F297B67}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="DFT_InitialLoadfactrequestdivsionsstages"
@@ -465,7 +465,7 @@ INNER JOIN public."ProgramAreas" PA ON PAD.programareaid = PA.programareaid   ; 
                   <connections>
                     <connection
                       refId="Package\Sequence Container\DFT_InitialLoadfactrequestdivsionsstages\ODBC Source.Connections[ODBCConnection]"
-                      connectionManagerID="{B46B2B17-1B88-4178-A5C5-BD8B5F93353D}:external"
+                      connectionManagerID="{B9AFF419-55D9-46D5-A326-1394648E1030}:external"
                       connectionManagerRefId="Project.ConnectionManagers[PostgreSQLFOIFLOW.postgres]"
                       description="The ODBC runtime connection used to access the database."
                       name="ODBCConnection" />
@@ -646,7 +646,7 @@ INNER JOIN public."ProgramAreas" PA ON PAD.programareaid = PA.programareaid   ; 
                         <externalMetadataColumn
                           refId="Package\Sequence Container\DFT_InitialLoadfactrequestdivsionsstages\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[filerequestnumber]"
                           dataType="wstr"
-                          length="50"
+                          length="120"
                           name="filerequestnumber" />
                       </externalMetadataColumns>
                     </output>
@@ -751,7 +751,7 @@ INNER JOIN public."ProgramAreas" PA ON PAD.programareaid = PA.programareaid   ; 
                           refId="Package\Sequence Container\DFT_InitialLoadfactrequestdivsionsstages\ODBC Source.Outputs[ODBC Source Error Output].Columns[filerequestnumber]"
                           dataType="wstr"
                           externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoadfactrequestdivsionsstages\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[filerequestnumber]"
-                          length="50"
+                          length="120"
                           lineageId="Package\Sequence Container\DFT_InitialLoadfactrequestdivsionsstages\ODBC Source.Outputs[ODBC Source Error Output].Columns[filerequestnumber]"
                           name="filerequestnumber" />
                         <outputColumn
@@ -786,7 +786,7 @@ INNER JOIN public."ProgramAreas" PA ON PAD.programareaid = PA.programareaid   ; 
           DTS:refId="Package\Sequence Container\DFT_InitialLoadfactrequestdivsionsstages 1"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{7b34364e-e9b9-49ea-8212-c70b68a5ed05}"
+          DTS:DTSID="{7A7A9A39-0AF7-44B1-BB77-37BE9C7CEDD8}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="DFT_InitialLoadfactrequestdivsionsstages 1"
@@ -1163,7 +1163,7 @@ INNER JOIN public."ProgramAreas" PA ON PAD.programareaid = PA.programareaid   WH
                   <connections>
                     <connection
                       refId="Package\Sequence Container\DFT_InitialLoadfactrequestdivsionsstages 1\ODBC Source.Connections[ODBCConnection]"
-                      connectionManagerID="{B46B2B17-1B88-4178-A5C5-BD8B5F93353D}:external"
+                      connectionManagerID="{B9AFF419-55D9-46D5-A326-1394648E1030}:external"
                       connectionManagerRefId="Project.ConnectionManagers[PostgreSQLFOIFLOW.postgres]"
                       description="The ODBC runtime connection used to access the database."
                       name="ODBCConnection" />
@@ -1344,7 +1344,7 @@ INNER JOIN public."ProgramAreas" PA ON PAD.programareaid = PA.programareaid   WH
                         <externalMetadataColumn
                           refId="Package\Sequence Container\DFT_InitialLoadfactrequestdivsionsstages 1\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[filerequestnumber]"
                           dataType="wstr"
-                          length="50"
+                          length="120"
                           name="filerequestnumber" />
                       </externalMetadataColumns>
                     </output>
@@ -1449,7 +1449,7 @@ INNER JOIN public."ProgramAreas" PA ON PAD.programareaid = PA.programareaid   WH
                           refId="Package\Sequence Container\DFT_InitialLoadfactrequestdivsionsstages 1\ODBC Source.Outputs[ODBC Source Error Output].Columns[filerequestnumber]"
                           dataType="wstr"
                           externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoadfactrequestdivsionsstages 1\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[filerequestnumber]"
-                          length="50"
+                          length="120"
                           lineageId="Package\Sequence Container\DFT_InitialLoadfactrequestdivsionsstages 1\ODBC Source.Outputs[ODBC Source Error Output].Columns[filerequestnumber]"
                           name="filerequestnumber" />
                         <outputColumn
@@ -1484,7 +1484,7 @@ INNER JOIN public."ProgramAreas" PA ON PAD.programareaid = PA.programareaid   WH
           DTS:refId="Package\Sequence Container\EST_HasRequestDivisionStages"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{1279BAC4-D2C1-4040-8D91-BA1EF2D96D2D}"
+          DTS:DTSID="{70E8F485-0666-4974-AA87-33940C122551}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_HasRequestDivisionStages"
@@ -1507,7 +1507,7 @@ INNER JOIN public."ProgramAreas" PA ON PAD.programareaid = PA.programareaid   WH
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{6072CEFC-C556-4D3F-B66C-580E20BEF3F1}"
+          DTS:DTSID="{0B7B5292-C530-4960-985F-F45089C0E5D3}"
           DTS:EvalOp="3"
           DTS:Expression="@[User::ExistingDivisionCount] == 0"
           DTS:From="Package\Sequence Container\EST_HasRequestDivisionStages"
@@ -1517,7 +1517,7 @@ INNER JOIN public."ProgramAreas" PA ON PAD.programareaid = PA.programareaid   WH
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
-          DTS:DTSID="{9236AB60-41F8-4C01-BD5B-0E0B702FD73F}"
+          DTS:DTSID="{6966C5E0-7C26-43CD-A66E-5C15F05EF2CA}"
           DTS:EvalOp="3"
           DTS:Expression="@[User::ExistingDivisionCount] &gt;0"
           DTS:From="Package\Sequence Container\EST_HasRequestDivisionStages"
@@ -1530,7 +1530,7 @@ INNER JOIN public."ProgramAreas" PA ON PAD.programareaid = PA.programareaid   WH
       DTS:refId="Package\Start Run Cycle"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:DTSID="{3FB29007-A9FE-480F-BCC3-5F96A0D64752}"
+      DTS:DTSID="{56E0FF7F-3CE2-4F42-ABCC-6BEF62CFAA92}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Start Run Cycle"
@@ -1555,7 +1555,7 @@ INNER JOIN public."ProgramAreas" PA ON PAD.programareaid = PA.programareaid   WH
       DTS:refId="Package\Stop Run Cycle"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:DTSID="{350AB892-00BF-4F10-BC42-8E6D859DC4AD}"
+      DTS:DTSID="{ADED975A-9823-4847-AB76-EF0EFD17E5A9}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Stop Run Cycle"
@@ -1585,7 +1585,7 @@ INNER JOIN public."ProgramAreas" PA ON PAD.programareaid = PA.programareaid   WH
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{D08EB62A-CE1F-4783-A443-0A6D33A7EB69}"
+      DTS:DTSID="{F820FFE3-87B5-4720-8210-8E428678A0D6}"
       DTS:From="Package\Start Run Cycle"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -1593,7 +1593,7 @@ INNER JOIN public."ProgramAreas" PA ON PAD.programareaid = PA.programareaid   WH
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{8C106200-E037-424E-B3DC-C5E9038FA952}"
+      DTS:DTSID="{68CA6AC8-7450-4553-818C-4F076584115D}"
       DTS:From="Package\Sequence Container"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
@@ -1612,15 +1612,15 @@ INNER JOIN public."ProgramAreas" PA ON PAD.programareaid = PA.programareaid   WH
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="291.2,43.2"
+          Size="291,43"
           Id="Package\Sequence Container\DFT_InitialLoadfactrequestdivsionsstages"
           TopLeft="26.0333170082844,151.133336136606" />
         <NodeLayout
-          Size="291.2,43.2"
+          Size="291,43"
           Id="Package\Sequence Container\DFT_InitialLoadfactrequestdivsionsstages 1"
           TopLeft="462.99995728334,168.466669607692" />
         <NodeLayout
-          Size="230.4,41.6"
+          Size="230,42"
           Id="Package\Sequence Container\EST_HasRequestDivisionStages"
           TopLeft="325.533304789332,42.0000017770131" />
         <EdgeLayout
@@ -1698,16 +1698,16 @@ INNER JOIN public."ProgramAreas" PA ON PAD.programareaid = PA.programareaid   WH
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1068.8,482.4"
-          Size="1068.8,525.6"
+          PanelSize="1069,483"
+          Size="1069,526"
           Id="Package\Sequence Container"
           TopLeft="854.999966025354,158.60000126044" />
         <NodeLayout
-          Size="184.8,41.6"
+          Size="185,42"
           Id="Package\Start Run Cycle"
           TopLeft="1042.49995857477,33.8000002686183" />
         <NodeLayout
-          Size="184.8,41.6"
+          Size="185,42"
           Id="Package\Stop Run Cycle"
           TopLeft="973.333294656543,741.600001239777" />
         <EdgeLayout
@@ -1787,11 +1787,11 @@ INNER JOIN public."ProgramAreas" PA ON PAD.programareaid = PA.programareaid   WH
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="144,41.6"
+          Size="144,42"
           Id="Package\Sequence Container\DFT_InitialLoadfactrequestdivsionsstages\ODBC Source"
           TopLeft="279.9999888738,156.000001239777" />
         <NodeLayout
-          Size="163.2,41.6"
+          Size="163,42"
           Id="Package\Sequence Container\DFT_InitialLoadfactrequestdivsionsstages\ODBC Destination"
           TopLeft="322.499987185002,338.866669359737" />
         <EdgeLayout
@@ -1858,11 +1858,11 @@ INNER JOIN public."ProgramAreas" PA ON PAD.programareaid = PA.programareaid   WH
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="144,41.6"
+          Size="144,42"
           Id="Package\Sequence Container\DFT_InitialLoadfactrequestdivsionsstages 1\ODBC Source"
           TopLeft="279.9999888738,156.000001239777" />
         <NodeLayout
-          Size="163.2,41.6"
+          Size="163,42"
           Id="Package\Sequence Container\DFT_InitialLoadfactrequestdivsionsstages 1\ODBC Destination"
           TopLeft="322.499987185002,338.866669359737" />
         <EdgeLayout
@@ -1902,5 +1902,13 @@ INNER JOIN public."ProgramAreas" PA ON PAD.programareaid = PA.programareaid   WH
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\DFT_InitialLoadfactrequestdivsionsstages 1\ODBC Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
