@@ -30,5 +30,23 @@ alter table factrequestinvoices ADD COLUMNS (
 
 update factrequestinvoices set sourceoftruth = 'AXIS';
 
+alter table factrequestdetails ADD COLUMNS (
+    sourceoftruth string
+);
+
+update factrequestdetails set sourceoftruth = 'AXIS';
+
+alter table factrequestoipcfields ADD COLUMNS (
+    sourceoftruth string
+);
+
+update factrequestoipcfields set sourceoftruth = 'AXIS';
+
+alter table factrequestrequesters ADD COLUMNS (
+    sourceoftruth string
+);
+
+update factrequestrequesters set sourceoftruth = 'AXIS';
+
 
 
