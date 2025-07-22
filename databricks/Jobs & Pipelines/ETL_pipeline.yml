@@ -268,15 +268,14 @@ resources:
             cluster_name: ""
             spark_version: 15.4.x-scala2.12
             spark_conf:
-              fs.azure.account.key.devdbcheckpoints.dfs.core.windows.net: "{{secrets/dev_s3_creds/checkpoints_access_key}}"
-              spark.s3_secret_key: "{{secrets/dev_s3_creds/s3_secret_key}}"
-              spark.s3_access_key: "{{secrets/dev_s3_creds/s3_access_key}}"
+              spark.s3_secret_key: "{{secrets/s3_creds/s3_secret_key}}"
+              spark.s3_access_key: "{{secrets/s3_creds/s3_access_key}}"
               spark.hadoop.fs.s3a.path.style.access: "true"
-              spark.hadoop.fs.s3a.secret.key: "{{secrets/dev_s3_creds/s3_secret_key}}"
-              spark.hadoop.fs.s3a.access.key: "{{secrets/dev_s3_creds/s3_access_key}}"
-              spark.s3_bucket: "{{secrets/dev_s3_creds/s3_bucket}}"
-              spark.hadoop.fs.s3a.endpoint: "{{secrets/dev_s3_creds/s3_url}}"
-              spark.s3_url: "{{secrets/dev_s3_creds/s3_url}}"
+              spark.hadoop.fs.s3a.secret.key: "{{secrets/s3_creds/s3_secret_key}}"
+              spark.hadoop.fs.s3a.access.key: "{{secrets/s3_creds/s3_access_key}}"
+              spark.s3_bucket: "{{secrets/s3_creds/s3_bucket}}"
+              spark.hadoop.fs.s3a.endpoint: "{{secrets/s3_creds/s3_url}}"
+              spark.s3_url: "{{secrets/s3_creds/s3_url}}"
               spark.hadoop.fs.s3a.impl: org.apache.hadoop.fs.s3a.S3AFileSystem
             azure_attributes:
               first_on_demand: 1
