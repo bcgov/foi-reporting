@@ -7,7 +7,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, lit, max
 from pyspark.sql.types import StructType, StructField, StringType, TimestampType
 
-DEFAULT_START_DATE = datetime(2025, 7, 17).date()
+DEFAULT_START_DATE = datetime(2025, 7, 11).date()
 
 def _ensure_job_tracker_table_exists(spark: SparkSession, job_tracker_table_path: str):
     create_table_sql = f"""
