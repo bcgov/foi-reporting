@@ -5,20 +5,52 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-U67UC02"
   DTS:CreatorName="DESKTOP-U67UC02\abina"
-  DTS:DTSID="{E782F34D-3D98-4BE6-A9C4-E77D4EF70D49}"
+  DTS:DTSID="{00D2AADE-B19C-4F77-9675-2804042B4FC9}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
   DTS:LocaleID="1033"
   DTS:ObjectName="dimDivisions"
   DTS:PackageType="5"
-  DTS:VersionBuild="94"
-  DTS:VersionGUID="{7E5CB91C-59AB-4D33-8D44-EA9B133AD992}">
+  DTS:VersionBuild="137"
+  DTS:VersionGUID="{D7E3AFD2-D577-4627-A37C-FB415055469B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PostgreSQLDEVEDW.postgres]"
+      DTS:CreationName="ADO.NET:System.Data.Odbc.OdbcConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{52F0F4EE-7E83-47C0-BE27-CEC0737E0129}"
+      DTS:ObjectName="PostgreSQLDEVEDW.postgres">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="server=142.34.194.68;uid=postgres;Dsn=PostgreSQLDEVEDW;database=foidb;port=17366;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;">
+          <DTS:Password
+            DTS:Name="pwd"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAaKl07eXBZEiJPR8fvBAvTAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACIIzzFkJ51uoHvDatf2IWbAAAAAASAAACgAAAAEAAAAPVRV+vFvhDuDPpiEPae1xxIAAAAxZsE/2J5JAw05AVye6riotxsYQgKLGcNP6kUpXjNYJW1wJ3XLc0lxyYTxHkMkJ/6QpKuDBuFgxpoeXlupz5TID+hU/r0KTeaFAAAAD7+K2FdHSvNboZBUv+4Wkb14zHN</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PostgreSQLFOIFLOW.postgres 1]"
+      DTS:CreationName="ADO.NET:System.Data.Odbc.OdbcConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{C3383DF0-45B7-4250-A0DB-093D314DBA78}"
+      DTS:ObjectName="PostgreSQLFOIFLOW.postgres 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="uid=postgres;Dsn=PostgreSQLFOIFLOW;">
+          <DTS:Password
+            DTS:Name="pwd"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAaKl07eXBZEiJPR8fvBAvTAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACQUbSh/lUAf7YZ05VyCw47AAAAAASAAACgAAAAEAAAAN320FcawDt2ovsWdZNaIIRIAAAAlbwfysPKsxugeVV5vxzrUUygKMxDMH3xv+Di4i7lmD574PxemNPLgavSRGJ8VLaZSGZC/uqprbwhsowblgqBf/9/W4Dz2VlwFAAAAAsiBC9uo0Tx/YvqthrQvlGyEA7H</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{40CB2C2C-C808-4367-A21E-D8032BB7FE25}"
+      DTS:DTSID="{3E9F1033-76E6-492A-A40A-A7BB2DE77FC0}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="ExistingDivisionCount">
@@ -27,7 +59,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{B527D067-EABE-46E7-A67B-4F3C02C5B010}"
+      DTS:DTSID="{E51CD12A-84CB-4D46-895A-5FF134B507C3}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="isComplete">
@@ -36,7 +68,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{7151660F-4E4D-407E-8DAE-346701981E3B}"
+      DTS:DTSID="{26EC820B-F9AF-4639-9255-AF9834987D98}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="lastRunCycleTime">
@@ -46,7 +78,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{DFC2EAF9-3D8A-41BF-8DA2-CAB1B4AA2CDC}"
+      DTS:DTSID="{82E0ABC6-D298-485F-83B5-5E6623A7B9BC}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="runCycleID">
@@ -59,14 +91,42 @@
       DTS:refId="Package\Sequence Container"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
-      DTS:DTSID="{9D9AD3C6-2020-4C83-BBA5-321931F1E36D}"
+      DTS:DTSID="{A3BA322C-6FEF-4FAB-800E-F05BB500E5BC}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
       DTS:ObjectName="Sequence Container">
       <DTS:Variables>
         <DTS:Variable
           DTS:CreationName=""
-          DTS:DTSID="{E1AA61E0-6B23-424F-9A74-85FF742A4C4F}"
+          DTS:DTSID="{C31E7C99-632A-4A0D-BA68-E47DC8415992}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="cactive">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{3EA1BFFC-AF35-43A4-B5C8-3576444BA535}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="division">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{D0C6AA73-0507-4EBB-B402-923887027494}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="divisionid">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{5273CE42-1BBD-48F3-9066-DA4F9C32F7CE}"
           DTS:IncludeInDebugDump="6789"
           DTS:Namespace="User"
           DTS:ObjectName="newDivisions">
@@ -82,816 +142,127 @@
             </SOAP-ENV:Envelope>
           </DTS:VariableValue>
         </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{6EAFF0DD-FABD-4C7F-A55B-12E03FE8110F}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="programarea">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
       </DTS:Variables>
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\Sequence Container\DFT_DivisionUpdates"
-          DTS:CreationName="Microsoft.Pipeline"
-          DTS:DelayValidation="True"
-          DTS:Description="Data Flow Task"
-          DTS:DTSID="{c0558596-1b1b-4d1b-8d60-104cc7db46b2}"
-          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:refId="Package\Sequence Container\Foreach Loop Container"
+          DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:Description="Foreach Loop Container"
+          DTS:DTSID="{19A2A3AC-DDA6-4700-A9A0-DA29256A895D}"
+          DTS:ExecutableType="STOCK:FOREACHLOOP"
           DTS:LocaleID="-1"
-          DTS:ObjectName="DFT_DivisionUpdates"
-          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          DTS:ObjectName="Foreach Loop Container">
+          <DTS:ForEachEnumerator
+            DTS:CreationName="Microsoft.ForEachADOEnumerator"
+            DTS:DTSID="{3C98CB73-09DD-44A5-9453-9A4A6F95DCD3}"
+            DTS:ObjectName="{3C98CB73-09DD-44A5-9453-9A4A6F95DCD3}">
+            <DTS:ObjectData>
+              <FEEADO
+                EnumType="EnumerateRowsInFirstTable"
+                VarName="User::newDivisions" />
+            </DTS:ObjectData>
+          </DTS:ForEachEnumerator>
           <DTS:Variables />
-          <DTS:PropertyExpression
-            DTS:Name="[ODBC Source].[SqlCommand]">"SELECT PAD.divisionid as divisionid,  PAD.name as division,  PAD.isactive as cactive, 
-	(SELECT bcgovcode from public.\"ProgramAreas\" WHERE programareaid=PAD.programareaid) as programarea,
-	created_at,
-	createdby
-	
-	
-	FROM public.\"ProgramAreaDivisions\" PAD 
-
-WHERE PAD.created_at &gt;= to_timestamp('" +@[User::lastRunCycleTime] + "','YYYY-MM-DD hh24:mi:ss')
-
-"</DTS:PropertyExpression>
-          <DTS:ObjectData>
-            <pipeline
-              version="1">
-              <components>
-                <component
-                  refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination"
-                  componentClassID="Microsoft.SSISODBCDst"
-                  contactInfo="ODBC Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-                  description="ODBC Destination"
-                  name="ODBC Destination"
-                  usesDispositions="true"
-                  version="1">
-                  <properties>
-                    <property
-                      dataType="System.String"
-                      description="The name of the table to be fetched."
-                      expressionType="Notify"
-                      name="TableName">"public"."dimDivisions"</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specify the number of rows fetched per batch."
-                      expressionType="Notify"
-                      name="BatchSize">1000</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The number of rows inserted under the same transaction."
-                      expressionType="Notify"
-                      name="TransactionSize">1000</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Determines the chunk size allocation for LOB columns"
-                      expressionType="Notify"
-                      name="LobChunkSize">32768</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The number of seconds to wait for an SQL statement to execute before returning to the application."
-                      expressionType="Notify"
-                      name="StatementTimeout">0</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The code page to use when code page information is unavailable from the data source."
-                      expressionType="Notify"
-                      name="DefaultCodePage">1252</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
-                      expressionType="Notify"
-                      name="InsertMethod">0</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The ODBC C data type for binding numeric data."
-                      expressionType="Notify"
-                      name="BindNumericAs">0</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
-                      expressionType="Notify"
-                      name="BindCharColumnsAs">0</property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Connections[ODBCConnection]"
-                      connectionManagerID="{F1356C9E-12B8-4059-B557-91D2500C60CE}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[localhost.foi_edw.postgres]"
-                      description="The ODBC runtime connection used to access the database."
-                      name="ODBCConnection" />
-                  </connections>
-                  <inputs>
-                    <input
-                      refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Inputs[ODBC Destination Input]"
-                      errorOrTruncationOperation="Insert"
-                      errorRowDisposition="FailComponent"
-                      hasSideEffects="true"
-                      name="ODBC Destination Input"
-                      truncationRowDisposition="FailComponent">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Inputs[ODBC Destination Input].Columns[divisionid]"
-                          cachedDataType="i4"
-                          cachedName="divisionid"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[divisionid]"
-                          lineageId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].Columns[divisionid]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Inputs[ODBC Destination Input].Columns[division]"
-                          cachedDataType="wstr"
-                          cachedLength="500"
-                          cachedName="division"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[division]"
-                          lineageId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].Columns[division]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Inputs[ODBC Destination Input].Columns[cactive]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="5"
-                          cachedName="cactive"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cactive]"
-                          lineageId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].Columns[cactive]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Inputs[ODBC Destination Input].Columns[programarea]"
-                          cachedDataType="wstr"
-                          cachedLength="30"
-                          cachedName="programarea"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[programarea]"
-                          lineageId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].Columns[programarea]" />
-                      </inputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[divisionid]"
-                          dataType="i4"
-                          name="divisionid" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[division]"
-                          dataType="wstr"
-                          length="500"
-                          name="division" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[description]"
-                          dataType="nText"
-                          name="description" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cactive]"
-                          dataType="wstr"
-                          length="1"
-                          name="cactive" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[programarea]"
-                          dataType="wstr"
-                          length="30"
-                          name="programarea" />
-                      </externalMetadataColumns>
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Outputs[ODBC Destination Error Output]"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="ODBC Destination Error Output"
-                      synchronousInputId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Inputs[ODBC Destination Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source"
-                  componentClassID="Microsoft.SSISODBCSrc"
-                  contactInfo="ODBC Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-                  description="ODBC Source"
-                  name="ODBC Source"
-                  usesDispositions="true"
-                  version="1">
-                  <properties>
-                    <property
-                      dataType="System.String"
-                      description="The name of the table to be fetched."
-                      expressionType="Notify"
-                      name="TableName"></property>
-                    <property
-                      dataType="System.String"
-                      description="The SQL command to be executed."
-                      expressionType="Notify"
-                      name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT PAD.divisionid as divisionid,  PAD.name as division,  PAD.isactive as cactive, 
-	(SELECT bcgovcode from public."ProgramAreas" WHERE programareaid=PAD.programareaid) as programarea,
-	created_at,
-	createdby
-	
-	
-	FROM public."ProgramAreaDivisions" PAD 
-
-WHERE PAD.created_at &gt;= to_timestamp('','YYYY-MM-DD hh24:mi:ss')
-
-</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specify the number of rows fetched per batch."
-                      expressionType="Notify"
-                      name="BatchSize">1000</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Determines the chunk size allocation for LOB columns"
-                      expressionType="Notify"
-                      name="LobChunkSize">32768</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
-                      expressionType="Notify"
-                      name="ExposeCharColumnsAsUnicode">false</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The number of seconds to wait for an SQL statement to execute before returning to the application."
-                      expressionType="Notify"
-                      name="StatementTimeout">0</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The code page to use when code page information is unavailable from the data source."
-                      expressionType="Notify"
-                      name="DefaultCodePage">1252</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The method used for fetching data."
-                      expressionType="Notify"
-                      name="FetchMethod">1</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The ODBC C data type for binding numeric data."
-                      expressionType="Notify"
-                      name="BindNumericAs">0</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
-                      expressionType="Notify"
-                      name="BindCharColumnsAs">0</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The mode used to access the database."
-                      expressionType="Notify"
-                      name="AccessMode"
-                      typeConverter="AccessMode">1</property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Connections[ODBCConnection]"
-                      connectionManagerID="{B46B2B17-1B88-4178-A5C5-BD8B5F93353D}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[PostgreSQLFOIFLOW.postgres]"
-                      description="The ODBC runtime connection used to access the database."
-                      name="ODBCConnection" />
-                  </connections>
-                  <outputs>
-                    <output
-                      refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output]"
-                      errorRowDisposition="FailComponent"
-                      name="ODBC Source Output"
-                      truncationRowDisposition="FailComponent">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].Columns[divisionid]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[divisionid]"
-                          lineageId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].Columns[divisionid]"
-                          name="divisionid" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].Columns[division]"
-                          dataType="wstr"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[division]"
-                          length="500"
-                          lineageId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].Columns[division]"
-                          name="division" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].Columns[cactive]"
-                          codePage="1252"
-                          dataType="str"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[cactive]"
-                          length="5"
-                          lineageId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].Columns[cactive]"
-                          name="cactive" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].Columns[programarea]"
-                          dataType="wstr"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[programarea]"
-                          length="30"
-                          lineageId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].Columns[programarea]"
-                          name="programarea" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].Columns[created_at]"
-                          dataType="dbTimeStamp2"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[created_at]"
-                          lineageId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].Columns[created_at]"
-                          name="created_at"
-                          scale="6" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].Columns[createdby]"
-                          dataType="wstr"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[createdby]"
-                          length="120"
-                          lineageId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].Columns[createdby]"
-                          name="createdby" />
-                      </outputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[divisionid]"
-                          dataType="i4"
-                          name="divisionid" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[division]"
-                          dataType="wstr"
-                          length="500"
-                          name="division" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[cactive]"
-                          codePage="1252"
-                          dataType="str"
-                          length="5"
-                          name="cactive" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[programarea]"
-                          dataType="wstr"
-                          length="30"
-                          name="programarea" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[created_at]"
-                          dataType="dbTimeStamp2"
-                          name="created_at"
-                          scale="6" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[createdby]"
-                          dataType="wstr"
-                          length="120"
-                          name="createdby" />
-                      </externalMetadataColumns>
-                    </output>
-                    <output
-                      refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Error Output]"
-                      isErrorOut="true"
-                      name="ODBC Source Error Output">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Error Output].Columns[divisionid]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[divisionid]"
-                          lineageId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Error Output].Columns[divisionid]"
-                          name="divisionid" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Error Output].Columns[division]"
-                          dataType="wstr"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[division]"
-                          length="500"
-                          lineageId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Error Output].Columns[division]"
-                          name="division" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Error Output].Columns[cactive]"
-                          codePage="1252"
-                          dataType="str"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[cactive]"
-                          length="5"
-                          lineageId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Error Output].Columns[cactive]"
-                          name="cactive" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Error Output].Columns[programarea]"
-                          dataType="wstr"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[programarea]"
-                          length="30"
-                          lineageId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Error Output].Columns[programarea]"
-                          name="programarea" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Error Output].Columns[created_at]"
-                          dataType="dbTimeStamp2"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[created_at]"
-                          lineageId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Error Output].Columns[created_at]"
-                          name="created_at"
-                          scale="6" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Error Output].Columns[createdby]"
-                          dataType="wstr"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[createdby]"
-                          length="120"
-                          lineageId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Error Output].Columns[createdby]"
-                          name="createdby" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-              </components>
-              <paths>
-                <path
-                  refId="Package\Sequence Container\DFT_DivisionUpdates.Paths[ODBC Source Output]"
-                  endId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination.Inputs[ODBC Destination Input]"
-                  name="ODBC Source Output"
-                  startId="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source.Outputs[ODBC Source Output]" />
-              </paths>
-            </pipeline>
-          </DTS:ObjectData>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Sequence Container\Foreach Loop Container\Insert division"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{AA8CE23A-1ABB-467F-97AF-FFFB47A364C8}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Insert division"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
+                  SQLTask:SqlStatementSource="INSERT INTO public.&quot;dimDivisions&quot;(divisionid, division, cactive, programarea)&#xA;VALUES (?, ?, ?, ?)&#xA;ON CONFLICT (divisionid) DO NOTHING;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="NewParameterName"
+                    SQLTask:DtsVariableName="User::divisionid"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="4"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="NewParameterName"
+                    SQLTask:DtsVariableName="User::division"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="NewParameterName"
+                    SQLTask:DtsVariableName="User::cactive"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-6"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="NewParameterName"
+                    SQLTask:DtsVariableName="User::programarea"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="-9"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:ForEachVariableMappings>
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{B826063F-5F9B-491F-9159-A685A406EB48}"
+              DTS:ObjectName="{B826063F-5F9B-491F-9159-A685A406EB48}"
+              DTS:ValueIndex="0"
+              DTS:VariableName="User::divisionid" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{60179430-B308-4BF8-B201-4C45EE9F5229}"
+              DTS:ObjectName="{60179430-B308-4BF8-B201-4C45EE9F5229}"
+              DTS:ValueIndex="1"
+              DTS:VariableName="User::division" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{603C9252-C228-4C04-BE1E-A9B300A8A306}"
+              DTS:ObjectName="{603C9252-C228-4C04-BE1E-A9B300A8A306}"
+              DTS:ValueIndex="2"
+              DTS:VariableName="User::cactive" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{3F26FEFF-E7CB-4C29-BD56-A34F763EF55B}"
+              DTS:ObjectName="{3F26FEFF-E7CB-4C29-BD56-A34F763EF55B}"
+              DTS:ValueIndex="3"
+              DTS:VariableName="User::programarea" />
+          </DTS:ForEachVariableMappings>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Sequence Container\DFT_InitialLoad_Divisions"
-          DTS:CreationName="Microsoft.Pipeline"
-          DTS:Description="Data Flow Task"
-          DTS:DTSID="{E280F990-CCB3-4252-8E06-46D86ACF1C3D}"
-          DTS:ExecutableType="Microsoft.Pipeline"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="DFT_InitialLoad_Divisions"
-          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <pipeline
-              version="1">
-              <components>
-                <component
-                  refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination"
-                  componentClassID="Microsoft.SSISODBCDst"
-                  contactInfo="ODBC Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-                  description="ODBC Destination"
-                  name="ODBC Destination"
-                  usesDispositions="true"
-                  version="1">
-                  <properties>
-                    <property
-                      dataType="System.String"
-                      description="The name of the table to be fetched."
-                      expressionType="Notify"
-                      name="TableName">"public"."dimDivisions"</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specify the number of rows fetched per batch."
-                      expressionType="Notify"
-                      name="BatchSize">1000</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The number of rows inserted under the same transaction."
-                      expressionType="Notify"
-                      name="TransactionSize">1000</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Determines the chunk size allocation for LOB columns"
-                      expressionType="Notify"
-                      name="LobChunkSize">32768</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The number of seconds to wait for an SQL statement to execute before returning to the application."
-                      expressionType="Notify"
-                      name="StatementTimeout">0</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The code page to use when code page information is unavailable from the data source."
-                      expressionType="Notify"
-                      name="DefaultCodePage">1252</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
-                      expressionType="Notify"
-                      name="InsertMethod">0</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The ODBC C data type for binding numeric data."
-                      expressionType="Notify"
-                      name="BindNumericAs">0</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
-                      expressionType="Notify"
-                      name="BindCharColumnsAs">0</property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Connections[ODBCConnection]"
-                      connectionManagerID="{F1356C9E-12B8-4059-B557-91D2500C60CE}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[localhost.foi_edw.postgres]"
-                      description="The ODBC runtime connection used to access the database."
-                      name="ODBCConnection" />
-                  </connections>
-                  <inputs>
-                    <input
-                      refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Inputs[ODBC Destination Input]"
-                      errorOrTruncationOperation="Insert"
-                      errorRowDisposition="FailComponent"
-                      hasSideEffects="true"
-                      name="ODBC Destination Input"
-                      truncationRowDisposition="FailComponent">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Inputs[ODBC Destination Input].Columns[divisionid]"
-                          cachedDataType="i4"
-                          cachedName="divisionid"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[divisionid]"
-                          lineageId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].Columns[divisionid]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Inputs[ODBC Destination Input].Columns[division]"
-                          cachedDataType="wstr"
-                          cachedLength="500"
-                          cachedName="division"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[division]"
-                          lineageId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].Columns[division]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Inputs[ODBC Destination Input].Columns[cactive]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="5"
-                          cachedName="cactive"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cactive]"
-                          lineageId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].Columns[cactive]" />
-                        <inputColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Inputs[ODBC Destination Input].Columns[programarea]"
-                          cachedDataType="wstr"
-                          cachedLength="30"
-                          cachedName="programarea"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[programarea]"
-                          lineageId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].Columns[programarea]" />
-                      </inputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[divisionid]"
-                          dataType="i4"
-                          name="divisionid" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[division]"
-                          dataType="wstr"
-                          length="500"
-                          name="division" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[description]"
-                          dataType="nText"
-                          name="description" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[cactive]"
-                          dataType="wstr"
-                          length="1"
-                          name="cactive" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[programarea]"
-                          dataType="wstr"
-                          length="30"
-                          name="programarea" />
-                      </externalMetadataColumns>
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Outputs[ODBC Destination Error Output]"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="ODBC Destination Error Output"
-                      synchronousInputId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Inputs[ODBC Destination Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source"
-                  componentClassID="Microsoft.SSISODBCSrc"
-                  contactInfo="ODBC Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-                  description="ODBC Source"
-                  name="ODBC Source"
-                  usesDispositions="true"
-                  version="1">
-                  <properties>
-                    <property
-                      dataType="System.String"
-                      description="The name of the table to be fetched."
-                      expressionType="Notify"
-                      name="TableName">"public"."ProgramAreaDivisions"</property>
-                    <property
-                      dataType="System.String"
-                      description="The SQL command to be executed."
-                      expressionType="Notify"
-                      name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT PAD.divisionid as divisionid,  PAD.name as division,  PAD.isactive as cactive, (SELECT bcgovcode from public."ProgramAreas" WHERE programareaid=PAD.programareaid) as programarea FROM public."ProgramAreaDivisions" PAD;</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specify the number of rows fetched per batch."
-                      expressionType="Notify"
-                      name="BatchSize">1000</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Determines the chunk size allocation for LOB columns"
-                      expressionType="Notify"
-                      name="LobChunkSize">32768</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
-                      expressionType="Notify"
-                      name="ExposeCharColumnsAsUnicode">false</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The number of seconds to wait for an SQL statement to execute before returning to the application."
-                      expressionType="Notify"
-                      name="StatementTimeout">0</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The code page to use when code page information is unavailable from the data source."
-                      expressionType="Notify"
-                      name="DefaultCodePage">1252</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The method used for fetching data."
-                      expressionType="Notify"
-                      name="FetchMethod">1</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The ODBC C data type for binding numeric data."
-                      expressionType="Notify"
-                      name="BindNumericAs">0</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
-                      expressionType="Notify"
-                      name="BindCharColumnsAs">0</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The mode used to access the database."
-                      expressionType="Notify"
-                      name="AccessMode"
-                      typeConverter="AccessMode">1</property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Connections[ODBCConnection]"
-                      connectionManagerID="{B46B2B17-1B88-4178-A5C5-BD8B5F93353D}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[PostgreSQLFOIFLOW.postgres]"
-                      description="The ODBC runtime connection used to access the database."
-                      name="ODBCConnection" />
-                  </connections>
-                  <outputs>
-                    <output
-                      refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output]"
-                      errorRowDisposition="FailComponent"
-                      name="ODBC Source Output"
-                      truncationRowDisposition="FailComponent">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].Columns[divisionid]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[divisionid]"
-                          lineageId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].Columns[divisionid]"
-                          name="divisionid" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].Columns[division]"
-                          dataType="wstr"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[division]"
-                          length="500"
-                          lineageId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].Columns[division]"
-                          name="division" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].Columns[cactive]"
-                          codePage="1252"
-                          dataType="str"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[cactive]"
-                          length="5"
-                          lineageId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].Columns[cactive]"
-                          name="cactive" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].Columns[programarea]"
-                          dataType="wstr"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[programarea]"
-                          length="30"
-                          lineageId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].Columns[programarea]"
-                          name="programarea" />
-                      </outputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[divisionid]"
-                          dataType="i4"
-                          name="divisionid" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[division]"
-                          dataType="wstr"
-                          length="500"
-                          name="division" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[cactive]"
-                          codePage="1252"
-                          dataType="str"
-                          length="5"
-                          name="cactive" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[programarea]"
-                          dataType="wstr"
-                          length="30"
-                          name="programarea" />
-                      </externalMetadataColumns>
-                    </output>
-                    <output
-                      refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Error Output]"
-                      isErrorOut="true"
-                      name="ODBC Source Error Output">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Error Output].Columns[divisionid]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[divisionid]"
-                          lineageId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Error Output].Columns[divisionid]"
-                          name="divisionid" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Error Output].Columns[division]"
-                          dataType="wstr"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[division]"
-                          length="500"
-                          lineageId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Error Output].Columns[division]"
-                          name="division" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Error Output].Columns[cactive]"
-                          codePage="1252"
-                          dataType="str"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[cactive]"
-                          length="5"
-                          lineageId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Error Output].Columns[cactive]"
-                          name="cactive" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Error Output].Columns[programarea]"
-                          dataType="wstr"
-                          externalMetadataColumnId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[programarea]"
-                          length="30"
-                          lineageId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Error Output].Columns[programarea]"
-                          name="programarea" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-              </components>
-              <paths>
-                <path
-                  refId="Package\Sequence Container\DFT_InitialLoad_Divisions.Paths[ODBC Source Output]"
-                  endId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination.Inputs[ODBC Destination Input]"
-                  name="ODBC Source Output"
-                  startId="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source.Outputs[ODBC Source Output]" />
-              </paths>
-            </pipeline>
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\Sequence Container\EST_HasDivisions"
+          DTS:refId="Package\Sequence Container\Select_divisions"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{EA6B6383-6DE7-4394-8087-A4BDEBEB2169}"
+          DTS:DTSID="{24F3E719-037A-4CC9-B915-EE61EC579D46}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="EST_HasDivisions"
+          DTS:ObjectName="Select_divisions"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F1356C9E-12B8-4059-B557-91D2500C60CE}"
-              SQLTask:SqlStatementSource="SELECT count(divisionid) FROM public.&quot;dimDivisions&quot;"
-              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:Connection="{C3383DF0-45B7-4250-A0DB-093D314DBA78}"
+              SQLTask:SqlStatementSource="SELECT PAD.divisionid as divisionid,  PAD.name as division,  PAD.isactive::int as cactive, (SELECT bcgovcode from public.&quot;ProgramAreas&quot; WHERE programareaid=PAD.programareaid) as programarea FROM public.&quot;ProgramAreaDivisions&quot; PAD;"
+              SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
-                SQLTask:ResultName="1"
-                SQLTask:DtsVariableName="User::ExistingDivisionCount" />
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::newDivisions" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -900,30 +271,18 @@ WHERE PAD.created_at &gt;= to_timestamp('','YYYY-MM-DD hh24:mi:ss')
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{85675265-DA81-43C9-A4A1-EC33B375888C}"
-          DTS:EvalOp="3"
-          DTS:Expression="@[User::ExistingDivisionCount] == 0"
-          DTS:From="Package\Sequence Container\EST_HasDivisions"
+          DTS:DTSID="{46E6C1D3-76F8-4E07-BD83-141C2C2D3D79}"
+          DTS:From="Package\Sequence Container\Select_divisions"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:To="Package\Sequence Container\DFT_InitialLoad_Divisions" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
-          DTS:CreationName=""
-          DTS:DTSID="{68C74DA0-DFAE-4EE5-B115-EEEFE0774A60}"
-          DTS:EvalOp="3"
-          DTS:Expression="@[User::ExistingDivisionCount]&gt;0"
-          DTS:From="Package\Sequence Container\EST_HasDivisions"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint 1"
-          DTS:To="Package\Sequence Container\DFT_DivisionUpdates" />
+          DTS:To="Package\Sequence Container\Foreach Loop Container" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Start Run Cycle"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:DTSID="{2352d81d-31e4-4895-8824-9ac45f7e73ea}"
+      DTS:DTSID="{703A5945-B216-443E-8DEA-B3034115CC5A}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Start Run Cycle"
@@ -948,7 +307,7 @@ WHERE PAD.created_at &gt;= to_timestamp('','YYYY-MM-DD hh24:mi:ss')
       DTS:refId="Package\Stop Run Cycle"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:DTSID="{224ba4c2-557b-47d8-8e5b-08d74997e30a}"
+      DTS:DTSID="{BEA9619E-C792-47B5-9E35-19A93104EE80}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Stop Run Cycle"
@@ -978,7 +337,7 @@ WHERE PAD.created_at &gt;= to_timestamp('','YYYY-MM-DD hh24:mi:ss')
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{F1ACEA0E-D4AA-41E8-BB46-1A540B78FA7E}"
+      DTS:DTSID="{EBFEEDED-8A53-4771-AF9A-CA7948FD0185}"
       DTS:From="Package\Start Run Cycle"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -986,7 +345,7 @@ WHERE PAD.created_at &gt;= to_timestamp('','YYYY-MM-DD hh24:mi:ss')
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{EAB1E8BD-955B-4447-AE23-CDEDCC18517E}"
+      DTS:DTSID="{3DA14C95-7BC5-4EBE-A02D-8796A300A149}"
       DTS:From="Package\Sequence Container"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
@@ -1003,132 +362,73 @@ WHERE PAD.created_at &gt;= to_timestamp('','YYYY-MM-DD hh24:mi:ss')
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="208,41.6"
-          Id="Package\Sequence Container\DFT_DivisionUpdates"
-          TopLeft="312.699972283841,129.466669297748" />
+          Size="170,42"
+          Id="Package\Sequence Container\Foreach Loop Container\Insert division"
+          TopLeft="107,43" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="374,138"
+          Size="374,181"
+          Id="Package\Sequence Container\Foreach Loop Container"
+          TopLeft="66,132" />
         <NodeLayout
-          Size="199.2,41.6"
-          Id="Package\Sequence Container\DFT_InitialLoad_Divisions"
-          TopLeft="7.16666660043927,115.600002520879" />
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence Container\EST_HasDivisions"
-          TopLeft="219.699975661437,46.3333351447848" />
+          Size="158,42"
+          Id="Package\Sequence Container\Select_divisions"
+          TopLeft="169,36" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
-          TopLeft="302.099975661437,87.9333351447848">
+          TopLeft="250.5,78">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-195.333309060998,27.6666673760945"
+              EndConnector="0,54"
               Start="0,0"
-              End="-195.333309060998,20.1666673760945">
+              End="0,46.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,9.83333368804723" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,9.83333368804723"
-                    Point2="0,13.8333336880472"
-                    Point3="-4,13.8333336880472" />
-                  <mssgle:LineSegment
-                    End="-191.333309060998,13.8333336880472" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-191.333309060998,13.8333336880472"
-                    Point2="-195.333309060998,13.8333336880472"
-                    Point3="-195.333309060998,17.8333336880472" />
-                  <mssgle:LineSegment
-                    End="-195.333309060998,20.1666673760945" />
+                    End="0,46.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-105.666654530499,18.8333336880472,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
-          TopLeft="328.233308994771,87.9333351447848">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="88.4666632890705,41.5333341529633"
-              Start="0,0"
-              End="88.4666632890705,34.0333341529633">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,12.8529490505293" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12.8529490505293"
-                    Point2="0,16.8529490505293"
-                    Point3="4,16.8529490505293" />
-                  <mssgle:LineSegment
-                    End="84.4666632890705,16.8529490505293" />
-                  <mssgle:CubicBezierSegment
-                    Point1="84.4666632890705,16.8529490505293"
-                    Point2="88.4666632890705,16.8529490505293"
-                    Point3="88.4666632890705,20.8529490505293" />
-                  <mssgle:LineSegment
-                    End="88.4666632890705,34.0333341529633" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="36.2333316445353,21.8529490505293,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="641.6,482.4"
-          Size="641.6,525.6"
+          PanelSize="500,368"
+          Size="500,411"
           Id="Package\Sequence Container"
-          TopLeft="384.999984701475,158.60000126044" />
+          TopLeft="412.999984701475,152.60000126044" />
         <NodeLayout
-          Size="184.8,41.6"
+          Size="185,42"
           Id="Package\Start Run Cycle"
-          TopLeft="571.666643950675,32.933333595064" />
+          TopLeft="571.666643950675,50.933333595064" />
         <NodeLayout
-          Size="184.8,41.6"
+          Size="185,42"
           Id="Package\Stop Run Cycle"
-          TopLeft="503.333313332664,741.600001239777" />
+          TopLeft="563.333313332664,590.600001239777" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="664.066643950675,74.533333595064">
+          TopLeft="663.583314326075,92.933333595064">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="41.7333407507998,84.066667665376"
+              EndConnector="0,59.666667665376"
               Start="0,0"
-              End="41.7333407507998,76.566667665376">
+              End="0,52.166667665376">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.033333832688" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,38.033333832688"
-                    Point2="0,42.033333832688"
-                    Point3="4,42.033333832688" />
-                  <mssgle:LineSegment
-                    End="37.7333407507998,42.033333832688" />
-                  <mssgle:CubicBezierSegment
-                    Point1="37.7333407507998,42.033333832688"
-                    Point2="41.7333407507998,42.033333832688"
-                    Point3="41.7333407507998,46.033333832688" />
-                  <mssgle:LineSegment
-                    End="41.7333407507998,76.566667665376" />
+                    End="0,52.166667665376" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1139,30 +439,18 @@ WHERE PAD.created_at &gt;= to_timestamp('','YYYY-MM-DD hh24:mi:ss')
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="705.799984701475,684.20000126044">
+          TopLeft="659.416649017069,563.60000126044">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-110.066671368811,57.3999999793369"
+              EndConnector="0,26.9999999793371"
               Start="0,0"
-              End="-110.066671368811,49.8999999793369">
+              End="0,19.4999999793371">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.6999999896685" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24.6999999896685"
-                    Point2="0,28.6999999896685"
-                    Point3="-4,28.6999999896685" />
-                  <mssgle:LineSegment
-                    End="-106.066671368811,28.6999999896685" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-106.066671368811,28.6999999896685"
-                    Point2="-110.066671368811,28.6999999896685"
-                    Point3="-110.066671368811,32.6999999896685" />
-                  <mssgle:LineSegment
-                    End="-110.066671368811,49.8999999793369" />
+                    End="0,19.4999999793371" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1174,132 +462,5 @@ WHERE PAD.created_at &gt;= to_timestamp('','YYYY-MM-DD hh24:mi:ss')
       </GraphLayout>
     </LayoutInfo>
   </Package>
-  <TaskHost
-    design-time-name="Package\Sequence Container\DFT_DivisionUpdates">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="144,41.6"
-          Id="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source"
-          TopLeft="474.166647824977,187.200001487732" />
-        <NodeLayout
-          Size="163.2,41.6"
-          Id="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination"
-          TopLeft="468.333314723439,369.200002934138" />
-        <EdgeLayout
-          Id="Package\Sequence Container\DFT_DivisionUpdates.Paths[ODBC Source Output]"
-          TopLeft="548.049981274208,228.800001487732">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,140.400001446406"
-              Start="0,0"
-              End="0,132.900001446406">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,132.900001446406" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-15.10447265625,61.726856191953,30.2089453125,9.4462890625"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\DFT_DivisionUpdates\ODBC Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\DFT_DivisionUpdates\ODBC Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Sequence Container\DFT_InitialLoad_Divisions">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="144,41.6"
-          Id="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source"
-          TopLeft="274.166655772263,103.133334152963" />
-        <NodeLayout
-          Size="163.2,41.6"
-          Id="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination"
-          TopLeft="263.333322869407,254.800002024968" />
-        <EdgeLayout
-          Id="Package\Sequence Container\DFT_InitialLoad_Divisions.Paths[ODBC Source Output]"
-          TopLeft="345.549989320835,144.733334152963">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,110.066667872005"
-              Start="0,0"
-              End="0,102.566667872005">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,102.566667872005" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\DFT_InitialLoad_Divisions\ODBC Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

@@ -1,8 +1,16 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:ObjectName="PostgreSQLFOIFLOW.postgres"
-  DTS:DTSID="{B46B2B17-1B88-4178-A5C5-BD8B5F93353D}"
+  DTS:DTSID="{B9AFF419-55D9-46D5-A326-1394648E1030}"
   DTS:CreationName="ODBC">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::PostgreSQLFOIFLOWPostgres_ConnectionString]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="Password">@[$Project::PostgreSQLFOIFLOWPostgres_Password]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="ServerName">@[$Project::PostgreSQLFOIFLOWPostgres_ServerName]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="UserName">@[$Project::PostgreSQLFOIFLOWPostgres_UserName]</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
       DTS:ConnectionString="uid=postgres;Dsn=PostgreSQLFOIFLOW;">
