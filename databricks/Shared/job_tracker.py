@@ -110,7 +110,8 @@ def generate_date_range_json(last_successful_run_date: datetime | None, current_
     end_date = current_job_date.date()
 
     if last_successful_run_date:
-        start_date = last_successful_run_date.date()
+        # start from a day before the last successful run date
+        start_date = last_successful_run_date.date() - timedelta(days=1)
         # Ensure start_date is not after end_date
         if start_date > end_date:
             start_date = end_date
