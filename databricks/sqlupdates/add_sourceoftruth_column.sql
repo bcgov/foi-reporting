@@ -1,7 +1,5 @@
 %sql
 
-%sql
-
 alter table dimaddress ADD COLUMNS (
     sourceoftruth string
 );
@@ -120,5 +118,9 @@ alter table factrequestrequesters ADD COLUMNS (
 
 update factrequestrequesters set sourceoftruth = 'AXIS';
 
+alter table default.factrequestdocumentsdetails ADD COLUMNS (
+    sourceoftruth string
+);
 
+update default.factrequestdocumentsdetails set sourceoftruth = 'AXIS';
 
