@@ -11,7 +11,7 @@ DEFAULT_START_DATE = datetime(2025, 7, 11).date()
 
 def _ensure_job_tracker_table_exists(spark: SparkSession, job_tracker_table_path: str):
     create_table_sql = f"""
-        CREATE TABLE IF NOT EXISTS delta.`{job_tracker_table_path}` (
+        CREATE TABLE IF NOT EXISTS hive_metastore.default.job_tracker (
             job_name STRING NOT NULL,
             run_id STRING NOT NULL,
             start_time TIMESTAMP NOT NULL,
@@ -110,7 +110,8 @@ def generate_date_range_json(last_successful_run_date: datetime | None, current_
     end_date = current_job_date.date()
 
     if last_successful_run_date:
-        start_date = last_successful_run_date.date()
+        # start from a day before the last successful run date
+        start_date = last_successful_run_date.date() - timedelta(days=1)
         # Ensure start_date is not after end_date
         if start_date > end_date:
             start_date = end_date
