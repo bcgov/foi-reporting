@@ -3,7 +3,7 @@ resources:
     ETL_Pipeline:
       name: ETL Pipeline
       schedule:
-        quartz_cron_expression: 1 0 1 * * ?
+        quartz_cron_expression: 1 0 3 * * ?
         timezone_id: America/Los_Angeles
         pause_status: UNPAUSED
       tasks:
@@ -163,18 +163,9 @@ resources:
           job_cluster_key: Job_cluster
           max_retries: 1
           min_retry_interval_millis: 900000
-        - task_key: factRequestDocumentDetails
-          depends_on:
-            - task_key: factRequestRFSCalcField
-          notebook_task:
-            notebook_path: databricks/ETL/factRequestDocumentsDetailsETL
-            source: GIT
-          job_cluster_key: Job_cluster
-          max_retries: 1
-          min_retry_interval_millis: 900000
         - task_key: factRequestExtensions
           depends_on:
-            - task_key: factRequestDocumentDetails
+            - task_key: factRequestRFSCalcField
           notebook_task:
             notebook_path: databricks/ETL/factRequestExtensionsETL
             source: GIT
@@ -262,6 +253,22 @@ resources:
           job_cluster_key: Job_cluster
           max_retries: 1
           min_retry_interval_millis: 900000
+        - task_key: factRequestDocumentDetails
+          depends_on:
+            - task_key: factFOIFlowRequestStatusDetailsETL
+          notebook_task:
+            notebook_path: databricks/ETL/factRequestDocumentsDetailsETL
+            source: GIT
+          job_cluster_key: Job_cluster
+          max_retries: 1
+          min_retry_interval_millis: 900000
+        - task_key: materialized_views
+          depends_on:
+            - task_key: factRequestDocumentDetails
+          notebook_task:
+            notebook_path: databricks/Jobs & Pipelines/CreateMaterializedViews
+            source: GIT
+          job_cluster_key: Job_cluster
       job_clusters:
         - job_cluster_key: Job_cluster
           new_cluster:
