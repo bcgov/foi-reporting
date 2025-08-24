@@ -154,15 +154,6 @@ resources:
           job_cluster_key: Job_cluster
           max_retries: 1
           min_retry_interval_millis: 900000
-        - task_key: factRequestDocumentDetails
-          depends_on:
-            - task_key: factFOIFlowRequestStatusDetailsETL
-          notebook_task:
-            notebook_path: databricks/ETL/factRequestDocumentsDetailsETL
-            source: GIT
-          job_cluster_key: Job_cluster
-          max_retries: 1
-          min_retry_interval_millis: 900000
         - task_key: factRequestRFSCalcField
           depends_on:
             - task_key: factRequestCustomCalcFields
@@ -262,6 +253,22 @@ resources:
           job_cluster_key: Job_cluster
           max_retries: 1
           min_retry_interval_millis: 900000
+        - task_key: factRequestDocumentDetails
+          depends_on:
+            - task_key: factFOIFlowRequestStatusDetailsETL
+          notebook_task:
+            notebook_path: databricks/ETL/factRequestDocumentsDetailsETL
+            source: GIT
+          job_cluster_key: Job_cluster
+          max_retries: 1
+          min_retry_interval_millis: 900000
+        - task_key: materialized_views
+          depends_on:
+            - task_key: factRequestDocumentDetails
+          notebook_task:
+            notebook_path: databricks/Jobs & Pipelines/CreateMaterializedViews
+            source: GIT
+          job_cluster_key: Job_cluster
       job_clusters:
         - job_cluster_key: Job_cluster
           new_cluster:
