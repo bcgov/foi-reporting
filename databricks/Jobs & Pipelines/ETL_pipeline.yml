@@ -272,8 +272,7 @@ resources:
       job_clusters:
         - job_cluster_key: Job_cluster
           new_cluster:
-            cluster_name: ""
-            spark_version: 15.4.x-scala2.12
+            spark_version: 17.1.x-scala2.13
             spark_conf:
               spark.s3_secret_key: "{{secrets/s3_creds/s3_secret_key}}"
               spark.s3_access_key: "{{secrets/s3_creds/s3_access_key}}"
@@ -294,6 +293,8 @@ resources:
             enable_elastic_disk: true
             data_security_mode: LEGACY_SINGLE_USER_STANDARD
             runtime_engine: PHOTON
+            kind: CLASSIC_PREVIEW
+            is_single_node: false
             num_workers: 8
       git_source:
         git_url: https://github.com/bcgov/foi-reporting.git
