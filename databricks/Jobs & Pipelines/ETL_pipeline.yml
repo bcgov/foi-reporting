@@ -3,7 +3,7 @@ resources:
     ETL_Pipeline:
       name: ETL Pipeline
       schedule:
-        quartz_cron_expression: 1 0 3 * * ?
+        quartz_cron_expression: 1 20 0 * * ?
         timezone_id: America/Los_Angeles
         pause_status: UNPAUSED
       tasks:
@@ -283,6 +283,9 @@ resources:
               spark.hadoop.fs.s3a.endpoint: "{{secrets/s3_creds/s3_url}}"
               spark.s3_url: "{{secrets/s3_creds/s3_url}}"
               spark.hadoop.fs.s3a.impl: org.apache.hadoop.fs.s3a.S3AFileSystem
+              spark.hadoop.fs.s3a.threads.keepalivetime: "600000"
+              spark.hadoop.fs.s3a.connection.establish.timeout: "600000"
+              spark.hadoop.fs.s3a.multipart.purge.age: "86400000"
             azure_attributes:
               first_on_demand: 1
               availability: SPOT_WITH_FALLBACK_AZURE
