@@ -151,36 +151,34 @@ resources:
           min_retry_interval_millis: 900000
         - task_key: factmodrequestdocumentdetails
           depends_on:
-            - task_key: FOIMOD_Loading
+            - task_key: factFOIFlowRequestStatusDetailsETL
           notebook_task:
             notebook_path: databricks/ETL/factMODRequestDocumentDetailsETL
             source: GIT
           job_cluster_key: Job_cluster
         - task_key: factrequestdivisionalstages
           depends_on:
-            - task_key: FOIMOD_Loading
+            - task_key: materialized_views
           notebook_task:
             notebook_path: databricks/ETL/factrequestdivisionalstages
             source: GIT
           job_cluster_key: Job_cluster
         - task_key: factrequestextensions
           depends_on:
-            - task_key: FOIMOD_Loading
+            - task_key: factrequestdivisionalstages
           notebook_task:
             notebook_path: databricks/ETL/factrequestextensions
             source: GIT
           job_cluster_key: Job_cluster
         - task_key: factrequestoipcfields
           depends_on:
-            - task_key: FOIMOD_Loading
+            - task_key: factmodrequestdocumentdetails
           notebook_task:
             notebook_path: databricks/ETL/factrequestoipcfields
             source: GIT
           job_cluster_key: Job_cluster
         - task_key: materialized_views
           depends_on:
-            - task_key: factFOIFlowRequestStatusDetailsETL
-            - task_key: factmodrequestdocumentdetails
             - task_key: factrequestoipcfields
           notebook_task:
             notebook_path: databricks/Jobs & Pipelines/CreateMaterializedViews
@@ -190,7 +188,7 @@ resources:
         - job_cluster_key: Job_cluster
           new_cluster:
             cluster_name: ""
-            spark_version: 17.1.x-scala2.13
+            spark_version: 18.1.x-scala2.13
             spark_conf:
               spark.s3_secret_key: "{{secrets/s3_creds/s3_secret_key}}"
               spark.s3_access_key: "{{secrets/s3_creds/s3_access_key}}"
