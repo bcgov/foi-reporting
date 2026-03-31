@@ -2,6 +2,19 @@ resources:
   jobs:
     ETL_Pipeline:
       name: ETL Pipeline
+      email_notifications:
+        on_failure:
+          - manish.sihag@gov.bc.ca
+          - adam.kroon@gov.bc.ca
+          - andrew.bonneau@gov.bc.ca
+        on_duration_warning_threshold_exceeded:
+          - manish.sihag@gov.bc.ca
+          - adam.kroon@gov.bc.ca
+      health:
+        rules:
+          - metric: RUN_DURATION_SECONDS
+            op: GREATER_THAN
+            value: 3600
       schedule:
         quartz_cron_expression: 1 20 0 * * ?
         timezone_id: America/Los_Angeles
@@ -37,9 +50,18 @@ resources:
                 coordinates: org.apache.hadoop:hadoop-common:3.3.6
           max_retries: 1
           min_retry_interval_millis: 900000
-        - task_key: dimRequests
+        - task_key: factRequestCustomCalcFields
           depends_on:
             - task_key: FOIMOD_Loading
+          notebook_task:
+            notebook_path: databricks/ETL/factRequestCustomCalcFieldsETL
+            source: GIT
+          job_cluster_key: Job_cluster
+          max_retries: 1
+          min_retry_interval_millis: 900000
+        - task_key: dimRequests
+          depends_on:
+            - task_key: factRequestCustomCalcFields
           notebook_task:
             notebook_path: databricks/ETL/dimrequests
             source: GIT
@@ -55,63 +77,9 @@ resources:
           job_cluster_key: Job_cluster
           max_retries: 1
           min_retry_interval_millis: 120000
-        - task_key: dimDeliveryMode
-          depends_on:
-            - task_key: dimAddress
-          notebook_task:
-            notebook_path: databricks/ETL/dimdeliverymodes
-            source: GIT
-          job_cluster_key: Job_cluster
-          max_retries: 1
-          min_retry_interval_millis: 900000
-        - task_key: dimECGroups
-          depends_on:
-            - task_key: dimDeliveryMode
-          notebook_task:
-            notebook_path: databricks/ETL/dimecgroups
-            source: GIT
-          job_cluster_key: Job_cluster
-          max_retries: 1
-          min_retry_interval_millis: 900000
-        - task_key: dimExtensionTypes
-          depends_on:
-            - task_key: dimECGroups
-          notebook_task:
-            notebook_path: databricks/ETL/dimextensiontypes
-            source: GIT
-          job_cluster_key: Job_cluster
-          max_retries: 1
-          min_retry_interval_millis: 900000
-        - task_key: dimInvoiceDetails
-          depends_on:
-            - task_key: dimExtensionTypes
-          notebook_task:
-            notebook_path: databricks/ETL/diminvoicedetails
-            source: GIT
-          job_cluster_key: Job_cluster
-          max_retries: 1
-          min_retry_interval_millis: 900000
-        - task_key: dimReceivedModes
-          depends_on:
-            - task_key: dimInvoiceDetails
-          notebook_task:
-            notebook_path: databricks/ETL/dimreceivedmodes
-            source: GIT
-          job_cluster_key: Job_cluster
-          max_retries: 1
-          min_retry_interval_millis: 900000
-        - task_key: dimRequestForDocumentStatus
-          depends_on:
-            - task_key: dimReceivedModes
-          notebook_task:
-            notebook_path: databricks/ETL/dimrequestfordocumentsstatus
-            source: GIT
-          job_cluster_key: Job_cluster
-          max_retries: 1
-          min_retry_interval_millis: 900000
         - task_key: dimRequesterTypes
           depends_on:
-            - task_key: dimRequestForDocumentStatus
+            - task_key: dimAddress
           notebook_task:
             notebook_path: databricks/ETL/dimrequestertypes
             source: GIT
@@ -136,54 +104,36 @@ resources:
           job_cluster_key: Job_cluster
           max_retries: 1
           min_retry_interval_millis: 900000
-        - task_key: factRequestDetails
+        - task_key: factRequestDocumentDetails
           depends_on:
             - task_key: dimRequesters
+          notebook_task:
+            notebook_path: databricks/ETL/factRequestDocumentsDetailsETL
+            source: GIT
+          job_cluster_key: Job_cluster
+          max_retries: 1
+          min_retry_interval_millis: 900000
+        - task_key: factRequestDetails
+          depends_on:
+            - task_key: factRequestDocumentDetails
           notebook_task:
             notebook_path: databricks/ETL/factrequestdetails
             source: GIT
           job_cluster_key: Job_cluster
           max_retries: 1
           min_retry_interval_millis: 900000
-        - task_key: factRequestCustomCalcFields
-          depends_on:
-            - task_key: factRequestDetails
-          notebook_task:
-            notebook_path: databricks/ETL/factRequestCustomCalcFieldsETL
-            source: GIT
-          job_cluster_key: Job_cluster
-          max_retries: 1
-          min_retry_interval_millis: 900000
-        - task_key: factRequestRFSCalcField
-          depends_on:
-            - task_key: factRequestCustomCalcFields
-          notebook_task:
-            notebook_path: databricks/ETL/factRequestsRFSCalcFields
-            source: GIT
-          job_cluster_key: Job_cluster
-          max_retries: 1
-          min_retry_interval_millis: 900000
         - task_key: factRequestExtensions
           depends_on:
-            - task_key: factRequestRFSCalcField
+            - task_key: factRequestDetails
           notebook_task:
             notebook_path: databricks/ETL/factRequestExtensionsETL
             source: GIT
           job_cluster_key: Job_cluster
           max_retries: 1
           min_retry_interval_millis: 900000
-        - task_key: factRequestForDocument
-          depends_on:
-            - task_key: factRequestExtensions
-          notebook_task:
-            notebook_path: databricks/ETL/factRequestForDocumentsETL
-            source: GIT
-          job_cluster_key: Job_cluster
-          max_retries: 1
-          min_retry_interval_millis: 900000
         - task_key: factRequestInvoices
           depends_on:
-            - task_key: factRequestForDocument
+            - task_key: factRequestExtensions
           notebook_task:
             notebook_path: databricks/ETL/factRequestInvoicesETL
             source: GIT
@@ -199,79 +149,49 @@ resources:
           job_cluster_key: Job_cluster
           max_retries: 1
           min_retry_interval_millis: 900000
-        - task_key: factRequestRequesters
-          depends_on:
-            - task_key: factRequestPaymentTransactions
-          notebook_task:
-            notebook_path: databricks/ETL/factrequestrequesters
-            source: GIT
-          job_cluster_key: Job_cluster
-          max_retries: 1
-          min_retry_interval_millis: 900000
-        - task_key: dimDivisions
-          depends_on:
-            - task_key: factRequestRequesters
-          notebook_task:
-            notebook_path: databricks/ETL/dimdivisions
-            source: GIT
-          job_cluster_key: Job_cluster
-          max_retries: 1
-          min_retry_interval_millis: 900000
-        - task_key: dimStages
-          depends_on:
-            - task_key: dimDivisions
-          notebook_task:
-            notebook_path: databricks/ETL/dimstages
-            source: GIT
-          job_cluster_key: Job_cluster
-          max_retries: 1
-          min_retry_interval_millis: 900000
-        - task_key: factRequestDivisionalStages
-          depends_on:
-            - task_key: dimStages
-          notebook_task:
-            notebook_path: databricks/ETL/factRequestDivisionalStagesETL
-            source: GIT
-          job_cluster_key: Job_cluster
-          max_retries: 1
-          min_retry_interval_millis: 900000
-        - task_key: dimFOIFlowRequestStatus
-          depends_on:
-            - task_key: factRequestDivisionalStages
-          notebook_task:
-            notebook_path: databricks/ETL/dimfoiflowrequeststatus
-            source: GIT
-          job_cluster_key: Job_cluster
-          max_retries: 1
-          min_retry_interval_millis: 900000
         - task_key: factFOIFlowRequestStatusDetailsETL
           depends_on:
-            - task_key: dimFOIFlowRequestStatus
+            - task_key: factRequestPaymentTransactions
           notebook_task:
             notebook_path: databricks/ETL/factFOIFlowRequestStatusDetailsETL
             source: GIT
           job_cluster_key: Job_cluster
           max_retries: 1
           min_retry_interval_millis: 900000
-        - task_key: factRequestDocumentDetails
+        - task_key: factmodrequestdocumentdetails
           depends_on:
-            - task_key: factFOIFlowRequestStatusDetailsETL
+            - task_key: FOIMOD_Loading
           notebook_task:
-            notebook_path: databricks/ETL/factRequestDocumentsDetailsETL
+            notebook_path: databricks/ETL/factMODRequestDocumentDetailsETL
             source: GIT
           job_cluster_key: Job_cluster
-          max_retries: 1
-          min_retry_interval_millis: 900000
+        - task_key: factrequestoipcfields
+          depends_on:
+            - task_key: FOIMOD_Loading
+          notebook_task:
+            notebook_path: databricks/ETL/factrequestoipcfields
+            source: GIT
+          job_cluster_key: Job_cluster
         - task_key: materialized_views
           depends_on:
-            - task_key: factRequestDocumentDetails
+            - task_key: factFOIFlowRequestStatusDetailsETL
+            - task_key: factmodrequestdocumentdetails
+            - task_key: factrequestoipcfields
           notebook_task:
             notebook_path: databricks/Jobs & Pipelines/CreateMaterializedViews
+            source: GIT
+          job_cluster_key: Job_cluster
+        - task_key: factrequestdivisionalstages
+          depends_on:
+            - task_key: FOIMOD_Loading
+          notebook_task:
+            notebook_path: databricks/ETL/factrequestdivisionalstages
             source: GIT
           job_cluster_key: Job_cluster
       job_clusters:
         - job_cluster_key: Job_cluster
           new_cluster:
+            cluster_name: ""
             spark_version: 17.1.x-scala2.13
             spark_conf:
               spark.s3_secret_key: "{{secrets/s3_creds/s3_secret_key}}"
