@@ -156,20 +156,6 @@ resources:
             notebook_path: databricks/ETL/factMODRequestDocumentDetailsETL
             source: GIT
           job_cluster_key: Job_cluster
-        - task_key: factrequestdivisionalstages
-          depends_on:
-            - task_key: materialized_views
-          notebook_task:
-            notebook_path: databricks/ETL/factrequestdivisionalstages
-            source: GIT
-          job_cluster_key: Job_cluster
-        - task_key: factrequestextensions
-          depends_on:
-            - task_key: factrequestdivisionalstages
-          notebook_task:
-            notebook_path: databricks/ETL/factrequestextensions
-            source: GIT
-          job_cluster_key: Job_cluster
         - task_key: factrequestoipcfields
           depends_on:
             - task_key: factmodrequestdocumentdetails
@@ -177,11 +163,25 @@ resources:
             notebook_path: databricks/ETL/factrequestoipcfields
             source: GIT
           job_cluster_key: Job_cluster
-        - task_key: materialized_views
+        - task_key: factrequestextensions
           depends_on:
             - task_key: factrequestoipcfields
           notebook_task:
+            notebook_path: databricks/ETL/factrequestextensions
+            source: GIT
+          job_cluster_key: Job_cluster
+        - task_key: materialized_views
+          depends_on:
+            - task_key: factrequestextensions
+          notebook_task:
             notebook_path: databricks/Jobs & Pipelines/CreateMaterializedViews
+            source: GIT
+          job_cluster_key: Job_cluster
+        - task_key: factrequestdivisionalstages
+          depends_on:
+            - task_key: factrequestextensions
+          notebook_task:
+            notebook_path: databricks/ETL/factrequestdivisionalstages
             source: GIT
           job_cluster_key: Job_cluster
       job_clusters:
